@@ -1860,7 +1860,7 @@ body { margin: 0.5em; }
 </tr>
 <tr><td colspan="2">
 <p>
- Load the Python library. </p>
+ Load the Python library. If aLibraryPath is empty then it will try to find the Python binaries installed in Windows, Linux or macOS. </p>
 </td></tr>
 </table>
 <table class="detail visibility-public wide_list">
@@ -2444,7 +2444,7 @@ body { margin: 0.5em; }
 
 <p>Initialized from the environment variable PYTHONPATH, plus an installation-dependent default.
 
-<p>If module_search_paths_set is False, Py_InitializeFromConfig() will replace module_search_paths and sets module_search_paths_set to True.
+<p>If module_search_paths_set is False, TPy.InitializeFromConfig() will replace module_search_paths and sets module_search_paths_set to True.
 
 <p>Default: empty list.
 

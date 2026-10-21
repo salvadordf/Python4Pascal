@@ -32,7 +32,13 @@ type
 var
   MainForm: TMainForm;
 
-implementation
+implementation         
+
+// This demo shows how to handle Python classes with Delphi variants.
+//
+// The Python code declares "MyClass". The "Run code" button executes that code
+// and creates an instance of that class.
+// Then this demo uses the "MyClass" properties and calls its functions.
 
 {$R *.lfm}
 
@@ -92,26 +98,20 @@ procedure TMainForm.Run2BtnClick(Sender: TObject);
 var
   TempMainModObj : IPyObject;
   TempClass, TempMainModVar, TempTuple, TempList, TempDate, TempInt, TempFloat, TempBool, TempString : Variant;
-begin
+begin                                                
+  // First we run the code to declare "MyClass"
   if TPyRun.SimpleString(CodeMem.Text) then
     begin
-      // TODO: Crash in Lazarus. Explicit and Implicit conversion of Custom Variants to simple types fails.
-      // See demo 25 in P4D. See FPC tickets #39815 and #20849 :
-      // https://gitlab.com/freepascal.org/fpc/source/-/work_items/39815
-      // https://gitlab.com/freepascal.org/fpc/source/-/work_items/20849
-      // https://github.com/lmbelo/python4delphi/issues/498
-      // https://github.com/lmbelo/python4delphi/wiki/SupportedPlatforms
-      // https://gitlab.com/freepascal.org/fpc/source/-/work_items/41235
-
-      TempMainModObj := TPyImport.AddModuleRef(MAIN_MODULE_NAME);     
-
-      if not(assigned(TempMainModObj)) then
-        TempMainModObj := TPyImport.AddModule(MAIN_MODULE_NAME);
+      // Then we get the main module
+      TempMainModObj := GlobalP4PEngine.MainModule;
 
       if not(assigned(TempMainModObj)) then exit;
-
-      TempMainModVar := TempMainModObj.AsVariant;
-      TempClass      := TempMainModVar.MyClass();
+                                                  
+      // Convert the main module from IPyObject to variant
+      TempMainModVar := TempMainModObj.AsVariant;            
+      // Call the MyClass constructor found in the main module.
+      TempClass      := TempMainModVar.MyClass();     
+      // At this point we can use the properties and functions normally.
       LogMem.Lines.Add('MyClass.x = ' + inttostr(TempClass.x));
       TempClass.x := TempClass.x * TempClass.x;
       LogMem.Lines.Add('MyClass.x * TempClass.x = ' + inttostr(TempClass.x));

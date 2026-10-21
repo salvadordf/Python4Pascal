@@ -39,6 +39,8 @@ var
   MainForm: TMainForm;
 
 implementation
+                      
+// This demo shows how to create a custom module and a custom heap type.
 
 {$R *.lfm}
 
@@ -83,7 +85,8 @@ begin
       //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
       //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
       TempLibPath := '';
-
+                                               
+      // We create the module and the heap type after the Python initialization
       if GlobalP4PEngine.Load(TempLibPath) and
          GlobalP4PEngine.Initialize and
          CreateModule and
@@ -96,14 +99,16 @@ begin
         end;
     end;
 end;
-
+                                            
+// This function creates our custom module
 function TMainForm.CreateModule: boolean;
 begin
   FTestModule          := TTestModule.Create(TEST_MODULE_NAME);
   FTestModule.MainForm := self;
   Result               := FTestModule.Initialize;
 end;              
-
+                                          
+// This function creates our custom heap type and adds it to our custom module.
 function TMainForm.CreateType: boolean;
 begin
   FTestType            := TTestHeapType.Create(TEST_TYPE_NAME);

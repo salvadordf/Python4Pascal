@@ -34,6 +34,19 @@ var
 
 implementation
 
+// This demo shows the easiest way to embed Python in an application.
+//
+// Basically, all you need to do is:
+// 1. Load the Python library with the GlobalP4PEngine.Load call.
+// 2. Initialize Python with the GlobalP4PEngine.Initialize call.
+// 3. Run some Python code with the TPyRun.SimpleString call.
+//
+// This demo also implements the GlobalP4PEngine.OnOutputMessage event to
+// show the Python messages in a TMemo.
+//
+// The "Evaluate code" button shows an alternative way to run Python code with
+// a TPyEval.EvalString call.
+
 {$R *.lfm}
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -62,7 +75,15 @@ begin
       {$ENDIF}
                                           
       TempDrive := 'Q';
-      //TempDrive := 'S';
+      //TempDrive := 'S';    
+
+      // All these library paths were used for testing purposes only.
+      // Set your own library path if you wat to use an embedded Python package.
+
+      // If you call GlobalP4PEngine.Load with an empty path it will try to load
+      // the Python library that is installed in Windows.   
+
+      // You can download Python from https://www.python.org/downloads/windows/
 
       //TempLibPath := TempDrive + ':\python-3.15.0-embed-' + TempBit + '\python315.dll';
       //TempLibPath := TempDrive + ':\python-3.14.8-embed-' + TempBit + '\python314.dll';
@@ -71,7 +92,8 @@ begin
       //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
       //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
       TempLibPath := '';
-
+                               
+      // Load and initialize the Python library.
       if GlobalP4PEngine.Load(TempLibPath) and
          GlobalP4PEngine.Initialize then
         Memo1.Lines.Add('Python initialized. ' + GlobalP4PEngine.buildinfo)

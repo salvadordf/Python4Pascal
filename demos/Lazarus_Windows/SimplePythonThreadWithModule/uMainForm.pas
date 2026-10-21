@@ -45,6 +45,9 @@ var
 
 implementation
 
+// This demo mixes the code of SimplePythonThread and SimplePythonModule to
+// show how to use custom modules and heap types in a thread.
+
 {$R *.lfm}
 
 uses
@@ -129,7 +132,8 @@ begin
   if not(assigned(GlobalP4PEngine)) then exit;
 
   LogMem.Lines.Clear;
-
+                                 
+  // We *MUST* call SaveThreadState before running Python in a different thread.
   GlobalP4PEngine.SaveThreadState;
 
   TempThread                   := TCustomThread.Create(True);
@@ -180,7 +184,8 @@ begin
 end;
 
 procedure TMainForm.Thread_OnTerminate(Sender: TObject);
-begin
+begin                           
+  // Restore the state as soon as the thread finishes.
   GlobalP4PEngine.RestoreThreadState;
 end;
 

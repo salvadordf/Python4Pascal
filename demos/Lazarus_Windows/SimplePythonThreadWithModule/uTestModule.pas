@@ -20,19 +20,27 @@ uses
 const
   TEST_MODULE_NAME = 'mytest';
 
-type
+type                        
+  // TCustomPyModule has all the logic to create modules and we only have to
+  // override some procedures where we'll create the classes that declare our
+  // custom functions: read, write, is_even.
+  //
+  // In older Python version we would need to create a custom TPyModuleDef class
+  // but in Python 3.15 we need to create a custom TPyModuleSlotManager class.
   TTestModule = class(TCustomPyModule)
     protected
       procedure CreateModuleDef; override;
       procedure CreateSlotManager; override;
       function  NumberIsEven(args: PPyObject): PPyObject;
   end;
-
+                                 
+  // This class will add our custom functions in older Python versions
   TPyTestModuleDef = class(TPyModuleDef)
     protected
       procedure AddAllMethods; override;
   end;
-
+                                                   
+  // This class will add out custom function in Python 3.15
   TPyTestSlotManager = class(TPyModuleSlotManager)
     protected
       procedure AddAllMethods; override;
@@ -43,7 +51,10 @@ implementation
 uses
   uP4P.MiscFunctions, uP4P.Engine, uP4P.PyTuple, uP4P.PyUnicode, uP4P.PyBytes,
   uP4P.PyRun, uP4P.PyBool;
-
+                                
+// This is the callback for the "is_even" function.
+// It finds the module instance using GlobalP4PEngine.SearchModule and calls
+// TExtensionModule.NumberIsEven
 function mytest_is_even(self, args: PPyObject): PPyObject; cdecl;
 var
   TempModule: TCustomPyModule;
@@ -90,7 +101,10 @@ begin
 end;
 
 { TPyTestModuleDef }
-
+                                            
+// This procedure adds our custom functions for older Python versions.
+// Python will use the mytest_is_even callback when it
+// needs to call the "is_even" function in our extension.
 procedure TPyTestModuleDef.AddAllMethods;
 begin
   inherited AddAllMethods;
@@ -99,7 +113,10 @@ begin
 end;
 
 { TPyTestSlotManager }
-
+                                         
+// This procedure adds our custom functions for Python 3.15
+// Python will use the mytest_is_even callback when it
+// needs to call the "is_even" function in our extension.
 procedure TPyTestSlotManager.AddAllMethods;
 begin
   inherited AddAllMethods;

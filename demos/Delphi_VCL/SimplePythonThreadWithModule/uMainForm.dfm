@@ -43,7 +43,6 @@ object MainForm: TMainForm
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitHeight = 405
     object RunBtn: TButton
       Left = 5
       Top = 5
@@ -96,6 +95,5 @@ object MainForm: TMainForm
     ParentFont = False
     ScrollBars = ssBoth
     TabOrder = 2
-    ExplicitHeight = 405
   end
 end

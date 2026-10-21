@@ -86,7 +86,8 @@ end;
 procedure TMyClass.AfterConstruction;
 begin
   inherited AfterConstruction;
-
+                                 
+  // Create a MyClass instance and get all the properties and functions.
   if CreatePythonClass then
     GetAllAttributes;
 end;
@@ -114,16 +115,20 @@ begin
   Result         := False;
   TempMainModule := GlobalP4PEngine.MainModule;
 
+  // "MyClass" can be found as an attribute of the main module.
   if TPyObject.IsInitialized(TempMainModule) and
      TempMainModule.GetOptionalAttrString('MyClass', TempAttrib) then
-    begin
+    begin                                          
+      // TempAttrib is the constructor of "MyClass" and all we have to do is
+      // use TempAttrib.CallNoArgs to get an instance.
       FMyClass := TempAttrib.CallNoArgs;
       Result   := assigned(FMyClass);
     end;
 end;
 
 procedure TMyClass.GetAllAttributes;
-begin
+begin                                            
+  // Here we get all the properties and functions of the Python class.
   FMyClass.GetOptionalAttrString(MYCLASS_X_ATTRIB_NAME,              FXAttrib);
   FMyClass.GetOptionalAttrString(MYCLASS_BOOLEAN_TEST_ATTRIB_NAME,   FBooleanTestAttrib);
   FMyClass.GetOptionalAttrString(MYCLASS_INTEGER_TEST_ATTRIB_NAME,   FIntegerTestAttrib);
@@ -229,7 +234,8 @@ begin
   Result := 0;
 
   if assigned(FSquareTestAttrib) then
-    try
+    try                                     
+      // We pass aNumber as a tuple in the CallObject arguments.
       TempNumber := TPyLong.FromLong(aNumber);
       TempArgs   := TPyTuple.Pack([TempNumber]);
       TempResult := FSquareTestAttrib.CallObject(TempArgs);
@@ -304,7 +310,8 @@ begin
   Result := '';
 
   if assigned(FDictTestAttrib) then
-    try
+    try                      
+      // We have to create a tuple with all the function arguments in the right order.
       TempKey    := TPyUnicode.FromString(aKey);
       TempValue  := TPyLong.FromLong(aValue);
       TempArgs   := TPyTuple.Pack([TempKey, TempValue]);

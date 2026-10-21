@@ -18,6 +18,12 @@ uses
   uP4P.CustomPyModule, uP4P.PyNone, uP4P.PyModuleDef, uP4P.PyModuleSlotManager;
 
 type
+  // TCustomPyModule has all the logic to create modules and we only have to
+  // override some procedures where we'll create the classes that declare our
+  // custom functions: is_even, uppercase.
+  //
+  // In older Python version we would need to create a custom TPyModuleDef class
+  // but in Python 3.15 we need to create a custom TPyModuleSlotManager class.
   TExtensionModule = class(TCustomPyModule)
     protected
       procedure CreateModuleDef; override;
@@ -30,11 +36,13 @@ type
       procedure   AfterConstruction; override;
   end;
 
+  // This class will add our custom functions in older Python versions
   TExtensionPyModuleDef = class(TPyModuleDef)
     protected
       procedure AddAllMethods; override;
   end;
 
+  // This class will add out custom functions in Python 3.15
   TExtensionPySlotManager = class(TPyModuleSlotManager)
     protected
       procedure AddAllMethods; override;
@@ -45,6 +53,9 @@ implementation
 uses
   uP4P.Engine, uP4P.PyTuple, uP4P.PyBool, uP4P.PyUnicode;
 
+// This is the callback for the "is_even" function.
+// It finds the module instance using GlobalP4PEngine.SearchModule and calls
+// TExtensionModule.NumberIsEven
 function extmod_is_even(self, args: PPyObject): PPyObject; cdecl;
 var
   TempModule: TCustomPyModule;
@@ -59,6 +70,9 @@ begin
     Result := TPyNone.ReturnNone;
 end;
 
+// This is the callback for the "uppercase" function
+// It finds the module instance using GlobalP4PEngine.SearchModule and calls
+// TExtensionModule.CustomUppercase
 function extmod_uppercase(self, args: PPyObject): PPyObject; cdecl;
 var
   TempModule: TCustomPyModule;
@@ -136,6 +150,9 @@ end;
 
 { TExtensionPyModuleDef }
 
+// This procedure adds our custom functions for older Python versions.
+// Python will use the extmod_is_even and extmod_uppercase callbacks when it
+// needs to call the "is_even" and "uppercase" functions in our extension.
 procedure TExtensionPyModuleDef.AddAllMethods;
 begin
   AddMethod('is_even', '', @extmod_is_even, METH_VARARGS);
@@ -144,6 +161,9 @@ end;
 
 { TExtensionPySlotManager }
 
+// This procedure adds our custom functions for Python 3.15
+// Python will use the extmod_is_even and extmod_uppercase callbacks when it
+// needs to call the "is_even" and "uppercase" functions in our extension.
 procedure TExtensionPySlotManager.AddAllMethods;
 begin
   AddMethod('is_even', '', @extmod_is_even, METH_VARARGS);

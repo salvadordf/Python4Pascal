@@ -112,6 +112,7 @@ object MainForm: TMainForm
       Height = 24
       Anchors = [akLeft, akTop, akRight, akBottom]
       Caption = '2. Wrap MyClass'
+      Enabled = False
       TabOrder = 1
       OnClick = WrapClassBtnClick
     end
@@ -122,6 +123,7 @@ object MainForm: TMainForm
       Height = 24
       Align = alRight
       Caption = '3. Test MyClass'
+      Enabled = False
       TabOrder = 2
       OnClick = TestMyClassBtnClick
     end

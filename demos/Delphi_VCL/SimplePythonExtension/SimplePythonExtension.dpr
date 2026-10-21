@@ -35,7 +35,7 @@ exports
   PyInit_SimplePythonExtension,
   PyModExport_SimplePythonExtension;
 
-{$E pyd}
+{$E pyd} // Rename the DLL as PYD because Python requires it.
 
 begin
   //

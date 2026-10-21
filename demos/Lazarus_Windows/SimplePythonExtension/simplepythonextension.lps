@@ -8,26 +8,26 @@
         <Filename Value="simplepythonextension.lpr"/>
         <IsPartOfProject Value="True"/>
         <CursorPos X="6" Y="16"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="umain.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="3"/>
-        <CursorPos X="60" Y="35"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="10"/>
+        <CursorPos X="3" Y="31"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uextensionmodule.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="67"/>
-        <CursorPos X="49" Y="91"/>
-        <UsageCount Value="21"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="131"/>
+        <CursorPos X="75" Y="158"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -72,11 +72,10 @@
       </Unit>
       <Unit>
         <Filename Value="../../../source/uP4P.MiscFunctions.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="409"/>
         <CursorPos X="30" Y="425"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../source/uP4P.Loader.pas"/>
@@ -87,14 +86,13 @@
       </Unit>
       <Unit>
         <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="369"/>
         <CursorPos X="86" Y="385"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="14">
+    <JumpHistory HistoryIndex="5">
       <Position>
         <Filename Value="uextensionmodule.pas"/>
         <Caret Line="75" TopLine="53"/>
@@ -114,42 +112,6 @@
       <Position>
         <Filename Value="umain.pas"/>
         <Caret Line="35" Column="60" TopLine="3"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="295" Column="21" TopLine="279"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="385" Column="81" TopLine="369"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="295" Column="21" TopLine="280"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="300" Column="54" TopLine="278"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="295" Column="21" TopLine="279"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.MiscFunctions.pas"/>
-        <Caret Line="425" Column="30" TopLine="409"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="385" Column="81" TopLine="369"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="295" Column="29" TopLine="270"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <Caret Line="304" Column="59" TopLine="279"/>
       </Position>
       <Position>
         <Filename Value="simplepythonextension.lpr"/>

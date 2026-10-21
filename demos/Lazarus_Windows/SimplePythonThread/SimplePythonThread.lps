@@ -18,9 +18,10 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="78"/>
-        <CursorPos X="65" Y="91"/>
+        <TopLine Value="40"/>
+        <CursorPos X="9" Y="135"/>
         <UsageCount Value="33"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -28,8 +29,11 @@
       <Unit>
         <Filename Value="uCustomThread.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="39" Y="13"/>
         <UsageCount Value="33"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="uMainForm.lfm"/>
@@ -82,12 +86,10 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Engine.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="212"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="200"/>
         <CursorPos X="75" Y="227"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyMem.pas"/>
@@ -938,11 +940,10 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.CustomHeapType.pas"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="179"/>
         <CursorPos X="61" Y="200"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyType_Spec.pas"/>
@@ -978,7 +979,7 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="4">
+    <JumpHistory HistoryIndex="3">
       <Position>
         <Filename Value="SimplePythonThread.lpr"/>
       </Position>
@@ -992,10 +993,6 @@
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="91" Column="65" TopLine="78"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.CustomHeapType.pas"/>
-        <Caret Line="200" Column="61" TopLine="179"/>
       </Position>
     </JumpHistory>
     <RunParams>

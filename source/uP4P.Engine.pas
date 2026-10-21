@@ -198,7 +198,8 @@ type
       /// </remarks>
       property OnOutputMessage           : TOnOutputMessageEvent    read FOnOutputMessage               write FOnOutputMessage;
       /// <summary>
-      /// Event triggered in all interactive input including Python calls to input().
+      /// Event triggered in all interactive input including Python calls to
+      /// input().
       /// </summary>
       /// <remarks>
       /// <para>This event will run in the context of a background thread if you use TP4PThread.</para>

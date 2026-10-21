@@ -21,6 +21,12 @@ const
   TEST_TYPE_NAME = 'mytype';
 
 type
+  // TCustomHeapType has all the logic to create heap types and we only have to
+  // override some procedures where we'll create the classes that declare our
+  // custom functions.
+  //
+  // In older Python version we would need to create a custom TPyType_Spec class
+  // but in Python 3.15 we need to create a custom TPyHeapTypeSlotManager class.
   TTestHeapType = class(TCustomHeapType)
     protected
       procedure CreateTypeSpec; override;
@@ -30,12 +36,14 @@ type
       function GetID(args: PPyObject): PPyObject;
   end;
 
+  // This class will add our custom functions in older Python versions
   TPyTestType_Spec = class(TPyType_Spec)
     protected
       procedure AddAllSlots; override;
       procedure AddAllMethods; override;
   end;
 
+  // This class will add out custom functions in Python 3.15
   TPyTestSlotManager = class(TPyHeapTypeSlotManager)
     protected
       procedure AddAllSlots; override;
@@ -50,6 +58,8 @@ uses
   uP4P.MiscFunctions, uP4P.Engine, uP4P.PyTuple, uP4P.PyUnicode, uP4P.PyBytes,
   uP4P.PyRun, uP4P.PyBool, uP4P.PyLong;
 
+// This is the callback for the "repr" function.
+// It just shows the type name and the memory location of the object.
 function mytype_repr(self: PPyObject): PPyObject; cdecl;
 var
   TempResult : IPyObject;
@@ -58,6 +68,9 @@ begin
   Result     := TempResult.UnWrap;
 end;
 
+// This is the callback for the "getid" function.
+// It finds the heap type instance using GlobalP4PEngine.SearchHeapType and calls
+// TTestHeapType.GetID
 function mytype_getid(self, args: PPyObject): PPyObject; cdecl;
 var
   TempType: TCustomHeapType;
@@ -96,6 +109,7 @@ end;
 
 { TPyTestType_Spec }
 
+// This procedure adds a slot to use a custom function for the "repr" function.
 procedure TPyTestType_Spec.AddAllSlots;
 begin
   inherited AddAllSlots;
@@ -103,6 +117,9 @@ begin
   AddReprSlot(mytype_repr);
 end;
 
+// This procedure adds our custom functions for older Python versions.
+// Python will use the mytype_getid callback when it
+// needs to call the "getid" function in our heap type.
 procedure TPyTestType_Spec.AddAllMethods;
 begin
   inherited;
@@ -111,6 +128,7 @@ end;
 
 { TPyTestSlotManager }
 
+// This procedure adds a slot to use a custom function for the "repr" function.
 procedure TPyTestSlotManager.AddAllSlots;
 begin
   inherited AddAllSlots;
@@ -118,6 +136,9 @@ begin
   AddReprSlot(mytype_repr);
 end;
 
+// This procedure adds our custom functions for Python 3.15.
+// Python will use the mytype_getid callback when it
+// needs to call the "getid" function in our heap type.
 procedure TPyTestSlotManager.AddAllMethods;
 begin
   inherited;

@@ -48,6 +48,10 @@ var
 
 implementation
 
+// This demo shows how to run Python scripts in a thread.
+// It allows you to select 4 ways to run the Python code in a thread but
+// Python4Pascal doesn't support all modes in older Python versions.
+
 {$R *.dfm}
 
 uses
@@ -137,6 +141,7 @@ var
 begin
   if not(assigned(GlobalP4PEngine)) then exit;
 
+  // We *MUST* call SaveThreadState before running Python in a different thread.
   GlobalP4PEngine.SaveThreadState;
 
   TempThread                   := TCustomThread.Create(True);
@@ -149,6 +154,7 @@ end;
 
 procedure TMainForm.Thread_OnTerminate(Sender: TObject);
 begin
+  // Restore the state as soon as the thread finishes.
   GlobalP4PEngine.RestoreThreadState;
 end;
 

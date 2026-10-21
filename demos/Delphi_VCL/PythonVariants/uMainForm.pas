@@ -38,6 +38,12 @@ var
 
 implementation
 
+// This demo shows how to handle Python classes with Delphi variants.
+//
+// The Python code declares "MyClass". The "Run code" button executes that code
+// and creates an instance of that class.
+// Then this demo uses the "MyClass" properties and calls its functions.
+
 {$R *.dfm}
 
 uses
@@ -100,14 +106,19 @@ var
   TempMainModObj : IPyObject;
   TempClass, TempMainModVar, TempTuple, TempList, TempDate, TempInt, TempFloat, TempBool, TempString : Variant;
 begin
+  // First we run the code to declare "MyClass"
   if TPyRun.SimpleString(CodeMem.Text) then
     begin
+      // Then we get the main module
       TempMainModObj := GlobalP4PEngine.MainModule;
 
       if not(assigned(TempMainModObj)) then exit;
 
+      // Convert the main module from IPyObject to variant
       TempMainModVar := TempMainModObj.AsVariant;
+      // Call the MyClass constructor found in the main module.
       TempClass      := TempMainModVar.MyClass();
+      // At this point we can use the properties and functions normally.
       LogMem.Lines.Add('MyClass.x = ' + inttostr(TempClass.x));
       TempClass.x := TempClass.x * TempClass.x;
       LogMem.Lines.Add('MyClass.x * TempClass.x = ' + inttostr(TempClass.x));

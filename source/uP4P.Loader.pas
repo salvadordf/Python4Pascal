@@ -190,7 +190,8 @@ type
       /// </summary>
       function    PythonLibIsGreaterOrEqualThan(aMajor, aMinor, aMicro: integer): boolean;
       /// <summary>
-      /// Load the Python library.
+      /// Load the Python library. If aLibraryPath is empty then it will try to
+      /// find the Python binaries installed in Windows, Linux or macOS.
       /// </summary>
       function    Load(const aLibraryPath: string = '') : boolean;
       /// <summary>
@@ -384,7 +385,8 @@ type
       /// <summary>
       /// <para>If True, add the user site directory to sys.path.</para>
       /// <para>Set to False by the -s and -I command line options.</para>
-      /// <para>Set to False by the PYTHONNOUSERSITE environment variable.</para>
+      /// <para>Set to False by the PYTHONNOUSERSITE environment
+      /// variable.</para>
       /// <para>Default: True in Python mode, False in isolated mode.</para>
       /// </summary>
       /// <remarks>
@@ -457,7 +459,7 @@ type
       /// modules.</para>
       /// <para>Initialized from the environment variable PYTHONPATH, plus an
       /// installation-dependent default.</para>
-      /// <para>If module_search_paths_set is False, Py_InitializeFromConfig()
+      /// <para>If module_search_paths_set is False, TPy.InitializeFromConfig()
       /// will replace module_search_paths and sets module_search_paths_set to
       /// True.</para>
       /// <para>Default: empty list.</para>
@@ -485,7 +487,8 @@ type
       /// </summary>
       property InExtensionModule                 : boolean                                      read FInExtensionModule;
       /// <summary>
-      /// Event triggered right before the Python initialization. It's used to change the configuration properties.
+      /// Event triggered right before the Python initialization. It's used to
+      /// change the configuration properties.
       /// </summary>
       property OnBeforeInitialization            : TOnBeforeInitializationEvent                 read FOnBeforeInitialization            write FOnBeforeInitialization;
   end;

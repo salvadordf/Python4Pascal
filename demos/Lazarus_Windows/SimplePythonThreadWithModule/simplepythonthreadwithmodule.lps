@@ -9,9 +9,8 @@
         <Filename Value="simplepythonthreadwithmodule.lpr"/>
         <IsPartOfProject Value="True"/>
         <CursorPos X="39" Y="15"/>
-        <UsageCount Value="33"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="uMainForm.pas"/>
@@ -19,11 +18,10 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="113"/>
-        <CursorPos X="22" Y="131"/>
-        <UsageCount Value="33"/>
+        <TopLine Value="151"/>
+        <CursorPos X="55" Y="188"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -31,25 +29,28 @@
         <Filename Value="uCustomThread.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="27"/>
-        <CursorPos X="53" Y="44"/>
-        <UsageCount Value="33"/>
+        <TopLine Value="41"/>
+        <CursorPos X="80" Y="76"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uTestHeapType.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="105"/>
+        <CursorPos X="56" Y="141"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uTestModule.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="36"/>
-        <CursorPos X="23" Y="61"/>
-        <UsageCount Value="20"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="84"/>
+        <CursorPos X="58" Y="119"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -61,11 +62,10 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Thread.pas"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="361"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="354"/>
         <CursorPos X="32" Y="348"/>
         <UsageCount Value="14"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Py.pas"/>
@@ -997,7 +997,7 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="8">
+    <JumpHistory HistoryIndex="5">
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="89" Column="7" TopLine="77"/>
@@ -1017,18 +1017,6 @@
       <Position>
         <Filename Value="uCustomThread.pas"/>
         <Caret Line="26" Column="54"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Thread.pas"/>
-        <Caret Line="49" Column="27" TopLine="38"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Thread.pas"/>
-        <Caret Line="117" Column="3" TopLine="102"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Thread.pas"/>
-        <Caret Line="47" Column="22" TopLine="34"/>
       </Position>
       <Position>
         <Filename Value="uCustomThread.pas"/>

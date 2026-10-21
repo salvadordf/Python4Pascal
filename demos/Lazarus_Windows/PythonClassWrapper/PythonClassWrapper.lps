@@ -19,8 +19,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="115"/>
-        <CursorPos X="7" Y="135"/>
+        <TopLine Value="98"/>
+        <CursorPos X="9" Y="105"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -29,8 +29,8 @@
         <Filename Value="uMyClass.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="288"/>
-        <CursorPos X="67" Y="304"/>
+        <TopLine Value="294"/>
+        <CursorPos X="87" Y="314"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
@@ -46,9 +46,17 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory>
+    <JumpHistory HistoryIndex="2">
       <Position>
         <Filename Value="uMainForm.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="56" Column="74" TopLine="46"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="74" TopLine="46"/>
       </Position>
     </JumpHistory>
     <RunParams>

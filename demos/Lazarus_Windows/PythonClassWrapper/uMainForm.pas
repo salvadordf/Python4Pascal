@@ -39,7 +39,21 @@ type
 var
   MainForm: TMainForm;
 
-implementation
+implementation            
+
+// This demo shows how to create a wrapper for a Python class that we can use
+// from Delphi/Lazarus.
+//
+// For simplicity, this demo creates a wrapper for "MyClass", which is defined
+// in the Python code found in the TMemo.
+//
+// The TMyClass class found in uMyClass.pas is the wrapper for the "MyClass"
+// class in Python. Read the code comments in that unit for all the details.
+//
+// Follow these steps to run the demo:
+// 1. Click on the "1. Run code" button to run the Python code that declares "MyClass"
+// 2. Click on the "2. Wrap MyClass" button to create a TMyClass instance.
+// 3. Click on the "3. Test MyClass" button to test the TMyClass wrapper.
 
 {$R *.lfm}
 
@@ -53,7 +67,11 @@ begin
   if assigned(FMyClass) then exit;
 
   if TPyRun.SimpleString(CodeMem.Text) then
-    LogMem.Lines.Add('Code run correctly.')
+    begin
+      LogMem.Lines.Add('Code run correctly.');       
+      RunBtn.Enabled := False;
+      WrapClassBtn.Enabled := True;
+    end
    else
     LogMem.Lines.Add('There was an issue running the code.');
 end;
@@ -84,7 +102,11 @@ begin
       FMyClass := TMyClass.Create;
 
       if FMyClass.Initialized then
-        LogMem.Lines.Add('FMyClass is initialized.')
+        begin
+          LogMem.Lines.Add('FMyClass is initialized.');
+          WrapClassBtn.Enabled := False;
+          TestMyClassBtn.Enabled := True;
+        end
        else
         LogMem.Lines.Add('There was an issue initializing FMyClass.');
     end;

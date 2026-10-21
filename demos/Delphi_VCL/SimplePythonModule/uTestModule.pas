@@ -21,6 +21,12 @@ const
   TEST_MODULE_NAME = 'mytest';
 
 type
+  // TCustomPyModule has all the logic to create modules and we only have to
+  // override some procedures where we'll create the classes that declare our
+  // custom functions: read, write, is_even.
+  //
+  // In older Python version we would need to create a custom TPyModuleDef class
+  // but in Python 3.15 we need to create a custom TPyModuleSlotManager class.
   TTestModule = class(TCustomPyModule)
     protected
       FMainForm : TForm;
@@ -35,11 +41,13 @@ type
       property MainForm : TForm  read FMainForm  write FMainForm;
   end;
 
+  // This class will add our custom functions in older Python versions
   TPyTestModuleDef = class(TPyModuleDef)
     protected
       procedure AddAllMethods; override;
   end;
 
+  // This class will add out custom function in Python 3.15
   TPyTestSlotManager = class(TPyModuleSlotManager)
     protected
       procedure AddAllMethods; override;
@@ -52,6 +60,9 @@ uses
   uP4P.MiscFunctions, uP4P.Engine, uP4P.PyTuple, uP4P.PyUnicode, uP4P.PyBytes,
   uP4P.PyRun, uP4P.PyBool;
 
+// This is the callback for the "is_even" function.
+// It finds the module instance using GlobalP4PEngine.SearchModule and calls
+// TExtensionModule.NumberIsEven
 function mytest_is_even(self, args: PPyObject): PPyObject; cdecl;
 var
   TempModule: TCustomPyModule;
@@ -66,6 +77,9 @@ begin
     Result := TPyNone.ReturnNone;
 end;
 
+// This is the callback for the "write" function.
+// It finds the module instance using GlobalP4PEngine.SearchModule and calls
+// TExtensionModule.Write
 function mytest_write(self, args: PPyObject): PPyObject; cdecl;
 var
   TempModule: TCustomPyModule;
@@ -80,6 +94,9 @@ begin
     Result := TPyNone.ReturnNone;
 end;
 
+// This is the callback for the "read" function.
+// It finds the module instance using GlobalP4PEngine.SearchModule and calls
+// TExtensionModule.Read
 function mytest_read(self, args: PPyObject): PPyObject; cdecl;
 var
   TempModule: TCustomPyModule;
@@ -155,6 +172,9 @@ end;
 
 { TPyTestModuleDef }
 
+// This procedure adds our custom functions for older Python versions.
+// Python will use the mytest_is_even, mytest_read and mytest_write callbacks when it
+// needs to call the "is_even", "read" and "write" functions in our extension.
 procedure TPyTestModuleDef.AddAllMethods;
 begin
   inherited AddAllMethods;
@@ -166,6 +186,9 @@ end;
 
 { TPyTestSlotManager }
 
+// This procedure adds our custom functions for Python 3.15
+// Python will use the mytest_is_even, mytest_read and mytest_write callbacks when it
+// needs to call the "is_even", "read" and "write" functions in our extension.
 procedure TPyTestSlotManager.AddAllMethods;
 begin
   inherited AddAllMethods;
