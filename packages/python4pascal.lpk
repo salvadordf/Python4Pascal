@@ -13,7 +13,7 @@
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
-    <Version Major="3" Minor="15"/>
+    <Version Major="3" Minor="15" Release="1"/>
     <Files>
       <Item>
         <Filename Value="..\source\p4p.inc"/>

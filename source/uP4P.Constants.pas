@@ -27,7 +27,7 @@ const
 
   PY_MAJOR_VERSION       = 3;
   PY_MINOR_VERSION       = 15;
-  PY_MICRO_VERSION       = 0;
+  PY_MICRO_VERSION       = 1;
   PY_RELEASE_LEVEL       = PY_RELEASE_LEVEL_GAMMA;
   PY_RELEASE_SERIAL      = 2;
 
