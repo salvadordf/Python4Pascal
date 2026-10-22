@@ -35,6 +35,19 @@ var
 
 implementation
 
+// This demo shows the easiest way to embed Python in an application.
+//
+// Basically, all you need to do is:
+// 1. Load the Python library with the GlobalP4PEngine.Load call.
+// 2. Initialize Python with the GlobalP4PEngine.Initialize call.
+// 3. Run some Python code with the TPyRun.SimpleString call.
+//
+// This demo also implements the GlobalP4PEngine.OnOutputMessage event to
+// show the Python messages in a TMemo.
+//
+// The "Evaluate code" button shows an alternative way to run Python code with
+// a TPyEval.EvalString call.
+
 {$R *.lfm}
 
 { TMainForm }
@@ -69,10 +82,12 @@ begin
   if not(GlobalP4PEngine.Initialized) then
     begin
       GlobalP4PEngine.SetCurrentDir := True;
+                                       
+      // If you call GlobalP4PEngine.Load with an empty path it will try to load
+      // the Python library that is installed in Linux.
 
-      TempLibPath := '';
-
-      if GlobalP4PEngine.Load(TempLibPath) and
+      // Load and initialize the Python library.
+      if GlobalP4PEngine.Load and
          GlobalP4PEngine.Initialize then
         LogMem.Lines.Add('Python initialized. ' + GlobalP4PEngine.buildinfo)
        else
