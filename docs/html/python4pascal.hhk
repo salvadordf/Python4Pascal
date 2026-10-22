@@ -9823,6 +9823,10 @@
 <param name="Local" value="uP4P.Types.html#PyGILState_STATE">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="PyHASH_BITS">
+<param name="Local" value="uP4P.Constants.html#PyHASH_BITS">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="PyHash_FuncDef">
 <param name="Local" value="uP4P.Types.PyHash_FuncDef.html">
 </object>
@@ -9849,6 +9853,22 @@
 <li><object type="text/sitemap">
 <param name="Name" value="PyHash_GetFuncDef">
 <param name="Local" value="uP4P.LibFunctions.html#PyHash_GetFuncDef">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_IMAG">
+<param name="Local" value="uP4P.Constants.html#PyHASH_IMAG">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_INF">
+<param name="Local" value="uP4P.Constants.html#PyHASH_INF">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_MODULUS">
+<param name="Local" value="uP4P.Constants.html#PyHASH_MODULUS">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_MULTIPLIER">
+<param name="Local" value="uP4P.Constants.html#PyHASH_MULTIPLIER">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="PyHeapTypeObject">
@@ -14689,6 +14709,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="Py_HashPointer">
 <param name="Local" value="uP4P.LibFunctions.html#Py_HashPointer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Py_HASH_ALGORITHM">
+<param name="Local" value="uP4P.Constants.html#Py_HASH_ALGORITHM">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="Py_HASH_CUTOFF">

@@ -854,6 +854,24 @@ body { margin: 0.5em; }
 <td class="itemcode"><code><strong><a href="uP4P.Constants.html#Py_HASH_SIPHASH13">Py_HASH_SIPHASH13</a></strong> = 3;</code></td>
 </tr>
 <tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#Py_HASH_ALGORITHM">Py_HASH_ALGORITHM</a></strong> = <a href="uP4P.Constants.html#Py_HASH_SIPHASH13">Py_HASH_SIPHASH13</a>;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#PyHASH_MULTIPLIER">PyHASH_MULTIPLIER</a></strong> = 1000003;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#PyHASH_BITS">PyHASH_BITS</a></strong>    = 31;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#PyHASH_MODULUS">PyHASH_MODULUS</a></strong> = $7FFFFFFF;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#PyHASH_INF">PyHASH_INF</a></strong>  = 314159;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#PyHASH_IMAG">PyHASH_IMAG</a></strong> = <a href="uP4P.Constants.html#PyHASH_MULTIPLIER">PyHASH_MULTIPLIER</a>;</code></td>
+</tr>
+<tr class="list visibility-published">
 <td class="itemcode"><code><strong><a href="uP4P.Constants.html#Py_ASNATIVEBYTES_DEFAULTS">Py_ASNATIVEBYTES_DEFAULTS</a></strong>        = -1;</code></td>
 </tr>
 <tr class="list2 visibility-published">
@@ -4254,7 +4272,21 @@ static PyType_Slot foo_slots[] = {
 </tr>
 <tr><td colspan="1">
 <p>
-* include/pyhash.h include/cpython/pyhash.h *</p>
+
+
+<p>Buffers of length in range [1, Py_HASH_CUTOFF</p>
+<p>
+ are hashed using DJBX33A instead of the algorithm described by Py_HASH_ALGORITHM.
+
+<p>A Py_HASH_CUTOFF of 0 disables the optimization.
+
+<p>Py_HASH_CUTOFF must be non-negative and less or equal than 7.
+
+<p>32-bit platforms should use a cutoff smaller than 64-bit platforms because it is easier to create colliding strings. A cutoff of 7 on 64-bit platforms and 5 on 32-bit platforms should provide a decent safety margin.
+
+<p>This corresponds to the sys.hash_info.cutoff constant.
+
+<p>)</p>
 </td></tr>
 </table>
 <table class="detail visibility-published wide_list">
@@ -4262,28 +4294,146 @@ static PyType_Slot foo_slots[] = {
 <td class="itemcode"><span id="Py_HASH_EXTERNAL"></span><code><strong>Py_HASH_EXTERNAL</strong>  = 0;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="Py_HASH_SIPHASH24"></span><code><strong>Py_HASH_SIPHASH24</strong> = 1;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="Py_HASH_FNV"></span><code><strong>Py_HASH_FNV</strong>       = 2;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="Py_HASH_SIPHASH13"></span><code><strong>Py_HASH_SIPHASH13</strong> = 3;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="Py_HASH_ALGORITHM"></span><code><strong>Py_HASH_ALGORITHM</strong> = <a href="uP4P.Constants.html#Py_HASH_SIPHASH13">Py_HASH_SIPHASH13</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>A numerical value indicating the algorithm for hashing of str, bytes, and memoryview.
+
+<p>The algorithm name is exposed by sys.hash_info.algorithm.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyHASH_MULTIPLIER"></span><code><strong>PyHASH_MULTIPLIER</strong> = 1000003;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Prime multiplier used in string and various other hashes.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyHASH_BITS"></span><code><strong>PyHASH_BITS</strong>    = 31;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>The exponent n of P in PyHASH_MODULUS.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyHASH_MODULUS"></span><code><strong>PyHASH_MODULUS</strong> = $7FFFFFFF;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>The Mersenne prime P = 2**n -1, used for numeric hash scheme.
+
+<p>This corresponds to the sys.hash_info.modulus constant.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyHASH_INF"></span><code><strong>PyHASH_INF</strong>  = 314159;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>The hash value returned for a positive infinity.
+
+<p>This corresponds to the sys.hash_info.inf constant.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyHASH_IMAG"></span><code><strong>PyHASH_IMAG</strong> = <a href="uP4P.Constants.html#PyHASH_MULTIPLIER">PyHASH_MULTIPLIER</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>The multiplier used for the imaginary part of a complex number.
+
+<p>This corresponds to the sys.hash_info.imag constant.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
@@ -4342,7 +4492,17 @@ static PyType_Slot foo_slots[] = {
 </tr>
 <tr><td colspan="1">
 <p>
-* include/methodobject.h include/cpython/methodobject.h *</p>
+
+
+<p>This is the typical calling convention, where the methods have the type PyCFunction. The function expects two PyObject* values. The first one is the self object for methods; for module functions, it is the module object. The second parameter (often called args) is a tuple object representing all arguments. This parameter is typically processed using TPyArg.ParseTuple() or TPyArg.UnpackTuple().
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_VARARGS | METH_KEYWORDS
+
+<p>Methods with these flags must be of type PyCFunctionWithKeywords. The function expects three parameters: self, args, kwargs where kwargs is a dictionary of all the keyword arguments or possibly nil if there are no keyword arguments. The parameters are typically processed using TPyArg.ParseTupleAndKeywords().
+
+<p></p>
 </td></tr>
 </table>
 <table class="detail visibility-published wide_list">
@@ -4350,56 +4510,132 @@ static PyType_Slot foo_slots[] = {
 <td class="itemcode"><span id="METH_KEYWORDS"></span><code><strong>METH_KEYWORDS</strong>  = $0002;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Can only be used in certain combinations with other flags: METH_VARARGS | METH_KEYWORDS, METH_FASTCALL | METH_KEYWORDS and METH_METHOD | METH_FASTCALL | METH_KEYWORDS.
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_VARARGS | METH_KEYWORDS
+
+<p>Methods with these flags must be of type PyCFunctionWithKeywords. The function expects three parameters: self, args, kwargs where kwargs is a dictionary of all the keyword arguments or possibly nil if there are no keyword arguments. The parameters are typically processed using TPyArg.ParseTupleAndKeywords().
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_METHOD | METH_FASTCALL | METH_KEYWORDS
+
+<p>Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining class, that is, the class that contains the method in question. The defining class might be a superclass of TPy.TYPE(self).
+
+<p>The method needs to be of type PyCMethod, the same as for METH_FASTCALL | METH_KEYWORDS with defining_class argument added after self.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="METH_NOARGS"></span><code><strong>METH_NOARGS</strong>    = $0004;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Methods without parameters don’t need to check whether arguments are given if they are listed with the METH_NOARGS flag. They need to be of type PyCFunction. The first parameter is typically named self and will hold a reference to the module or object instance. In all cases the second parameter will be nil.
+
+<p>The function must have 2 parameters. Since the second parameter is unused, Py_UNUSED can be used to prevent a compiler warning.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="METH_O"></span><code><strong>METH_O</strong>         = $0008;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Methods with a single object argument can be listed with the METH_O flag, instead of invoking TPyArg.ParseTuple() with a &quot;O&quot; argument. They have the type PyCFunction, with the self parameter, and a PyObject* parameter representing the single argument.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="METH_CLASS"></span><code><strong>METH_CLASS</strong>     = $0010;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>The method will be passed the type object as the first parameter rather than an instance of the type. This is used to create class methods, similar to what is created when using the @classmethod built-in decorator.
+
+<p>This constants are not used to indicate the calling convention but the binding when used with methods of classes. This may not be used for functions defined for modules.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="METH_STATIC"></span><code><strong>METH_STATIC</strong>    = $0020;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>The method will be passed NULL as the first parameter rather than an instance of the type. This is used to create static methods, similar to what is created when using the @staticmethod built-in decorator.
+
+<p>This constants are not used to indicate the calling convention but the binding when used with methods of classes. This may not be used for functions defined for modules.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="METH_COEXIST"></span><code><strong>METH_COEXIST</strong>   = $0040;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>The method will be loaded in place of existing definitions. Without METH_COEXIST, the default is to skip repeated definitions. Since slot wrappers are loaded before the method table, the existence of a sq_contains slot, for example, would generate a wrapped method named __contains__() and preclude the loading of a corresponding PyCFunction with the same name. With the flag defined, the PyCFunction will be loaded in place of the wrapper object and will co-exist with the slot. This is helpful because calls to PyCFunctions are optimized more than wrapper object calls.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="METH_FASTCALL"></span><code><strong>METH_FASTCALL</strong>  = $0080;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>Fast calling convention supporting only positional arguments. The methods have the type PyCFunctionFast. The first parameter is self, the second parameter is a C array of PyObject* values indicating the arguments and the third parameter is the number of arguments (the length of the array).
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_METHOD | METH_FASTCALL | METH_KEYWORDS
+
+<p>Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining class, that is, the class that contains the method in question. The defining class might be a superclass of TPy.TYPE(self).
+
+<p>The method needs to be of type PyCMethod, the same as for METH_FASTCALL | METH_KEYWORDS with defining_class argument added after self.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="METH_STACKLESS"></span><code><strong>METH_STACKLESS</strong> = $0000;</code></td>
 </tr>
 <tr><td colspan="1">
-<p class="nodescription">This item has no description.</p></td></tr>
+<p>
+
+
+<p>This bit is preserved for Stackless Python.
+
+<p></p>
+</td></tr>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
@@ -4407,7 +4643,7 @@ static PyType_Slot foo_slots[] = {
 </tr>
 <tr><td colspan="1">
 <p>
-$0100;</p>
+$0100; &lt;summary&gt; &lt;para&gt;Can only be used in the combination with other flags: METH_METHOD | METH_FASTCALL | METH_KEYWORDS.&lt;/para&gt; &lt;para&gt;&lt;/para&gt; &lt;para&gt;METH_METHOD | METH_FASTCALL | METH_KEYWORDS&lt;/para&gt; &lt;para&gt;Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining class, that is, the class that contains the method in question. The defining class might be a superclass of TPy.TYPE(self).&lt;/para&gt; &lt;para&gt;The method needs to be of type PyCMethod, the same as for METH_FASTCALL | METH_KEYWORDS with defining_class argument added after self.&lt;/para&gt; &lt;/summary&gt;</p>
 </td></tr>
 </table>
 <table class="detail visibility-published wide_list">

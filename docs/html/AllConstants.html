@@ -257,52 +257,122 @@ body { margin: 0.5em; }
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_CLASS">METH_CLASS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>The method will be passed the type object as the first parameter rather than an instance of the type. This is used to create class methods, similar to what is created when using the @classmethod built-in decorator.
+
+<p>This constants are not used to indicate the calling convention but the binding when used with methods of classes. This may not be used for functions defined for modules.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_COEXIST">METH_COEXIST</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>The method will be loaded in place of existing definitions. Without METH_COEXIST, the default is to skip repeated definitions. Since slot wrappers are loaded before the method table, the existence of a sq_contains slot, for example, would generate a wrapped method named __contains__() and preclude the loading of a corresponding PyCFunction with the same name. With the flag defined, the PyCFunction will be loaded in place of the wrapper object and will co-exist with the slot. This is helpful because calls to PyCFunctions are optimized more than wrapper object calls.
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_FASTCALL">METH_FASTCALL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Fast calling convention supporting only positional arguments. The methods have the type PyCFunctionFast. The first parameter is self, the second parameter is a C array of PyObject* values indicating the arguments and the third parameter is the number of arguments (the length of the array).
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_METHOD | METH_FASTCALL | METH_KEYWORDS
+
+<p>Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining class, that is, the class that contains the method in question. The defining class might be a superclass of TPy.TYPE(self).
+
+<p>The method needs to be of type PyCMethod, the same as for METH_FASTCALL | METH_KEYWORDS with defining_class argument added after self.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_KEYWORDS">METH_KEYWORDS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Can only be used in certain combinations with other flags: METH_VARARGS | METH_KEYWORDS, METH_FASTCALL | METH_KEYWORDS and METH_METHOD | METH_FASTCALL | METH_KEYWORDS.
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_VARARGS | METH_KEYWORDS
+
+<p>Methods with these flags must be of type PyCFunctionWithKeywords. The function expects three parameters: self, args, kwargs where kwargs is a dictionary of all the keyword arguments or possibly nil if there are no keyword arguments. The parameters are typically processed using TPyArg.ParseTupleAndKeywords().
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_METHOD | METH_FASTCALL | METH_KEYWORDS
+
+<p>Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining class, that is, the class that contains the method in question. The defining class might be a superclass of TPy.TYPE(self).
+
+<p>The method needs to be of type PyCMethod, the same as for METH_FASTCALL | METH_KEYWORDS with defining_class argument added after self.
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_METHOD">METH_METHOD</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>$0100;</p></td>
+<td class="itemdesc"><p>$0100; &lt;summary&gt; &lt;para&gt;Can only be used in the combination with other flags: METH_METHOD | METH_FASTCALL | METH_KEYWORDS.&lt;/para&gt; &lt;para&gt;&lt;/para&gt; &lt;para&gt;METH_METHOD | METH_FASTCALL | METH_KEYWORDS&lt;/para&gt; &lt;para&gt;Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining class, that is, the class that contains the method in question.</p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_NOARGS">METH_NOARGS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Methods without parameters don’t need to check whether arguments are given if they are listed with the METH_NOARGS flag. They need to be of type PyCFunction. The first parameter is typically named self and will hold a reference to the module or object instance. In all cases the second parameter will be nil.
+
+<p>The function must have 2 parameters. Since the second parameter is unused, Py_UNUSED can be used to prevent a compiler warning.
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_O">METH_O</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Methods with a single object argument can be listed with the METH_O flag, instead of invoking TPyArg.ParseTuple() with a &quot;O&quot; argument. They have the type PyCFunction, with the self parameter, and a PyObject* parameter representing the single argument.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_STACKLESS">METH_STACKLESS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>This bit is preserved for Stackless Python.
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_STATIC">METH_STATIC</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>The method will be passed NULL as the first parameter rather than an instance of the type. This is used to create static methods, similar to what is created when using the @staticmethod built-in decorator.
+
+<p>This constants are not used to indicate the calling convention but the binding when used with methods of classes. This may not be used for functions defined for modules.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#METH_VARARGS">METH_VARARGS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>* include/methodobject.h include/cpython/methodobject.h *</p></td>
+<td class="itemdesc"><p>
+
+<p>This is the typical calling convention, where the methods have the type PyCFunction. The function expects two PyObject* values. The first one is the self object for methods; for module functions, it is the module object. The second parameter (often called args) is a tuple object representing all arguments. This parameter is typically processed using TPyArg.ParseTuple() or TPyArg.UnpackTuple().
+
+<p>&mdash;&mdash;&mdash;&mdash;
+
+<p>METH_VARARGS | METH_KEYWORDS
+
+<p>Methods with these flags must be of type PyCFunctionWithKeywords. The function expects three parameters: self, args, kwargs where kwargs is a dictionary of all the keyword arguments or possibly nil if there are no keyword arguments. The parameters are typically processed using TPyArg.ParseTupleAndKeywords().
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#MILLISECONDS_IN_A_DAY">MILLISECONDS_IN_A_DAY</a></td>
@@ -510,371 +580,422 @@ body { margin: 0.5em; }
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
 <tr class="list">
+<td class="itemname"><a class="bold" href="uP4P.Constants.html#PyHASH_BITS">PyHASH_BITS</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
+<td class="itemdesc"><p>
+
+<p>The exponent n of P in PyHASH_MODULUS.
+
+<p></p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold" href="uP4P.Constants.html#PyHASH_IMAG">PyHASH_IMAG</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
+<td class="itemdesc"><p>
+
+<p>The multiplier used for the imaginary part of a complex number.
+
+<p>This corresponds to the sys.hash_info.imag constant.
+
+<p></p></td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold" href="uP4P.Constants.html#PyHASH_INF">PyHASH_INF</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
+<td class="itemdesc"><p>
+
+<p>The hash value returned for a positive infinity.
+
+<p>This corresponds to the sys.hash_info.inf constant.
+
+<p></p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold" href="uP4P.Constants.html#PyHASH_MODULUS">PyHASH_MODULUS</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
+<td class="itemdesc"><p>
+
+<p>The Mersenne prime P = 2**n -1, used for numeric hash scheme.
+
+<p>This corresponds to the sys.hash_info.modulus constant.
+
+<p></p></td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold" href="uP4P.Constants.html#PyHASH_MULTIPLIER">PyHASH_MULTIPLIER</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
+<td class="itemdesc"><p>
+
+<p>Prime multiplier used in string and various other hashes.
+
+<p></p></td>
+</tr>
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_ALLOCATOR">PYINITCONFIGOPTION_ALLOCATOR</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> Names of configuration options used by TPyInitConfig </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_ARGV">PYINITCONFIGOPTION_ARGV</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_BASE_EXECUTABLE">PYINITCONFIGOPTION_BASE_EXECUTABLE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_BASE_EXEC_PREFIX">PYINITCONFIGOPTION_BASE_EXEC_PREFIX</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_BASE_PREFIX">PYINITCONFIGOPTION_BASE_PREFIX</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_BUFFERED_STDIO">PYINITCONFIGOPTION_BUFFERED_STDIO</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_BYTES_WARNING">PYINITCONFIGOPTION_BYTES_WARNING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_CHECK_HASH_PYCS_MODE">PYINITCONFIGOPTION_CHECK_HASH_PYCS_MODE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_CODE_DEBUG_RANGES">PYINITCONFIGOPTION_CODE_DEBUG_RANGES</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_COERCE_C_LOCALE">PYINITCONFIGOPTION_COERCE_C_LOCALE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_COERCE_C_LOCALE_WARN">PYINITCONFIGOPTION_COERCE_C_LOCALE_WARN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_CONFIGURE_C_STDIO">PYINITCONFIGOPTION_CONFIGURE_C_STDIO</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_CONFIGURE_LOCALE">PYINITCONFIGOPTION_CONFIGURE_LOCALE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_CPU_COUNT">PYINITCONFIGOPTION_CPU_COUNT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_DEV_MODE">PYINITCONFIGOPTION_DEV_MODE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_DUMP_REFS">PYINITCONFIGOPTION_DUMP_REFS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_DUMP_REFS_FILE">PYINITCONFIGOPTION_DUMP_REFS_FILE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_EXECUTABLE">PYINITCONFIGOPTION_EXECUTABLE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_EXEC_PREFIX">PYINITCONFIGOPTION_EXEC_PREFIX</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_FAULTHANDLER">PYINITCONFIGOPTION_FAULTHANDLER</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_FILESYSTEM_ENCODING">PYINITCONFIGOPTION_FILESYSTEM_ENCODING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_FILESYSTEM_ERRORS">PYINITCONFIGOPTION_FILESYSTEM_ERRORS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_HASH_SEED">PYINITCONFIGOPTION_HASH_SEED</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_HOME">PYINITCONFIGOPTION_HOME</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_IMPORT_TIME">PYINITCONFIGOPTION_IMPORT_TIME</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_INSPECT">PYINITCONFIGOPTION_INSPECT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_INSTALL_SIGNAL_HANDLERS">PYINITCONFIGOPTION_INSTALL_SIGNAL_HANDLERS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_INTERACTIVE">PYINITCONFIGOPTION_INTERACTIVE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_INT_MAX_STR_DIGITS">PYINITCONFIGOPTION_INT_MAX_STR_DIGITS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_ISOLATED">PYINITCONFIGOPTION_ISOLATED</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_LAZY_IMPORTS">PYINITCONFIGOPTION_LAZY_IMPORTS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_LEGACY_WINDOWS_FS_ENCODING">PYINITCONFIGOPTION_LEGACY_WINDOWS_FS_ENCODING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>****** 3.15.0</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_LEGACY_WINDOWS_STDIO">PYINITCONFIGOPTION_LEGACY_WINDOWS_STDIO</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_MALLOC_STATS">PYINITCONFIGOPTION_MALLOC_STATS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_MODULE_SEARCH_PATHS">PYINITCONFIGOPTION_MODULE_SEARCH_PATHS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_OPTIMIZATION_LEVEL">PYINITCONFIGOPTION_OPTIMIZATION_LEVEL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_ORIG_ARGV">PYINITCONFIGOPTION_ORIG_ARGV</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PARSER_DEBUG">PYINITCONFIGOPTION_PARSER_DEBUG</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PARSE_ARGV">PYINITCONFIGOPTION_PARSE_ARGV</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PATHCONFIG_WARNINGS">PYINITCONFIGOPTION_PATHCONFIG_WARNINGS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PERF_PROFILING">PYINITCONFIGOPTION_PERF_PROFILING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PLATLIBDIR">PYINITCONFIGOPTION_PLATLIBDIR</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PREFIX">PYINITCONFIGOPTION_PREFIX</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PROGRAM_NAME">PYINITCONFIGOPTION_PROGRAM_NAME</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PYCACHE_PREFIX">PYINITCONFIGOPTION_PYCACHE_PREFIX</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_PYMALLOC_HUGEPAGES">PYINITCONFIGOPTION_PYMALLOC_HUGEPAGES</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_QUIET">PYINITCONFIGOPTION_QUIET</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>****** 3.15.0</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_RUN_COMMAND">PYINITCONFIGOPTION_RUN_COMMAND</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_RUN_FILENAME">PYINITCONFIGOPTION_RUN_FILENAME</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_RUN_MODULE">PYINITCONFIGOPTION_RUN_MODULE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_RUN_PRESITE">PYINITCONFIGOPTION_RUN_PRESITE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_SAFE_PATH">PYINITCONFIGOPTION_SAFE_PATH</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_SHOW_REF_COUNT">PYINITCONFIGOPTION_SHOW_REF_COUNT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_SITE_IMPORT">PYINITCONFIGOPTION_SITE_IMPORT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_SKIP_SOURCE_FIRST_LINE">PYINITCONFIGOPTION_SKIP_SOURCE_FIRST_LINE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_STDIO_ENCODING">PYINITCONFIGOPTION_STDIO_ENCODING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_STDIO_ERRORS">PYINITCONFIGOPTION_STDIO_ERRORS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_STDLIB_DIR">PYINITCONFIGOPTION_STDLIB_DIR</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_TRACEMALLOC">PYINITCONFIGOPTION_TRACEMALLOC</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_USER_SITE_DIRECTORY">PYINITCONFIGOPTION_USER_SITE_DIRECTORY</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_USE_ENVIRONMENT">PYINITCONFIGOPTION_USE_ENVIRONMENT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_USE_FROZEN_MODULES">PYINITCONFIGOPTION_USE_FROZEN_MODULES</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_USE_HASH_SEED">PYINITCONFIGOPTION_USE_HASH_SEED</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_USE_SYSTEM_LOGGER">PYINITCONFIGOPTION_USE_SYSTEM_LOGGER</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_UTF8_MODE">PYINITCONFIGOPTION_UTF8_MODE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_VERBOSE">PYINITCONFIGOPTION_VERBOSE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_WARNOPTIONS">PYINITCONFIGOPTION_WARNOPTIONS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_WARN_DEFAULT_ENCODING">PYINITCONFIGOPTION_WARN_DEFAULT_ENCODING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_WRITE_BYTECODE">PYINITCONFIGOPTION_WRITE_BYTECODE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYINITCONFIGOPTION_XOPTIONS">PYINITCONFIGOPTION_XOPTIONS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyInterpreterConfig_DEFAULT_GIL">PyInterpreterConfig_DEFAULT_GIL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> Use the default selection (PyInterpreterConfig_SHARED_GIL). Used in PyInterpreterConfig.gil </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyInterpreterConfig_OWN_GIL">PyInterpreterConfig_OWN_GIL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> Use the sub-interpreter's own GIL. Used in PyInterpreterConfig.gil </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyInterpreterConfig_SHARED_GIL">PyInterpreterConfig_SHARED_GIL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> Use (share) the main interpreter's GIL. Used in PyInterpreterConfig.gil </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PySlot_INTPTR">PySlot_INTPTR</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -885,7 +1006,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PySlot_OPTIONAL">PySlot_OPTIONAL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -894,7 +1015,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PySlot_STATIC">PySlot_STATIC</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -907,217 +1028,217 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYTHON_ABI_STRING">PYTHON_ABI_STRING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYTHON_ABI_VERSION">PYTHON_ABI_VERSION</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYTHON_API_STRING">PYTHON_API_STRING</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYTHON_API_VERSION">PYTHON_API_VERSION</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYTHON_LIB_EXT">PYTHON_LIB_EXT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PYTHREAD_INVALID_THREAD_ID">PYTHREAD_INVALID_THREAD_ID</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>* #define PYTHREAD_INVALID_THREAD_ID ((unsigned long)-1) *</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTime_MAX">PyTime_MAX</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> Maximum value of PyTime_t. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTime_MIN">PyTime_MIN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> Minimum value of PyTime_t. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_CALL">PyTrace_CALL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>* include/pystate.h include/cpython/pystate.h *</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_C_CALL">PyTrace_C_CALL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_C_EXCEPTION">PyTrace_C_EXCEPTION</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_C_RETURN">PyTrace_C_RETURN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_EXCEPTION">PyTrace_EXCEPTION</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_LINE">PyTrace_LINE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_OPCODE">PyTrace_OPCODE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyTrace_RETURN">PyTrace_RETURN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#PyWrapperFlag_KEYWORDS">PyWrapperFlag_KEYWORDS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> Flag for wrapperbase. The wrapper function takes keyword args. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_am_aiter">Py_am_aiter</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_am_anext">Py_am_anext</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_am_await">Py_am_await</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_am_send">Py_am_send</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_ASNATIVEBYTES_ALLOW_INDEX">Py_ASNATIVEBYTES_ALLOW_INDEX</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_ASNATIVEBYTES_BIG_ENDIAN">Py_ASNATIVEBYTES_BIG_ENDIAN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_ASNATIVEBYTES_DEFAULTS">Py_ASNATIVEBYTES_DEFAULTS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>* include/longobject.h include/cpython/longobject.h *</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_ASNATIVEBYTES_LITTLE_ENDIAN">Py_ASNATIVEBYTES_LITTLE_ENDIAN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_ASNATIVEBYTES_NATIVE_ENDIAN">Py_ASNATIVEBYTES_NATIVE_ENDIAN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_ASNATIVEBYTES_REJECT_NEGATIVE">Py_ASNATIVEBYTES_REJECT_NEGATIVE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_ASNATIVEBYTES_UNSIGNED_BUFFER">Py_ASNATIVEBYTES_UNSIGNED_BUFFER</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_AUDIT_READ">Py_AUDIT_READ</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CLEANUP_SUPPORTED">Py_CLEANUP_SUPPORTED</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>* include/modsupport.h include/cpython/modsupport.h *</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_ELLIPSIS">Py_CONSTANT_ELLIPSIS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_EMPTY_BYTES">Py_CONSTANT_EMPTY_BYTES</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_EMPTY_STR">Py_CONSTANT_EMPTY_STR</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_EMPTY_TUPLE">Py_CONSTANT_EMPTY_TUPLE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_FALSE">Py_CONSTANT_FALSE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_FIRST">Py_CONSTANT_FIRST</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_LAST">Py_CONSTANT_LAST</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_NONE">Py_CONSTANT_NONE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_NOT_IMPLEMENTED">Py_CONSTANT_NOT_IMPLEMENTED</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_ONE">Py_CONSTANT_ONE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_TRUE">Py_CONSTANT_TRUE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_CONSTANT_ZERO">Py_CONSTANT_ZERO</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_DTSF_ADD_DOT_0">Py_DTSF_ADD_DOT_0</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -1126,7 +1247,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_DTSF_ALT">Py_DTSF_ALT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -1135,7 +1256,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_DTSF_NO_NEG_0">Py_DTSF_NO_NEG_0</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -1144,7 +1265,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_DTSF_SIGN">Py_DTSF_SIGN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -1153,7 +1274,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_DTST_FINITE">Py_DTST_FINITE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -1162,7 +1283,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_DTST_INFINITE">Py_DTST_INFINITE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -1171,7 +1292,7 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_DTST_NAN">Py_DTST_NAN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -1180,60 +1301,97 @@ body { margin: 0.5em; }
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_EQ">Py_EQ</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_eval_input">Py_eval_input</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_file_input">Py_file_input</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_func_type_input">Py_func_type_input</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_GE">Py_GE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_GT">Py_GT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
+<tr class="list">
+<td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_HASH_ALGORITHM">Py_HASH_ALGORITHM</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
+<td class="itemdesc"><p>
+
+<p>A numerical value indicating the algorithm for hashing of str, bytes, and memoryview.
+
+<p>The algorithm name is exposed by sys.hash_info.algorithm.
+
+<p></p></td>
+</tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_HASH_CUTOFF">Py_HASH_CUTOFF</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>* include/pyhash.h include/cpython/pyhash.h *</p></td>
+<td class="itemdesc"><p>
+
+<p>Buffers of length in range [1, Py_HASH_CUTOFF</p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_HASH_EXTERNAL">Py_HASH_EXTERNAL</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_HASH_FNV">Py_HASH_FNV</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_HASH_SIPHASH13">Py_HASH_SIPHASH13</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_HASH_SIPHASH24">Py_HASH_SIPHASH24</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>&nbsp;</p></td>
+<td class="itemdesc"><p>
+
+<p>Numerical value to compare to Py_HASH_ALGORITHM to determine which algorithm is used for hashing. The built-in hash algorithm can be configured via the configure &ndash;with-hash-algorithm option.
+
+<p>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation supplied by the application embedding Python; see PyHash_Func.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_HUGE_VAL">Py_HUGE_VAL</a></td>

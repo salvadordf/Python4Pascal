@@ -1138,6 +1138,30 @@
 <param name="Local" value="uP4P.Constants.html#Py_HASH_SIPHASH13">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="Py_HASH_ALGORITHM">
+<param name="Local" value="uP4P.Constants.html#Py_HASH_ALGORITHM">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_MULTIPLIER">
+<param name="Local" value="uP4P.Constants.html#PyHASH_MULTIPLIER">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_BITS">
+<param name="Local" value="uP4P.Constants.html#PyHASH_BITS">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_MODULUS">
+<param name="Local" value="uP4P.Constants.html#PyHASH_MODULUS">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_INF">
+<param name="Local" value="uP4P.Constants.html#PyHASH_INF">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="PyHASH_IMAG">
+<param name="Local" value="uP4P.Constants.html#PyHASH_IMAG">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Py_ASNATIVEBYTES_DEFAULTS">
 <param name="Local" value="uP4P.Constants.html#Py_ASNATIVEBYTES_DEFAULTS">
 </object>

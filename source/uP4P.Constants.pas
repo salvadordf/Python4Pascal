@@ -1200,11 +1200,93 @@ const
 
 
   {* include/pyhash.h  include/cpython/pyhash.h *}
+
+  /// <summary>
+  /// <para>Buffers of length in range [1, Py_HASH_CUTOFF) are hashed using
+  /// DJBX33A instead of the algorithm described by Py_HASH_ALGORITHM.</para>
+  /// <para>A Py_HASH_CUTOFF of 0 disables the optimization.</para>
+  /// <para>Py_HASH_CUTOFF must be non-negative and less or equal than 7.</para>
+  /// <para>32-bit platforms should use a cutoff smaller than 64-bit platforms
+  /// because it is easier to create colliding strings. A cutoff of 7 on 64-bit
+  /// platforms and 5 on 32-bit platforms should provide a decent safety
+  /// margin.</para>
+  /// <para>This corresponds to the sys.hash_info.cutoff constant.</para>
+  /// </summary>
   Py_HASH_CUTOFF    = 0;
+  /// <summary>
+  /// <para>Numerical value to compare to Py_HASH_ALGORITHM to determine which
+  /// algorithm is used for hashing. The built-in hash algorithm can be
+  /// configured via the configure --with-hash-algorithm option.</para>
+  /// <para>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation
+  /// supplied by the application embedding Python; see PyHash_Func.</para>
+  /// </summary>
   Py_HASH_EXTERNAL  = 0;
+  /// <summary>
+  /// <para>Numerical value to compare to Py_HASH_ALGORITHM to determine which
+  /// algorithm is used for hashing. The built-in hash algorithm can be
+  /// configured via the configure --with-hash-algorithm option.</para>
+  /// <para>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation
+  /// supplied by the application embedding Python; see PyHash_Func.</para>
+  /// </summary>
   Py_HASH_SIPHASH24 = 1;
+  /// <summary>
+  /// <para>Numerical value to compare to Py_HASH_ALGORITHM to determine which
+  /// algorithm is used for hashing. The built-in hash algorithm can be
+  /// configured via the configure --with-hash-algorithm option.</para>
+  /// <para>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation
+  /// supplied by the application embedding Python; see PyHash_Func.</para>
+  /// </summary>
   Py_HASH_FNV       = 2;
+  /// <summary>
+  /// <para>Numerical value to compare to Py_HASH_ALGORITHM to determine which
+  /// algorithm is used for hashing. The built-in hash algorithm can be
+  /// configured via the configure --with-hash-algorithm option.</para>
+  /// <para>Py_HASH_EXTERNAL has value 0 and indicates a hash implementation
+  /// supplied by the application embedding Python; see PyHash_Func.</para>
+  /// </summary>
   Py_HASH_SIPHASH13 = 3;
+  /// <summary>
+  /// <para>A numerical value indicating the algorithm for hashing of str,
+  /// bytes, and memoryview.</para>
+  /// <para>The algorithm name is exposed by sys.hash_info.algorithm.</para>
+  /// </summary>
+  Py_HASH_ALGORITHM = Py_HASH_SIPHASH13;
+  /// <summary>
+  /// <para>Prime multiplier used in string and various other hashes.</para>
+  /// </summary>
+  PyHASH_MULTIPLIER = 1000003;
+  {$IFDEF TARGET_64BITS}
+  /// <summary>
+  /// <para>The exponent n of P in PyHASH_MODULUS.</para>
+  /// </summary>
+  PyHASH_BITS    = 61;
+  /// <summary>
+  /// <para>The Mersenne prime P = 2**n -1, used for numeric hash scheme.</para>
+  /// <para>This corresponds to the sys.hash_info.modulus constant.</para>
+  /// </summary>
+  PyHASH_MODULUS = $1FFFFFFFFFFFFFFF;
+  {$ELSE}
+  /// <summary>
+  /// <para>The exponent n of P in PyHASH_MODULUS.</para>
+  /// </summary>
+  PyHASH_BITS    = 31;
+  /// <summary>
+  /// <para>The Mersenne prime P = 2**n -1, used for numeric hash scheme.</para>
+  /// <para>This corresponds to the sys.hash_info.modulus constant.</para>
+  /// </summary>
+  PyHASH_MODULUS = $7FFFFFFF;
+  {$ENDIF}
+  /// <summary>
+  /// <para>The hash value returned for a positive infinity.</para>
+  /// <para>This corresponds to the sys.hash_info.inf constant.</para>
+  /// </summary>
+  PyHASH_INF  = 314159;
+  /// <summary>
+  /// <para>The multiplier used for the imaginary part of a complex number.</para>
+  /// <para>This corresponds to the sys.hash_info.imag constant.</para>
+  /// </summary>
+  PyHASH_IMAG = PyHASH_MULTIPLIER;
+
 
   {* include/cpython/pydebug.h *}
   {* include/bytearrayobject.h *}
@@ -1233,15 +1315,124 @@ const
   {* include/enumobject.h *}
   {* include/setobject.h  include/cpython/setobject.h *}
   {* include/methodobject.h  include/cpython/methodobject.h *}
+
+  /// <summary>
+  /// <para>This is the typical calling convention, where the methods have the
+  /// type PyCFunction. The function expects two PyObject* values. The first
+  /// one is the self object for methods; for module functions, it is the
+  /// module object. The second parameter (often called args) is a tuple object
+  /// representing all arguments. This parameter is typically processed using
+  /// TPyArg.ParseTuple() or TPyArg.UnpackTuple().</para>
+  /// <para>------------</para>
+  /// <para>METH_VARARGS | METH_KEYWORDS</para>
+  /// <para>Methods with these flags must be of type PyCFunctionWithKeywords.
+  /// The function expects three parameters: self, args, kwargs where kwargs
+  /// is a dictionary of all the keyword arguments or possibly nil if there
+  /// are no keyword arguments. The parameters are typically processed using
+  /// TPyArg.ParseTupleAndKeywords().</para>
+  /// </summary>
   METH_VARARGS   = $0001;
+  /// <summary>
+  /// <para>Can only be used in certain combinations with other flags:
+  /// METH_VARARGS | METH_KEYWORDS, METH_FASTCALL |
+  /// METH_KEYWORDS and METH_METHOD | METH_FASTCALL | METH_KEYWORDS.</para>
+  /// <para>------------</para>
+  /// <para>METH_VARARGS | METH_KEYWORDS</para>
+  /// <para>Methods with these flags must be of type PyCFunctionWithKeywords.
+  /// The function expects three parameters: self, args, kwargs where kwargs
+  /// is a dictionary of all the keyword arguments or possibly nil if there
+  /// are no keyword arguments. The parameters are typically processed using
+  /// TPyArg.ParseTupleAndKeywords().</para>
+  /// <para>------------</para>
+  /// <para>METH_METHOD | METH_FASTCALL | METH_KEYWORDS</para>
+  /// <para>Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining
+  /// class, that is, the class that contains the method in question.
+  /// The defining class might be a superclass of TPy.TYPE(self).</para>
+  /// <para>The method needs to be of type PyCMethod, the same as for
+  /// METH_FASTCALL | METH_KEYWORDS with defining_class argument added after
+  /// self.</para>
+  /// </summary>
   METH_KEYWORDS  = $0002;
+  /// <summary>
+  /// <para>Methods without parameters don’t need to check whether arguments
+  /// are given if they are listed with the METH_NOARGS flag. They need to be
+  /// of type PyCFunction. The first parameter is typically named self and will
+  /// hold a reference to the module or object instance. In all cases the
+  /// second parameter will be nil.</para>
+  /// <para>The function must have 2 parameters. Since the second parameter
+  /// is unused, Py_UNUSED can be used to prevent a compiler warning.</para>
+  /// </summary>
   METH_NOARGS    = $0004;
+  /// <summary>
+  /// <para>Methods with a single object argument can be listed with the
+  /// METH_O flag, instead of invoking TPyArg.ParseTuple() with a "O" argument.
+  /// They have the type PyCFunction, with the self parameter, and a PyObject*
+  /// parameter representing the single argument.</para>
+  /// </summary>
   METH_O         = $0008;
+  /// <summary>
+  /// <para>The method will be passed the type object as the first parameter
+  /// rather than an instance of the type. This is used to create class
+  /// methods, similar to what is created when using the @classmethod built-in
+  /// decorator.</para>
+  /// <para>This constants are not used to indicate the calling convention but
+  /// the binding when used with methods of classes. This may not be used for
+  /// functions defined for modules.</para>
+  /// </summary>
   METH_CLASS     = $0010;
+  /// <summary>
+  /// <para>The method will be passed NULL as the first parameter rather than
+  /// an instance of the type. This is used to create static methods, similar
+  /// to what is created when using the @staticmethod built-in decorator.</para>
+  /// <para>This constants are not used to indicate the calling convention but
+  /// the binding when used with methods of classes. This may not be used for
+  /// functions defined for modules.</para>
+  /// </summary>
   METH_STATIC    = $0020;
+  /// <summary>
+  /// <para>The method will be loaded in place of existing definitions.
+  /// Without METH_COEXIST, the default is to skip repeated definitions.
+  /// Since slot wrappers are loaded before the method table, the existence of
+  /// a sq_contains slot, for example, would generate a wrapped method named
+  /// __contains__() and preclude the loading of a corresponding PyCFunction
+  /// with the same name. With the flag defined, the PyCFunction will be
+  /// loaded in place of the wrapper object and will co-exist with the slot.
+  /// This is helpful because calls to PyCFunctions are optimized more than
+  /// wrapper object calls.</para>
+  /// </summary>
   METH_COEXIST   = $0040;
+  /// <summary>
+  /// <para>Fast calling convention supporting only positional arguments.
+  /// The methods have the type PyCFunctionFast. The first parameter is self,
+  /// the second parameter is a C array of PyObject* values indicating the
+  /// arguments and the third parameter is the number of arguments (the length
+  /// of the array).</para>
+  /// <para>------------</para>
+  /// <para>METH_METHOD | METH_FASTCALL | METH_KEYWORDS</para>
+  /// <para>Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining
+  /// class, that is, the class that contains the method in question.
+  /// The defining class might be a superclass of TPy.TYPE(self).</para>
+  /// <para>The method needs to be of type PyCMethod, the same as for
+  /// METH_FASTCALL | METH_KEYWORDS with defining_class argument added after
+  /// self.</para>
+  /// </summary>
   METH_FASTCALL  = $0080;
+  /// <summary>
+  /// <para>This bit is preserved for Stackless Python.</para>
+  /// </summary>
   METH_STACKLESS = $0000; // $0100;
+  /// <summary>
+  /// <para>Can only be used in the combination with other flags:
+  /// METH_METHOD | METH_FASTCALL | METH_KEYWORDS.</para>
+  /// <para></para>
+  /// <para>METH_METHOD | METH_FASTCALL | METH_KEYWORDS</para>
+  /// <para>Extension of METH_FASTCALL | METH_KEYWORDS supporting the defining
+  /// class, that is, the class that contains the method in question.
+  /// The defining class might be a superclass of TPy.TYPE(self).</para>
+  /// <para>The method needs to be of type PyCMethod, the same as for
+  /// METH_FASTCALL | METH_KEYWORDS with defining_class argument added after
+  /// self.</para>
+  /// </summary>
   METH_METHOD    = $0200;
 
 
