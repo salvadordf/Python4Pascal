@@ -14,19 +14,19 @@
       <Unit>
         <Filename Value="umain.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="10"/>
-        <CursorPos X="3" Y="31"/>
+        <TopLine Value="50"/>
+        <CursorPos X="65" Y="82"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uextensionmodule.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="131"/>
-        <CursorPos X="75" Y="158"/>
+        <TopLine Value="15"/>
+        <CursorPos X="52" Y="38"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>

@@ -10,6 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="21"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="uMainForm.pas"/>
@@ -18,8 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="82"/>
-        <CursorPos X="52" Y="106"/>
+        <TopLine Value="96"/>
+        <CursorPos X="75" Y="113"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -32,11 +33,10 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="475"/>
         <CursorPos X="65" Y="497"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyInitConfig.pas"/>
@@ -54,46 +54,41 @@
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\inc\varianth.inc"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="52"/>
         <CursorPos X="4" Y="64"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="436"/>
         <CursorPos X="17" Y="450"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.MiscFunctions.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="6" Y="7"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\variants.pp"/>
         <UnitName Value="Variants"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="223"/>
         <CursorPos X="5" Y="228"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\p4p.inc"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="483"/>
         <CursorPos Y="499"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="16">
+    <JumpHistory HistoryIndex="4">
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="92" TopLine="80"/>
@@ -109,54 +104,6 @@
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="110" Column="96" TopLine="89"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <Caret Line="369" Column="34" TopLine="354"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\inc\varianth.inc"/>
-        <Caret Line="123" Column="34" TopLine="112"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <Caret Line="369" Column="34" TopLine="356"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.MiscFunctions.pas"/>
-        <Caret Line="32" Column="17" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.MiscFunctions.pas"/>
-        <Caret Line="383" Column="66" TopLine="354"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.MiscFunctions.pas"/>
-        <Caret Line="33" Column="11" TopLine="21"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.MiscFunctions.pas"/>
-        <Caret Line="359" Column="60" TopLine="356"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <Caret Line="101" Column="51" TopLine="37"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.MiscFunctions.pas"/>
-        <Caret Line="7" Column="6"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <Caret Line="97" Column="23" TopLine="87"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <Caret Line="492" TopLine="474"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <Caret Line="494" TopLine="474"/>
       </Position>
       <Position>
         <Filename Value="uMainForm.pas"/>

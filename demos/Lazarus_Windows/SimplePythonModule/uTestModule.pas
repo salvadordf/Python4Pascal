@@ -47,7 +47,7 @@ type
       procedure AddAllMethods; override;
   end;
                                  
-  // This class will add out custom functions in Python 3.15
+  // This class will add our custom functions in Python 3.15
   TPyTestSlotManager = class(TPyModuleSlotManager)
     protected
       procedure AddAllMethods; override;

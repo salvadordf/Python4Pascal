@@ -20,7 +20,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
         <TopLine Value="151"/>
-        <CursorPos X="55" Y="188"/>
+        <CursorPos X="57" Y="187"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -29,8 +29,8 @@
         <Filename Value="uCustomThread.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="41"/>
-        <CursorPos X="80" Y="76"/>
+        <TopLine Value="43"/>
+        <CursorPos X="83" Y="75"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
@@ -39,7 +39,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="105"/>
-        <CursorPos X="56" Y="141"/>
+        <CursorPos X="55" Y="119"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
@@ -49,9 +49,10 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <TopLine Value="84"/>
-        <CursorPos X="58" Y="119"/>
+        <CursorPos X="85" Y="105"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="uMainForm.lfm"/>

@@ -8,25 +8,25 @@
       <Unit>
         <Filename Value="SimpleConsole.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="54" Y="17"/>
+        <CursorPos X="57" Y="12"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uMain.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="50"/>
-        <CursorPos X="85" Y="53"/>
+        <TopLine Value="51"/>
+        <CursorPos X="88" Y="52"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uCustomThread.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="39" Y="13"/>
+        <CursorPos X="39" Y="10"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>

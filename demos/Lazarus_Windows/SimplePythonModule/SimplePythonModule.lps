@@ -18,8 +18,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="76"/>
-        <CursorPos X="80" Y="111"/>
+        <TopLine Value="99"/>
+        <CursorPos X="45" Y="124"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -28,8 +28,8 @@
         <Filename Value="uTestModule.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="169"/>
-        <CursorPos X="79" Y="191"/>
+        <TopLine Value="158"/>
+        <CursorPos X="81" Y="188"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
@@ -38,8 +38,8 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="109"/>
-        <CursorPos X="56" Y="141"/>
+        <TopLine Value="105"/>
+        <CursorPos X="73" Y="142"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>

@@ -15,27 +15,27 @@
         <Filename Value="umain.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="16"/>
-        <CursorPos X="78" Y="35"/>
+        <TopLine Value="44"/>
+        <CursorPos X="86" Y="65"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uextensionmodule.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="2"/>
-        <CursorPos Y="75"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="6"/>
+        <CursorPos X="29" Y="37"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../source/uP4P.Engine.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="509"/>
         <CursorPos Y="538"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../source/uP4P.PyObject.pas"/>
@@ -79,23 +79,20 @@
       </Unit>
       <Unit>
         <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1423"/>
         <CursorPos X="14" Y="1445"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../source/uP4P.CustomPyModule.pas"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="278"/>
         <CursorPos Y="339"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
+    <JumpHistory HistoryIndex="2">
       <Position>
         <Filename Value="uextensionmodule.pas"/>
         <Caret Line="75" TopLine="53"/>
@@ -107,114 +104,6 @@
       <Position>
         <Filename Value="umain.pas"/>
         <Caret Line="41" Column="65" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1388" Column="5" TopLine="1358"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="912" Column="49" TopLine="900"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="205" Column="17" TopLine="185"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1483" TopLine="1474"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1461" TopLine="1443"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1471" TopLine="1443"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1379" TopLine="1361"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1380" TopLine="1361"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1381" TopLine="1361"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1383" Column="11" TopLine="1368"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="12" Column="100" TopLine="8"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="41" Column="17" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="254" Column="112" TopLine="226"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="509" Column="13" TopLine="480"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="588" Column="31" TopLine="559"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="594" Column="15" TopLine="565"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="708" Column="45" TopLine="679"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="710" Column="23" TopLine="681"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="895" Column="19" TopLine="866"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="898" Column="21" TopLine="869"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="900" Column="21" TopLine="871"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="905" Column="19" TopLine="876"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="907" Column="19" TopLine="879"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1318" Column="13" TopLine="1289"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1320" Column="17" TopLine="1300"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1321" Column="15" TopLine="1300"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../source/uP4P.Loader.pas"/>
-        <Caret Line="1323" Column="17" TopLine="1300"/>
       </Position>
     </JumpHistory>
     <RunParams>

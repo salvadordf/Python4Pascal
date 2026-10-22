@@ -20,8 +20,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="35"/>
-        <CursorPos X="30" Y="56"/>
+        <TopLine Value="31"/>
+        <CursorPos X="67" Y="48"/>
         <UsageCount Value="28"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -34,19 +34,17 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Engine.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="326"/>
         <CursorPos X="24" Y="349"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="558"/>
         <CursorPos X="24" Y="573"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.MiscFunctions.pas"/>
@@ -127,54 +125,20 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyEval.pas"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="519"/>
         <CursorPos X="3" Y="537"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyImport.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="182"/>
         <CursorPos X="42" Y="198"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="19">
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="1155" TopLine="1136"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="1157" TopLine="1136"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="1159" TopLine="1136"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="1166" TopLine="1136"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="1226" Column="50" TopLine="1204"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="577" Column="46" TopLine="551"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="580" TopLine="567"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
-        <Caret Line="23" Column="29" TopLine="16"/>
-      </Position>
+    <JumpHistory HistoryIndex="4">
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="55" Column="85" TopLine="44"/>
@@ -184,32 +148,8 @@
         <Caret Line="102" TopLine="77"/>
       </Position>
       <Position>
-        <Filename Value="..\..\..\source\uP4P.PyEval.pas"/>
-        <Caret Line="304" TopLine="286"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyEval.pas"/>
-        <Caret Line="305" TopLine="286"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyEval.pas"/>
-        <Caret Line="306" TopLine="286"/>
-      </Position>
-      <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="102" TopLine="77"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyEval.pas"/>
-        <Caret Line="306" TopLine="286"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyImport.pas"/>
-        <Caret Line="197" TopLine="182"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyImport.pas"/>
-        <Caret Line="198" TopLine="182"/>
       </Position>
       <Position>
         <Filename Value="uMainForm.pas"/>
@@ -218,10 +158,6 @@
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="93" Column="59" TopLine="63"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyEval.pas"/>
-        <Caret Line="270" Column="22" TopLine="254"/>
       </Position>
     </JumpHistory>
     <RunParams>

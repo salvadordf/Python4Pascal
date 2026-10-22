@@ -91,32 +91,34 @@ object MainForm: TMainForm
     ParentBackground = False
     TabOrder = 2
     object RunBtn: TButton
-      Left = 451
+      Left = 408
       Height = 24
       Top = 5
-      Width = 100
+      Width = 110
       Anchors = [akTop, akLeft, akRight, akBottom]
-      Caption = 'Run code'
+      Caption = '1. Run code'
       TabOrder = 0
       OnClick = RunBtnClick
     end
     object WrapClassBtn: TButton
-      Left = 557
+      Left = 528
       Height = 24
       Top = 5
-      Width = 100
+      Width = 110
       Anchors = [akTop, akLeft, akRight, akBottom]
-      Caption = 'Wrap MyClass'
+      Caption = '2. Wrap MyClass'
+      Enabled = False
       TabOrder = 1
       OnClick = WrapClassBtnClick
     end
     object TestMyClassBtn: TButton
-      Left = 663
+      Left = 648
       Height = 24
       Top = 5
-      Width = 100
+      Width = 110
       Anchors = [akTop, akLeft, akRight, akBottom]
-      Caption = 'Test MyClass'
+      Caption = '3. Test MyClass'
+      Enabled = False
       TabOrder = 2
       OnClick = TestMyClassBtnClick
     end

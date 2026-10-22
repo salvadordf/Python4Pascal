@@ -18,10 +18,9 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="52"/>
-        <CursorPos X="77" Y="74"/>
+        <TopLine Value="72"/>
+        <CursorPos X="82" Y="90"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -29,39 +28,38 @@
       <Unit>
         <Filename Value="uTestModule.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="137"/>
-        <CursorPos X="5" Y="172"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="146"/>
+        <CursorPos X="82" Y="191"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="uTestHeapType.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
-        <CursorPos X="19"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="99"/>
+        <CursorPos X="62" Y="141"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyRun.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="406"/>
         <CursorPos X="43" Y="457"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="502"/>
         <CursorPos Y="510"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="12">
+    <JumpHistory HistoryIndex="5">
       <Position>
         <Filename Value="SimplePythonModule.lpr"/>
         <Caret Line="12" Column="9"/>
@@ -77,34 +75,6 @@
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="91" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <Caret Line="150" Column="30" TopLine="134"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <Caret Line="510" TopLine="502"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <Caret Line="511" TopLine="502"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <Caret Line="512" TopLine="502"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <Caret Line="514" TopLine="502"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <Caret Line="515" TopLine="502"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
-        <Caret Line="510" TopLine="502"/>
       </Position>
       <Position>
         <Filename Value="uMainForm.pas"/>
