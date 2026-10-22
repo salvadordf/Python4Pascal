@@ -47,6 +47,8 @@ procedure CreateGlobalP4PEngine;
 var
   TempBit, TempDrive, TempLibPath : string;
 begin
+  // Create the engine and using the OnOutputMessage event to show the messages
+  // in the console.
   GlobalP4PEngine                 := TP4PEngine.Create;
   GlobalP4PEngine.OnOutputMessage := TMain.GlobalP4PEngine_OnOutputMessage;
 
@@ -67,10 +69,12 @@ begin
   //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
   TempLibPath := '';
 
+  // Load the Python library installed in the operating system and initialize it.
   if GlobalP4PEngine.Load(TempLibPath) and
      GlobalP4PEngine.Initialize then
     begin
       WriteLn('Python initialized.');
+      // We *MUST* call SaveThreadState before running Python in a different thread.
       GlobalP4PEngine.SaveThreadState;
     end
    else

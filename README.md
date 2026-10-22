@@ -8,6 +8,8 @@ Python4Pascal uses [Python](https://github.com/python/cpython) 3.15, 3.14, 3.13,
 
 Python4Pascal was developed and tested on Delphi 13.2, Delphi XE2, Delphi 7 and Lazarus 4.8/FPC 3.2.2. 
 
+Python4Pascal demos have been tested in Windows 10, Windows 11, Linux Mint 22.3 and Raspberry Pi OS.
+
 ## Links
 * [Developer Forums](https://www.briskbard.com/forum)
 * [Python Downloads](https://www.python.org/downloads/)

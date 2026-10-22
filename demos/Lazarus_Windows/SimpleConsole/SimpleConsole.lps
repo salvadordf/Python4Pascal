@@ -8,7 +8,7 @@
       <Unit>
         <Filename Value="SimpleConsole.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="20" Y="3"/>
+        <CursorPos X="54" Y="17"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
@@ -17,7 +17,8 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos Y="5"/>
+        <TopLine Value="50"/>
+        <CursorPos X="85" Y="53"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
@@ -25,7 +26,7 @@
         <Filename Value="uCustomThread.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="20" Y="3"/>
+        <CursorPos X="39" Y="13"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>

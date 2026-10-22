@@ -39,14 +39,18 @@ begin
 end;
 
 procedure CreateGlobalP4PEngine;
-begin
+begin                   
+  // Create the engine and using the OnOutputMessage event to show the messages
+  // in the console.
   GlobalP4PEngine                 := TP4PEngine.Create;
   GlobalP4PEngine.OnOutputMessage := @TMain.GlobalP4PEngine_OnOutputMessage;
-
+                     
+  // Load the Python library installed in the operating system and initialize it.
   if GlobalP4PEngine.Load and
      GlobalP4PEngine.Initialize then
     begin
-      WriteLn('Python initialized.');
+      WriteLn('Python initialized.'); 
+      // We *MUST* call SaveThreadState before running Python in a different thread.
       GlobalP4PEngine.SaveThreadState;
     end
    else
