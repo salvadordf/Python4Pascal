@@ -51,3 +51,6 @@ You can also support this project with Liberapay.
 * [Start Programming using Object Pascal](https://code.sd/startprog/StartProgUsingPascal.pdf)
 * [Free Pascal and Lazarus Programming Textbook](https://sourceforge.net/p/lazarus-wiki-projects/code/ci/master/tree/FPC_Lazarus_Textbook/)
 * [LAZARUS FREE PASCAL Développement rapide](https://lazaruscomponents.com/2025/11/08/livrel-lazarus-free-pascad/)
+
+## Attribution
+* Repository logo downloaded from [getdrawings.com](https://getdrawings.com/get-vector#vector/python-logo-vector-14.jpg)
