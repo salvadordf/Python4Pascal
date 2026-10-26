@@ -13,7 +13,7 @@
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
-    <Version Major="3" Minor="15" Release="1"/>
+    <Version Major="3" Minor="15" Release="2"/>
     <Files>
       <Item>
         <Filename Value="..\source\p4p.inc"/>
@@ -606,6 +606,10 @@
       <Item>
         <Filename Value="..\source\uP4P.PyMemberDef.pas"/>
         <UnitName Value="uP4P.PyMemberDef"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\uP4P.Metadata.pas"/>
+        <UnitName Value="uP4P.Metadata"/>
       </Item>
     </Files>
     <RequiredPkgs>

@@ -177,6 +177,7 @@ contains
   uP4P.CustomHeapType in '..\source\uP4P.CustomHeapType.pas',
   uP4P.PyHeapTypeSlotManager in '..\source\uP4P.PyHeapTypeSlotManager.pas',
   uP4P.PyMemberDef in '..\source\uP4P.PyMemberDef.pas',
-  uP4P.PyGetSetDef in '..\source\uP4P.PyGetSetDef.pas';
+  uP4P.PyGetSetDef in '..\source\uP4P.PyGetSetDef.pas',
+  uP4P.Metadata in '..\source\uP4P.Metadata.pas';
 
 end.

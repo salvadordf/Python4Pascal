@@ -23073,6 +23073,86 @@
 <param name="Local" value="uP4P.PyDictViewSet.TPyDictViewSet.html#Check-IPyObject-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="TPyDistribution">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#Create-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FName">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#FName">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FVersion">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#FVersion">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetName">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#GetName">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetVersion">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#GetVersion">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialize">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#Initialize">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#Initialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Name_">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#Name_">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Version">
+<param name="Local" value="uP4P.Metadata.TPyDistribution.html#Version">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyDistributionList">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="AddDistribution">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#AddDistribution-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ClearItems">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#ClearItems">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetName">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#GetName-integer-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetVersion">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#GetVersion-integer-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Name_">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#Name_">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Version">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#Version">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="TPyDoubleToStringFormatCode">
 <param name="Local" value="uP4P.Types.html#TPyDoubleToStringFormatCode">
 </object>
@@ -26719,6 +26799,62 @@
 <li><object type="text/sitemap">
 <param name="Name" value="TPyMemoryViewOrder">
 <param name="Local" value="uP4P.Types.html#TPyMemoryViewOrder">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyMetadata">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="AfterConstruction">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#AfterConstruction">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Distributions">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#Distributions">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FDistList">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#FDistList">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FDistributions">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#FDistributions">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FVersion">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#FVersion">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Import">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#Import">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialize">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#Initialize">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#Initialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="RefreshDistributions">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#RefreshDistributions">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="version">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#version-string-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="TPyMethod">

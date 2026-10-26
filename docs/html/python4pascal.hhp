@@ -64,6 +64,10 @@ uP4P.IOPyModule.TPyIOSlotManager.html
 uP4P.LibFunctions.html
 uP4P.Loader.html
 uP4P.Loader.TP4PLoader.html
+uP4P.Metadata.html
+uP4P.Metadata.TPyMetadata.html
+uP4P.Metadata.TPyDistribution.html
+uP4P.Metadata.TPyDistributionList.html
 uP4P.MiscFunctions.html
 uP4P.Py.html
 uP4P.Py.TPy.html

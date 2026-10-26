@@ -22,7 +22,7 @@ type
   /// <para>TPyDateTimeModule imports the "datetime" module and gets several
   /// object types related to that module.</para>
   /// <para>This class also includes several helper functions to create and
-  /// convert "datetime" objects.
+  /// convert "datetime" objects.</para>
   /// </summary>
   /// <remarks>
   /// <para><see href="https://docs.python.org/3/library/datetime.html">See the article about the "datetime" module.</see></para>

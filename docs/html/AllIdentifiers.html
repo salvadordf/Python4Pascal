@@ -11385,7 +11385,9 @@ static PyType_Slot foo_slots[] = {
 
 <p>TPyDateTimeModule imports the &quot;datetime&quot; module and gets several object types related to that module.
 
-<p>This class also includes several helper functions to create and convert &quot;datetime&quot; objects. </p></td>
+<p>This class also includes several helper functions to create and convert &quot;datetime&quot; objects.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#TPyDaylightSavingTime">TPyDaylightSavingTime</a></td>
@@ -11426,6 +11428,26 @@ static PyType_Slot foo_slots[] = {
 <td class="itemname"><a class="bold" href="uP4P.PyDictViewSet.TPyDictViewSet.html">TPyDictViewSet</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyDictViewSet.html">uP4P.PyDictViewSet</a></td>
 <td class="itemdesc"><p> Helper class to check dictionary view sets. </p></td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold" href="uP4P.Metadata.TPyDistribution.html">TPyDistribution</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Metadata.html">uP4P.Metadata</a></td>
+<td class="itemdesc"><p>
+
+<p>The interface of the distributions yielded by TPyMetadata.distributions() and friends.
+
+<p>Consumers should prefer this protocol over Distribution, as it is also satisfied by the objects that importlib.metadata supplies.
+
+<p></p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold" href="uP4P.Metadata.TPyDistributionList.html">TPyDistributionList</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Metadata.html">uP4P.Metadata</a></td>
+<td class="itemdesc"><p>
+
+<p>Custom TList with TPyDistribution items.
+
+<p></p></td>
 </tr>
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#TPyDoubleToStringFormatCode">TPyDoubleToStringFormatCode</a></td>
@@ -11734,11 +11756,20 @@ static PyType_Slot foo_slots[] = {
 <td class="itemdesc"><p> Order of the memory chuck. </p></td>
 </tr>
 <tr class="list">
+<td class="itemname"><a class="bold" href="uP4P.Metadata.TPyMetadata.html">TPyMetadata</a></td>
+<td class="itemunit"><a class="bold" href="uP4P.Metadata.html">uP4P.Metadata</a></td>
+<td class="itemdesc"><p>
+
+<p>TPyMetadata imports importlib.metadata, which is a library that provides access to the metadata of an installed Distribution Package, such as its entry points or its top-level names (Import Packages, modules, if any).
+
+<p></p></td>
+</tr>
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyMethod.TPyMethod.html">TPyMethod</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyMethod.html">uP4P.PyMethod</a></td>
 <td class="itemdesc"><p> Helper class for all PyMethod_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyMethodDef.TPyMethodDef.html">TPyMethodDef</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyMethodDef.html">uP4P.PyMethodDef</a></td>
 <td class="itemdesc"><p>
@@ -11747,7 +11778,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyModule.TPyModule.html">TPyModule</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyModule.html">uP4P.PyModule</a></td>
 <td class="itemdesc"><p>
@@ -11756,7 +11787,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyModuleDef.TPyModuleDef.html">TPyModuleDef</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyModuleDef.html">uP4P.PyModuleDef</a></td>
 <td class="itemdesc"><p>
@@ -11765,7 +11796,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyModuleDef_Slot.TPyModuleDef_Slot.html">TPyModuleDef_Slot</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyModuleDef_Slot.html">uP4P.PyModuleDef_Slot</a></td>
 <td class="itemdesc"><p>
@@ -11774,7 +11805,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyModuleSlotManager.TPyModuleSlotManager.html">TPyModuleSlotManager</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyModuleSlotManager.html">uP4P.PyModuleSlotManager</a></td>
 <td class="itemdesc"><p>
@@ -11783,7 +11814,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyModuleSpecHelper.TPyModuleSpecHelper.html">TPyModuleSpecHelper</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyModuleSpecHelper.html">uP4P.PyModuleSpecHelper</a></td>
 <td class="itemdesc"><p>
@@ -11792,12 +11823,12 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyMonitoring.TPyMonitoring.html">TPyMonitoring</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyMonitoring.html">uP4P.PyMonitoring</a></td>
 <td class="itemdesc"><p> Helper class for all PyMonitoring_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyMutex.TPyMutex.html">TPyMutex</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyMutex.html">uP4P.PyMutex</a></td>
 <td class="itemdesc"><p>
@@ -11818,22 +11849,22 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyNone.TPyNone.html">TPyNone</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyNone.html">uP4P.PyNone</a></td>
 <td class="itemdesc"><p> The Python None object, denoting lack of value. This object has no methods and it's immortal since Python 3.12. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyNotImplemented.TPyNotImplemented.html">TPyNotImplemented</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyNotImplemented.html">uP4P.PyNotImplemented</a></td>
 <td class="itemdesc"><p> The NotImplemented singleton, used to signal that an operation is not implemented for the given type combination. It's immortal since Python 3.12. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyNumber.TPyNumber.html">TPyNumber</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyNumber.html">uP4P.PyNumber</a></td>
 <td class="itemdesc"><p> Helper class for all PyNumber_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyObject.TPyObject.html">TPyObject</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyObject.html">uP4P.PyObject</a></td>
 <td class="itemdesc"><p>
@@ -11842,7 +11873,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyObjectVariantType.TPyObjectVarData.html">TPyObjectVarData</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyObjectVariantType.html">uP4P.PyObjectVariantType</a></td>
 <td class="itemdesc"><p>
@@ -11855,47 +11886,47 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyObjectVariantType.TPyObjectVariantType.html">TPyObjectVariantType</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyObjectVariantType.html">uP4P.PyObjectVariantType</a></td>
 <td class="itemdesc"><p> PyObject custom variant type helper class. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyODict.TPyODict.html">TPyODict</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyODict.html">uP4P.PyODict</a></td>
 <td class="itemdesc"><p> Helper class for all PyODict_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#TPyOptimizationLevel">TPyOptimizationLevel</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> Compilation optimization level. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyOS.TPyOS.html">TPyOS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyOS.html">uP4P.PyOS</a></td>
 <td class="itemdesc"><p> Helper class for all PyOS_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyPickleBuffer.TPyPickleBuffer.html">TPyPickleBuffer</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyPickleBuffer.html">uP4P.PyPickleBuffer</a></td>
 <td class="itemdesc"><p> Helper class for all PyPickleBuffer_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyPreConfig.TPyPreConfig.html">TPyPreConfig</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyPreConfig.html">uP4P.PyPreConfig</a></td>
 <td class="itemdesc"><p> Class used to preinitialize Python. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyRange.TPyRange.html">TPyRange</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyRange.html">uP4P.PyRange</a></td>
 <td class="itemdesc"><p> Helper class for all PyRange_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyRefTracer.TPyRefTracer.html">TPyRefTracer</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyRefTracer.html">uP4P.PyRefTracer</a></td>
 <td class="itemdesc"><p> Helper class for all PyRefTracer_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyRun.TPyRun.html">TPyRun</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyRun.html">uP4P.PyRun</a></td>
 <td class="itemdesc"><p>
@@ -11904,37 +11935,37 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PySentinel.TPySentinel.html">TPySentinel</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySentinel.html">uP4P.PySentinel</a></td>
 <td class="itemdesc"><p> Helper class for all PySentinel_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PySeqIter.TPySeqIter.html">TPySeqIter</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySeqIter.html">uP4P.PySeqIter</a></td>
 <td class="itemdesc"><p> Helper class for all PySeqIter_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PySequence.TPySequence.html">TPySequence</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySequence.html">uP4P.PySequence</a></td>
 <td class="itemdesc"><p> Helper class for all PySequence_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PySet.TPySet.html">TPySet</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySet.html">uP4P.PySet</a></td>
 <td class="itemdesc"><p> Helper class for all PySet_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PySignal.TPySignal.html">TPySignal</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySignal.html">uP4P.PySignal</a></td>
 <td class="itemdesc"><p> Helper class for all PySignal_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PySlice.TPySlice.html">TPySlice</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySlice.html">uP4P.PySlice</a></td>
 <td class="itemdesc"><p> Helper class for all PySlice_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PySlot.TPySlot.html">TPySlot</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySlot.html">uP4P.PySlot</a></td>
 <td class="itemdesc"><p>
@@ -11943,22 +11974,22 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#TPyStartSymbols">TPyStartSymbols</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> Custom type to avoid invalid &quot;start&quot; values in TPy.Compile*. These values are converted to Py_single_input, Py_file_input, Py_eval_input or Py_func_type_input. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyState.TPyState.html">TPyState</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyState.html">uP4P.PyState</a></td>
 <td class="itemdesc"><p> Helper class for all PyState_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyStaticMethod.TPyStaticMethod.html">TPyStaticMethod</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyStaticMethod.html">uP4P.PyStaticMethod</a></td>
 <td class="itemdesc"><p> Helper class for all PyStaticMethod_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyStatus.TPyStatus.html">TPyStatus</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyStatus.html">uP4P.PyStatus</a></td>
 <td class="itemdesc"><p>
@@ -11969,37 +12000,37 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#TPyStatus_Type">TPyStatus_Type</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> _type field values in PyStatus. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyStructSequence.TPyStructSequence.html">TPyStructSequence</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyStructSequence.html">uP4P.PyStructSequence</a></td>
 <td class="itemdesc"><p> Helper class for all PyStructSequence_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PySys.TPySys.html">TPySys</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PySys.html">uP4P.PySys</a></td>
 <td class="itemdesc"><p> Helper class for all PySys_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyThread.TPyThread.html">TPyThread</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyThread.html">uP4P.PyThread</a></td>
 <td class="itemdesc"><p> Helper class for all PyThread_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyThreadLock.TPyThreadLock.html">TPyThreadLock</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyThreadLock.html">uP4P.PyThreadLock</a></td>
 <td class="itemdesc"><p> A mutual exclusion lock. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyThreadState.TPyThreadState.html">TPyThreadState</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyThreadState.html">uP4P.PyThreadState</a></td>
 <td class="itemdesc"><p> This class represents the state of a single thread. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyThreadTSS.TPyThreadTSS.html">TPyThreadTSS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyThreadTSS.html">uP4P.PyThreadTSS</a></td>
 <td class="itemdesc"><p>
@@ -12010,12 +12041,12 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyTime.TPyTime.html">TPyTime</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyTime.html">uP4P.PyTime</a></td>
 <td class="itemdesc"><p> Helper class for all PyTime_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyTimeModule.TPyTimeModule.html">TPyTimeModule</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyTimeModule.html">uP4P.PyTimeModule</a></td>
 <td class="itemdesc"><p>
@@ -12024,7 +12055,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyTimeStruct.TPyTimeStruct.html">TPyTimeStruct</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyTimeStruct.html">uP4P.PyTimeStruct</a></td>
 <td class="itemdesc"><p>
@@ -12033,22 +12064,22 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyTraceBack.TPyTraceBack.html">TPyTraceBack</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyTraceBack.html">uP4P.PyTraceBack</a></td>
 <td class="itemdesc"><p> Helper class for all PyTraceBack_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyTraceMalloc.TPyTraceMalloc.html">TPyTraceMalloc</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyTraceMalloc.html">uP4P.PyTraceMalloc</a></td>
 <td class="itemdesc"><p> Helper class for all PyTraceMalloc_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyTuple.TPyTuple.html">TPyTuple</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyTuple.html">uP4P.PyTuple</a></td>
 <td class="itemdesc"><p> Helper class for all PyTuple_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyType.TPyType.html">TPyType</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyType.html">uP4P.PyType</a></td>
 <td class="itemdesc"><p>
@@ -12057,262 +12088,262 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyType_Slot.TPyType_Slot.html">TPyType_Slot</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyType_Slot.html">uP4P.PyType_Slot</a></td>
 <td class="itemdesc"><p> TPyType_Slot is used to store the information about type slots. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyType_Spec.TPyType_Spec.html">TPyType_Spec</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyType_Spec.html">uP4P.PyType_Spec</a></td>
 <td class="itemdesc"><p> Class defining a type's behavior. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyUnicode.TPyUnicode.html">TPyUnicode</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyUnicode.html">uP4P.PyUnicode</a></td>
 <td class="itemdesc"><p> Helper class for all PyUnicode_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyUnicodeDecodeError.TPyUnicodeDecodeError.html">TPyUnicodeDecodeError</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyUnicodeDecodeError.html">uP4P.PyUnicodeDecodeError</a></td>
 <td class="itemdesc"><p> Helper class for all PyUnicodeDecodeError_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyUnicodeEncodeError.TPyUnicodeEncodeError.html">TPyUnicodeEncodeError</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyUnicodeEncodeError.html">uP4P.PyUnicodeEncodeError</a></td>
 <td class="itemdesc"><p> Helper class for all PyUnicodeEncodeError_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyUnicodeTranslateError.TPyUnicodeTranslateError.html">TPyUnicodeTranslateError</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyUnicodeTranslateError.html">uP4P.PyUnicodeTranslateError</a></td>
 <td class="itemdesc"><p> Helper class for all PyUnicodeTranslateError_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyUnicodeWriter.TPyUnicodeWriter.html">TPyUnicodeWriter</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyUnicodeWriter.html">uP4P.PyUnicodeWriter</a></td>
 <td class="itemdesc"><p> A Unicode writer instance. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyVectorcall.TPyVectorcall.html">TPyVectorcall</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyVectorcall.html">uP4P.PyVectorcall</a></td>
 <td class="itemdesc"><p> Helper class for all PyVectorcall_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#TPyVerboseMode">TPyVerboseMode</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> Python verbose mode </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyWeakref.TPyWeakref.html">TPyWeakref</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyWeakref.html">uP4P.PyWeakref</a></td>
 <td class="itemdesc"><p> Helper class for all PyWeakref_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyWideStringList.TPyWideStringList.html">TPyWideStringList</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyWideStringList.html">uP4P.PyWideStringList</a></td>
 <td class="itemdesc"><p> Helper class for all PyWideStringList_* methods. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyWrapper.TPyWrapper.html">TPyWrapper</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyWrapper.html">uP4P.PyWrapper</a></td>
 <td class="itemdesc"><p> Helper class for all PyWrapper_* methods. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Py_bf.TPy_bf.html">TPy_bf</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Py_bf.html">uP4P.Py_bf</a></td>
 <td class="itemdesc"><p>The complete list of compiler versions is here : <a href="https://docwiki.embarcadero.com/RADStudio/Athens/en/Compiler_Versions">https://docwiki.embarcadero.com/RADStudio/Athens/en/Compiler_Versions</a> Delphi 5 Delphi 6 Delphi 7 Delphi 8 Delphi 2005 Delphi 2009 (Unicode support) Delphi 2010 Delphi XE Delphi XE2 (First FireMonkey and 64bit compiler) Delphi XE3 Delphi XE4 Delphi XE5 Delphi XE6 Delphi XE7 Delphi XE8 Rad Studio 10 - Delphi Seattle Rad Studio 10.1 - Delphi Berlin Rad Studio 10.2 - Delphi Tokyo Rad Studio 10.3 - Delphi Rio Rad Studio 10.4 - Delphi Sydney Rad Studio 11.0 - Delphi Alexandria Rad Studio 12.0 - Delphi Athens Rad Studio 13.0 - Delphi Florence Delphi uses MACOS for the new MacOSX and DARWIN is not defined FPC uses DARWIN for the new MacOSX and MACOS is defined for the classic Macintosh OS (System 7) We define MACOSX to avoid conflicts in both situations OS_POSIX is defined for AIX, ANDROID, ASMJS, CHROMEOS, FREEBSD, IOS, LINUX, MAC, NACL, NETBSD, OPENBSD, QNX and SOLARIS in /include/base/cef_build.h &lt;summary&gt; Helper class to get the correct values of Py_bf_* constants that changed in recent Python versions.</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Py_mod.TPy_mod.html">TPy_mod</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Py_mod.html">uP4P.Py_mod</a></td>
 <td class="itemdesc"><p>The complete list of compiler versions is here : <a href="https://docwiki.embarcadero.com/RADStudio/Athens/en/Compiler_Versions">https://docwiki.embarcadero.com/RADStudio/Athens/en/Compiler_Versions</a> Delphi 5 Delphi 6 Delphi 7 Delphi 8 Delphi 2005 Delphi 2009 (Unicode support) Delphi 2010 Delphi XE Delphi XE2 (First FireMonkey and 64bit compiler) Delphi XE3 Delphi XE4 Delphi XE5 Delphi XE6 Delphi XE7 Delphi XE8 Rad Studio 10 - Delphi Seattle Rad Studio 10.1 - Delphi Berlin Rad Studio 10.2 - Delphi Tokyo Rad Studio 10.3 - Delphi Rio Rad Studio 10.4 - Delphi Sydney Rad Studio 11.0 - Delphi Alexandria Rad Studio 12.0 - Delphi Athens Rad Studio 13.0 - Delphi Florence Delphi uses MACOS for the new MacOSX and DARWIN is not defined FPC uses DARWIN for the new MacOSX and MACOS is defined for the classic Macintosh OS (System 7) We define MACOSX to avoid conflicts in both situations OS_POSIX is defined for AIX, ANDROID, ASMJS, CHROMEOS, FREEBSD, IOS, LINUX, MAC, NACL, NETBSD, OPENBSD, QNX and SOLARIS in /include/base/cef_build.h &lt;summary&gt; Helper class to get the correct values of Py_mod_* constants that changed in recent Python versions.</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Py_mp.TPy_mp.html">TPy_mp</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Py_mp.html">uP4P.Py_mp</a></td>
 <td class="itemdesc"><p>The complete list of compiler versions is here : <a href="https://docwiki.embarcadero.com/RADStudio/Athens/en/Compiler_Versions">https://docwiki.embarcadero.com/RADStudio/Athens/en/Compiler_Versions</a> Delphi 5 Delphi 6 Delphi 7 Delphi 8 Delphi 2005 Delphi 2009 (Unicode support) Delphi 2010 Delphi XE Delphi XE2 (First FireMonkey and 64bit compiler) Delphi XE3 Delphi XE4 Delphi XE5 Delphi XE6 Delphi XE7 Delphi XE8 Rad Studio 10 - Delphi Seattle Rad Studio 10.1 - Delphi Berlin Rad Studio 10.2 - Delphi Tokyo Rad Studio 10.3 - Delphi Rio Rad Studio 10.4 - Delphi Sydney Rad Studio 11.0 - Delphi Alexandria Rad Studio 12.0 - Delphi Athens Rad Studio 13.0 - Delphi Florence Delphi uses MACOS for the new MacOSX and DARWIN is not defined FPC uses DARWIN for the new MacOSX and MACOS is defined for the classic Macintosh OS (System 7) We define MACOSX to avoid conflicts in both situations OS_POSIX is defined for AIX, ANDROID, ASMJS, CHROMEOS, FREEBSD, IOS, LINUX, MAC, NACL, NETBSD, OPENBSD, QNX and SOLARIS in /include/base/cef_build.h &lt;summary&gt; Helper class to get the correct values of Py_mp_* constants that changed in recent Python versions.</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#traverseproc">traverseproc</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#twodigits">twodigits</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#unaryfunc">unaryfunc</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.MiscFunctions.html#UnicodeStringToAnsiString-UnicodeString-">UnicodeStringToAnsiString</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.MiscFunctions.html">uP4P.MiscFunctions</a></td>
 <td class="itemdesc"><p> Convert a UnicodeString to AnsiString. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.MiscFunctions.html#UnicodeStringToPyUTF8-UnicodeString-">UnicodeStringToPyUTF8</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.MiscFunctions.html">uP4P.MiscFunctions</a></td>
 <td class="itemdesc"><p> Convert a unicode string to a UTF8 Python string. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#vectorcallfunc">vectorcallfunc</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#visitproc">visitproc</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#WAIT_LOCK">WAIT_LOCK</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>* include/pythread.h include/cpython/pythread.h *</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.MiscFunctions.html#WCharTArrayToStringDynArray-PPWCharT-NativeInt-TStringDynArray-">WCharTArrayToStringDynArray</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.MiscFunctions.html">uP4P.MiscFunctions</a></td>
 <td class="itemdesc"><p> Convert an array of wide strings to a TStringDynArray. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.MiscFunctions.html#WCharTArrayToStringList-PPWCharT-NativeInt-TStringList-">WCharTArrayToStringList</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.MiscFunctions.html">uP4P.MiscFunctions</a></td>
 <td class="itemdesc"><p> Convert an array of wide strings to a TStringList. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#WCharTString">WCharTString</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.MiscFunctions.html#WideStringToPyUTF8-WideString-">WideStringToPyUTF8</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.MiscFunctions.html">uP4P.MiscFunctions</a></td>
 <td class="itemdesc"><p> Convert a wide string to a UTF8 Python string. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.wrapperbase.html">wrapperbase</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> Describes a slot wrapper used by PyDescr_NewWrapper(). Each wrapperbase record stores the Python-visible name and metadata for a special method implemented by a type slot, together with the wrapper function used to adapt that slot to Python's calling convention. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#wrapperfunc">wrapperfunc</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#wrapperfunc_kwds">wrapperfunc_kwds</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._frozen.html">_frozen</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> This is the structure type definition for frozen module descriptors, as generated by the freeze utility (see Tools/freeze/ in the Python source distribution). </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types._inittab.html">_inittab</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> Record describing a single entry in the list of built-in modules. Programs which embed Python may use an array of these structures in conjunction with PyImport_ExtendInittab() to provide additional built-in modules. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._longobject.html">_longobject</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types._object.html">_object</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> Internal PyObject record. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyCoCached.html">_PyCoCached</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>* include/cpython/code.h *</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyDateTime_BaseDateTime.html">_PyDateTime_BaseDateTime</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyDateTime_BaseTime.html">_PyDateTime_BaseTime</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyDateTime_BaseTZInfo.html">_PyDateTime_BaseTZInfo</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> No _PyDateTime_BaseTZInfo is allocated; it's just to have something convenient to cast to, when getting at the hastzinfo member of objects starting with _PyTZINFO_HEAD. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_PyDateTime_DATETIME_DATASIZE">_PyDateTime_DATETIME_DATASIZE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> # of bytes for year, month, day, hour, minute, second, and usecond. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_PyDateTime_DATE_DATASIZE">_PyDateTime_DATE_DATASIZE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> # of bytes for year, month, and day. </p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_PyDateTime_TIME_DATASIZE">_PyDateTime_TIME_DATASIZE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p> of bytes for hour, minute, second, and usecond. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyExecutorArray.html">_PyExecutorArray</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyLongValue.html">_PyLongValue</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyObjectIndexPair.html">_PyObjectIndexPair</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._PyWeakReference.html">_PyWeakReference</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> PyWeakReference is the base struct for the Python ReferenceType, ProxyType, and CallableProxyType. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.LibFunctions.html#_PyWeakref_CallableProxyType">_PyWeakref_CallableProxyType</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.LibFunctions.html">uP4P.LibFunctions</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.LibFunctions.html#_PyWeakref_ProxyType">_PyWeakref_ProxyType</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.LibFunctions.html">uP4P.LibFunctions</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.LibFunctions.html#_PyWeakref_RefType">_PyWeakref_RefType</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.LibFunctions.html">uP4P.LibFunctions</a></td>
 <td class="itemdesc"><p>* include/weakrefobject.h include/cpython/weakrefobject.h *</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_Py_AFTER_ITEMS">_Py_AFTER_ITEMS</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#_Py_funcptr_t">_Py_funcptr_t</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types.html#_Py_iteritemfunc">_Py_iteritemfunc</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_Py_TPFLAGS_MATCH_SELF">_Py_TPFLAGS_MATCH_SELF</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -12321,7 +12352,7 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_Py_TPFLAGS_STATIC_BUILTIN">_Py_TPFLAGS_STATIC_BUILTIN</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>
@@ -12330,32 +12361,32 @@ static PyType_Slot foo_slots[] = {
 
 <p></p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_Py_T_NONE">_Py_T_NONE</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_Py_T_OBJECT">_Py_T_OBJECT</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>&nbsp;</p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#_Py_WRITE_RESTRICTED">_Py_WRITE_RESTRICTED</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
 <td class="itemdesc"><p>Added in 3.10, harmless no-op before that</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._specialization_cache.html">_specialization_cache</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> This struct is used by the specializer. It should be treated as an opaque blob by code other than the specializer and interpreter. </p></td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Types._traceback.html">_traceback</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p>* include/traceback.h include/cpython/traceback.h *</p></td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Types._typeobject.html">_typeobject</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Types.html">uP4P.Types</a></td>
 <td class="itemdesc"><p> Internal record that represents a PyTypeObject. </p></td>
