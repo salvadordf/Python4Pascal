@@ -10,6 +10,10 @@ Python4Pascal was developed and tested on Delphi 13.2, Delphi XE2, Delphi 7 and 
 
 Python4Pascal demos have been tested in Windows 10, Windows 11, Linux Mint 22.3 and Raspberry Pi OS.
 
+## Installation instructions
+* [Installation in Delphi](https://github.com/salvadordf/Python4Pascal/wiki/Installation-in-Delphi)
+* [Installation in Lazarus FPC](https://github.com/salvadordf/Python4Pascal/wiki/Installation-in-Lazarus-FPC) 
+
 ## Links
 * [Developer Forums](https://www.briskbard.com/forum)
 * [Python Downloads](https://www.python.org/downloads/)
