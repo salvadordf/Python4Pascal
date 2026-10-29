@@ -4494,7 +4494,7 @@ static PyType_Slot foo_slots[] = {
 <p>
 
 
-<p>This is the typical calling convention, where the methods have the type PyCFunction. The function expects two PyObject* values. The first one is the self object for methods; for module functions, it is the module object. The second parameter (often called args) is a tuple object representing all arguments. This parameter is typically processed using TPyArg.ParseTuple() or TPyArg.UnpackTuple().
+<p>This is the typical calling convention, where the methods have the type PyCFunction. The function expects two PPyObject values. The first one is the self object for methods; for module functions, it is the module object. The second parameter (often called args) is a tuple object representing all arguments. This parameter is typically processed using TPyArg.ParseTuple() or TPyArg.UnpackTuple().
 
 <p>&mdash;&mdash;&mdash;&mdash;
 

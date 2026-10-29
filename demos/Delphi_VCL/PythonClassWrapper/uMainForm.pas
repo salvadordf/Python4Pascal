@@ -36,6 +36,7 @@ type
   private
     FMyClass : TMyClass;
 
+    function  StreamToString(const aStream: TMemoryStream): string;
     procedure GlobalP4PEngine_OnOutputMessage(Sender: TObject; const message_: string);
 
   public
@@ -83,6 +84,8 @@ begin
 end;
 
 procedure TMainForm.TestMyClassBtnClick(Sender: TObject);
+var
+  TempStream: TMemoryStream;
 begin
   if not(assigned(FMyClass)) then exit;
 
@@ -99,6 +102,32 @@ begin
   LogMem.Lines.Add('MyClass.square_test(3) = ' + inttostr(FMyClass.square_test(3)));
   LogMem.Lines.Add('MyClass.uppercase_test("test") = ' + FMyClass.uppercase_test('test'));
   LogMem.Lines.Add('MyClass.dict_test("answer", 42) = ' + FMyClass.dict_test('answer', 42));
+
+  TempStream := TMemoryStream.Create;
+  if FMyClass.bytes_test(1, 2, 3, 4, TStream(TempStream)) then
+    LogMem.Lines.Add('MyClass.bytes_test() = ' + StreamToString(TempStream));
+  TempStream.Free;
+end;
+
+function TMainForm.StreamToString(const aStream: TMemoryStream): string;
+var
+  i, TempLen: int64;
+  TempBytes : TBytes;
+begin
+  TempLen := aStream.Size;
+  aStream.Position := 0;
+  SetLength(TempBytes, TempLen);
+  aStream.Read(TempBytes[0], TempLen);
+
+  Result := '[';
+
+  for i := 0 to pred(TempLen) do
+    if (i = 0) then
+      Result := Result + inttostr(TempBytes[i])
+     else
+      Result := Result + ',' + inttostr(TempBytes[i]);
+
+  Result := Result + ']';
 end;
 
 procedure TMainForm.WrapClassBtnClick(Sender: TObject);

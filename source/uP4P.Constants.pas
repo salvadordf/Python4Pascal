@@ -1318,7 +1318,7 @@ const
 
   /// <summary>
   /// <para>This is the typical calling convention, where the methods have the
-  /// type PyCFunction. The function expects two PyObject* values. The first
+  /// type PyCFunction. The function expects two PPyObject values. The first
   /// one is the self object for methods; for module functions, it is the
   /// module object. The second parameter (often called args) is a tuple object
   /// representing all arguments. This parameter is typically processed using

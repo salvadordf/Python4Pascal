@@ -18039,6 +18039,10 @@
 <param name="Local" value="uP4P.PyBytes.TPyBytes.html#AsBufferAndSize-IPyObject-PByte-Py_ssize_t-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="AsStream">
+<param name="Local" value="uP4P.PyBytes.TPyBytes.html#AsStream-IPyObject-TStream-">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="AsString">
 <param name="Local" value="uP4P.PyBytes.TPyBytes.html#AsString-IPyObject-">
 </object>

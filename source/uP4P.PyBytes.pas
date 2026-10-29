@@ -98,23 +98,30 @@ type
       /// </summary>
       class procedure ConcatAndDel(const bytes_, newpart: IPyObject);
       /// <summary>
-      /// <para>Return the contents of the object obj through the output
+      /// <para>Return the contents of the object ob through the output
       /// variables buffer and length. Returns True on success.</para>
-      /// <para>If obj is not a bytes object at all, TPyBytes.AsStringAndSize()
+      /// <para>If ob is not a bytes object at all, TPyBytes.AsStringAndSize()
       /// returns False and raises TypeError.</para>
       /// </summary>
       class function AsStringAndSize(const ob: IPyObject; var buffer: string; var length: Py_ssize_t): boolean;
       /// <summary>
-      /// <para>Return the contents of the object obj through the output
+      /// <para>Return the contents of the object ob through the output
       /// variables buffer and length. Returns True on success.</para>
       /// <para>The buffer refers to an internal buffer of obj, which includes
       /// an additional nil byte at the end (not counted in length). The data
       /// must not be modified in any way, unless the object was just created
       /// using TPyBytes.FromStringAndSize(nil, size). It must not be
-      /// deallocated. If obj is not a bytes object at all,
+      /// deallocated. If ob is not a bytes object at all,
       /// TPyBytes.AsBufferAndSize() returns False and raises TypeError.</para>
       /// </summary>
       class function AsBufferAndSize(const ob: IPyObject; var buffer: PByte; var length: Py_ssize_t): boolean;
+      /// <summary>
+      /// <para>Return the contents of the object ob through the aStream
+      /// variable. Returns True on success.</para>
+      /// <para>If ob is not a bytes object at all, TPyBytes.AsBufferAndSize()
+      /// returns False and raises TypeError.</para>
+      /// </summary>
+      class function AsStream(const ob: IPyObject; var aStream: TStream): boolean;
       /// <summary>
       /// <para>Similar to sep.join(iterable) in Python.</para>
       /// <para>sep must be Python bytes object. (Note that TPyUnicode.Join()
@@ -410,6 +417,26 @@ begin
   Result := assigned(PyBytes_AsStringAndSize) and
             TPyObject.IsInitialized(ob) and
             (PyBytes_AsStringAndSize(ob.PyObject, PAnsiChar(buffer), length) = 0);
+end;
+
+class function TPyBytes.AsStream(const ob: IPyObject; var aStream: TStream): boolean;
+var
+  TempBuffer : PAnsiChar;
+  TempLen    : Py_ssize_t;
+begin
+  TempBuffer := nil;
+  TempLen    := 0;
+
+  if assigned(PyBytes_AsStringAndSize) and
+     assigned(aStream) and
+     TPyObject.IsInitialized(ob) and
+     (PyBytes_AsStringAndSize(ob.PyObject, TempBuffer, TempLen) = 0) then
+    begin
+      aStream.WriteBuffer(TempBuffer^, TempLen);
+      Result := True;
+    end
+   else
+    Result := False;
 end;
 
 class function TPyBytes.Join(const sep, iterable: IPyObject): IPyObject;

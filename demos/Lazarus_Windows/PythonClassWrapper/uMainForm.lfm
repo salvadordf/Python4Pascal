@@ -63,7 +63,8 @@ object MainForm: TMainForm
       '        new_dict = dict()'
       '        new_dict[key] = value'
       '        return new_dict'
-      ''
+      '    def bytes_test(self, a, b, c ,d):'
+      '        return bytes([a, b, c, d])'
     )
     ParentFont = False
     ScrollBars = ssBoth

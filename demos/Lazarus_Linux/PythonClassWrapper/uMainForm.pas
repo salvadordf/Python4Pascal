@@ -5,7 +5,7 @@ unit uMainForm;
 interface
 
 uses
-  Messages, SysUtils, Variants, Classes, Graphics,
+  SysUtils, Variants, Classes, Graphics,
   Controls, Forms, Dialogs, StdCtrls, ExtCtrls,
   uP4P.Interfaces, uP4P.PyObject, uP4P.Engine, uP4P.Py, uP4P.PyImport,
   uP4P.PyModule, uP4P.PyEval, uP4P.PyRun, uP4P.Constants,
@@ -30,6 +30,7 @@ type
   private
     FMyClass : TMyClass;
 
+    function  StreamToString(const aStream: TMemoryStream): string;
     procedure GlobalP4PEngine_OnOutputMessage(Sender: TObject; const message_: string);
 
   public
@@ -39,7 +40,7 @@ type
 var
   MainForm: TMainForm;
 
-implementation             
+implementation            
 
 // This demo shows how to create a wrapper for a Python class that we can use
 // from Delphi/Lazarus.
@@ -68,7 +69,7 @@ begin
 
   if TPyRun.SimpleString(CodeMem.Text) then
     begin
-      LogMem.Lines.Add('Code run correctly.');
+      LogMem.Lines.Add('Code run correctly.');       
       RunBtn.Enabled := False;
       WrapClassBtn.Enabled := True;
     end
@@ -76,7 +77,9 @@ begin
     LogMem.Lines.Add('There was an issue running the code.');
 end;
 
-procedure TMainForm.TestMyClassBtnClick(Sender: TObject);
+procedure TMainForm.TestMyClassBtnClick(Sender: TObject);         
+var
+  TempStream: TMemoryStream;
 begin
   if not(assigned(FMyClass)) then exit;
 
@@ -91,8 +94,34 @@ begin
   LogMem.Lines.Add('MyClass.list_test() = ' + FMyClass.list_test);
   LogMem.Lines.Add('MyClass.datetime_test() = ' + DateTimeToStr(FMyClass.datetime_test));
   LogMem.Lines.Add('MyClass.square_test(3) = ' + inttostr(FMyClass.square_test(3)));
-  LogMem.Lines.Add('MyClass.uppercase_test("test") = ' + FMyClass.uppercase_test('test'));     
-  LogMem.Lines.Add('MyClass.dict_test("answer", 42) = ' + FMyClass.dict_test('answer', 42));
+  LogMem.Lines.Add('MyClass.uppercase_test("test") = ' + FMyClass.uppercase_test('test'));  
+  LogMem.Lines.Add('MyClass.dict_test("answer", 42) = ' + FMyClass.dict_test('answer', 42));        
+
+  TempStream := TMemoryStream.Create;
+  if FMyClass.bytes_test(1, 2, 3, 4, TStream(TempStream)) then
+    LogMem.Lines.Add('MyClass.bytes_test() = ' + StreamToString(TempStream));
+  TempStream.Free;
+end;      
+
+function TMainForm.StreamToString(const aStream: TMemoryStream): string;
+var
+  i, TempLen: int64;
+  TempBytes : TBytes;
+begin
+  TempLen := aStream.Size;
+  aStream.Position := 0;
+  SetLength(TempBytes, TempLen);
+  aStream.Read(TempBytes[0], TempLen);
+
+  Result := '[';
+
+  for i := 0 to pred(TempLen) do
+    if (i = 0) then
+      Result := Result + inttostr(TempBytes[i])
+     else
+      Result := Result + ',' + inttostr(TempBytes[i]);
+
+  Result := Result + ']';
 end;
 
 procedure TMainForm.WrapClassBtnClick(Sender: TObject);
@@ -126,6 +155,8 @@ begin
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
+var
+  TempBit, TempDrive, TempLibPath : string;
 begin
   if not(assigned(GlobalP4PEngine)) then
     begin
@@ -137,7 +168,24 @@ begin
     begin
       GlobalP4PEngine.SetCurrentDir := True;
 
-      if GlobalP4PEngine.Load and
+      {$IFDEF TARGET_32BITS}
+      TempBit := 'win32';
+      {$ELSE}
+      TempBit := 'amd64';
+      {$ENDIF}
+
+      TempDrive := 'Q';
+      //TempDrive := 'S';
+
+      //TempLibPath := TempDrive + ':\python-3.15.0-embed-' + TempBit + '\python315.dll';
+      //TempLibPath := TempDrive + ':\python-3.14.8-embed-' + TempBit + '\python314.dll';
+      //TempLibPath := TempDrive + ':\python-3.13.16-embed-' + TempBit + '\python313.dll';
+      //TempLibPath := TempDrive + ':\python-3.12.10-embed-' + TempBit + '\python312.dll';
+      //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
+      //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
+      TempLibPath := '';
+
+      if GlobalP4PEngine.Load(TempLibPath) and
          GlobalP4PEngine.Initialize then
         begin
           LogMem.Lines.Add('Python initialized. ' + GlobalP4PEngine.buildinfo);

@@ -19,7 +19,7 @@ object MainForm: TMainForm
   TextHeight = 15
   object Splitter1: TSplitter
     Left = 0
-    Top = 389
+    Top = 453
     Width = 768
     Height = 3
     Cursor = crVSplit
@@ -31,7 +31,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 34
     Width = 768
-    Height = 355
+    Height = 419
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -64,16 +64,19 @@ object MainForm: TMainForm
       '    def dict_test(self, key, value):'
       '        new_dict = dict()'
       '        new_dict[key] = value'
-      '        return new_dict')
+      '        return new_dict'
+      '    def bytes_test(self, a, b, c ,d):'
+      '        return bytes([a, b, c, d])')
     ParentFont = False
     ScrollBars = ssBoth
     TabOrder = 0
+    ExplicitHeight = 355
   end
   object LogMem: TMemo
     Left = 0
-    Top = 392
+    Top = 456
     Width = 768
-    Height = 323
+    Height = 259
     Align = alBottom
     ReadOnly = True
     ScrollBars = ssBoth

@@ -14,8 +14,7 @@ uses
   {$ELSE}
     Classes, SysUtils, Variants,
   {$ENDIF}
-  uP4P.LibFunctions, uP4P.Types, uP4P.Constants, uP4P.Interfaces, uP4P.PyObject,
-  uP4P.ImportedPyModule;
+  uP4P.Interfaces, uP4P.PyObject;
 
 type
   TPyDistribution = class;

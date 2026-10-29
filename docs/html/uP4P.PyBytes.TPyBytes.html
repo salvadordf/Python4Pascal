@@ -75,45 +75,49 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#Join-IPyObject-IPyObject-">Join</a></strong>(const sep, iterable: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#AsStream-IPyObject-TStream-">AsStream</a></strong>(const ob: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; var aStream: TStream): boolean;</code></td>
 </tr>
 <tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#Join-IPyObject-IPyObject-">Join</a></strong>(const sep, iterable: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#FromStringAndSize-string-Py_ssize_t-">FromStringAndSize</a></strong>(const str: string; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#FromBufferAndSize-PByte-Py_ssize_t-">FromBufferAndSize</a></strong>(const buffer: PByte; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#FromString-string-">FromString</a></strong>(const str: string): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#FromBuffer-PByte-">FromBuffer</a></strong>(const buffer: PByte): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#FromObject-IPyObject-">FromObject</a></strong>(const ob: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#FromVariant-Variant-">FromVariant</a></strong>(const aVariant: Variant): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#FromVariant-Variant-TVarType-">FromVariant</a></strong>(const aVariant: Variant; aVarType: TVarType): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#DecodeEscape-string-TPyCodecErrors-">DecodeEscape</a></strong>(const s: string; errors: <a href="uP4P.Types.html#TPyCodecErrors">TPyCodecErrors</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#Check-IPyObject-">Check</a></strong>(const aPyObject: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBytes.TPyBytes.html#CheckExact-IPyObject-">CheckExact</a></strong>(const aPyObject: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean;</code></td>
 </tr>
@@ -265,9 +269,9 @@ body { margin: 0.5em; }
 <p>
 
 
-<p>Return the contents of the object obj through the output variables buffer and length. Returns True on success.
+<p>Return the contents of the object ob through the output variables buffer and length. Returns True on success.
 
-<p>If obj is not a bytes object at all, TPyBytes.AsStringAndSize() returns False and raises TypeError.
+<p>If ob is not a bytes object at all, TPyBytes.AsStringAndSize() returns False and raises TypeError.
 
 <p></p>
 </td></tr>
@@ -281,9 +285,25 @@ body { margin: 0.5em; }
 <p>
 
 
-<p>Return the contents of the object obj through the output variables buffer and length. Returns True on success.
+<p>Return the contents of the object ob through the output variables buffer and length. Returns True on success.
 
-<p>The buffer refers to an internal buffer of obj, which includes an additional nil byte at the end (not counted in length). The data must not be modified in any way, unless the object was just created using TPyBytes.FromStringAndSize(nil, size). It must not be deallocated. If obj is not a bytes object at all, TPyBytes.AsBufferAndSize() returns False and raises TypeError.
+<p>The buffer refers to an internal buffer of obj, which includes an additional nil byte at the end (not counted in length). The data must not be modified in any way, unless the object was just created using TPyBytes.FromStringAndSize(nil, size). It must not be deallocated. If ob is not a bytes object at all, TPyBytes.AsBufferAndSize() returns False and raises TypeError.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="AsStream-IPyObject-TStream-"></span><code>class function <strong>AsStream</strong>(const ob: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; var aStream: TStream): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return the contents of the object ob through the aStream variable. Returns True on success.
+
+<p>If ob is not a bytes object at all, TPyBytes.AsBufferAndSize() returns False and raises TypeError.
 
 <p></p>
 </td></tr>

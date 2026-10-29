@@ -9490,6 +9490,10 @@
 <param name="Local" value="uP4P.PyBytes.TPyBytes.html#AsBufferAndSize">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="AsStream">
+<param name="Local" value="uP4P.PyBytes.TPyBytes.html#AsStream">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Join">
 <param name="Local" value="uP4P.PyBytes.TPyBytes.html#Join">
 </object>
@@ -43142,6 +43146,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="AsBufferAndSize">
 <param name="Local" value="uP4P.PyBytes.TPyBytes.html#AsBufferAndSize">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="AsStream">
+<param name="Local" value="uP4P.PyBytes.TPyBytes.html#AsStream">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="AsString">

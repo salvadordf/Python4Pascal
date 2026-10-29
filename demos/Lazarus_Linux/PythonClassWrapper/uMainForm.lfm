@@ -21,14 +21,14 @@ object MainForm: TMainForm
     Cursor = crVSplit
     Left = 0
     Height = 3
-    Top = 376
+    Top = 368
     Width = 768
     Align = alBottom
     ResizeAnchor = akBottom
   end
   object CodeMem: TMemo
     Left = 0
-    Height = 342
+    Height = 334
     Top = 34
     Width = 768
     Align = alClient
@@ -63,6 +63,8 @@ object MainForm: TMainForm
       '        new_dict = dict()'
       '        new_dict[key] = value'
       '        return new_dict'
+      '    def bytes_test(self, a, b, c ,d):'
+      '        return bytes([a, b, c, d])'
     )
     ParentFont = False
     ScrollBars = ssBoth
@@ -70,8 +72,8 @@ object MainForm: TMainForm
   end
   object LogMem: TMemo
     Left = 0
-    Height = 336
-    Top = 379
+    Height = 344
+    Top = 371
     Width = 768
     Align = alBottom
     ReadOnly = True
@@ -91,20 +93,20 @@ object MainForm: TMainForm
     ParentBackground = False
     TabOrder = 2
     object RunBtn: TButton
-      Left = 408
+      Left = 451
       Height = 24
       Top = 5
-      Width = 110
+      Width = 100
       Anchors = [akTop, akLeft, akRight, akBottom]
       Caption = '1. Run code'
       TabOrder = 0
       OnClick = RunBtnClick
     end
     object WrapClassBtn: TButton
-      Left = 528
+      Left = 557
       Height = 24
       Top = 5
-      Width = 110
+      Width = 100
       Anchors = [akTop, akLeft, akRight, akBottom]
       Caption = '2. Wrap MyClass'
       Enabled = False
@@ -112,10 +114,10 @@ object MainForm: TMainForm
       OnClick = WrapClassBtnClick
     end
     object TestMyClassBtn: TButton
-      Left = 648
+      Left = 663
       Height = 24
       Top = 5
-      Width = 110
+      Width = 100
       Anchors = [akTop, akLeft, akRight, akBottom]
       Caption = '3. Test MyClass'
       Enabled = False
