@@ -211,19 +211,19 @@ type
     /// </summary>
     function  CheckBuffer: boolean;
     /// <summary>
-    /// <para>Send a request to exporter to fill in view as specified by
-    /// flags. If the exporter cannot provide a buffer of the exact type, it
+    /// <para>Send a request to this object to fill in view as specified by
+    /// flags. If this object cannot provide a buffer of the exact type, it
     /// MUST raise BufferError, set view->obj to nil and return False.</para>
     /// <para>On success, fill in view, set view->obj to a new reference to
-    /// exporter and return True. In the case of chained buffer providers that
+    /// this object and return True. In the case of chained buffer providers that
     /// redirect requests to a single object, view->obj MAY refer to this
-    /// object instead of exporter (See Buffer Object Structures).</para>
+    /// object instead of this object (See Buffer Object Structures).</para>
     /// <para>Successful calls to TPyObject.GetBuffer() must be paired with
     /// calls to TPyBuffer.Release(), similar to malloc() and free().
     /// Thus, after the consumer is done with the buffer, TPyBuffer.Release()
     /// must be called exactly once.</para>
     /// </summary>
-    function  GetBuffer(var view: Py_buffer; flags: Integer): boolean;
+    function  GetBuffer(view: PPy_buffer; flags: Integer): boolean;
     /// <summary>
     /// <para>Copy data from src to dest buffer. Can convert between C-style
     /// and or Fortran-style buffers.</para>
@@ -5331,6 +5331,62 @@ type
     /// </summary>
     property  Token                  : pointer           read GetToken             write SetToken;
   end;
+
+  /// <summary>
+  /// TPyBuffer wraps a Py_buffer record and it's also a
+  /// helper class for all PyBuffer_* methods.
+  /// </summary>
+  /// <remarks>
+  /// <para><see href="https://docs.python.org/3/c-api/buffer.html">See the article about the Buffer Protocol.</see></para>
+  /// </remarks>
+  IPyBuffer = interface
+    ['{4A6FD0D1-42C6-4B28-8B1A-F5FC48100A3F}']
+
+    function GetInitialized: boolean;
+    function GetBuffer: PPy_buffer;
+    /// <summary>
+    /// <para>Get the memory area pointed to by the indices inside the
+    /// view. indices must point to an array of view->ndim indices.</para>
+    /// </summary>
+    function GetPointer(const indices: Py_ssize_t_array): Pointer;
+    /// <summary>
+    /// <para>Copy contiguous len bytes from buf to view. fort can be 'C' or
+    /// 'F' (for C-style or Fortran-style ordering). True is returned on
+    /// success, False on error.</para>
+    /// </summary>
+    function FromContiguous(const buf: Pointer; len: Py_ssize_t; fort: TPyBufferOrder): boolean;
+    /// <summary>
+    /// <para>Return True if the memory defined by the view is C-style
+    /// (order is 'C') or Fortran-style (order is 'F') contiguous or
+    /// either one (order is 'A'). Return False otherwise. This function
+    /// always succeeds.</para>
+    /// </summary>
+    function IsContiguous(order: TPyBufferOrder): boolean;
+    /// <summary>
+    /// <para>Handle buffer requests for an exporter that wants to expose buf
+    /// of size len with writability set according to readonly. buf is
+    /// interpreted as a sequence of unsigned bytes.</para>
+    /// <para>The flags argument indicates the request type. This function
+    /// always fills in view as specified by flags, unless buf has been
+    /// designated as read-only and PyBUF_WRITABLE is set in flags.</para>
+    /// <para>On success, set view->obj to a new reference to exporter and
+    /// return True. Otherwise, raise BufferError, set view->obj to nil and
+    /// return False;</para>
+    /// <para>If this function is used as part of a getbufferproc, exporter
+    /// MUST be set to the exporting object and flags must be passed
+    /// unmodified. Otherwise, exporter MUST be nil.</para>
+    /// </summary>
+    function FillInfo(const exporter: IPyObject; buf: Pointer; len: Py_ssize_t; readonly, flags: Integer): boolean;
+    /// <summary>
+    /// <para>Returns true if the class is fully initialized.</para>
+    /// </summary>
+    property Initialized  : boolean               read GetInitialized;
+    /// <summary>
+    /// <para>Pointer to the Py_buffer record.</para>
+    /// </summary>
+    property Buffer       : PPy_buffer            read  GetBuffer;
+  end;
+
 
 implementation
 

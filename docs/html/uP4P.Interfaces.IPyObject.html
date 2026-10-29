@@ -224,7 +224,7 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>function <strong><a href="uP4P.Interfaces.IPyObject.html#GetBuffer-Py_buffer-Integer-">GetBuffer</a></strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; flags: Integer): boolean;</code></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Interfaces.IPyObject.html#GetBuffer-PPy_buffer-Integer-">GetBuffer</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; flags: Integer): boolean;</code></td>
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
@@ -1151,15 +1151,15 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="GetBuffer-Py_buffer-Integer-"></span><code>function <strong>GetBuffer</strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; flags: Integer): boolean;</code></td>
+<td class="itemcode"><span id="GetBuffer-PPy_buffer-Integer-"></span><code>function <strong>GetBuffer</strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; flags: Integer): boolean;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
 
 
-<p>Send a request to exporter to fill in view as specified by flags. If the exporter cannot provide a buffer of the exact type, it MUST raise BufferError, set view-&gt;obj to nil and return False.
+<p>Send a request to this object to fill in view as specified by flags. If this object cannot provide a buffer of the exact type, it MUST raise BufferError, set view-&gt;obj to nil and return False.
 
-<p>On success, fill in view, set view-&gt;obj to a new reference to exporter and return True. In the case of chained buffer providers that redirect requests to a single object, view-&gt;obj MAY refer to this object instead of exporter (See Buffer Object Structures).
+<p>On success, fill in view, set view-&gt;obj to a new reference to this object and return True. In the case of chained buffer providers that redirect requests to a single object, view-&gt;obj MAY refer to this object instead of this object (See Buffer Object Structures).
 
 <p>Successful calls to TPyObject.GetBuffer() must be paired with calls to TPyBuffer.Release(), similar to malloc() and free(). Thus, after the consumer is done with the buffer, TPyBuffer.Release() must be called exactly once.
 

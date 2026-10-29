@@ -57,6 +57,7 @@ uP4P.Interfaces.IPyModuleDef.html
 uP4P.Interfaces.IPyModuleSlotManager.html
 uP4P.Interfaces.IPyHeapTypeSlotManager.html
 uP4P.Interfaces.IPyType_Spec.html
+uP4P.Interfaces.IPyBuffer.html
 uP4P.IOPyModule.html
 uP4P.IOPyModule.TIOPyModule.html
 uP4P.IOPyModule.TPyIOModuleDef.html

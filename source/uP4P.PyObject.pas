@@ -208,19 +208,19 @@ type
       /// </summary>
       function  CheckBuffer: boolean;
       /// <summary>
-      /// <para>Send a request to exporter to fill in view as specified by
-      /// flags. If the exporter cannot provide a buffer of the exact type, it
+      /// <para>Send a request to this object to fill in view as specified by
+      /// flags. If this object cannot provide a buffer of the exact type, it
       /// MUST raise BufferError, set view->obj to nil and return False.</para>
       /// <para>On success, fill in view, set view->obj to a new reference to
-      /// exporter and return True. In the case of chained buffer providers that
+      /// this object and return True. In the case of chained buffer providers that
       /// redirect requests to a single object, view->obj MAY refer to this
-      /// object instead of exporter (See Buffer Object Structures).</para>
+      /// object instead of this object (See Buffer Object Structures).</para>
       /// <para>Successful calls to TPyObject.GetBuffer() must be paired with
       /// calls to TPyBuffer.Release(), similar to malloc() and free().
       /// Thus, after the consumer is done with the buffer, TPyBuffer.Release()
       /// must be called exactly once.</para>
       /// </summary>
-      function  GetBuffer(var view: Py_buffer; flags: Integer): boolean;
+      function  GetBuffer(view: PPy_buffer; flags: Integer): boolean;
       /// <summary>
       /// <para>Copy data from src to dest buffer. Can convert between C-style
       /// and or Fortran-style buffers.</para>
@@ -1559,11 +1559,11 @@ begin
             (PyObject_CheckBuffer(PyObject) <> 0);
 end;
 
-function TPyObject.GetBuffer(var view: Py_buffer; flags: Integer): boolean;
+function TPyObject.GetBuffer(view: PPy_buffer; flags: Integer): boolean;
 begin
   Result := Initialized and
             assigned(PyObject_GetBuffer) and
-            (PyObject_GetBuffer(PyObject, @view, flags) = 0);
+            (PyObject_GetBuffer(PyObject, view, flags) = 0);
 end;
 
 function TPyObject.CopyData(const src: IPyObject): boolean;

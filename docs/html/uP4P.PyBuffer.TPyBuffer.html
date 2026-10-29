@@ -14,28 +14,67 @@ body { margin: 0.5em; }
 <body>
 <span id="TPyBuffer"></span><h1 class="cio">Class TPyBuffer</h1>
 <div class="sections">
-<div class="one_section"><a class="section" href="#PasDoc-Description">Description</a></div><div class="one_section"><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></div><div class="one_section"><a class="section" href="#PasDoc-Methods">Methods</a></div></div>
+<div class="one_section"><a class="section" href="#PasDoc-Description">Description</a></div><div class="one_section"><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></div><div class="one_section"><a class="section" href="#PasDoc-Fields">Fields</a></div><div class="one_section"><a class="section" href="#PasDoc-Methods">Methods</a></div><div class="one_section"><a class="section" href="#PasDoc-Properties">Properties</a></div></div>
 <span id="PasDoc-Description"></span><h2 class="unit">Unit</h2>
 <p class="unitlink">
 <a href="uP4P.PyBuffer.html">uP4P.PyBuffer</a></p>
 <h2 class="declaration">Declaration</h2>
 <p class="declaration">
-<code>type TPyBuffer = class(TObject)</code></p>
+<code>type TPyBuffer = class(TInterfacedObject, <a class="normal" href="uP4P.Interfaces.IPyBuffer.html">IPyBuffer</a>)</code></p>
 <h2 class="description">Description</h2>
 <p>
- Helper class for all PyBuffer_* methods. </p>
+ TPyBuffer wraps a Py_buffer record and it's also a helper class for all PyBuffer_* methods. </p>
 <p>
 
 
-<p>&lt;see href=&quot;<a href="https://docs.python.org/3/c-api/buffer.html#buffer-related-functions">https://docs.python.org/3/c-api/buffer.html#buffer-related-functions</a>&quot;&gt;See the article about Buffer-related functions.)</p>
+<p>&lt;see href=&quot;<a href="https://docs.python.org/3/c-api/buffer.html">https://docs.python.org/3/c-api/buffer.html</a>&quot;&gt;See the article about the Buffer Protocol.)</p>
 <span id="PasDoc-Hierarchy"></span><h2 class="hierarchy">Hierarchy</h2>
-<ul class="hierarchy"><li class="ancestor">TObject</li>
+<ul class="hierarchy"><li class="ancestor">TInterfacedObject</li>
 <li class="thisitem">TPyBuffer</li></ul><h2 class="overview">Overview</h2>
+<span id="PasDoc-Fields"></span><h3 class="summary">Fields</h3>
+<table class="summary wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><code><strong><a href="uP4P.PyBuffer.TPyBuffer.html#FBuffer">FBuffer</a></strong>: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>;</code></td>
+</tr>
+</table>
 <span id="PasDoc-Methods"></span><h3 class="summary">Methods</h3>
 <table class="summary wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#GetInitialized">GetInitialized</a></strong>: boolean;</code></td>
+</tr>
+<tr class="list2 visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#GetBuffer">GetBuffer</a></strong>: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>;</code></td>
+</tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#GetPointer-Py_buffer-Py_ssize_t_array-">GetPointer</a></strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer;</code></td>
+<td class="itemcode"><code>constructor <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Create">Create</a></strong>;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>destructor <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Destroy">Destroy</a></strong>; override;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#GetPointer-Py_ssize_t_array-">GetPointer</a></strong>(const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer; overload;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-Pointer-Py_ssize_t-TPyBufferOrder-">FromContiguous</a></strong>(const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-TPyBufferOrder-">IsContiguous</a></strong>(order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FillInfo-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">FillInfo</a></strong>(const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean; overload;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#GetPointer-PPy_buffer-Py_ssize_t_array-">GetPointer</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer; overload;</code></td>
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
@@ -43,15 +82,15 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#ToContiguous-Pointer-Py_buffer-Py_ssize_t-TPyBufferOrder-">ToContiguous</a></strong>(buf: Pointer; var src: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#ToContiguous-Pointer-PPy_buffer-Py_ssize_t-TPyBufferOrder-">ToContiguous</a></strong>(buf: Pointer; src: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-Py_buffer-Pointer-Py_ssize_t-TPyBufferOrder-">FromContiguous</a></strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-PPy_buffer-Pointer-Py_ssize_t-TPyBufferOrder-">FromContiguous</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-Py_buffer-TPyBufferOrder-">IsContiguous</a></strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-PPy_buffer-TPyBufferOrder-">IsContiguous</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
@@ -59,19 +98,133 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FillInfo-Py_buffer-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">FillInfo</a></strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FillInfo-PPy_buffer-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">FillInfo</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean; overload;</code></td>
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class procedure <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Release-Py_buffer-">Release</a></strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>);</code></td>
+<td class="itemcode"><code>class procedure <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Release-PPy_buffer-">Release</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>);</code></td>
+</tr>
+</table>
+<span id="PasDoc-Properties"></span><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>property <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Initialized">Initialized</a></strong>  : boolean               read <a href="uP4P.PyBuffer.TPyBuffer.html#GetInitialized">GetInitialized</a>;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>property <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Buffer">Buffer</a></strong>       : <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>            read  <a href="uP4P.PyBuffer.TPyBuffer.html#GetBuffer">GetBuffer</a>;</code></td>
 </tr>
 </table>
 <h2 class="description">Description</h2>
+<h3 class="detail">Fields</h3>
+<table class="detail visibility-protected wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><span id="FBuffer"></span><code><strong>FBuffer</strong>: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
 <h3 class="detail">Methods</h3>
+<table class="detail visibility-protected wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><span id="GetInitialized"></span><code>function <strong>GetInitialized</strong>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-protected wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><span id="GetBuffer"></span><code>function <strong>GetBuffer</strong>: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="GetPointer-Py_buffer-Py_ssize_t_array-"></span><code>class function <strong>GetPointer</strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer;</code></td>
+<td class="itemcode"><span id="Create"></span><code>constructor <strong>Create</strong>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Destroy"></span><code>destructor <strong>Destroy</strong>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="GetPointer-Py_ssize_t_array-"></span><code>function <strong>GetPointer</strong>(const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Get the memory area pointed to by the indices inside the view. indices must point to an array of view-&gt;ndim indices.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="FromContiguous-Pointer-Py_ssize_t-TPyBufferOrder-"></span><code>function <strong>FromContiguous</strong>(const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Copy contiguous len bytes from buf to view. fort can be 'C' or 'F' (for C-style or Fortran-style ordering). True is returned on success, False on error.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="IsContiguous-TPyBufferOrder-"></span><code>function <strong>IsContiguous</strong>(order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return True if the memory defined by the view is C-style (order is 'C') or Fortran-style (order is 'F') contiguous or either one (order is 'A'). Return False otherwise. This function always succeeds.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="FillInfo-IPyObject-Pointer-Py_ssize_t-Integer-Integer-"></span><code>function <strong>FillInfo</strong>(const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Handle buffer requests for an exporter that wants to expose buf of size len with writability set according to readonly. buf is interpreted as a sequence of unsigned bytes.
+
+<p>The flags argument indicates the request type. This function always fills in view as specified by flags, unless buf has been designated as read-only and PyBUF_WRITABLE is set in flags.
+
+<p>On success, set view-&gt;obj to a new reference to exporter and return True. Otherwise, raise BufferError, set view-&gt;obj to nil and return False;
+
+<p>If this function is used as part of a getbufferproc, exporter MUST be set to the exporting object and flags must be passed unmodified. Otherwise, exporter MUST be nil.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="GetPointer-PPy_buffer-Py_ssize_t_array-"></span><code>class function <strong>GetPointer</strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -99,7 +252,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="ToContiguous-Pointer-Py_buffer-Py_ssize_t-TPyBufferOrder-"></span><code>class function <strong>ToContiguous</strong>(buf: Pointer; var src: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
+<td class="itemcode"><span id="ToContiguous-Pointer-PPy_buffer-Py_ssize_t-TPyBufferOrder-"></span><code>class function <strong>ToContiguous</strong>(buf: Pointer; src: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -115,7 +268,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="FromContiguous-Py_buffer-Pointer-Py_ssize_t-TPyBufferOrder-"></span><code>class function <strong>FromContiguous</strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
+<td class="itemcode"><span id="FromContiguous-PPy_buffer-Pointer-Py_ssize_t-TPyBufferOrder-"></span><code>class function <strong>FromContiguous</strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -129,7 +282,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="IsContiguous-Py_buffer-TPyBufferOrder-"></span><code>class function <strong>IsContiguous</strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
+<td class="itemcode"><span id="IsContiguous-PPy_buffer-TPyBufferOrder-"></span><code>class function <strong>IsContiguous</strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -157,7 +310,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="FillInfo-Py_buffer-IPyObject-Pointer-Py_ssize_t-Integer-Integer-"></span><code>class function <strong>FillInfo</strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>; const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean;</code></td>
+<td class="itemcode"><span id="FillInfo-PPy_buffer-IPyObject-Pointer-Py_ssize_t-Integer-Integer-"></span><code>class function <strong>FillInfo</strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -177,7 +330,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="Release-Py_buffer-"></span><code>class procedure <strong>Release</strong>(var view: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>);</code></td>
+<td class="itemcode"><span id="Release-PPy_buffer-"></span><code>class procedure <strong>Release</strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>);</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -186,6 +339,35 @@ body { margin: 0.5em; }
 <p>Release the buffer view and release the strong reference (i.e. decrement the reference count) to the view's supporting object, view-&gt;obj. This function MUST be called when the buffer is no longer being used, otherwise reference leaks may occur.
 
 <p>It is an error to call this function on a buffer that was not obtained via TPyObject.GetBuffer().
+
+<p></p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Initialized"></span><code>property <strong>Initialized</strong>  : boolean               read <a href="uP4P.PyBuffer.TPyBuffer.html#GetInitialized">GetInitialized</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Returns true if the class is fully initialized.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Buffer"></span><code>property <strong>Buffer</strong>       : <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>            read  <a href="uP4P.PyBuffer.TPyBuffer.html#GetBuffer">GetBuffer</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Pointer to the Py_buffer record.
 
 <p></p>
 </td></tr>

@@ -305,6 +305,42 @@
 <param name="Local" value="uP4P.IOPyModule.html#IOPyModuleName">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="IPyBuffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Buffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#Buffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FillInfo">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#FillInfo-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FromContiguous">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#FromContiguous-Pointer-Py_ssize_t-TPyBufferOrder-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetBuffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetBuffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetPointer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetPointer-Py_ssize_t_array-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#Initialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IsContiguous">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#IsContiguous-TPyBufferOrder-">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="IPyBytesWriter">
 <param name="Local" value="uP4P.Interfaces.IPyBytesWriter.html">
 </object>
@@ -3706,7 +3742,7 @@
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetBuffer">
-<param name="Local" value="uP4P.Interfaces.IPyObject.html#GetBuffer-Py_buffer-Integer-">
+<param name="Local" value="uP4P.Interfaces.IPyObject.html#GetBuffer-PPy_buffer-Integer-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetInitialized">
@@ -17939,28 +17975,96 @@
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="Buffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Buffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FBuffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FBuffer">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="FillContiguousStrides">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillContiguousStrides-Integer-PPy_ssize_t-PPy_ssize_t-Integer-TPyBufferOrder-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="FillInfo">
-<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillInfo-Py_buffer-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillInfo-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillInfo-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillInfo-PPy_buffer-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">
+</object>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="FromContiguous">
-<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-Py_buffer-Pointer-Py_ssize_t-TPyBufferOrder-">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-Pointer-Py_ssize_t-TPyBufferOrder-">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-Pointer-Py_ssize_t-TPyBufferOrder-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-PPy_buffer-Pointer-Py_ssize_t-TPyBufferOrder-">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="GetBuffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetBuffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetInitialized">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetPointer">
-<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer-Py_buffer-Py_ssize_t_array-">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer-PPy_buffer-Py_ssize_t_array-">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer-PPy_buffer-Py_ssize_t_array-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer-Py_ssize_t_array-">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Initialized">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="IsContiguous">
-<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-Py_buffer-TPyBufferOrder-">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-PPy_buffer-TPyBufferOrder-">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-PPy_buffer-TPyBufferOrder-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="TPyBuffer - uP4P.PyBuffer Unit">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-TPyBufferOrder-">
+</object>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="Release">
-<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Release-Py_buffer-">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Release-PPy_buffer-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="SizeFromFormat">
@@ -17968,7 +18072,7 @@
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="ToContiguous">
-<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#ToContiguous-Pointer-Py_buffer-Py_ssize_t-TPyBufferOrder-">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#ToContiguous-Pointer-PPy_buffer-Py_ssize_t-TPyBufferOrder-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="TPyBufferOrder">
@@ -28282,7 +28386,7 @@
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetBuffer">
-<param name="Local" value="uP4P.PyObject.TPyObject.html#GetBuffer-Py_buffer-Integer-">
+<param name="Local" value="uP4P.PyObject.TPyObject.html#GetBuffer-PPy_buffer-Integer-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetInitialized">

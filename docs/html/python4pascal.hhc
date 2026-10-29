@@ -7489,6 +7489,56 @@
 </object>
 </ul>
 </ul>
+<li><object type="text/sitemap">
+<param name="Name" value="IPyBuffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Properties">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#@Properties">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#Initialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Buffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#Buffer">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetBuffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetBuffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetPointer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetPointer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FromContiguous">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#FromContiguous">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IsContiguous">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#IsContiguous">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FillInfo">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#FillInfo">
+</object>
+</ul>
+</ul>
 </ul>
 <li><object type="text/sitemap">
 <param name="Name" value="Types">
@@ -9321,10 +9371,66 @@
 </object>
 <ul>
 <li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="FBuffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FBuffer">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Properties">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#@Properties">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Initialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Buffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Buffer">
+</object>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="Methods">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#@Methods">
 </object>
 <ul>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetBuffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetBuffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetPointer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FromContiguous">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FromContiguous">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IsContiguous">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#IsContiguous">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FillInfo">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillInfo">
+</object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetPointer">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer">
@@ -31714,6 +31820,56 @@
 </object>
 <ul>
 <li><object type="text/sitemap">
+<param name="Name" value="IPyBuffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Properties">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#@Properties">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Buffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#Buffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#Initialized">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="FillInfo">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#FillInfo">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FromContiguous">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#FromContiguous">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetBuffer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetBuffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetPointer">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#GetPointer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IsContiguous">
+<param name="Local" value="uP4P.Interfaces.IPyBuffer.html#IsContiguous">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="IPyBytesWriter">
 <param name="Local" value="uP4P.Interfaces.IPyBytesWriter.html">
 </object>
@@ -43031,10 +43187,46 @@
 </object>
 <ul>
 <li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="FBuffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FBuffer">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Properties">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#@Properties">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Buffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Buffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Initialized">
+</object>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="Methods">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#@Methods">
 </object>
 <ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FillInfo">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillInfo">
+</object>
 <li><object type="text/sitemap">
 <param name="Name" value="FillInfo">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FillInfo">
@@ -43044,8 +43236,20 @@
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FromContiguous">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="FromContiguous">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#FromContiguous">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="GetPointer">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetPointer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetPointer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IsContiguous">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#IsContiguous">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="IsContiguous">
@@ -43058,6 +43262,14 @@
 <li><object type="text/sitemap">
 <param name="Name" value="ToContiguous">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#ToContiguous">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetBuffer">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetBuffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetInitialized">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="FillContiguousStrides">
