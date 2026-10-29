@@ -57,7 +57,13 @@ type
       /// view. For simple byte buffers, TPyMemoryView.FromMemory() is the
       /// preferred function.</para>
       /// </summary>
-      class function FromBuffer(const view: PPy_buffer): IPyObject;
+      class function FromBuffer(const view: PPy_buffer): IPyObject; overload;
+      /// <summary>
+      /// <para>Create a memoryview object wrapping the given buffer structure
+      /// view. For simple byte buffers, TPyMemoryView.FromMemory() is the
+      /// preferred function.</para>
+      /// </summary>
+      class function FromBuffer(const view: IPyBuffer): IPyObject; overload;
   end;
 
 implementation
@@ -88,6 +94,14 @@ class function TPyMemoryView.FromBuffer(const view: PPy_buffer): IPyObject;
 begin
   if assigned(PyMemoryView_FromBuffer) then
     Result := TPyObject.Wrap(PyMemoryView_FromBuffer(view))
+   else
+    Result := nil;
+end;
+
+class function TPyMemoryView.FromBuffer(const view: IPyBuffer): IPyObject;
+begin
+  if assigned(view) and view.Initialized then
+    Result := FromBuffer(view.Buffer)
    else
     Result := nil;
 end;

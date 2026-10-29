@@ -32,7 +32,8 @@ type
       function GetBuffer: PPy_buffer;
 
     public
-      constructor Create;
+      constructor Create; overload;
+      constructor Create(const aBuffer: Py_buffer); overload;
       destructor  Destroy; override;
 
       /// <summary>
@@ -147,6 +148,13 @@ begin
   inherited Create;
 
   FillChar(FBuffer, SizeOf(FBuffer), #0);
+end;
+
+constructor TPyBuffer.Create(const aBuffer: Py_buffer);
+begin
+  inherited Create;
+
+  FBuffer := aBuffer;
 end;
 
 destructor TPyBuffer.Destroy;
