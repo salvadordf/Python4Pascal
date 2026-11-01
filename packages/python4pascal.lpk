@@ -611,6 +611,10 @@
         <Filename Value="..\source\uP4P.Metadata.pas"/>
         <UnitName Value="uP4P.Metadata"/>
       </Item>
+      <Item>
+        <Filename Value="..\source\uP4P.PyMarshal.pas"/>
+        <UnitName Value="uP4P.PyMarshal"/>
+      </Item>
     </Files>
     <RequiredPkgs>
       <Item>

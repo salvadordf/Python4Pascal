@@ -1406,6 +1406,17 @@ var
 
   {* include/datetime.h *}
 
+  {* include/marshal.h  include/cpython/marshal.h *}
+  PyMarshal_ReadObjectFromString                 : function(const data: PAnsiChar; len: Py_ssize_t): PPyObject; cdecl;
+  PyMarshal_WriteObjectToString                  : function(value: PPyObject; version: integer): PPyObject; cdecl;
+  PyMarshal_ReadLongFromFile                     : function(file_: PFILE): C_Long; cdecl;
+  PyMarshal_ReadShortFromFile                    : function(file_: PFILE): integer; cdecl;
+  PyMarshal_ReadObjectFromFile                   : function(file_: PFILE): PPyObject; cdecl;
+  PyMarshal_ReadLastObjectFromFile               : function(file_: PFILE): PPyObject; cdecl;
+  PyMarshal_WriteLongToFile                      : procedure(value: C_Long; file_: PFILE; version: integer); cdecl;
+  PyMarshal_WriteObjectToFile                    : procedure(value: PPyObject; file_: PFILE; version: integer); cdecl;
+
+
 implementation
 
 end.

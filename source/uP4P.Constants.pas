@@ -1782,6 +1782,10 @@ const
   /// </summary>
   _PyDateTime_DATETIME_DATASIZE  = 10;
 
+
+  {* include/marshal.h  include/cpython/marshal.h *}
+  Py_MARSHAL_VERSION = 6;
+
 implementation
 
 end.

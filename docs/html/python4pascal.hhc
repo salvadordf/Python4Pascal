@@ -1781,6 +1781,10 @@
 <param name="Name" value="_PyDateTime_DATETIME_DATASIZE">
 <param name="Local" value="uP4P.Constants.html#_PyDateTime_DATETIME_DATASIZE">
 </object>
+<li><object type="text/sitemap">
+<param name="Name" value="Py_MARSHAL_VERSION">
+<param name="Local" value="uP4P.Constants.html#Py_MARSHAL_VERSION">
+</object>
 </ul>
 </ul>
 <li><object type="text/sitemap">
@@ -8366,6 +8370,10 @@
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#Load_frameobject">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="Load_marshal">
+<param name="Local" value="uP4P.Loader.TP4PLoader.html#Load_marshal">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Create">
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#Create">
 </object>
@@ -9406,6 +9414,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="GetBuffer">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#GetBuffer">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Create">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="Create">
@@ -19326,6 +19338,70 @@
 </ul>
 </ul>
 <li><object type="text/sitemap">
+<param name="Name" value="uP4P.PyMarshal">
+<param name="Local" value="uP4P.PyMarshal.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Classes">
+<param name="Local" value="uP4P.PyMarshal.html#@Classes">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyMarshal">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromStream">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromStream">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromString">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromString">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromString">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromString">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="WriteObjectToString">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#WriteObjectToString">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadLongFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadLongFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadShortFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadShortFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadLastObjectFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadLastObjectFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="WriteLongToFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#WriteLongToFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="WriteObjectToFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#WriteObjectToFile">
+</object>
+</ul>
+</ul>
+</ul>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="uP4P.PyMath">
 <param name="Local" value="uP4P.PyMath.html">
 </object>
@@ -19636,6 +19712,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="FromMemory">
 <param name="Local" value="uP4P.PyMemoryView.TPyMemoryView.html#FromMemory">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FromBuffer">
+<param name="Local" value="uP4P.PyMemoryView.TPyMemoryView.html#FromBuffer">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="FromBuffer">
@@ -42380,6 +42460,10 @@
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#Load_longobject">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="Load_marshal">
+<param name="Local" value="uP4P.Loader.TP4PLoader.html#Load_marshal">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Load_memoryobject">
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#Load_memoryobject">
 </object>
@@ -43215,6 +43299,10 @@
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#@Methods">
 </object>
 <ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Create">
+</object>
 <li><object type="text/sitemap">
 <param name="Name" value="Create">
 <param name="Local" value="uP4P.PyBuffer.TPyBuffer.html#Create">
@@ -52530,6 +52618,58 @@
 </ul>
 </ul>
 <li><object type="text/sitemap">
+<param name="Name" value="TPyMarshal">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadLastObjectFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadLastObjectFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadLongFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadLongFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromStream">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromStream">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromString">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromString">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadObjectFromString">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromString">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadShortFromFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#ReadShortFromFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="WriteObjectToString">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#WriteObjectToString">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="WriteLongToFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#WriteLongToFile">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="WriteObjectToFile">
+<param name="Local" value="uP4P.PyMarshal.TPyMarshal.html#WriteObjectToFile">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="TPyMath">
 <param name="Local" value="uP4P.PyMath.TPyMath.html">
 </object>
@@ -52770,6 +52910,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="Check">
 <param name="Local" value="uP4P.PyMemoryView.TPyMemoryView.html#Check">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FromBuffer">
+<param name="Local" value="uP4P.PyMemoryView.TPyMemoryView.html#FromBuffer">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="FromBuffer">

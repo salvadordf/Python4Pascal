@@ -3655,6 +3655,30 @@ body { margin: 0.5em; }
 <tr class="list2 visibility-published">
 <td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyFrame_FastToLocals">PyFrame_FastToLocals</a></strong>: procedure(f: <a href="uP4P.Types.html#PPyFrameObject">PPyFrameObject</a>); cdecl;</code></td>
 </tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_ReadObjectFromString">PyMarshal_ReadObjectFromString</a></strong>: function(const data: PAnsiChar; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_WriteObjectToString">PyMarshal_WriteObjectToString</a></strong>: function(value: <a href="uP4P.Types.html#PPyObject">PPyObject</a>; version: integer): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_ReadLongFromFile">PyMarshal_ReadLongFromFile</a></strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#C_Long">C_Long</a>; cdecl;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_ReadShortFromFile">PyMarshal_ReadShortFromFile</a></strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): integer; cdecl;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_ReadObjectFromFile">PyMarshal_ReadObjectFromFile</a></strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_ReadLastObjectFromFile">PyMarshal_ReadLastObjectFromFile</a></strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_WriteLongToFile">PyMarshal_WriteLongToFile</a></strong>: procedure(value: <a href="uP4P.Types.html#C_Long">C_Long</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer); cdecl;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.LibFunctions.html#PyMarshal_WriteObjectToFile">PyMarshal_WriteObjectToFile</a></strong>: procedure(value: <a href="uP4P.Types.html#PPyObject">PPyObject</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer); cdecl;</code></td>
+</tr>
 </table>
 <h2 class="description">Description</h2>
 <h3 class="detail">Variables</h3>
@@ -12416,6 +12440,64 @@ Py_VaBuildValue not implemented // PyAPI_FUNC(PyObject *) Py_VaBuildValue(const 
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
 <td class="itemcode"><span id="PyFrame_FastToLocals"></span><code><strong>PyFrame_FastToLocals</strong>: procedure(f: <a href="uP4P.Types.html#PPyFrameObject">PPyFrameObject</a>); cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_ReadObjectFromString"></span><code><strong>PyMarshal_ReadObjectFromString</strong>: function(const data: PAnsiChar; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+* include/marshal.h include/cpython/marshal.h *</p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_WriteObjectToString"></span><code><strong>PyMarshal_WriteObjectToString</strong>: function(value: <a href="uP4P.Types.html#PPyObject">PPyObject</a>; version: integer): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_ReadLongFromFile"></span><code><strong>PyMarshal_ReadLongFromFile</strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#C_Long">C_Long</a>; cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_ReadShortFromFile"></span><code><strong>PyMarshal_ReadShortFromFile</strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): integer; cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_ReadObjectFromFile"></span><code><strong>PyMarshal_ReadObjectFromFile</strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_ReadLastObjectFromFile"></span><code><strong>PyMarshal_ReadLastObjectFromFile</strong>: function(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#PPyObject">PPyObject</a>; cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_WriteLongToFile"></span><code><strong>PyMarshal_WriteLongToFile</strong>: procedure(value: <a href="uP4P.Types.html#C_Long">C_Long</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer); cdecl;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="PyMarshal_WriteObjectToFile"></span><code><strong>PyMarshal_WriteObjectToFile</strong>: procedure(value: <a href="uP4P.Types.html#PPyObject">PPyObject</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer); cdecl;</code></td>
 </tr>
 <tr><td colspan="1">
 <p class="nodescription">This item has no description.</p></td></tr>

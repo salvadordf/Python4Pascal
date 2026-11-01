@@ -51,7 +51,11 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyMemoryView.TPyMemoryView.html#FromBuffer-PPy_buffer-">FromBuffer</a></strong>(const view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMemoryView.TPyMemoryView.html#FromBuffer-PPy_buffer-">FromBuffer</a></strong>(const view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMemoryView.TPyMemoryView.html#FromBuffer-IPyBuffer-">FromBuffer</a></strong>(const view: <a href="uP4P.Interfaces.IPyBuffer.html">IPyBuffer</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
 </tr>
 </table>
 <h2 class="description">Description</h2>
@@ -117,7 +121,21 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="FromBuffer-PPy_buffer-"></span><code>class function <strong>FromBuffer</strong>(const view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+<td class="itemcode"><span id="FromBuffer-PPy_buffer-"></span><code>class function <strong>FromBuffer</strong>(const view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Create a memoryview object wrapping the given buffer structure view. For simple byte buffers, TPyMemoryView.FromMemory() is the preferred function.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="FromBuffer-IPyBuffer-"></span><code>class function <strong>FromBuffer</strong>(const view: <a href="uP4P.Interfaces.IPyBuffer.html">IPyBuffer</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>

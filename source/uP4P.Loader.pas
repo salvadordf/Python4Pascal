@@ -177,6 +177,7 @@ type
       procedure Load_fileutils;
       procedure Load_tracemalloc;
       procedure Load_frameobject;
+      procedure Load_marshal;
 
       property  IsHandleValid : boolean read GetIsHandleValid;
 
@@ -1946,6 +1947,7 @@ begin
   Load_fileutils;
   Load_tracemalloc;
   Load_frameobject;
+  Load_marshal;
 end;
 
 procedure TP4PLoader.Load_pymacro;
@@ -3451,6 +3453,18 @@ begin
   {$IFDEF FPC}Pointer({$ENDIF}PyFrame_LocalsToFast{$IFDEF FPC}){$ENDIF}          := GetProcAddress(FLibHandle, 'PyFrame_LocalsToFast');
   {$IFDEF FPC}Pointer({$ENDIF}PyFrame_FastToLocalsWithError{$IFDEF FPC}){$ENDIF} := GetProcAddress(FLibHandle, 'PyFrame_FastToLocalsWithError');
   {$IFDEF FPC}Pointer({$ENDIF}PyFrame_FastToLocals{$IFDEF FPC}){$ENDIF}          := GetProcAddress(FLibHandle, 'PyFrame_FastToLocals');
+end;
+
+procedure TP4PLoader.Load_marshal;
+begin
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_ReadObjectFromString{$IFDEF FPC}){$ENDIF}   := GetProcAddress(FLibHandle, 'PyMarshal_ReadObjectFromString');
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_WriteObjectToString{$IFDEF FPC}){$ENDIF}    := GetProcAddress(FLibHandle, 'PyMarshal_WriteObjectToString');
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_ReadLongFromFile{$IFDEF FPC}){$ENDIF}       := GetProcAddress(FLibHandle, 'PyMarshal_ReadLongFromFile');
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_ReadShortFromFile{$IFDEF FPC}){$ENDIF}      := GetProcAddress(FLibHandle, 'PyMarshal_ReadShortFromFile');
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_ReadObjectFromFile{$IFDEF FPC}){$ENDIF}     := GetProcAddress(FLibHandle, 'PyMarshal_ReadObjectFromFile');
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_ReadLastObjectFromFile{$IFDEF FPC}){$ENDIF} := GetProcAddress(FLibHandle, 'PyMarshal_ReadLastObjectFromFile');
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_WriteLongToFile{$IFDEF FPC}){$ENDIF}        := GetProcAddress(FLibHandle, 'PyMarshal_WriteLongToFile');
+  {$IFDEF FPC}Pointer({$ENDIF}PyMarshal_WriteObjectToFile{$IFDEF FPC}){$ENDIF}      := GetProcAddress(FLibHandle, 'PyMarshal_WriteObjectToFile');
 end;
 
 end.

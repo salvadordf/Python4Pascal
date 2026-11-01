@@ -50,57 +50,61 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>constructor <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Create">Create</a></strong>;</code></td>
+<td class="itemcode"><code>constructor <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Create">Create</a></strong>; overload;</code></td>
 </tr>
 <tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>constructor <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Create-Py_buffer-">Create</a></strong>(const aBuffer: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>); overload;</code></td>
+</tr>
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>destructor <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Destroy">Destroy</a></strong>; override;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#GetPointer-Py_ssize_t_array-">GetPointer</a></strong>(const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-Pointer-Py_ssize_t-TPyBufferOrder-">FromContiguous</a></strong>(const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-TPyBufferOrder-">IsContiguous</a></strong>(order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FillInfo-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">FillInfo</a></strong>(const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean; overload;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#GetPointer-PPy_buffer-Py_ssize_t_array-">GetPointer</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const indices: <a href="uP4P.Types.html#Py_ssize_t_array">Py_ssize_t_array</a>): Pointer; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#SizeFromFormat-PAnsiChar-">SizeFromFormat</a></strong>(const format: PAnsiChar): <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#ToContiguous-Pointer-PPy_buffer-Py_ssize_t-TPyBufferOrder-">ToContiguous</a></strong>(buf: Pointer; src: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FromContiguous-PPy_buffer-Pointer-Py_ssize_t-TPyBufferOrder-">FromContiguous</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; fort: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#IsContiguous-PPy_buffer-TPyBufferOrder-">IsContiguous</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>): boolean; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class procedure <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FillContiguousStrides-Integer-PPy_ssize_t-PPy_ssize_t-Integer-TPyBufferOrder-">FillContiguousStrides</a></strong>(ndims: Integer; shape, strides: <a href="uP4P.Types.html#PPy_ssize_t">PPy_ssize_t</a>; itemsize: Integer; order: <a href="uP4P.Types.html#TPyBufferOrder">TPyBufferOrder</a>);</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyBuffer.TPyBuffer.html#FillInfo-PPy_buffer-IPyObject-Pointer-Py_ssize_t-Integer-Integer-">FillInfo</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>; const exporter: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; buf: Pointer; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; readonly, flags: Integer): boolean; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class procedure <strong><a href="uP4P.PyBuffer.TPyBuffer.html#Release-PPy_buffer-">Release</a></strong>(view: <a href="uP4P.Types.html#PPy_buffer">PPy_buffer</a>);</code></td>
 </tr>
@@ -146,7 +150,15 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="Create"></span><code>constructor <strong>Create</strong>;</code></td>
+<td class="itemcode"><span id="Create"></span><code>constructor <strong>Create</strong>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Create-Py_buffer-"></span><code>constructor <strong>Create</strong>(const aBuffer: <a href="uP4P.Types.Py_buffer.html">Py_buffer</a>); overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p class="nodescription">This item has no description.</p></td></tr>

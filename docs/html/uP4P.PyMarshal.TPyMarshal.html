@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>python4pascal: uP4P.PyMarshal: Class TPyMarshal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="PasDoc 1.0.5.snapshot">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="StyleSheet" type="text/css" href="bootstrap.min.css">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+<style type="text/css">
+body { margin: 0.5em; }
+.badge { padding: 0.1em 0.5em; color: white; }
+</style></head>
+<body>
+<span id="TPyMarshal"></span><h1 class="cio">Class TPyMarshal</h1>
+<div class="sections">
+<div class="one_section"><a class="section" href="#PasDoc-Description">Description</a></div><div class="one_section"><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></div><div class="one_section"><a class="section" href="#PasDoc-Methods">Methods</a></div></div>
+<span id="PasDoc-Description"></span><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a href="uP4P.PyMarshal.html">uP4P.PyMarshal</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TPyMarshal = class(TObject)</code></p>
+<h2 class="description">Description</h2>
+<p>
+ Helper class for PyMarshal_* methods. </p>
+<p>
+
+
+<p>&lt;see href=&quot;<a href="https://docs.python.org/3.15/c-api/marshal.html">https://docs.python.org/3.15/c-api/marshal.html</a>&quot;&gt;See the article about Data marshalling support.)</p>
+<span id="PasDoc-Hierarchy"></span><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">TObject</li>
+<li class="thisitem">TPyMarshal</li></ul><h2 class="overview">Overview</h2>
+<span id="PasDoc-Methods"></span><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromStream-TMemoryStream-">ReadObjectFromStream</a></strong>(const data: TMemoryStream): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromString-PByte-Py_ssize_t-">ReadObjectFromString</a></strong>(const data: PByte; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromString-string-">ReadObjectFromString</a></strong>(const data: string): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#WriteObjectToString-IPyObject-integer-">WriteObjectToString</a></strong>(const value: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; version: integer): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#ReadLongFromFile-PFILE-">ReadLongFromFile</a></strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#C_Long">C_Long</a>;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#ReadShortFromFile-PFILE-">ReadShortFromFile</a></strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): integer;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#ReadObjectFromFile-PFILE-">ReadObjectFromFile</a></strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyMarshal.TPyMarshal.html#ReadLastObjectFromFile-PFILE-">ReadLastObjectFromFile</a></strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class procedure <strong><a href="uP4P.PyMarshal.TPyMarshal.html#WriteLongToFile-C_Long-PFILE-integer-">WriteLongToFile</a></strong>(value: <a href="uP4P.Types.html#C_Long">C_Long</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer);</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class procedure <strong><a href="uP4P.PyMarshal.TPyMarshal.html#WriteObjectToFile-IPyObject-PFILE-integer-">WriteObjectToFile</a></strong>(const value: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer);</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Methods</h3>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="ReadObjectFromStream-TMemoryStream-"></span><code>class function <strong>ReadObjectFromStream</strong>(const data: TMemoryStream): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a Python object from the data stream.
+
+<p>On error, sets the appropriate exception (EOFError, ValueError or TypeError) and returns nil.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="ReadObjectFromString-PByte-Py_ssize_t-"></span><code>class function <strong>ReadObjectFromString</strong>(const data: PByte; len: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a Python object from the data stream in a byte buffer containing len bytes pointed to by data.
+
+<p>On error, sets the appropriate exception (EOFError, ValueError or TypeError) and returns nil.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="ReadObjectFromString-string-"></span><code>class function <strong>ReadObjectFromString</strong>(const data: string): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a Python object from the data stream in a string.
+
+<p>On error, sets the appropriate exception (EOFError, ValueError or TypeError) and returns nil.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="WriteObjectToString-IPyObject-integer-"></span><code>class function <strong>WriteObjectToString</strong>(const value: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; version: integer): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a bytes object containing the marshalled representation of value. version indicates the file format.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="ReadLongFromFile-PFILE-"></span><code>class function <strong>ReadLongFromFile</strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Types.html#C_Long">C_Long</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a C long from the data stream in a PFILE opened for reading. Only a 32-bit value can be read in using this function, regardless of the native size of long.
+
+<p>On error, sets the appropriate exception (EOFError) and returns -1.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="ReadShortFromFile-PFILE-"></span><code>class function <strong>ReadShortFromFile</strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): integer;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a C short from the data stream in a PFILE opened for reading. Only a 16-bit value can be read in using this function, regardless of the native size of short.
+
+<p>On error, sets the appropriate exception (EOFError) and returns -1.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="ReadObjectFromFile-PFILE-"></span><code>class function <strong>ReadObjectFromFile</strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a Python object from the data stream in a PFILE opened for reading.
+
+<p>On error, sets the appropriate exception (EOFError, ValueError or TypeError) and returns nil.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="ReadLastObjectFromFile-PFILE-"></span><code>class function <strong>ReadLastObjectFromFile</strong>(file_: <a href="uP4P.Types.html#PFILE">PFILE</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return a Python object from the data stream in a PFILE opened for reading. Unlike TPyMarshal.ReadObjectFromFile(), this function assumes that no further objects will be read from the file, allowing it to aggressively load file data into memory so that the de-serialization can operate from data in memory rather than reading a byte at a time from the file. Only use this variant if you are certain that you won't be reading anything else from the file.
+
+<p>On error, sets the appropriate exception (EOFError, ValueError or TypeError) and returns nil.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="WriteLongToFile-C_Long-PFILE-integer-"></span><code>class procedure <strong>WriteLongToFile</strong>(value: <a href="uP4P.Types.html#C_Long">C_Long</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Marshal a long integer, value, to file. This will only write the least-significant 32 bits of value; regardless of the size of the native long type. version indicates the file format.
+
+<p>This function can fail, in which case it sets the error indicator. Use TPyErr.Occurred() to check for that.
+
+<p>Note: In Python 3.15 and earlier, this function does not set the error indicator if writing to file fails. The same caveat applies as for TPyMarshal.WriteObjectToFile().
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="WriteObjectToFile-IPyObject-PFILE-integer-"></span><code>class procedure <strong>WriteObjectToFile</strong>(const value: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; file_: <a href="uP4P.Types.html#PFILE">PFILE</a>; version: integer);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Marshal a Python object, value, to file. version indicates the file format.
+
+<p>This function can fail, in which case it sets the error indicator. Use TPyErr.Occurred() to check for that.
+
+<p>Note: In Python 3.15 and earlier, this function can write only part of the data to file and return without setting the error indicator, for example if value contains an object which cannot be marshalled or if writing to file fails (see gh-155907). Code which has to support these versions cannot rely on TPyErr.Occurred() alone to know that all the data was written. It can use TPyMarshal.WriteObjectToString() and write the result itself, or validate what was written.
+
+<p></p>
+</td></tr>
+</table>
+<hr><span class="appinfo"><em>Generated by <a href="https://pasdoc.github.io/">PasDoc 1.0.5.snapshot</a>. </em>
+</span>
+</body></html>
