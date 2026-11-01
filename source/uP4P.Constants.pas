@@ -1784,6 +1784,9 @@ const
 
 
   {* include/marshal.h  include/cpython/marshal.h *}
+  /// <summary>
+  /// The current format version. See marshal.version.
+  /// </summary>
   Py_MARSHAL_VERSION = 6;
 
 implementation

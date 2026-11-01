@@ -18,10 +18,20 @@ uses
 
 type
   /// <summary>
-  /// Helper class for PyMarshal_* methods.
+  /// <para>Helper class for PyMarshal_* methods.</para>
+  /// <para>These routines allow C code to work with serialized objects using
+  /// the same data format as the marshal module. There are functions to write
+  /// data into the serialization format, and additional functions that can be
+  /// used to read the data back. Files used to store marshalled data must be
+  /// opened in binary mode.</para>
+  /// <para>Numeric values are stored with the least significant byte
+  /// first.</para>
+  /// <para>The module supports several versions of the data format; see the
+  /// Python module documentation for details.</para>
   /// </summary>
   /// <remarks>
   /// <para><see href="https://docs.python.org/3.15/c-api/marshal.html">See the article about Data marshalling support.</see></para>
+  /// <para><see href="https://docs.python.org/3.15/library/marshal.html#module-marshal">See the article about the marshal module.</see></para>
   /// </remarks>
   TPyMarshal = class
     public

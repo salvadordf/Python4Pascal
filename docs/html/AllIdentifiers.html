@@ -9078,7 +9078,7 @@ body { margin: 0.5em; }
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_MARSHAL_VERSION">Py_MARSHAL_VERSION</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.Constants.html">uP4P.Constants</a></td>
-<td class="itemdesc"><p>* include/marshal.h include/cpython/marshal.h *</p></td>
+<td class="itemdesc"><p> The current format version. See marshal.version. </p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.Constants.html#Py_MATH_E">Py_MATH_E</a></td>
@@ -11778,7 +11778,17 @@ static PyType_Slot foo_slots[] = {
 <tr class="list">
 <td class="itemname"><a class="bold" href="uP4P.PyMarshal.TPyMarshal.html">TPyMarshal</a></td>
 <td class="itemunit"><a class="bold" href="uP4P.PyMarshal.html">uP4P.PyMarshal</a></td>
-<td class="itemdesc"><p> Helper class for PyMarshal_* methods. </p></td>
+<td class="itemdesc"><p>
+
+<p>Helper class for PyMarshal_* methods.
+
+<p>These routines allow C code to work with serialized objects using the same data format as the marshal module. There are functions to write data into the serialization format, and additional functions that can be used to read the data back. Files used to store marshalled data must be opened in binary mode.
+
+<p>Numeric values are stored with the least significant byte first.
+
+<p>The module supports several versions of the data format; see the Python module documentation for details.
+
+<p></p></td>
 </tr>
 <tr class="list2">
 <td class="itemname"><a class="bold" href="uP4P.PyMath.TPyMath.html">TPyMath</a></td>

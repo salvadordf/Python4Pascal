@@ -23,11 +23,23 @@ body { margin: 0.5em; }
 <code>type TPyMarshal = class(TObject)</code></p>
 <h2 class="description">Description</h2>
 <p>
- Helper class for PyMarshal_* methods. </p>
+
+
+<p>Helper class for PyMarshal_* methods.
+
+<p>These routines allow C code to work with serialized objects using the same data format as the marshal module. There are functions to write data into the serialization format, and additional functions that can be used to read the data back. Files used to store marshalled data must be opened in binary mode.
+
+<p>Numeric values are stored with the least significant byte first.
+
+<p>The module supports several versions of the data format; see the Python module documentation for details.
+
+<p></p>
 <p>
 
 
-<p>&lt;see href=&quot;<a href="https://docs.python.org/3.15/c-api/marshal.html">https://docs.python.org/3.15/c-api/marshal.html</a>&quot;&gt;See the article about Data marshalling support.)</p>
+<p>&lt;see href=&quot;<a href="https://docs.python.org/3.15/c-api/marshal.html">https://docs.python.org/3.15/c-api/marshal.html</a>&quot;&gt;See the article about Data marshalling support.)
+
+<p>&lt;see href=&quot;<a href="https://docs.python.org/3.15/library/marshal.html#module-marshal">https://docs.python.org/3.15/library/marshal.html#module-marshal</a>&quot;&gt;See the article about the marshal module.)</p>
 <span id="PasDoc-Hierarchy"></span><h2 class="hierarchy">Hierarchy</h2>
 <ul class="hierarchy"><li class="ancestor">TObject</li>
 <li class="thisitem">TPyMarshal</li></ul><h2 class="overview">Overview</h2>
