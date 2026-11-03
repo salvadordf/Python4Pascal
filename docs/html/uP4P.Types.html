@@ -296,106 +296,110 @@ body { margin: 0.5em; }
 <td class="itemdesc">&nbsp;</td>
 </tr>
 <tr class="list">
+<td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyConfig309.html"><code>PyConfig309</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyGetSetDef.html"><code>PyGetSetDef</code></a></td>
 <td class="itemdesc"> Record to define property-like access for a type. See also description of the PyTypeObject.tp_getset slot. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyMemberDef.html"><code>PyMemberDef</code></a></td>
 <td class="itemdesc"> Record which describes an attribute of a type which corresponds to a C struct member. When defining a class, put a nil-terminated array of these structures in the tp_members slot. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.wrapperbase.html"><code>wrapperbase</code></a></td>
 <td class="itemdesc"> Describes a slot wrapper used by PyDescr_NewWrapper(). Each wrapperbase record stores the Python-visible name and metadata for a special method implemented by a type slot, together with the wrapper function used to adapt that slot to Python's calling convention. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyDescrObject.html"><code>PyDescrObject</code></a></td>
 <td class="itemdesc"> Common record used in other descriptor object records. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyMethodDescrObject.html"><code>PyMethodDescrObject</code></a></td>
 <td class="itemdesc"> Method descriptor object. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyMemberDescrObject.html"><code>PyMemberDescrObject</code></a></td>
 <td class="itemdesc"> Member descriptor object. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyGetSetDescrObject.html"><code>PyGetSetDescrObject</code></a></td>
 <td class="itemdesc"> GetSet descriptor object. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyWrapperDescrObject.html"><code>PyWrapperDescrObject</code></a></td>
 <td class="itemdesc"> Wrapper descriptor object. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types._PyWeakReference.html"><code>_PyWeakReference</code></a></td>
 <td class="itemdesc"> PyWeakReference is the base struct for the Python ReferenceType, ProxyType, and CallableProxyType. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyStructSequence_Field.html"><code>PyStructSequence_Field</code></a></td>
 <td class="itemdesc"> Describes a field of a struct sequence. As a struct sequence is modeled as a tuple, all fields are typed as PyObject*. The index in the fields array of the PyStructSequence_Desc determines which field of the struct sequence is described. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyStructSequence_Desc.html"><code>PyStructSequence_Desc</code></a></td>
 <td class="itemdesc"> Contains the meta information of a struct sequence type to create. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyABIInfo.html"><code>PyABIInfo</code></a></td>
 <td class="itemdesc"> Record used to store ABI information. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyCompilerFlags.html"><code>PyCompilerFlags</code></a></td>
 <td class="itemdesc"> This is the structure used to hold compiler flags. In cases where code is only being compiled, it is passed as int flags, and in cases where code is being executed, it is passed as PyCompilerFlags *flags. In this case, from __future__ import can modify flags. Whenever PyCompilerFlags *flags is nil, cf_flags is treated as equal to 0, and any modification due to from __future__ import is discarded. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyInterpreterConfig.html"><code>PyInterpreterConfig</code></a></td>
 <td class="itemdesc"> Record containing most parameters to configure a sub-interpreter. Its values are used only in Py_NewInterpreterFromConfig() and never modified by the runtime. Added in version 3.12. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types._inittab.html"><code>_inittab</code></a></td>
 <td class="itemdesc"> Record describing a single entry in the list of built-in modules. Programs which embed Python may use an array of these structures in conjunction with PyImport_ExtendInittab() to provide additional built-in modules. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types._frozen.html"><code>_frozen</code></a></td>
 <td class="itemdesc"> This is the structure type definition for frozen module descriptors, as generated by the freeze utility (see Tools/freeze/ in the Python source distribution). </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyFrameLocalsProxyObject.html"><code>PyFrameLocalsProxyObject</code></a></td>
 <td class="itemdesc">* include/frameobject.h include/cpython/frameobject.h *</td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyDateTime_Delta.html"><code>PyDateTime_Delta</code></a></td>
 <td class="itemdesc"> This subtype of PyObject represents the difference between two datetime values. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyDateTime_TZInfo.html"><code>PyDateTime_TZInfo</code></a></td>
 <td class="itemdesc"> PyDateTime_TZInfo is a pure abstract base class. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types._PyDateTime_BaseTZInfo.html"><code>_PyDateTime_BaseTZInfo</code></a></td>
 <td class="itemdesc"> No _PyDateTime_BaseTZInfo is allocated; it's just to have something convenient to cast to, when getting at the hastzinfo member of objects starting with _PyTZINFO_HEAD. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types._PyDateTime_BaseTime.html"><code>_PyDateTime_BaseTime</code></a></td>
 <td class="itemdesc">&nbsp;</td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyDateTime_Time.html"><code>PyDateTime_Time</code></a></td>
 <td class="itemdesc"> This subtype of PyObject represents a Python time object. </td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyDateTime_Date.html"><code>PyDateTime_Date</code></a></td>
 <td class="itemdesc"> This subtype of PyObject represents a Python date object. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types._PyDateTime_BaseDateTime.html"><code>_PyDateTime_BaseDateTime</code></a></td>
 <td class="itemdesc">&nbsp;</td>
 </tr>
-<tr class="list">
+<tr class="list2">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyDateTime_DateTime.html"><code>PyDateTime_DateTime</code></a></td>
 <td class="itemdesc"> This subtype of PyObject represents a Python datetime object. </td>
 </tr>
-<tr class="list2">
+<tr class="list">
 <td class="itemname">Record&nbsp;<a class="bold" href="uP4P.Types.PyDateTime_CAPI.html"><code>PyDateTime_CAPI</code></a></td>
 <td class="itemdesc"> Record containing the fields for the datetime C API. The fields of this structure are private and subject to change. Do not use this directly; prefer PyDateTime_* APIs instead. </td>
 </tr>

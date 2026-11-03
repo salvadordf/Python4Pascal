@@ -133,6 +133,7 @@ type
       function Get_exec_prefix: string; virtual;
       function Get_executable: string; virtual;
       function Get_faulthandler: integer; virtual;
+      function Get_use_peg_parser: boolean; virtual;
       function Get_filesystem_encoding: string; virtual;
       function Get_filesystem_errors: string; virtual;
       function Get_hash_seed: uint64; virtual;
@@ -207,6 +208,7 @@ type
       procedure Set_exec_prefix(const aValue: string); virtual;
       procedure Set_executable(const aValue: string); virtual;
       procedure Set_faulthandler(aValue: integer); virtual;
+      procedure Set_use_peg_parser(aValue: boolean); virtual;
       procedure Set_filesystem_encoding(const aValue: string); virtual;
       procedure Set_filesystem_errors(const aValue: string); virtual;
       procedure Set_hash_seed(aValue: uint64); virtual;
@@ -535,6 +537,13 @@ type
       /// <para>Default: True in Python mode, False in isolated mode.</para>
       /// </summary>
       property faulthandler              : integer              read Get_faulthandler                 write Set_faulthandler;
+      /// <summary>
+      /// <para>Enable PEG parser? Default: 1.</para>
+      /// <para>Set to 0 by -X oldparser and PYTHONOLDPARSER.</para>
+      /// <para>See also PEP 617.</para>
+      /// <para>Deprecated since version 3.9, will be removed in version 3.10.</para>
+      /// </summary>
+      property use_peg_parser            : boolean              read Get_use_peg_parser               write Set_use_peg_parser;
       /// <summary>
       /// <para>Filesystem encoding: sys.getfilesystemencoding().</para>
       /// <para>On macOS, Android and VxWorks: use "utf-8" by default.</para>
@@ -1992,6 +2001,125 @@ type
       procedure Set_xoptions(const aValue: TStringDynArray); override;
   end;
 
+  TPyConfig309 = class(TPyConfigBase)
+    protected
+      FConfig : PyConfig309;
+      function GetConfig: Pointer; override;
+      function Get_argv: TStringDynArray; override;
+      function Get_base_exec_prefix: string; override;
+      function Get_base_executable: string; override;
+      function Get_base_prefix: string; override;
+      function Get_buffered_stdio: boolean; override;
+      function Get_bytes_warning: integer; override;
+      function Get_check_hash_pycs_mode: string; override;
+      function Get_configure_c_stdio: boolean; override;
+      function Get_dev_mode: boolean; override;
+      function Get_dump_refs: boolean; override;
+      function Get_exec_prefix: string; override;
+      function Get_executable: string; override;
+      function Get_faulthandler: integer; override;
+      function Get_use_peg_parser: boolean; override;
+      function Get_filesystem_encoding: string; override;
+      function Get_filesystem_errors: string; override;
+      function Get_hash_seed: uint64; override;
+      function Get_home: string; override;
+      function Get_import_time: integer; override;
+      function Get_inspect: boolean; override;
+      function Get_install_signal_handlers: boolean; override;
+      function Get_interactive: boolean; override;
+      function Get_isolated: boolean; override;
+      {$IFDEF MSWINDOWS}
+      function Get_legacy_windows_stdio: boolean; override;
+      {$ENDIF}
+      function Get_malloc_stats: boolean; override;
+      function Get_module_search_paths: string; override;
+      function Get_module_search_paths_set: boolean; override;
+      function Get_optimization_level: TPyOptimizationLevel; override;
+      function Get_orig_argv: TStringDynArray; override;
+      function Get_parse_argv: boolean; override;
+      function Get_parser_debug: boolean; override;
+      function Get_pathconfig_warnings: boolean; override;
+      function Get_platlibdir: string; override;
+      function Get_prefix: string; override;
+      function Get_program_name: string; override;
+      function Get_pycache_prefix: string; override;
+      function Get_pythonpath_env: string; override;
+      function Get_quiet: boolean; override;
+      function Get_run_command: string; override;
+      function Get_run_filename: string; override;
+      function Get_run_module: string; override;
+      function Get_show_ref_count: boolean; override;
+      function Get_site_import: boolean; override;
+      function Get_skip_source_first_line: boolean; override;
+      function Get_stdio_encoding: string; override;
+      function Get_stdio_errors: string; override;
+      function Get_tracemalloc: boolean; override;
+      function Get_use_environment: boolean; override;
+      function Get_use_hash_seed: boolean; override;
+      function Get_user_site_directory: boolean; override;
+      function Get_verbose: TPyVerboseMode; override;
+      function Get_warnoptions: TStringDynArray; override;
+      function Get_write_bytecode: boolean; override;
+      function Get_xoptions: TStringDynArray; override;
+
+      procedure Set_argv(const aValue: TStringDynArray); override;
+      procedure Set_base_exec_prefix(const aValue: string); override;
+      procedure Set_base_executable(const aValue: string); override;
+      procedure Set_base_prefix(const aValue: string); override;
+      procedure Set_buffered_stdio(aValue: boolean); override;
+      procedure Set_bytes_warning(aValue: integer); override;
+      procedure Set_check_hash_pycs_mode(const aValue: string); override;
+      procedure Set_configure_c_stdio(aValue: boolean); override;
+      procedure Set_dev_mode(aValue: boolean); override;
+      procedure Set_dump_refs(aValue: boolean); override;
+      procedure Set_exec_prefix(const aValue: string); override;
+      procedure Set_executable(const aValue: string); override;
+      procedure Set_faulthandler(aValue: integer); override;
+      procedure Set_use_peg_parser(aValue: boolean); override;
+      procedure Set_filesystem_encoding(const aValue: string); override;
+      procedure Set_filesystem_errors(const aValue: string); override;
+      procedure Set_hash_seed(aValue: uint64); override;
+      procedure Set_home(const aValue: string); override;
+      procedure Set_import_time(aValue: integer); override;
+      procedure Set_inspect(aValue: boolean); override;
+      procedure Set_install_signal_handlers(aValue: boolean); override;
+      procedure Set_interactive(aValue: boolean); override;
+      procedure Set_isolated(aValue: boolean); override;
+      {$IFDEF MSWINDOWS}
+      procedure Set_legacy_windows_stdio(aValue: boolean); override;
+      {$ENDIF}
+      procedure Set_malloc_stats(aValue: boolean); override;
+      procedure Set_module_search_paths(const aValue: string); override;
+      procedure Set_module_search_paths_set(aValue: boolean); override;
+      procedure Set_optimization_level(aValue: TPyOptimizationLevel); override;
+      procedure Set_orig_argv(const aValue: TStringDynArray); override;
+      procedure Set_parse_argv(aValue: boolean); override;
+      procedure Set_parser_debug(aValue: boolean); override;
+      procedure Set_pathconfig_warnings(aValue: boolean); override;
+      procedure Set_platlibdir(const aValue: string); override;
+      procedure Set_prefix(const aValue: string); override;
+      procedure Set_program_name(const aValue: string); override;
+      procedure Set_pycache_prefix(const aValue: string); override;
+      procedure Set_pythonpath_env(const aValue: string); override;
+      procedure Set_quiet(aValue: boolean); override;
+      procedure Set_run_command(const aValue: string); override;
+      procedure Set_run_filename(const aValue: string); override;
+      procedure Set_run_module(const aValue: string); override;
+      procedure Set_show_ref_count(aValue: boolean); override;
+      procedure Set_site_import(aValue: boolean); override;
+      procedure Set_skip_source_first_line(aValue: boolean); override;
+      procedure Set_stdio_encoding(const aValue: string); override;
+      procedure Set_stdio_errors(const aValue: string); override;
+      procedure Set_tracemalloc(aValue: boolean); override;
+      procedure Set_use_environment(aValue: boolean); override;
+      procedure Set_use_hash_seed(aValue: boolean); override;
+      procedure Set_user_site_directory(aValue: boolean); override;
+      procedure Set_verbose(aValue: TPyVerboseMode); override;
+      procedure Set_warnoptions(const aValue: TStringDynArray); override;
+      procedure Set_write_bytecode(aValue: boolean); override;
+      procedure Set_xoptions(const aValue: TStringDynArray); override;
+  end;
+
   TPyConfigBuilder = class
     public
       class function New(aMajor, aMinor: integer): IPyConfig;
@@ -2188,6 +2316,11 @@ end;
 function TPyConfigBase.Get_faulthandler: integer;
 begin
   Result := 0;
+end;
+
+function TPyConfigBase.Get_use_peg_parser: boolean;
+begin
+  Result := True;
 end;
 
 function TPyConfigBase.Get_filesystem_encoding: string;
@@ -2716,6 +2849,11 @@ begin
 end;
 
 procedure TPyConfigBase.Set_faulthandler(aValue: integer);
+begin
+  //
+end;
+
+procedure TPyConfigBase.Set_use_peg_parser(aValue: boolean);
 begin
   //
 end;
@@ -7015,6 +7153,595 @@ begin
   SetWideStringList(FConfig.xoptions, aValue);
 end;
 
+function TPyConfig309.GetConfig: Pointer;
+begin
+  Result := @FConfig;
+end;
+
+function TPyConfig309.Get_argv: TStringDynArray;
+begin
+  Result := nil;
+  PyWideStringListToStringDynArray(FConfig.argv, Result);
+end;
+
+function TPyConfig309.Get_base_exec_prefix: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.base_exec_prefix));
+end;
+
+function TPyConfig309.Get_base_executable: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.base_executable));
+end;
+
+function TPyConfig309.Get_base_prefix: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.base_prefix));
+end;
+
+function TPyConfig309.Get_buffered_stdio: boolean;
+begin
+  Result := (FConfig.buffered_stdio <> 0);
+end;
+
+function TPyConfig309.Get_bytes_warning: integer;
+begin
+  Result := FConfig.bytes_warning;
+end;
+
+function TPyConfig309.Get_check_hash_pycs_mode: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.check_hash_pycs_mode));
+end;
+
+function TPyConfig309.Get_configure_c_stdio: boolean;
+begin
+  Result := (FConfig.configure_c_stdio <> 0);
+end;
+
+function TPyConfig309.Get_dev_mode: boolean;
+begin
+  Result := (FConfig.dev_mode <> 0);
+end;
+
+function TPyConfig309.Get_dump_refs: boolean;
+begin
+  Result := (FConfig.dump_refs <> 0);
+end;
+
+function TPyConfig309.Get_exec_prefix: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.exec_prefix));
+end;
+
+function TPyConfig309.Get_executable: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.executable));
+end;
+
+function TPyConfig309.Get_faulthandler: integer;
+begin
+  Result := FConfig.faulthandler;
+end;
+
+function TPyConfig309.Get_use_peg_parser: boolean;
+begin
+  Result := (FConfig._use_peg_parser <> 0);
+end;
+
+function TPyConfig309.Get_filesystem_encoding: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.filesystem_encoding));
+end;
+
+function TPyConfig309.Get_filesystem_errors: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.filesystem_errors));
+end;
+
+function TPyConfig309.Get_hash_seed: uint64;
+begin
+  Result := FConfig.hash_seed;
+end;
+
+function TPyConfig309.Get_home: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.home));
+end;
+
+function TPyConfig309.Get_import_time: integer;
+begin
+  Result := FConfig.import_time;
+end;
+
+function TPyConfig309.Get_inspect: boolean;
+begin
+  Result := (FConfig.inspect <> 0);
+end;
+
+function TPyConfig309.Get_install_signal_handlers: boolean;
+begin
+  Result := (FConfig.install_signal_handlers <> 0);
+end;
+
+function TPyConfig309.Get_interactive: boolean;
+begin
+  Result := (FConfig.interactive <> 0);
+end;
+
+function TPyConfig309.Get_isolated: boolean;
+begin
+  Result := (FConfig.isolated <> 0);
+end;
+
+{$IFDEF MSWINDOWS}
+function TPyConfig309.Get_legacy_windows_stdio: boolean;
+begin
+  Result := (FConfig.legacy_windows_stdio <> 0);
+end;
+{$ENDIF}
+
+function TPyConfig309.Get_malloc_stats: boolean;
+begin
+  Result := (FConfig.malloc_stats <> 0);
+end;
+
+function TPyConfig309.Get_module_search_paths: string;
+var
+  TempSL : TStringList;
+  i      : integer;
+begin
+  TempSL := TStringList.Create;
+
+  if PyWideStringListToStringList(FConfig.module_search_paths, TempSL) then
+    begin
+      i := 0;
+      while (i < TempSL.Count) do
+        begin
+          if (i = 0) then
+            Result := TempSL[i]
+           else
+            Result := Result + PathSep + TempSL[i];
+
+          inc(i);
+        end;
+    end
+   else
+    Result := '';
+
+  TempSL.Free;
+end;
+
+function TPyConfig309.Get_module_search_paths_set: boolean;
+begin
+  Result := (FConfig.module_search_paths_set <> 0);
+end;
+
+function TPyConfig309.Get_optimization_level: TPyOptimizationLevel;
+begin
+  Result := TPyOptimizationLevel(FConfig.optimization_level);
+end;
+
+function TPyConfig309.Get_orig_argv: TStringDynArray;
+begin
+  Result := nil;
+  PyWideStringListToStringDynArray(FConfig._orig_argv, Result);
+end;
+
+function TPyConfig309.Get_parse_argv: boolean;
+begin
+  Result := (FConfig.parse_argv <> 0);
+end;
+
+function TPyConfig309.Get_parser_debug: boolean;
+begin
+  Result := (FConfig.parser_debug <> 0);
+end;
+
+function TPyConfig309.Get_pathconfig_warnings: boolean;
+begin
+  Result := (FConfig.pathconfig_warnings <> 0);
+end;
+
+function TPyConfig309.Get_platlibdir: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.platlibdir));
+end;
+
+function TPyConfig309.Get_prefix: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.prefix));
+end;
+
+function TPyConfig309.Get_program_name: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.program_name));
+end;
+
+function TPyConfig309.Get_pycache_prefix: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.pycache_prefix));
+end;
+
+function TPyConfig309.Get_pythonpath_env: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.pythonpath_env));
+end;
+
+function TPyConfig309.Get_quiet: boolean;
+begin
+  Result := (FConfig.quiet <> 0);
+end;
+
+function TPyConfig309.Get_run_command: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.run_command));
+end;
+
+function TPyConfig309.Get_run_filename: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.run_filename));
+end;
+
+function TPyConfig309.Get_run_module: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.run_module));
+end;
+
+function TPyConfig309.Get_show_ref_count: boolean;
+begin
+  Result := (FConfig.show_ref_count <> 0);
+end;
+
+function TPyConfig309.Get_site_import: boolean;
+begin
+  Result := (FConfig.site_import <> 0);
+end;
+
+function TPyConfig309.Get_skip_source_first_line: boolean;
+begin
+  Result := (FConfig.skip_source_first_line <> 0);
+end;
+
+function TPyConfig309.Get_stdio_encoding: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.stdio_encoding));
+end;
+
+function TPyConfig309.Get_stdio_errors: string;
+begin
+  Result := PyWCharTStringToString(WCharTString(FConfig.stdio_errors));
+end;
+
+function TPyConfig309.Get_tracemalloc: boolean;
+begin
+  Result := (FConfig.tracemalloc <> 0);
+end;
+
+function TPyConfig309.Get_use_environment: boolean;
+begin
+  Result := (FConfig.use_environment <> 0);
+end;
+
+function TPyConfig309.Get_use_hash_seed: boolean;
+begin
+  Result := (FConfig.use_hash_seed <> 0);
+end;
+
+function TPyConfig309.Get_user_site_directory: boolean;
+begin
+  Result := (FConfig.user_site_directory <> 0);
+end;
+
+function TPyConfig309.Get_verbose: TPyVerboseMode;
+begin
+  Result := TPyVerboseMode(FConfig.verbose);
+end;
+
+function TPyConfig309.Get_warnoptions: TStringDynArray;
+begin
+  Result := nil;
+  PyWideStringListToStringDynArray(FConfig.warnoptions, Result);
+end;
+
+function TPyConfig309.Get_write_bytecode: boolean;
+begin
+  Result := (FConfig.write_bytecode <> 0);
+end;
+
+function TPyConfig309.Get_xoptions: TStringDynArray;
+begin
+  Result := nil;
+  PyWideStringListToStringDynArray(FConfig.xoptions, Result);
+end;
+
+procedure TPyConfig309.Set_argv(const aValue: TStringDynArray);
+begin
+  SetArgv(aValue);
+end;
+
+procedure TPyConfig309.Set_base_exec_prefix(const aValue: string);
+begin
+  SetWCharT(FConfig.base_exec_prefix, aValue);
+end;
+
+procedure TPyConfig309.Set_base_executable(const aValue: string);
+begin
+  SetWCharT(FConfig.base_executable, aValue);
+end;
+
+procedure TPyConfig309.Set_base_prefix(const aValue: string);
+begin
+  SetWCharT(FConfig.base_prefix, aValue);
+end;
+
+procedure TPyConfig309.Set_buffered_stdio(aValue: boolean);
+begin
+  FConfig.buffered_stdio := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_bytes_warning(aValue: integer);
+begin
+  FConfig.bytes_warning := aValue;
+end;
+
+procedure TPyConfig309.Set_check_hash_pycs_mode(const aValue: string);
+begin
+  SetWCharT(FConfig.check_hash_pycs_mode, aValue);
+end;
+
+procedure TPyConfig309.Set_configure_c_stdio(aValue: boolean);
+begin
+  FConfig.configure_c_stdio := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_dev_mode(aValue: boolean);
+begin
+  if aValue then
+    FConfig.dev_mode := -1
+   else
+    FConfig.dev_mode := 0;
+end;
+
+procedure TPyConfig309.Set_dump_refs(aValue: boolean);
+begin
+  FConfig.dump_refs := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_exec_prefix(const aValue: string);
+begin
+  SetWCharT(FConfig.exec_prefix, aValue);
+end;
+
+procedure TPyConfig309.Set_executable(const aValue: string);
+begin
+  SetWCharT(FConfig.executable, aValue);
+end;
+
+procedure TPyConfig309.Set_faulthandler(aValue: integer);
+begin
+  FConfig.faulthandler := aValue;
+end;
+
+procedure TPyConfig309.Set_use_peg_parser(aValue: boolean);
+begin
+  FConfig._use_peg_parser := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_filesystem_encoding(const aValue: string);
+begin
+  SetWCharT(FConfig.filesystem_encoding, aValue);
+end;
+
+procedure TPyConfig309.Set_filesystem_errors(const aValue: string);
+begin
+  SetWCharT(FConfig.filesystem_errors, aValue);
+end;
+
+procedure TPyConfig309.Set_hash_seed(aValue: uint64);
+begin
+  FConfig.hash_seed := aValue;
+end;
+
+procedure TPyConfig309.Set_home(const aValue: string);
+begin
+  SetWCharT(FConfig.home, aValue);
+end;
+
+procedure TPyConfig309.Set_import_time(aValue: integer);
+begin
+  FConfig.import_time := aValue;
+end;
+
+procedure TPyConfig309.Set_inspect(aValue: boolean);
+begin
+  FConfig.inspect := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_install_signal_handlers(aValue: boolean);
+begin
+  FConfig.install_signal_handlers := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_interactive(aValue: boolean);
+begin
+  FConfig.interactive := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_isolated(aValue: boolean);
+begin
+  FConfig.isolated := ord(aValue);
+end;
+
+{$IFDEF MSWINDOWS}
+procedure TPyConfig309.Set_legacy_windows_stdio(aValue: boolean);
+begin
+  FConfig.legacy_windows_stdio := ord(aValue);
+end;
+{$ENDIF}
+
+procedure TPyConfig309.Set_malloc_stats(aValue: boolean);
+begin
+  FConfig.malloc_stats := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_module_search_paths(const aValue: string);
+var
+  TempPaths : TStringDynArray;
+begin
+  if (length(aValue) > 0) then
+    begin
+      TempPaths := CustomSplitString(aValue, PathSep);
+      SetWideStringList(FConfig.module_search_paths, TempPaths);
+    end;
+end;
+
+procedure TPyConfig309.Set_module_search_paths_set(aValue: boolean);
+begin
+  FConfig.module_search_paths_set := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_optimization_level(aValue: TPyOptimizationLevel);
+begin
+  FConfig.optimization_level := integer(aValue);
+end;
+
+procedure TPyConfig309.Set_orig_argv(const aValue: TStringDynArray);
+begin
+  SetWideStringList(FConfig._orig_argv, aValue);
+end;
+
+procedure TPyConfig309.Set_parse_argv(aValue: boolean);
+begin
+  FConfig.parse_argv := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_parser_debug(aValue: boolean);
+begin
+  FConfig.parser_debug := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_pathconfig_warnings(aValue: boolean);
+begin
+  FConfig.pathconfig_warnings := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_platlibdir(const aValue: string);
+begin
+  SetWCharT(FConfig.platlibdir, aValue);
+end;
+
+procedure TPyConfig309.Set_prefix(const aValue: string);
+begin
+  SetWCharT(FConfig.prefix, aValue);
+end;
+
+procedure TPyConfig309.Set_program_name(const aValue: string);
+begin
+  SetWCharT(FConfig.program_name, aValue);
+end;
+
+procedure TPyConfig309.Set_pycache_prefix(const aValue: string);
+begin
+  SetWCharT(FConfig.pycache_prefix, aValue);
+end;
+
+procedure TPyConfig309.Set_pythonpath_env(const aValue: string);
+begin
+  SetWCharT(FConfig.pythonpath_env, aValue);
+end;
+
+procedure TPyConfig309.Set_quiet(aValue: boolean);
+begin
+  FConfig.quiet := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_run_command(const aValue: string);
+begin
+  SetWCharT(FConfig.run_command, aValue);
+end;
+
+procedure TPyConfig309.Set_run_filename(const aValue: string);
+begin
+  SetWCharT(FConfig.run_filename, aValue);
+end;
+
+procedure TPyConfig309.Set_run_module(const aValue: string);
+begin
+  SetWCharT(FConfig.run_module, aValue);
+end;
+
+procedure TPyConfig309.Set_show_ref_count(aValue: boolean);
+begin
+  FConfig.show_ref_count := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_site_import(aValue: boolean);
+begin
+  FConfig.site_import := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_skip_source_first_line(aValue: boolean);
+begin
+  FConfig.skip_source_first_line := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_stdio_encoding(const aValue: string);
+begin
+  SetWCharT(FConfig.stdio_encoding, aValue);
+end;
+
+procedure TPyConfig309.Set_stdio_errors(const aValue: string);
+begin
+  SetWCharT(FConfig.stdio_errors, aValue);
+end;
+
+procedure TPyConfig309.Set_tracemalloc(aValue: boolean);
+begin
+  if aValue then
+    FConfig.tracemalloc := -1
+   else
+    FConfig.tracemalloc := 0;
+end;
+
+procedure TPyConfig309.Set_use_environment(aValue: boolean);
+begin
+  FConfig.use_environment := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_use_hash_seed(aValue: boolean);
+begin
+  if aValue then
+    FConfig.use_hash_seed := -1
+   else
+    FConfig.use_hash_seed := 0;
+end;
+
+procedure TPyConfig309.Set_user_site_directory(aValue: boolean);
+begin
+  FConfig.user_site_directory := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_verbose(aValue: TPyVerboseMode);
+begin
+  FConfig.verbose := integer(aValue);
+end;
+
+procedure TPyConfig309.Set_warnoptions(const aValue: TStringDynArray);
+begin
+  SetWideStringList(FConfig.warnoptions, aValue);
+end;
+
+procedure TPyConfig309.Set_write_bytecode(aValue: boolean);
+begin
+  FConfig.write_bytecode := ord(aValue);
+end;
+
+procedure TPyConfig309.Set_xoptions(const aValue: TStringDynArray);
+begin
+  SetWideStringList(FConfig.xoptions, aValue);
+end;
+
 class function TPyConfigBuilder.New(aMajor, aMinor: integer): IPyConfig;
 begin
   Result := nil;
@@ -7027,6 +7754,7 @@ begin
         12: Result := TPyConfig312.Create;
         11: Result := TPyConfig311.Create;
         10: Result := TPyConfig310.Create;
+        09: Result := TPyConfig309.Create;
       end;
   end;
 end;

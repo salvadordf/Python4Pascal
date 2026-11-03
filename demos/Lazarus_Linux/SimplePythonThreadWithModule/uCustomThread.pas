@@ -34,7 +34,7 @@ type
 implementation
 
 uses
-  uP4P.PyRun, uP4P.Types;
+  uP4P.PyRun, uP4P.Types, uP4P.Engine;
                                  
 // We create the module and the heap type before running the Python code.
 procedure TCustomThread.doOnExecutePython;
@@ -76,11 +76,17 @@ end;
 // This function creates our custom heap type and adds it to our custom module.
 function TCustomThread.CreateType: boolean;
 begin
+  Result               := False;
   FTestType            := TTestHeapType.Create(TEST_TYPE_NAME);
   FTestType.DocStrings := 'test docstring';
 
-  Result := FTestType.Initialize and
-            TPyModule.AddObjectRef(FTestModule.Module, TEST_TYPE_NAME, FTestType.HeapType);
+  if FTestType.Initialize then
+    begin
+      if (GlobalP4PEngine <> nil) and GlobalP4PEngine.PythonLibIsGreaterOrEqualThan(3, 10, 0) then
+        Result := TPyModule.AddObjectRef(FTestModule.Module, TEST_TYPE_NAME, FTestType.HeapType)
+       else
+        Result := TPyModule.AddObject(FTestModule.Module, TEST_TYPE_NAME, FTestType.HeapType);
+    end;
 end;
 
 end.

@@ -19,8 +19,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="75"/>
-        <CursorPos X="19" Y="103"/>
+        <TopLine Value="166"/>
+        <CursorPos X="9" Y="186"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -45,8 +45,15 @@
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.PyObject.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1260"/>
+        <CursorPos X="60" Y="1266"/>
+        <UsageCount Value="10"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="6">
+    <JumpHistory HistoryIndex="7">
       <Position>
         <Filename Value="uMainForm.pas"/>
       </Position>
@@ -73,6 +80,10 @@
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="33" Column="15" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="103" Column="19" TopLine="75"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -70,7 +70,6 @@ object MainForm: TMainForm
     ParentFont = False
     ScrollBars = ssBoth
     TabOrder = 0
-    ExplicitHeight = 355
   end
   object LogMem: TMemo
     Left = 0

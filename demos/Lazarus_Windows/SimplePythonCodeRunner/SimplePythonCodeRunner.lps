@@ -12,7 +12,6 @@
         <CursorPos X="26" Y="12"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="uMainForm.pas"/>
@@ -21,8 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="91"/>
-        <CursorPos X="70" Y="117"/>
+        <TopLine Value="74"/>
+        <CursorPos X="25" Y="95"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>

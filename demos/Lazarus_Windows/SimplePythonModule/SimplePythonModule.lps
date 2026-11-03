@@ -17,9 +17,10 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="99"/>
-        <CursorPos X="45" Y="124"/>
+        <TopLine Value="77"/>
+        <CursorPos X="9" Y="87"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,9 +37,8 @@
       <Unit>
         <Filename Value="uTestHeapType.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="105"/>
+        <TopLine Value="60"/>
         <CursorPos X="73" Y="142"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
@@ -79,8 +79,15 @@
         <CursorPos X="36" Y="708"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.PyModule.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="116"/>
+        <CursorPos X="46" Y="149"/>
+        <UsageCount Value="10"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="9">
+    <JumpHistory HistoryIndex="10">
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="79" TopLine="63"/>
@@ -120,6 +127,10 @@
       <Position>
         <Filename Value="uTestHeapType.pas"/>
         <Caret Line="118" Column="16" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="126" Column="5" TopLine="103"/>
       </Position>
     </JumpHistory>
     <RunParams>

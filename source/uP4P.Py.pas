@@ -1359,10 +1359,19 @@ end;
 
 class function TPy.NewRef(aPyObject: PPyConfig): PPyObject;
 begin
-  if assigned(Py_NewRef) and assigned(aPyObject) then
-    Result := Py_NewRef(aPyObject)
-   else
-    Result := nil;
+  Result := nil;
+
+  if assigned(aPyObject) then
+    begin
+      if assigned(Py_NewRef) then
+        Result := Py_NewRef(aPyObject)
+       else
+        if assigned(Py_IncRef) then
+          begin
+            Py_IncRef(aPyObject);
+            Result := aPyObject;
+          end;
+    end;
 end;
 
 class function TPy.NewRef(const aPyObject: IPyObject): PPyObject;
@@ -1391,18 +1400,22 @@ end;
 
 class function TPy.Is_(const x, y: IPyObject): boolean;
 begin
-  Result := assigned(Py_Is) and
-            assigned(x) and
+  Result := assigned(x) and
             assigned(y) and
             TPy.Is_(x.PyObject, y.PyObject);
 end;
 
 class function TPy.Is_(const x, y: PPyObject): boolean;
 begin
-  Result := assigned(Py_Is) and
-            assigned(x) and
-            assigned(y) and
-            (Py_Is(x, y) <> 0);
+  Result := False;
+
+  if assigned(x) and assigned(y) then
+    begin
+      if assigned(Py_Is) then
+        Result := (Py_Is(x, y) <> 0)
+       else
+        Result := (x = y);
+    end;
 end;
 
 class function TPy.GetConstant(constant_id: cardinal): IPyObject;

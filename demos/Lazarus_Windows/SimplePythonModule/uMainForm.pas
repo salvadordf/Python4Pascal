@@ -78,12 +78,13 @@ begin
       TempDrive := 'Q';
       //TempDrive := 'S';
 
-      //TempLibPath := TempDrive + ':\python-3.15.0-embed-' + TempBit + '\python315.dll';
+      //TempLibPath := TempDrive + ':\python-3.15.2-embed-' + TempBit + '\python315.dll';
       //TempLibPath := TempDrive + ':\python-3.14.8-embed-' + TempBit + '\python314.dll';
       //TempLibPath := TempDrive + ':\python-3.13.16-embed-' + TempBit + '\python313.dll';
       //TempLibPath := TempDrive + ':\python-3.12.10-embed-' + TempBit + '\python312.dll';
       //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
       //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
+      //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
       TempLibPath := '';
                                                
       // We create the module and the heap type after the Python initialization
@@ -111,11 +112,17 @@ end;
 // This function creates our custom heap type and adds it to our custom module.
 function TMainForm.CreateType: boolean;
 begin
+  Result               := False;
   FTestType            := TTestHeapType.Create(TEST_TYPE_NAME);
   FTestType.DocStrings := 'test docstring';
 
-  Result := FTestType.Initialize and
-            TPyModule.AddObjectRef(FTestModule.Module, TEST_TYPE_NAME, FTestType.HeapType);
+  if FTestType.Initialize then
+    begin
+      if (GlobalP4PEngine <> nil) and GlobalP4PEngine.PythonLibIsGreaterOrEqualThan(3, 10, 0) then
+        Result := TPyModule.AddObjectRef(FTestModule.Module, TEST_TYPE_NAME, FTestType.HeapType)
+       else
+        Result := TPyModule.AddObject(FTestModule.Module, TEST_TYPE_NAME, FTestType.HeapType);
+    end;
 end;
 
 procedure TMainForm.GlobalP4PEngine_OnOutputMessage(Sender: TObject; const message_: string);

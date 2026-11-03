@@ -146,6 +146,7 @@ type
       /// calling TPyUnicode.FromString() and TPyObject.SetAttr() directly.
       /// For more details, see TPyUnicode.InternFromString(), which may be
       /// used internally to create a key object.</para>
+      /// <para>Added in version 3.10.</para>
       /// </summary>
       class function AddObjectRef(const module_: IPyObject; const name_: string; const value: IPyObject): boolean;
       /// <summary>

@@ -15,8 +15,9 @@
       <Unit>
         <Filename Value="uMain.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="51"/>
+        <TopLine Value="21"/>
         <CursorPos X="88" Y="52"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
@@ -24,7 +25,6 @@
       <Unit>
         <Filename Value="uCustomThread.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <CursorPos X="39" Y="10"/>
         <UsageCount Value="20"/>

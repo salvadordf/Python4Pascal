@@ -3226,6 +3226,69 @@ type
     _isolated_interpreter    : integer;
   end;
 
+  PyConfig309 = record
+    _config_init             : integer;
+    isolated                 : integer;
+    use_environment          : integer;
+    dev_mode                 : integer;
+    install_signal_handlers  : integer;
+    use_hash_seed            : integer;
+    hash_seed                : C_ULong;
+    faulthandler             : integer;
+    _use_peg_parser          : integer;
+    tracemalloc              : integer;
+    import_time              : integer;
+    show_ref_count           : integer;
+    dump_refs                : integer;
+    malloc_stats             : integer;
+    filesystem_encoding      : PWCharT;
+    filesystem_errors        : PWCharT;
+    pycache_prefix           : PWCharT;
+    parse_argv               : integer;
+    argv                     : PyWideStringList;
+    program_name             : PWCharT;
+    xoptions                 : PyWideStringList;
+    warnoptions              : PyWideStringList;
+    site_import              : integer;
+    bytes_warning            : integer;
+    inspect                  : integer;
+    interactive              : integer;
+    optimization_level       : integer;
+    parser_debug             : integer;
+    write_bytecode           : integer;
+    verbose                  : integer;
+    quiet                    : integer;
+    user_site_directory      : integer;
+    configure_c_stdio        : integer;
+    buffered_stdio           : integer;
+    stdio_encoding           : PWCharT;
+    stdio_errors             : PWCharT;
+    {$IFDEF MSWINDOWS}
+    legacy_windows_stdio     : integer;
+    {$ENDIF}
+    check_hash_pycs_mode     : PWCharT;
+    pathconfig_warnings      : integer;
+    pythonpath_env           : PWCharT;
+    home                     : PWCharT;
+    module_search_paths_set  : integer;
+    module_search_paths      : PyWideStringList;
+    executable               : PWCharT;
+    base_executable          : PWCharT;
+    prefix                   : PWCharT;
+    base_prefix              : PWCharT;
+    exec_prefix              : PWCharT;
+    base_exec_prefix         : PWCharT;
+    platlibdir               : PWCharT;
+    skip_source_first_line   : integer;
+    run_command              : PWCharT;
+    run_module               : PWCharT;
+    run_filename             : PWCharT;
+    _install_importlib       : integer;
+    _init_main               : integer;
+    _isolated_interpreter    : integer;
+    _orig_argv               : PyWideStringList;
+  end;
+
 
   {* include/pystate.h  include/cpython/pystate.h *}
 

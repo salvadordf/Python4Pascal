@@ -177,12 +177,13 @@ begin
       TempDrive := 'Q';
       //TempDrive := 'S';
 
-      //TempLibPath := TempDrive + ':\python-3.15.0-embed-' + TempBit + '\python315.dll';
+      //TempLibPath := TempDrive + ':\python-3.15.2-embed-' + TempBit + '\python315.dll';
       //TempLibPath := TempDrive + ':\python-3.14.8-embed-' + TempBit + '\python314.dll';
       //TempLibPath := TempDrive + ':\python-3.13.16-embed-' + TempBit + '\python313.dll';
       //TempLibPath := TempDrive + ':\python-3.12.10-embed-' + TempBit + '\python312.dll';
       //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
       //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
+      //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
       TempLibPath := '';
 
       if GlobalP4PEngine.Load(TempLibPath) and

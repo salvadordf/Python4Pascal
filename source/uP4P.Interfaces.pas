@@ -3095,6 +3095,7 @@ type
     function Get_exec_prefix: string;
     function Get_executable: string;
     function Get_faulthandler: integer;
+    function Get_use_peg_parser: boolean;
     function Get_filesystem_encoding: string;
     function Get_filesystem_errors: string;
     function Get_hash_seed: uint64;
@@ -3169,6 +3170,7 @@ type
     procedure Set_exec_prefix(const aValue: string);
     procedure Set_executable(const aValue: string);
     procedure Set_faulthandler(aValue: integer);
+    procedure Set_use_peg_parser(aValue: boolean);
     procedure Set_filesystem_encoding(const aValue: string);
     procedure Set_filesystem_errors(const aValue: string);
     procedure Set_hash_seed(aValue: uint64);

@@ -45,7 +45,7 @@ const
 
   SUPPORTED_MAJOR_VERSION     = PY_MAJOR_VERSION;
   MAX_SUPPORTED_MINOR_VERSION = PY_MINOR_VERSION;
-  MIN_SUPPORTED_MINOR_VERSION = 10;
+  MIN_SUPPORTED_MINOR_VERSION = 9;
 
   HOURS_IN_A_DAY        = 24;
   MINUTES_IN_AN_HOUR    = 60;
@@ -562,12 +562,6 @@ const
   /// type structure.</para>
   /// </summary>
   Py_TPFLAGS_HAVE_FINALIZE            = 1 shl  0;
-  /// <summary>
-  /// <para>This macro does nothing. Historically, this would indicate that
-  /// the tp_version_tag field was available and initialized.</para>
-  /// <para>Soft deprecated since version 3.13.</para>
-  /// </summary>
-  Py_TPFLAGS_HAVE_VERSION_TAG         = 1 shl 18;
 
   Py_CONSTANT_NONE             = 0;
   Py_CONSTANT_FALSE            = 1;
@@ -1291,6 +1285,15 @@ const
   {* include/cpython/pydebug.h *}
   {* include/bytearrayobject.h *}
   {* include/bytesobject.h  include/cpython/bytesobject.h *}
+  /// <summary>
+  /// <para>Flags used by string formatting in Python 3.9.</para>
+  /// </summary>
+  F_LJUST = (1 shl 0);
+  F_SIGN  = (1 shl 1);
+  F_BLANK = (1 shl 2);
+  F_ALT   = (1 shl 3);
+  F_ZERO  = (1 shl 4);
+
   {* include/unicodeobject.h  include/cpython/unicodeobject.h *}
   {* include/pyerrors.h  include/cpython/pyerrors.h *}
   {* include/longobject.h  include/cpython/longobject.h *}
