@@ -76,10 +76,10 @@ type
       function GetOSPythonLibPath_Windows: string;
       {$ENDIF}
       {$IFDEF APPLE}
-      function GetOSPythonLibPath_Apple: boolean;
+      function GetOSPythonLibPath_Apple: string;
       {$ENDIF}
       {$IFDEF LINUX}
-      function GetOSPythonLibPath_Linux: boolean;
+      function GetOSPythonLibPath_Linux: string;
       {$ENDIF}
 
       procedure FreePythonLibrary;
