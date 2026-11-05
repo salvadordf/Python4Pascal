@@ -8859,6 +8859,30 @@
 <param name="Name" value="Install">
 <param name="Local" value="uP4P.Pip.TPyPip.html#Install">
 </object>
+<li><object type="text/sitemap">
+<param name="Name" value="Uninstall">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Uninstall">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Version">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Version">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Ensurepip">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Ensurepip">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Show">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Show">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Check">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Check">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IndexVersions">
+<param name="Local" value="uP4P.Pip.TPyPip.html#IndexVersions">
+</object>
 </ul>
 </ul>
 </ul>
@@ -31892,6 +31916,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="TP4PThreadInit">
 <param name="Local" value="uP4P.Types.html#TP4PThreadInit">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPipListFormat">
+<param name="Local" value="uP4P.Types.html#TPipListFormat">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="TPyExceptionType">
@@ -57062,12 +57090,36 @@
 <param name="Local" value="uP4P.Pip.TPyPip.html#Destroy">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="Check">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Check">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Ensurepip">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Ensurepip">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IndexVersions">
+<param name="Local" value="uP4P.Pip.TPyPip.html#IndexVersions">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Install">
 <param name="Local" value="uP4P.Pip.TPyPip.html#Install">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="List">
 <param name="Local" value="uP4P.Pip.TPyPip.html#List">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Show">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Show">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Uninstall">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Uninstall">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Version">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Version">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetInitialized">

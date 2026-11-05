@@ -290,6 +290,27 @@ type
   );
 
   /// <summary>
+  /// Pip list format.
+  /// </summary>
+  /// <remarks>
+  /// <para><see href="https://pip.pypa.io/en/stable/cli/pip_list/#cmdoption-format">See the article about the pip list usage.</see></para>
+  /// </remarks>
+  TPipListFormat = (
+    /// <summary>
+    /// Show the list in columns format (default).
+    /// </summary>
+    plf_columns,
+    /// <summary>
+    /// Show the list in freeze format.
+    /// </summary>
+    plf_freeze,
+    /// <summary>
+    /// Show the list in json format.
+    /// </summary>
+    plf_json
+  );
+
+  /// <summary>
   /// Custom type to handle standard Python exceptions and warning categories.
   /// </summary>
   /// <remarks>

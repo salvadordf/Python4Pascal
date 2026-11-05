@@ -33,7 +33,9 @@ body { margin: 0.5em; }
 <p>
 
 
-<p>&lt;see href=&quot;<a href="https://docs.python.org/3.15/installing/index.html">https://docs.python.org/3.15/installing/index.html</a>&quot;&gt;See the article about Installing Python modules.)</p>
+<p>&lt;see href=&quot;<a href="https://docs.python.org/3.15/installing/index.html">https://docs.python.org/3.15/installing/index.html</a>&quot;&gt;See the article about Installing Python modules.)
+
+<p>&lt;see href=&quot;<a href="https://packaging.python.org/en/latest/">https://packaging.python.org/en/latest/</a>&quot;&gt;See the article about the Python Packaging User Guide.)</p>
 <span id="PasDoc-Hierarchy"></span><h2 class="hierarchy">Hierarchy</h2>
 <ul class="hierarchy"><li class="ancestor">TObject</li>
 <li class="thisitem">TPyPip</li></ul><h2 class="overview">Overview</h2>
@@ -56,7 +58,7 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-protected">
 <td class="visibility"><span class="badge vis-protected">Protected</span></td>
-<td class="itemcode"><code>procedure <strong><a href="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-IPyObject-string-">CreateArgs</a></strong>(var aArgs, aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const pip_command: string);</code></td>
+<td class="itemcode"><code>procedure <strong><a href="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-IPyObject-string-string-">CreateArgs</a></strong>(var aArgs, aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const module, extra: string);</code></td>
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
@@ -72,11 +74,35 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#List-integer-string-">List</a></strong>(var returncode: integer; var stdout: string): boolean;</code></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#List-TPipListFormat-boolean-integer-string-string-">List</a></strong>(format: <a href="uP4P.Types.html#TPipListFormat">TPipListFormat</a>; outdated: boolean; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#Install-string-integer-string-">Install</a></strong>(const aPackage: string; var returncode: integer; var stdout: string): boolean;</code></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#Install-string-boolean-integer-string-string-">Install</a></strong>(const package_name: string; upgrade: boolean; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#Uninstall-string-integer-string-string-">Uninstall</a></strong>(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#Version-integer-string-string-">Version</a></strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#Ensurepip-integer-string-string-">Ensurepip</a></strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#Show-string-integer-string-string-">Show</a></strong>(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#Check-integer-string-string-">Check</a></strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#IndexVersions-string-integer-string-string-">IndexVersions</a></strong>(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
 </tr>
 </table>
 <span id="PasDoc-Properties"></span><h3 class="summary">Properties</h3>
@@ -120,7 +146,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-protected wide_list">
 <tr class="list visibility-protected">
 <td class="visibility"><span class="badge vis-protected">Protected</span></td>
-<td class="itemcode"><span id="CreateArgs-IPyObject-IPyObject-string-"></span><code>procedure <strong>CreateArgs</strong>(var aArgs, aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const pip_command: string);</code></td>
+<td class="itemcode"><span id="CreateArgs-IPyObject-IPyObject-string-string-"></span><code>procedure <strong>CreateArgs</strong>(var aArgs, aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const module, extra: string);</code></td>
 </tr>
 <tr><td colspan="2">
 <p class="nodescription">This item has no description.</p></td></tr>
@@ -152,7 +178,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="List-integer-string-"></span><code>function <strong>List</strong>(var returncode: integer; var stdout: string): boolean;</code></td>
+<td class="itemcode"><span id="List-TPipListFormat-boolean-integer-string-string-"></span><code>function <strong>List</strong>(format: <a href="uP4P.Types.html#TPipListFormat">TPipListFormat</a>; outdated: boolean; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -160,7 +186,7 @@ body { margin: 0.5em; }
 
 <p>Returns a list of installed modules in stdout.
 
-<p>This function runs pip in a subprocess, sets the return code in returncode and the output in stdout.
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
 
 <p></p>
 </td></tr>
@@ -168,15 +194,111 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="Install-string-integer-string-"></span><code>function <strong>Install</strong>(const aPackage: string; var returncode: integer; var stdout: string): boolean;</code></td>
+<td class="itemcode"><span id="Install-string-boolean-integer-string-string-"></span><code>function <strong>Install</strong>(const package_name: string; upgrade: boolean; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
 
 
-<p>Installs aPackage in the current environment.
+<p>Installs package_name in the current environment.
 
-<p>This function runs pip in a subprocess, sets the return code in returncode and the output in stdout.
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Uninstall-string-integer-string-string-"></span><code>function <strong>Uninstall</strong>(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Uninstalls package_name in the current environment.
+
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Version-integer-string-string-"></span><code>function <strong>Version</strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Return the installed pip version.
+
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Ensurepip-integer-string-string-"></span><code>function <strong>Ensurepip</strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Install pip.
+
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Show-string-integer-string-string-"></span><code>function <strong>Show</strong>(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Show information about a package. The output is in RFC-compliant mail header format.
+
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Check-integer-string-string-"></span><code>function <strong>Check</strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Verify installed packages have compatible dependencies.
+
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="IndexVersions-string-integer-string-string-"></span><code>function <strong>IndexVersions</strong>(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Inspect information available from package indexes.
+
+<p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
 
 <p></p>
 </td></tr>
