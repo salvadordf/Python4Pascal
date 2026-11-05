@@ -251,6 +251,9 @@
         <DCCReference Include="..\source\uP4P.PyGetSetDef.pas"/>
         <DCCReference Include="..\source\uP4P.Metadata.pas"/>
         <DCCReference Include="..\source\uP4P.PyMarshal.pas"/>
+        <DCCReference Include="..\source\uP4P.Subprocess.pas"/>
+        <DCCReference Include="..\source\uP4P.SubprocessCompletedProcess.pas"/>
+        <DCCReference Include="..\source\uP4P.Pip.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

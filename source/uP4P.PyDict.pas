@@ -85,7 +85,25 @@ type
       /// <para>Note: The operation is atomic on free threading when key is str,
       /// int, float, bool or bytes.</para>
       /// </summary>
+      class function SetItem(const mp, key, val: PPyObject): boolean; overload;
+      /// <summary>
+      /// <para>Insert val into the dictionary mp with a key of key. key must be
+      /// hashable; if it isn't, TypeError will be raised. Return True on
+      /// success or False on failure. This function does not "steal" a
+      /// reference to val.</para>
+      /// <para>Note: The operation is atomic on free threading when key is str,
+      /// int, float, bool or bytes.</para>
+      /// </summary>
       class function SetItem(const mp: IPyObject; const key: string; const val: IPyObject): boolean; overload;
+      /// <summary>
+      /// <para>Insert val into the dictionary mp with a key of key. key must be
+      /// hashable; if it isn't, TypeError will be raised. Return True on
+      /// success or False on failure. This function does not "steal" a
+      /// reference to val.</para>
+      /// <para>Note: The operation is atomic on free threading when key is str,
+      /// int, float, bool or bytes.</para>
+      /// </summary>
+      class function SetItem(const mp: IPyObject; const key: string; val: PPyObject): boolean; overload;
       /// <summary>
       /// <para>Remove the entry in dictionary mp with key key. key must be
       /// hashable; if it isn't, TypeError is raised. If key is not in the
@@ -210,7 +228,17 @@ type
       /// <para>The first argument can be a dict or a frozendict.</para>
       /// <para>Changed in version 3.15: Also accept frozendict.</para>
       /// </summary>
-      class function Contains(const p, key: IPyObject): integer;
+      class function Contains(const p, key: IPyObject): integer; overload;
+      /// <summary>
+      /// <para>Determine if dictionary p contains key. If an item in p matches
+      /// key, return 1, otherwise return 0. On error, return -1. This is
+      /// equivalent to the Python expression key in p.</para>
+      /// <para>Note: The operation is atomic on free threading when key is
+      /// str, int, float, bool or bytes.</para>
+      /// <para>The first argument can be a dict or a frozendict.</para>
+      /// <para>Changed in version 3.15: Also accept frozendict.</para>
+      /// </summary>
+      class function Contains(const p: IPyObject; const key: string): integer; overload;
       /// <summary>
       /// <para>This is the same as TPyDict.Merge(a, b, 1), and is similar to
       /// a.update(b) in Python except that TPyDict.Update() doesn't fall back
@@ -491,16 +519,48 @@ end;
 
 class function TPyDict.SetItem(const mp, key, val: IPyObject): boolean;
 begin
+  Result := assigned(mp) and
+            assigned(val) and
+            assigned(key) and
+            SetItem(mp.PyObject, key.PyObject, val.PyObject);
+end;
+
+class function TPyDict.SetItem(const mp, key, val: PPyObject): boolean;
+begin
   Result := assigned(PyDict_SetItem) and
-            TPyObject.IsInitialized(mp) and
-            TPyObject.IsInitialized(val) and
-            TPyObject.IsInitialized(key) and
-            (PyDict_SetItem(mp.PyObject, key.PyObject, val.PyObject) = 0);
+            assigned(mp) and
+            assigned(key) and
+            assigned(val) and
+            (PyDict_SetItem(mp, key, val) = 0);
 end;
 
 class function TPyDict.SetItem(const mp: IPyObject; const key: string; const val: IPyObject): boolean;
+var
+  TempKey : IPyObject;
 begin
-  Result := SetItem(mp, TPyUnicode.FromString(key), val);
+  try
+    TempKey := TPyUnicode.FromString(key);
+    Result  := SetItem(mp, TempKey, val);
+  finally
+    TempKey := nil;
+  end;
+end;
+
+class function TPyDict.SetItem(const mp: IPyObject; const key: string; val: PPyObject): boolean;
+var
+  TempKey : IPyObject;
+begin
+  Result := False;
+
+  try
+    if TPyObject.IsInitialized(mp) then
+      begin
+        TempKey := TPyUnicode.FromString(key);
+        Result  := SetItem(mp.PyObject, TempKey.PyObject, val);
+      end;
+  finally
+    TempKey := nil;
+  end;
 end;
 
 class function TPyDict.DelItem(const mp, key: IPyObject): boolean;
@@ -586,6 +646,11 @@ begin
     Result := PyDict_Contains(p.PyObject, key.PyObject)
    else
     Result := -1;
+end;
+
+class function TPyDict.Contains(const p: IPyObject; const key: string): integer;
+begin
+  Result := Contains(p, TPyUnicode.FromString(key));
 end;
 
 class function TPyDict.Update(const mp, other: IPyObject): boolean;

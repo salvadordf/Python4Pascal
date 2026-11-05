@@ -10,9 +10,9 @@ interface
 
 uses
   {$IFDEF DELPHI16_UP}
-    System.Classes, System.Variants,
+    System.Classes, System.Variants, System.Types,
   {$ELSE}
-    Classes, Variants,
+    Classes, Variants, Types,
   {$ENDIF}
   uP4P.LibFunctions, uP4P.Types, uP4P.Constants, uP4P.Interfaces, uP4P.PyObject;
 
@@ -185,6 +185,11 @@ type
       /// the new list with the aStringList string list.</para>
       /// </summary>
       class function FromStrings(const aStringList: TStringList) : IPyObject;
+      /// <summary>
+      /// <para>Custom function that creates a new list object and populates
+      /// the new list with the aStrings string array.</para>
+      /// </summary>
+      class function FromStringDynArray(const aStrings: TStringDynArray) : IPyObject;
       /// <summary>
       /// <para>Custom function that creates a new list object and populates
       /// the new list with the objects array.</para>
@@ -398,6 +403,22 @@ begin
 
       for i := 0 to pred(TempLen) do
         TPyList.SetItem(Result, i, TPyUnicode.FromString(aStringList[i]));
+    end;
+end;
+
+class function TPyList.FromStringDynArray(const aStrings: TStringDynArray) : IPyObject;
+var
+  i, TempLen : integer;
+begin
+  Result  := nil;
+  TempLen := length(aStrings);
+
+  if (TempLen > 0) then
+    begin
+      Result := TPyList.New(TempLen);
+
+      for i := 0 to pred(TempLen) do
+        TPyList.SetItem(Result, i, TPyUnicode.FromString(aStrings[i]));
     end;
 end;
 

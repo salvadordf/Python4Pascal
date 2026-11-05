@@ -70,7 +70,17 @@ type
       function GetBuildInfo: string;
       function GetOSPythonHome: string;
       function GetOSPythonLibPath: string;
+      function GetOSPythonExePath: string;
       function GetIsHandleValid: boolean;
+      {$IFDEF MSWINDOWS}
+      function GetOSPythonLibPath_Windows: string;
+      {$ENDIF}
+      {$IFDEF APPLE}
+      function GetOSPythonLibPath_Apple: boolean;
+      {$ENDIF}
+      {$IFDEF LINUX}
+      function GetOSPythonLibPath_Linux: boolean;
+      {$ENDIF}
 
       procedure FreePythonLibrary;
       function  ReadLibraryVersionInfo(const aLibraryPath: string): boolean;
@@ -281,6 +291,10 @@ type
       /// Returns the Python library path when it's installed in the OS.
       /// </summary>
       property OSPythonLibPath                   : string                                       read GetOSPythonLibPath;
+      /// <summary>
+      /// Returns the Python executable path when it's installed in the OS.
+      /// </summary>
+      property OSPythonExePath                   : string                                       read GetOSPythonExePath;
       /// <summary>
       /// <para>If True, enable isolated mode:</para>
       /// <code>
@@ -714,8 +728,8 @@ begin
 {$ENDIF}
 end;
 
-function TP4PLoader.GetOSPythonLibPath: string;
 {$IFDEF MSWINDOWS}
+function TP4PLoader.GetOSPythonLibPath_Windows: string;
 var
   TempFiles : TStringList;
   i : integer;
@@ -767,21 +781,23 @@ begin
         end;
     except
       on e : exception do
-        if CustomExceptionHandler('TP4PLoader.GetOSPythonLibPath', e) then raise;
+        if CustomExceptionHandler('TP4PLoader.GetOSPythonLibPath_Windows', e) then raise;
     end;
   finally
     if assigned(TempFiles) then FreeAndNil(TempFiles);
   end;
 end;
-{$ELSE}
+{$ENDIF}
+
 {$IFDEF LINUX}
+function TP4PLoader.GetOSPythonLibPath_Linux: string;
 var
   i : integer;
   TempVersion, TempLib, TempPath : string;
 begin
   Result := '';
   {$IFDEF TARGET_32BITS}
-    {$IF DEFINED(CPUARM32) OR DEFINED(CPUARM)} 
+    {$IF DEFINED(CPUARM32) OR DEFINED(CPUARM)}
     TempPath := '/usr/lib/arm-linux-gnueabihf/';
     {$ELSE}
     TempPath := '/usr/lib/i386-linux-gnu/';
@@ -817,11 +833,13 @@ begin
       end;
   except
     on e : exception do
-      if CustomExceptionHandler('TP4PLoader.GetOSPythonLibPath', e) then raise;
+      if CustomExceptionHandler('TP4PLoader.GetOSPythonLibPath_Linux', e) then raise;
   end;
 end;
-{$ELSE}
+{$ENDIF}
+
 {$IFDEF APPLE}
+function TP4PLoader.GetOSPythonLibPath_Apple: string;
 var
   i : integer;
   TempVersion, TempLib : string;
@@ -842,16 +860,43 @@ begin
       end;
   except
     on e : exception do
-      if CustomExceptionHandler('TP4PLoader.GetOSPythonLibPath', e) then raise;
+      if CustomExceptionHandler('TP4PLoader.GetOSPythonLibPath_Apple', e) then raise;
   end;
 end;
-{$ELSE}
+{$ENDIF}
+
+function TP4PLoader.GetOSPythonLibPath: string;
+begin
+  {$IFDEF MSWINDOWS}
+    Result := GetOSPythonLibPath_Windows();
+  {$ELSE}
+    {$IFDEF LINUX}
+      Result := GetOSPythonLibPath_Linux();
+    {$ELSE}
+      {$IFDEF APPLE}
+        Result := GetOSPythonLibPath_Apple();
+      {$ELSE}
+        Result := '';
+      {$ENDIF}
+    {$ENDIF}
+  {$ENDIF}
+end;
+
+function TP4PLoader.GetOSPythonExePath: string;
+var
+  TempPath : string;
 begin
   Result := '';
+
+  if DirectoryExists(FHome) then
+    begin
+      TempPath := IncludeTrailingPathDelimiter(FHome) +
+                  {$IFDEF MSWINDOWS}'python.exe'{$ELSE}'python3'{$ENDIF};
+
+      if FileExists(TempPath) then
+        Result := TempPath;
+    end;
 end;
-{$ENDIF}
-{$ENDIF}
-{$ENDIF}
 
 function TP4PLoader.SearchPythonHomeEnvironmentVariable(var aInstallPath: string): boolean;
 var

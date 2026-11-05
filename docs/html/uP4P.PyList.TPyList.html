@@ -119,21 +119,25 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#FromObjects-IPyObjectArray-">FromObjects</a></strong>(const objects: <a href="uP4P.Interfaces.html#IPyObjectArray">IPyObjectArray</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#FromStringDynArray-TStringDynArray-">FromStringDynArray</a></strong>(const aStrings: TStringDynArray) : <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
 <tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#FromObjects-IPyObjectArray-">FromObjects</a></strong>(const objects: <a href="uP4P.Interfaces.html#IPyObjectArray">IPyObjectArray</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#FromVariant-Variant-">FromVariant</a></strong>(const aVariant: Variant): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#FromVariant-Variant-TVarType-">FromVariant</a></strong>(const aVariant: Variant; aVarType: TVarType): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#AsStrings-IPyObject-TStringList-">AsStrings</a></strong>(const aPyObject: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; var aStringList: TStringList): boolean;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#FromVariantArray-Variant-integer-integer-TCustomIntArray-">FromVariantArray</a></strong>(const aVariant: Variant; dim, totaldim: integer; var indices: <a href="uP4P.Types.html#TCustomIntArray">TCustomIntArray</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
@@ -458,6 +462,20 @@ body { margin: 0.5em; }
 
 
 <p>Custom function that creates a new list object and populates the new list with the aStringList string list.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="FromStringDynArray-TStringDynArray-"></span><code>class function <strong>FromStringDynArray</strong>(const aStrings: TStringDynArray) : <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Custom function that creates a new list object and populates the new list with the aStrings string array.
 
 <p></p>
 </td></tr>

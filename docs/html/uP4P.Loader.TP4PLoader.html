@@ -182,7 +182,15 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-protected">
 <td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Loader.TP4PLoader.html#GetOSPythonExePath">GetOSPythonExePath</a></strong>: string;</code></td>
+</tr>
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
 <td class="itemcode"><code>function <strong><a href="uP4P.Loader.TP4PLoader.html#GetIsHandleValid">GetIsHandleValid</a></strong>: boolean;</code></td>
+</tr>
+<tr class="list2 visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Loader.TP4PLoader.html#GetOSPythonLibPath_Windows">GetOSPythonLibPath_Windows</a></strong>: string;</code></td>
 </tr>
 <tr class="list visibility-protected">
 <td class="visibility"><span class="badge vis-protected">Protected</span></td>
@@ -681,77 +689,81 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#Isolated">Isolated</a></strong>                          : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FIsolated">FIsolated</a>                          write <a href="uP4P.Loader.TP4PLoader.html#FIsolated">FIsolated</a>;</code></td>
+<td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#OSPythonExePath">OSPythonExePath</a></strong>                   : string                                       read <a href="uP4P.Loader.TP4PLoader.html#GetOSPythonExePath">GetOSPythonExePath</a>;</code></td>
 </tr>
 <tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#Isolated">Isolated</a></strong>                          : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FIsolated">FIsolated</a>                          write <a href="uP4P.Loader.TP4PLoader.html#FIsolated">FIsolated</a>;</code></td>
+</tr>
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#ParserDebug">ParserDebug</a></strong>                       : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FParserDebug">FParserDebug</a>                       write <a href="uP4P.Loader.TP4PLoader.html#FParserDebug">FParserDebug</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#Verbose">Verbose</a></strong>                           : <a href="uP4P.Types.html#TPyVerboseMode">TPyVerboseMode</a>                               read <a href="uP4P.Loader.TP4PLoader.html#FVerbose">FVerbose</a>                           write <a href="uP4P.Loader.TP4PLoader.html#FVerbose">FVerbose</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#Interactive">Interactive</a></strong>                       : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FInteractive">FInteractive</a>                       write <a href="uP4P.Loader.TP4PLoader.html#FInteractive">FInteractive</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#OptimizationLevel">OptimizationLevel</a></strong>                 : <a href="uP4P.Types.html#TPyOptimizationLevel">TPyOptimizationLevel</a>                         read <a href="uP4P.Loader.TP4PLoader.html#FOptimizationLevel">FOptimizationLevel</a>                 write <a href="uP4P.Loader.TP4PLoader.html#FOptimizationLevel">FOptimizationLevel</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#SiteImport">SiteImport</a></strong>                        : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FSiteImport">FSiteImport</a>                        write <a href="uP4P.Loader.TP4PLoader.html#FSiteImport">FSiteImport</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#PathConfigWarnings">PathConfigWarnings</a></strong>                : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FPathConfigWarnings">FPathConfigWarnings</a>                write <a href="uP4P.Loader.TP4PLoader.html#FPathConfigWarnings">FPathConfigWarnings</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#UseEnvironment">UseEnvironment</a></strong>                    : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FUseEnvironment">FUseEnvironment</a>                    write <a href="uP4P.Loader.TP4PLoader.html#FUseEnvironment">FUseEnvironment</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#UserSiteDirectory">UserSiteDirectory</a></strong>                 : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FUserSiteDirectory">FUserSiteDirectory</a>                 write <a href="uP4P.Loader.TP4PLoader.html#FUserSiteDirectory">FUserSiteDirectory</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#WriteBytecode">WriteBytecode</a></strong>                     : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FWriteBytecode">FWriteBytecode</a>                     write <a href="uP4P.Loader.TP4PLoader.html#FWriteBytecode">FWriteBytecode</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#DevMode">DevMode</a></strong>                           : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FDevMode">FDevMode</a>                           write <a href="uP4P.Loader.TP4PLoader.html#FDevMode">FDevMode</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#UseDebugLib">UseDebugLib</a></strong>                       : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FUseDebugLib">FUseDebugLib</a>                       write <a href="uP4P.Loader.TP4PLoader.html#FUseDebugLib">FUseDebugLib</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#Home">Home</a></strong>                              : string                                       read <a href="uP4P.Loader.TP4PLoader.html#FHome">FHome</a>                              write <a href="uP4P.Loader.TP4PLoader.html#FHome">FHome</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#Executable">Executable</a></strong>                        : string                                       read <a href="uP4P.Loader.TP4PLoader.html#FExecutable">FExecutable</a>                        write <a href="uP4P.Loader.TP4PLoader.html#FExecutable">FExecutable</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#ProgramName">ProgramName</a></strong>                       : string                                       read <a href="uP4P.Loader.TP4PLoader.html#FProgramName">FProgramName</a>                       write <a href="uP4P.Loader.TP4PLoader.html#FProgramName">FProgramName</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#ModuleSearchPaths">ModuleSearchPaths</a></strong>                 : string                                       read <a href="uP4P.Loader.TP4PLoader.html#FModuleSearchPaths">FModuleSearchPaths</a>                 write <a href="uP4P.Loader.TP4PLoader.html#FModuleSearchPaths">FModuleSearchPaths</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#LazyImports">LazyImports</a></strong>                       : <a href="uP4P.Types.html#PyImport_LazyImportsMode">PyImport_LazyImportsMode</a>                     read <a href="uP4P.Loader.TP4PLoader.html#FLazyImports">FLazyImports</a>                       write <a href="uP4P.Loader.TP4PLoader.html#FLazyImports">FLazyImports</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#InExtensionModule">InExtensionModule</a></strong>                 : boolean                                      read <a href="uP4P.Loader.TP4PLoader.html#FInExtensionModule">FInExtensionModule</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>property <strong><a href="uP4P.Loader.TP4PLoader.html#OnBeforeInitialization">OnBeforeInitialization</a></strong>            : <a href="uP4P.Loader.html#TOnBeforeInitializationEvent">TOnBeforeInitializationEvent</a>                 read <a href="uP4P.Loader.TP4PLoader.html#FOnBeforeInitialization">FOnBeforeInitialization</a>            write <a href="uP4P.Loader.TP4PLoader.html#FOnBeforeInitialization">FOnBeforeInitialization</a>;</code></td>
 </tr>
@@ -1050,7 +1062,23 @@ body { margin: 0.5em; }
 <table class="detail visibility-protected wide_list">
 <tr class="list visibility-protected">
 <td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><span id="GetOSPythonExePath"></span><code>function <strong>GetOSPythonExePath</strong>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-protected wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
 <td class="itemcode"><span id="GetIsHandleValid"></span><code>function <strong>GetIsHandleValid</strong>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-protected wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><span id="GetOSPythonLibPath_Windows"></span><code>function <strong>GetOSPythonLibPath_Windows</strong>: string;</code></td>
 </tr>
 <tr><td colspan="2">
 <p class="nodescription">This item has no description.</p></td></tr>
@@ -2082,6 +2110,16 @@ body { margin: 0.5em; }
 <tr><td colspan="2">
 <p>
  Returns the Python library path when it's installed in the OS. </p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="OSPythonExePath"></span><code>property <strong>OSPythonExePath</strong>                   : string                                       read <a href="uP4P.Loader.TP4PLoader.html#GetOSPythonExePath">GetOSPythonExePath</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Returns the Python executable path when it's installed in the OS. </p>
 </td></tr>
 </table>
 <table class="detail visibility-public wide_list">

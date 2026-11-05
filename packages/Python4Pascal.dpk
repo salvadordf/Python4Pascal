@@ -179,6 +179,9 @@ contains
   uP4P.PyMemberDef in '..\source\uP4P.PyMemberDef.pas',
   uP4P.PyGetSetDef in '..\source\uP4P.PyGetSetDef.pas',
   uP4P.Metadata in '..\source\uP4P.Metadata.pas',
-  uP4P.PyMarshal in '..\source\uP4P.PyMarshal.pas';
+  uP4P.PyMarshal in '..\source\uP4P.PyMarshal.pas',
+  uP4P.Subprocess in '..\source\uP4P.Subprocess.pas',
+  uP4P.SubprocessCompletedProcess in '..\source\uP4P.SubprocessCompletedProcess.pas',
+  uP4P.Pip in '..\source\uP4P.Pip.pas';
 
 end.

@@ -615,6 +615,18 @@
         <Filename Value="..\source\uP4P.PyMarshal.pas"/>
         <UnitName Value="uP4P.PyMarshal"/>
       </Item>
+      <Item>
+        <Filename Value="..\source\uP4P.SubprocessCompletedProcess.pas"/>
+        <UnitName Value="uP4P.SubprocessCompletedProcess"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\uP4P.Pip.pas"/>
+        <UnitName Value="uP4P.Pip"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\uP4P.Subprocess.pas"/>
+        <UnitName Value="uP4P.Subprocess"/>
+      </Item>
     </Files>
     <RequiredPkgs>
       <Item>

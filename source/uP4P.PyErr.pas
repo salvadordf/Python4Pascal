@@ -86,7 +86,7 @@ type
       /// You do not own a reference to the return value, so you do not need to
       /// TPy.DECREF() it.</para>
       /// <para>The caller must have an attached thread state.</para>
-      /// <para>Note Do not compare the return value to a specific exception;
+      /// <para>Note: Do not compare the return value to a specific exception;
       /// use TPyErr.ExceptionMatches() instead, shown below. (The comparison
       /// could easily fail since the exception may be an instance instead of a
       /// class, in the case of a class exception, or it may be a subclass of

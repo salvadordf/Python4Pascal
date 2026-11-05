@@ -17139,12 +17139,20 @@
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#GetLoaded">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="GetOSPythonExePath">
+<param name="Local" value="uP4P.Loader.TP4PLoader.html#GetOSPythonExePath">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="GetOSPythonHome">
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#GetOSPythonHome">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetOSPythonLibPath">
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#GetOSPythonLibPath">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetOSPythonLibPath_Windows">
+<param name="Local" value="uP4P.Loader.TP4PLoader.html#GetOSPythonLibPath_Windows">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="GetPlatform">
@@ -17533,6 +17541,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="OptimizationLevel">
 <param name="Local" value="uP4P.Loader.TP4PLoader.html#OptimizationLevel">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="OSPythonExePath">
+<param name="Local" value="uP4P.Loader.TP4PLoader.html#OSPythonExePath">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="OSPythonHome">
@@ -23784,6 +23796,16 @@
 <param name="Name" value="Contains">
 <param name="Local" value="uP4P.PyDict.TPyDict.html#Contains-IPyObject-IPyObject-">
 </object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyDict - uP4P.PyDict Unit">
+<param name="Local" value="uP4P.PyDict.TPyDict.html#Contains-IPyObject-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyDict - uP4P.PyDict Unit">
+<param name="Local" value="uP4P.PyDict.TPyDict.html#Contains-IPyObject-string-">
+</object>
+</ul>
 <li><object type="text/sitemap">
 <param name="Name" value="ContainsString">
 <param name="Local" value="uP4P.PyDict.TPyDict.html#ContainsString-IPyObject-string-">
@@ -23880,6 +23902,14 @@
 <li><object type="text/sitemap">
 <param name="Name" value="TPyDict - uP4P.PyDict Unit">
 <param name="Local" value="uP4P.PyDict.TPyDict.html#SetItem-IPyObject-string-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyDict - uP4P.PyDict Unit">
+<param name="Local" value="uP4P.PyDict.TPyDict.html#SetItem-IPyObject-string-PPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyDict - uP4P.PyDict Unit">
+<param name="Local" value="uP4P.PyDict.TPyDict.html#SetItem-PPyObject-PPyObject-PPyObject-">
 </object>
 </ul>
 <li><object type="text/sitemap">
@@ -26995,6 +27025,10 @@
 <param name="Local" value="uP4P.PyList.TPyList.html#FromObjects-IPyObjectArray-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="FromStringDynArray">
+<param name="Local" value="uP4P.PyList.TPyList.html#FromStringDynArray-TStringDynArray-">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="FromStrings">
 <param name="Local" value="uP4P.PyList.TPyList.html#FromStrings-TStringList-">
 </object>
@@ -29929,6 +29963,54 @@
 <param name="Local" value="uP4P.PyPickleBuffer.TPyPickleBuffer.html#Release-IPyObject-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="TPyPip">
+<param name="Local" value="uP4P.Pip.TPyPip.html">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="AfterConstruction">
+<param name="Local" value="uP4P.Pip.TPyPip.html#AfterConstruction">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="CreateArgs">
+<param name="Local" value="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-IPyObject-string-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Executable">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Executable">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FExecutable">
+<param name="Local" value="uP4P.Pip.TPyPip.html#FExecutable">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FSubprocess">
+<param name="Local" value="uP4P.Pip.TPyPip.html#FSubprocess">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.Pip.TPyPip.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Initialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Install">
+<param name="Local" value="uP4P.Pip.TPyPip.html#Install-string-integer-string-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="List">
+<param name="Local" value="uP4P.Pip.TPyPip.html#List-integer-string-">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="TPyPreConfig">
 <param name="Local" value="uP4P.PyPreConfig.TPyPreConfig.html">
 </object>
@@ -30747,6 +30829,62 @@
 <li><object type="text/sitemap">
 <param name="Name" value="SetItem">
 <param name="Local" value="uP4P.PyStructSequence.TPyStructSequence.html#SetItem-IPyObject-Py_ssize_t-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPySubprocess">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="AfterConstruction">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#AfterConstruction">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FRun">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#FRun">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GetInitialized">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Import">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#Import">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialize">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#Initialize">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Initialized">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#Initialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Run">
+<param name="Local" value="uP4P.Subprocess.TPySubprocess.html#Run-IPyObject-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPySubprocessCompletedProcess">
+<param name="Local" value="uP4P.SubprocessCompletedProcess.TPySubprocessCompletedProcess.html">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="returncode">
+<param name="Local" value="uP4P.SubprocessCompletedProcess.TPySubprocessCompletedProcess.html#returncode-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="stderr">
+<param name="Local" value="uP4P.SubprocessCompletedProcess.TPySubprocessCompletedProcess.html#stderr-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="stdout">
+<param name="Local" value="uP4P.SubprocessCompletedProcess.TPySubprocessCompletedProcess.html#stdout-IPyObject-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="TPySys">

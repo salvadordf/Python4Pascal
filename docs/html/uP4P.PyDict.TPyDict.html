@@ -59,7 +59,15 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#SetItem-PPyObject-PPyObject-PPyObject-">SetItem</a></strong>(const mp, key, val: <a href="uP4P.Types.html#PPyObject">PPyObject</a>): boolean; overload;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#SetItem-IPyObject-string-IPyObject-">SetItem</a></strong>(const mp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string; const val: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean; overload;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#SetItem-IPyObject-string-PPyObject-">SetItem</a></strong>(const mp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string; val: <a href="uP4P.Types.html#PPyObject">PPyObject</a>): boolean; overload;</code></td>
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
@@ -95,81 +103,85 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Contains-IPyObject-IPyObject-">Contains</a></strong>(const p, key: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer;</code></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Contains-IPyObject-IPyObject-">Contains</a></strong>(const p, key: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer; overload;</code></td>
 </tr>
 <tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Contains-IPyObject-string-">Contains</a></strong>(const p: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string): integer; overload;</code></td>
+</tr>
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Update-IPyObject-IPyObject-">Update</a></strong>(const mp, other: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Merge-IPyObject-IPyObject-boolean-">Merge</a></strong>(const a, b: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; override_: boolean): boolean;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#MergeFromSeq2-IPyObject-IPyObject-boolean-">MergeFromSeq2</a></strong>(const a, seq2: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; override_: boolean): boolean;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#GetItemString-IPyObject-string-">GetItemString</a></strong>(const dp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; overload;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#SetItemString-IPyObject-string-IPyObject-">SetItemString</a></strong>(const dp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string; const item: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean; overload;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#DelItemString-IPyObject-string-">DelItemString</a></strong>(const dp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string): boolean; overload;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#GetItemRef-IPyObject-IPyObject-IPyObject-">GetItemRef</a></strong>(const p, key: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; out result_: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#GetItemStringRef-IPyObject-string-IPyObject-">GetItemStringRef</a></strong>(const mp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string; out result_: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#SetDefault-IPyObject-IPyObject-IPyObject-">SetDefault</a></strong>(const p, key, defaultobj: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#SetDefaultRef-IPyObject-IPyObject-IPyObject-IPyObject-">SetDefaultRef</a></strong>(const p, key, default_value: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; out result_: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#ContainsString-IPyObject-string-">ContainsString</a></strong>(const p: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string): integer;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Pop-IPyObject-IPyObject-IPyObject-">Pop</a></strong>(const p, key: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; out result_: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#PopString-IPyObject-string-IPyObject-">PopString</a></strong>(const p: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string; out result_: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#AddWatcher-PyDict_WatchCallback-">AddWatcher</a></strong>(callback: <a href="uP4P.Types.html#PyDict_WatchCallback">PyDict_WatchCallback</a>): integer;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#ClearWatcher-integer-">ClearWatcher</a></strong>(watcher_id: integer): boolean;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Watch-integer-IPyObject-">Watch</a></strong>(watcher_id: integer; const dict: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#Unwatch-integer-IPyObject-">Unwatch</a></strong>(watcher_id: integer; const dict: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean;</code></td>
 </tr>
-<tr class="list2 visibility-public">
+<tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#FromStringsArray-TStringList-arrayof-">FromStringsArray</a></strong>(const aKeys: TStringList; const aValues: array of const): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
-<tr class="list visibility-public">
+<tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyDict.TPyDict.html#FromNamedParamArray-TNamedParamArray-TVarDataArray-">FromNamedParamArray</a></strong>(const NamedParamArray: <a href="uP4P.Types.html#TNamedParamArray">TNamedParamArray</a>; const Arguments: TVarDataArray): <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>;</code></td>
 </tr>
@@ -279,7 +291,39 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="SetItem-PPyObject-PPyObject-PPyObject-"></span><code>class function <strong>SetItem</strong>(const mp, key, val: <a href="uP4P.Types.html#PPyObject">PPyObject</a>): boolean; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Insert val into the dictionary mp with a key of key. key must be hashable; if it isn't, TypeError will be raised. Return True on success or False on failure. This function does not &quot;steal&quot; a reference to val.
+
+<p>Note: The operation is atomic on free threading when key is str, int, float, bool or bytes.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><span id="SetItem-IPyObject-string-IPyObject-"></span><code>class function <strong>SetItem</strong>(const mp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string; const val: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Insert val into the dictionary mp with a key of key. key must be hashable; if it isn't, TypeError will be raised. Return True on success or False on failure. This function does not &quot;steal&quot; a reference to val.
+
+<p>Note: The operation is atomic on free threading when key is str, int, float, bool or bytes.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="SetItem-IPyObject-string-PPyObject-"></span><code>class function <strong>SetItem</strong>(const mp: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string; val: <a href="uP4P.Types.html#PPyObject">PPyObject</a>): boolean; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
@@ -488,7 +532,27 @@ Py_END_CRITICAL_SECTION();</pre>
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="Contains-IPyObject-IPyObject-"></span><code>class function <strong>Contains</strong>(const p, key: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer;</code></td>
+<td class="itemcode"><span id="Contains-IPyObject-IPyObject-"></span><code>class function <strong>Contains</strong>(const p, key: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): integer; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Determine if dictionary p contains key. If an item in p matches key, return 1, otherwise return 0. On error, return -1. This is equivalent to the Python expression key in p.
+
+<p>Note: The operation is atomic on free threading when key is str, int, float, bool or bytes.
+
+<p>The first argument can be a dict or a frozendict.
+
+<p>Changed in version 3.15: Also accept frozendict.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="Contains-IPyObject-string-"></span><code>class function <strong>Contains</strong>(const p: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const key: string): integer; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>

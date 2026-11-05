@@ -70,6 +70,8 @@ uP4P.Metadata.TPyMetadata.html
 uP4P.Metadata.TPyDistribution.html
 uP4P.Metadata.TPyDistributionList.html
 uP4P.MiscFunctions.html
+uP4P.Pip.html
+uP4P.Pip.TPyPip.html
 uP4P.Py.html
 uP4P.Py.TPy.html
 uP4P.PyABIInfo.html
@@ -353,6 +355,10 @@ uP4P.Py_mod.html
 uP4P.Py_mod.TPy_mod.html
 uP4P.Py_mp.html
 uP4P.Py_mp.TPy_mp.html
+uP4P.Subprocess.html
+uP4P.Subprocess.TPySubprocess.html
+uP4P.SubprocessCompletedProcess.html
+uP4P.SubprocessCompletedProcess.TPySubprocessCompletedProcess.html
 uP4P.Thread.html
 uP4P.Thread.TP4PThread.html
 uP4P.Types.html
