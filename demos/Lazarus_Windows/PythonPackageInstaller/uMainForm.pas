@@ -147,8 +147,9 @@ end;
 procedure TMainForm.PackagesSgSelectCell(Sender: TObject; ACol, ARow: LongInt;
   var CanSelect: Boolean);
 begin
-  UpdatePackageBtn.Enabled := length(PackagesSg.cells[2, ARow]) > 0;
-  ShowPackageInfo(PackagesSg.cells[0, ARow]);
+  UpdatePackageBtn.Enabled := (ARow > 0) and (length(PackagesSg.cells[2, ARow]) > 0);
+  if (ARow > 0) then
+    ShowPackageInfo(PackagesSg.cells[0, ARow]);
 end;
 
 procedure TMainForm.ShowPackageInfo(const aPackage: string);

@@ -895,6 +895,15 @@ begin
 
       if FileExists(TempPath) then
         Result := TempPath;
+    end
+   else
+    begin
+      {$IFNDEF MSWINDOWS}
+      TempPath := '/usr/bin/python3';
+
+      if FileExists(TempPath) then
+        Result := TempPath;
+      {$ENDIF}
     end;
 end;
 

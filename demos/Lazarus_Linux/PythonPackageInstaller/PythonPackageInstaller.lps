@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="PythonPackageInstaller.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="9" Y="12"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uMainForm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="223"/>
+        <CursorPos X="72" Y="244"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uMainForm.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="112"/>
+        <CursorPos Y="142"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.Subprocess.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="46"/>
+        <CursorPos Y="79"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.PyObject.pas"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="1756"/>
+        <CursorPos Y="1766"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="880"/>
+        <CursorPos Y="908"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.Metadata.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="218"/>
+        <CursorPos Y="242"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="109" TopLine="101"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="905" Column="39" TopLine="882"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="242" TopLine="222"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="107" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="108" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="134" TopLine="117"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="135" TopLine="117"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="120" TopLine="112"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="109" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="888" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="889" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="891" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="902" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="904" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="905" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
+        <Caret Line="908" TopLine="880"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="109" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="113" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="138" TopLine="112"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="139" TopLine="112"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="140" TopLine="112"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="141" TopLine="112"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="139" TopLine="112"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="142" TopLine="112"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Metadata.pas"/>
+        <Caret Line="239" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Metadata.pas"/>
+        <Caret Line="240" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Metadata.pas"/>
+        <Caret Line="241" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Metadata.pas"/>
+        <Caret Line="240" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Metadata.pas"/>
+        <Caret Line="242" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="152" Column="3" TopLine="123"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
