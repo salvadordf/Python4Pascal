@@ -153,9 +153,9 @@ begin
   aArgs   := TPyTuple.Pack([TempCmd]);
 
   aKwargs := TPyDict.New;
-  TPyDict.SetItem(aKwargs, 'check',          TPyBool.ReturnTrue);
-  TPyDict.SetItem(aKwargs, 'capture_output', TPyBool.ReturnTrue);
-  TPyDict.SetItem(aKwargs, 'text',           TPyBool.ReturnTrue);
+  TPyDict.SetItem(aKwargs, 'check',          TPyBool.NewTrue);
+  TPyDict.SetItem(aKwargs, 'capture_output', TPyBool.NewTrue);
+  TPyDict.SetItem(aKwargs, 'text',           TPyBool.NewTrue);
   {$IFDEF MSWINDOWS}
   // Don't create a console window.
   TPyDict.SetItem(aKwargs, 'creationflags',  TPyLong.FromLong(CREATE_NO_WINDOW));

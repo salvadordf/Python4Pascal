@@ -24045,6 +24045,10 @@
 <param name="Local" value="uP4P.Metadata.TPyDistributionList.html#Destroy">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="GetHasPIP">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#GetHasPIP">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="GetName">
 <param name="Local" value="uP4P.Metadata.TPyDistributionList.html#GetName-integer-">
 </object>
@@ -24053,8 +24057,16 @@
 <param name="Local" value="uP4P.Metadata.TPyDistributionList.html#GetVersion-integer-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="HasPIP">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#HasPIP">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Name_">
 <param name="Local" value="uP4P.Metadata.TPyDistributionList.html#Name_">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Search">
+<param name="Local" value="uP4P.Metadata.TPyDistributionList.html#Search-string-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="Version">
@@ -27805,8 +27817,16 @@
 <param name="Local" value="uP4P.Metadata.TPyMetadata.html#FVersion">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="GetHasPIP">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#GetHasPIP">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="GetInitialized">
 <param name="Local" value="uP4P.Metadata.TPyMetadata.html#GetInitialized">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="HasPIP">
+<param name="Local" value="uP4P.Metadata.TPyMetadata.html#HasPIP">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="Import">

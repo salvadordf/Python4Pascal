@@ -37,6 +37,7 @@ type
       FDistList          : TPyDistributionList;
 
       function  GetInitialized : boolean;
+      function  GetHasPIP: boolean;
 
       procedure Import;
       procedure Initialize;
@@ -61,6 +62,10 @@ type
       /// Get the TPyDistribution instance for the named package.
       /// </summary>
       property Distributions : TPyDistributionList  read FDistList;
+      /// <summary>
+      /// The distribution list contains the PIP package.
+      /// </summary>
+      property HasPIP        : boolean              read  GetHasPIP;
   end;
 
   /// <summary>
@@ -108,12 +113,14 @@ type
     protected
       function  GetName(i: integer) : string;
       function  GetVersion(i: integer) : string;
+      function  GetHasPIP: boolean;
 
       procedure ClearItems;
 
     public
       destructor Destroy; override;
       function   AddDistribution(const aDistribution: IPyObject): boolean;
+      function   Search(const aName: string): integer;
       /// <summary>
       /// Get the version string of the package.
       /// </summary>
@@ -122,6 +129,10 @@ type
       /// Get the name of the package.
       /// </summary>
       property Version[i: integer]     : string       read  GetVersion;
+      /// <summary>
+      /// The distribution list contains the PIP package.
+      /// </summary>
+      property HasPIP                  : boolean      read  GetHasPIP;
   end;
 
 implementation
@@ -230,6 +241,11 @@ begin
             TPyObject.IsInitialized(FVersion);
 end;
 
+function TPyMetadata.GetHasPIP: boolean;
+begin
+  Result := assigned(FDistList) and FDistList.HasPIP;
+end;
+
 { TPyDistribution }
 
 constructor TPyDistribution.Create(const aDistribution: IPyObject);
@@ -320,9 +336,29 @@ begin
     Result := '';
 end;
 
+function TPyDistributionList.GetHasPIP: boolean;
+begin
+  Result := (Search('pip') >= 0);
+end;
+
 function TPyDistributionList.AddDistribution(const aDistribution: IPyObject): boolean;
 begin
   Result := (Add(TPyDistribution.Create(aDistribution)) >= 0);
+end;
+
+function TPyDistributionList.Search(const aName: string): integer;
+var
+  i: integer;
+begin
+  Result := -1;
+
+  if (length(aName) > 0) and (Count > 0) then
+    for i := 0 to pred(Count) do
+      if CompareText(aName, TPyDistribution(Items[i]).Name_) = 0 then
+        begin
+          Result := i;
+          exit;
+        end;
 end;
 
 end.

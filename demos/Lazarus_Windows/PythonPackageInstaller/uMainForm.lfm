@@ -1,0 +1,228 @@
+object MainForm: TMainForm
+  Left = 0
+  Height = 612
+  Top = 0
+  Width = 935
+  Caption = 'Python Package Installer'
+  ClientHeight = 612
+  ClientWidth = 935
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Position = poScreenCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  object Splitter1: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 472
+    Width = 935
+    Align = alBottom
+    ResizeAnchor = akBottom
+  end
+  object LogMem: TMemo
+    Left = 0
+    Height = 135
+    Top = 477
+    Width = 935
+    Align = alBottom
+    ReadOnly = True
+    ScrollBars = ssBoth
+    TabOrder = 0
+  end
+  object PackagesTb: TToolBar
+    Left = 0
+    Height = 26
+    Top = 0
+    Width = 935
+    Caption = 'PackagesTb'
+    Enabled = False
+    Images = ImageList1
+    TabOrder = 1
+    object RefreshBtn: TToolButton
+      Left = 1
+      Hint = 'Refresh packages'
+      Top = 2
+      Caption = 'Refresh packages'
+      ImageIndex = 0
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = RefreshBtnClick
+    end
+    object InstallPackageBtn: TToolButton
+      Left = 24
+      Hint = 'Install a new package'
+      Top = 2
+      Caption = 'Install a new package...'
+      ImageIndex = 1
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = InstallPackageBtnClick
+    end
+    object UninstallPackageBtn: TToolButton
+      Left = 47
+      Hint = 'Uninstall the selected package'
+      Top = 2
+      Caption = 'Uninstall the selected package'
+      ImageIndex = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = UninstallPackageBtnClick
+    end
+    object UpdatePackageBtn: TToolButton
+      Left = 70
+      Hint = 'Update the selected package'
+      Top = 2
+      Caption = 'Update the selected package'
+      ImageIndex = 3
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = UpdatePackageBtnClick
+    end
+    object CheckBtn: TToolButton
+      Left = 93
+      Hint = 'Check packages'
+      Top = 2
+      Caption = 'Check packages'
+      ImageIndex = 4
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = CheckBtnClick
+    end
+    object InstallPIPBtn: TToolButton
+      Left = 116
+      Hint = 'Install PIP'
+      Top = 2
+      Caption = 'Install PIP'
+      ImageIndex = 5
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = InstallPIPBtnClick
+    end
+  end
+  object MainPnl: TPanel
+    Left = 0
+    Height = 446
+    Top = 26
+    Width = 935
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 446
+    ClientWidth = 935
+    ParentBackground = False
+    TabOrder = 2
+    object Splitter2: TSplitter
+      Left = 661
+      Height = 446
+      Top = 0
+      Width = 5
+      Align = alRight
+      ResizeAnchor = akRight
+    end
+    object InfoPnl: TPanel
+      Left = 666
+      Height = 446
+      Top = 0
+      Width = 269
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 446
+      ClientWidth = 269
+      ParentBackground = False
+      TabOrder = 0
+      object InfoMem: TMemo
+        Left = 0
+        Height = 446
+        Top = 0
+        Width = 269
+        Align = alClient
+        ReadOnly = True
+        ScrollBars = ssBoth
+        TabOrder = 0
+      end
+    end
+    object PackagesPnl: TPanel
+      Left = 0
+      Height = 446
+      Top = 0
+      Width = 661
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 446
+      ClientWidth = 661
+      ParentBackground = False
+      TabOrder = 1
+      OnResize = PackagesPnlResize
+      object PackagesSg: TStringGrid
+        Left = 0
+        Height = 446
+        Top = 0
+        Width = 661
+        Align = alClient
+        ColCount = 3
+        Enabled = False
+        FixedCols = 0
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect, goThumbTracking]
+        RowCount = 2
+        TabOrder = 0
+        OnSelectCell = PackagesSgSelectCell
+      end
+    end
+  end
+  object ImageList1: TImageList
+    Left = 216
+    Top = 160
+    Bitmap = {
+      4C7A060000001000000010000000B10500000000000078DAED987B50546514C0
+      CF16D198E4685989E3381631282BEA489A932F501670058687388980E08863A4
+      1683E82026CB437689254021584110C1A5256340C0172829BECA9BA6463E165F
+      F90A1468D4A9E98F3C7D672FF7B2CBAE808E3DFED89DF9F171BEEFFCEE77F77C
+      F7B03B2022E073A0CF57A64F0DA8E799243D959FEE8965B72E23283DB05F3F43
+      7E0E3E677BA57BF3286508350A8413DB31ADF598780D8B7E963FC25135825E87
+      21574F88C04FA508678B10CE1763A47E2F825A8E66BEDAA7129A95080D1B11B6
+      2D412889405079F1FB37B2FDF5DB7146DB413E067035F3B70421547D8A902C3B
+      43EB26B0EB8CF8B50E218D772DDEFF177E082B3FD8C4969C2083BDEFCCF91562
+      4D1265FB595D7837D36739E55A78FF74DDE1A09C83659D1DECDE65C687F2B661
+      3D43DE0CA53108394168B17EACB669F7F408C74BF89AD37BCDF4452864B5D8CA
+      6AB29BCDED494750C81ACCEB27C7C88BF5ACD6C508E758AD5B4A4DCEC0700E47
+      D8D964FBD366EF58BC7F9527CE38CDFCD61DACE6896CDF50FE2CE81CE85948F3
+      D23FB17EFC8BAFF5C91C76EF9E68760E00CE03787E5DD9B38090E479B8AF47BA
+      9FE79FF672781AFFBFC46669938DCDD26F57303204C04DC11963BCC6E792D3C4
+      FB91871C9C37703BD31BBB50D5D06960CA8A42138479CAA15C7218BC1FD1E8E5
+      9B7BE9A8B1EFBEA64264564CB9894FB9E4D82C69E0FD25FB577DACBD765D517B
+      0705FC92EA44BC13AAD0788D72C96118FC17C3F6E455E81FFF55790551601DFB
+      21B05CC3A1F11AE592C3E0FDC5B50525E7FEC4BC930F4582550D22BE8A5A9335
+      CA2587C1FB21D58585A77FC79CA3BF8990E7B1AED230BAC56A4DD628971C06EF
+      7FB8ABE4CBEF1EA0BAE9BE08B9C6A331944B0E83F7177E559675A4139507DAFA
+      646E75188EDF3511BDEB23911C86C17F6141B956D5D08EC9F5B7FBC4B96202C6
+      752E43A96E2292F34A7C10EF076CFF3AA9EE167E567DC32233772E46A7521703
+      CBEF05E3D81D1370E8E6B7BA5E2B020DF91279EEBE84AAEBB8FE9B6B1671DCEA
+      828177DDCD189A079CC197A9B6483C94C79EC4A098C96D768A371F11337F198F
+      86DF5386B50FC9ECDEDF43093027F589D846F8C2E0C4616097029CF4DA48A4D1
+      6E932D0C51F37F0706E2BF1C0360BB0A342F7D041C8D140BBEB5FFADFDFF6FF4
+      BF00E53E4BFF0B502E391267ED80FADFD5EB10DA3BD48A8C7C977D97B2D37601
+      6807D4FF231CB4181EFE8719000503EA7FB04F6D83C1498F4C18A4680748D5FC
+      9F3EC7ADFD6FED7F6BFF5BFBDFDAFFD6FEFFA7FAFFB02E056BF6563F73FFFF50
+      1882A78B1663C4276B8F47AF8EEEB7FFABF3E3F07056A009783B1FEB126777FD
+      B8C925B4BFFEAF4F9987787333624B34E2D9B01E2EC66273BC43BFFD1F1BEADE
+      56B0CCF99131786C1A964439B6EF5D691FDADFF77779C042C88D703250103E06
+      2A425FE5085DF890D0FAE811F034FEB6405B280AB0D53042D93580FC232A8909
+      CDE9123FC6550BF8F5CEA5BD9B5225BD69BCBB7BEAC3C7A716A000C534DF3B97
+      FC30B708D8BF51624CEBBD7DEE78A5D25584629AEF95D7FD7F932670199D0D35
+      6B2502FABB7533F172C524118A69DE28074272A4A24F484765836EB584B874A3
+      6A1AFE5C365E84629AEF5E0769911B4065B0894F8C1B990DA551920BADBAC978
+      B6D84984629A67C0B8ADBCDBE31FF2667002FE9342EE50FE857217118AF34324
+      2D4EF93D6E8F7FA0CA67FE9D8EB5718F91885F5A8609FEC10616C9C6762D0AB3
+      37307B8DF436E816704678F37E1DE739E5018E813633203099F3E05418D5A133
+      C1FD7C7A0794FB57F17E1537CBE53E8E829B6680DF066ECEF7691870290F6914
+      A0188AE41CEF6BB9A98EB7D01EF466803C8E9B753C197D5B729046018A21D7A3
+      DB2FE65C465DC537A0C50CF05CC54D6F4E44EF336AA4518062C898D1EDE77113
+      47B7A2E3EB17CD00F728EEFDA604C33DD328403124BDD7ED6FD400ACE72C323D
+      889B72301EE79E529ADC3FC51027EDF6D733622DB368B80682877216616BCFE3
+      B3FB6F9C77C1CB
+    }
+  end
+end
