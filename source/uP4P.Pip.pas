@@ -109,7 +109,7 @@ type
 implementation
 
 uses
-  uP4P.SubprocessCompletedProcess, uP4P.PyDict, uP4P.PyTuple, uP4P.PyUnicode,
+  uP4P.SubprocessCompletedProcess, uP4P.PyDict, uP4P.PyTuple,
   {$IFDEF MSWINDOWS}uP4P.PyLong,{$ENDIF} uP4P.PyBool, uP4P.PyErr, uP4P.PyList;
 
 constructor TPyPip.Create;
