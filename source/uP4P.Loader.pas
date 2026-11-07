@@ -558,8 +558,8 @@ begin
   FSiteImport             := False;
   {$ELSE}
   FIsolated               := False;
-  FUserSiteDirectory      := False;
-  FUseEnvironment         := True;
+  FUserSiteDirectory      := True;
+  FUseEnvironment         := False;
   FSiteImport             := True;
   {$ENDIF}
   {$ENDIF}
