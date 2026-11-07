@@ -1294,7 +1294,7 @@ end;
 
 class function TPyObject.Wrap(aPyObject: Pointer; aObjRefOwner, aUseNewRef: boolean): IPyObject;
 begin
-  if assigned(aPyObject) then
+  if (aPyObject <> nil) then
     Result := TPyObject.Create(aPyObject, aObjRefOwner, aUseNewRef)
    else
     Result := nil;

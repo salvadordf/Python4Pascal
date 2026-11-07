@@ -559,8 +559,8 @@ begin
   {$ELSE}
   FIsolated               := False;
   FUserSiteDirectory      := False;
-  FUseEnvironment         := False;
-  FSiteImport             := False;
+  FUseEnvironment         := True;
+  FSiteImport             := True;
   {$ENDIF}
   {$ENDIF}
 

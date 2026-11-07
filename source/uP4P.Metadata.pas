@@ -191,16 +191,12 @@ begin
       if TPyObject.IsInitialized(TempDists) then
         begin
           TempIter := TempDists.GetIter;
+          TempDist := TPyIter.Next(TempIter);
 
-          if TPyObject.IsInitialized(TempIter) then
+          while TPyObject.IsInitialized(TempDist) do
             begin
+              FDistList.AddDistribution(TempDist);
               TempDist := TPyIter.Next(TempIter);
-
-              while TPyObject.IsInitialized(TempDist) do
-                begin
-                  FDistList.AddDistribution(TempDist);
-                  TempDist := TPyIter.Next(TempIter);
-                end;
             end;
         end;
     end;
