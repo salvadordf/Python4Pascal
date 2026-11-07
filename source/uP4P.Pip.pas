@@ -1,7 +1,7 @@
 unit uP4P.Pip;
 
 {$IFDEF FPC}
-  {$MODE OBJFPC}{$H+}
+  {$MODE Delphi}
 {$ENDIF}
 
 {$I p4p.inc}
@@ -10,9 +10,9 @@ interface
 
 uses
   {$IFDEF DELPHI16_UP}
-    System.Classes, System.SysUtils, System.Variants,
+    System.Classes, System.SysUtils, System.Variants, System.Types,
   {$ELSE}
-    Classes, SysUtils, Variants,
+    Classes, SysUtils, Variants, Types,
   {$ENDIF}
   uP4P.Interfaces, uP4P.PyObject, uP4P.Subprocess, uP4P.Types;
 
@@ -33,7 +33,7 @@ type
       FExecutable : string;
 
       function  GetInitialized : boolean;
-      procedure CreateArgs(var aArgs, aKwargs: IPyObject; const module, extra: string);
+      procedure CreateArgs(var aArgs, aKwargs: IPyObject; const aCommand: TStringDynArray);
 
     public
       constructor Create;
@@ -110,7 +110,7 @@ implementation
 
 uses
   uP4P.SubprocessCompletedProcess, uP4P.PyDict, uP4P.PyTuple, uP4P.PyUnicode,
-  {$IFDEF MSWINDOWS}uP4P.PyLong,{$ENDIF} uP4P.PyBool, uP4P.PyErr;
+  {$IFDEF MSWINDOWS}uP4P.PyLong,{$ENDIF} uP4P.PyBool, uP4P.PyErr, uP4P.PyList;
 
 constructor TPyPip.Create;
 begin
@@ -141,17 +141,23 @@ begin
             FileExists(FExecutable);
 end;
 
-procedure TPyPip.CreateArgs(var aArgs, aKwargs: IPyObject; const module, extra: string);
+procedure TPyPip.CreateArgs(var aArgs, aKwargs: IPyObject; const aCommand: TStringDynArray);
 {$IFDEF MSWINDOWS}
 const
   CREATE_NO_WINDOW = $08000000;
 {$ENDIF}
 var
   TempCmd : IPyObject;
+  i : integer;
 begin
-  TempCmd := TPyUnicode.FromString(FExecutable + ' -m ' + module + ' ' + extra);
-  aArgs   := TPyTuple.Pack([TempCmd]);
+  TempCmd := TPyList.New(length(aCommand) + 2);
+  TPyList.SetItem(TempCmd, 0, FExecutable);
+  TPyList.SetItem(TempCmd, 1, '-m');
 
+  for i := 0 to pred(length(aCommand)) do
+    TPyList.SetItem(TempCmd, i + 2, aCommand[i]);
+
+  aArgs   := TPyTuple.Pack([TempCmd]);
   aKwargs := TPyDict.New;
   TPyDict.SetItem(aKwargs, 'check',          TPyBool.NewTrue);
   TPyDict.SetItem(aKwargs, 'capture_output', TPyBool.NewTrue);
@@ -165,7 +171,7 @@ end;
 function TPyPip.List(format: TPipListFormat; outdated: boolean; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempExtra : string;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -177,16 +183,16 @@ begin
   if not(Initialized) then exit;
 
   if outdated then
-    TempExtra := 'list -o'
+    TempCmd := ['pip', 'list', '-o']
    else
-    TempExtra := 'list';
+    TempCmd := ['pip', 'list'];
 
   case format of
-    plf_freeze : if not(outdated) then TempExtra := TempExtra + ' --format freeze';
-    plf_json   : TempExtra := TempExtra + ' --format json';
+    plf_freeze : if not(outdated) then TempCmd := TempCmd + ['--format', 'freeze'];
+    plf_json   : TempCmd := TempCmd + ['--format', 'json'];
   end;
 
-  CreateArgs(TempArgs, TempKwargs, 'pip', TempExtra);
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -204,7 +210,7 @@ end;
 function TPyPip.Install(const package_name: string; upgrade: boolean; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempExtra : string;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -216,11 +222,11 @@ begin
   if not(Initialized) or (length(package_name) = 0) then exit;
 
   if upgrade then
-    TempExtra := 'install --upgrade ' + package_name
+    TempCmd := ['pip', 'install', '--upgrade', package_name]
    else
-    TempExtra := 'install ' + package_name;
+    TempCmd := ['pip', 'install', package_name];
 
-  CreateArgs(TempArgs, TempKwargs, 'pip', TempExtra);
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -238,7 +244,7 @@ end;
 function TPyPip.Uninstall(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempExtra : string;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -249,9 +255,9 @@ begin
 
   if not(Initialized) or (length(package_name) = 0) then exit;
 
-  TempExtra := 'uninstall -y ' + package_name;
+  TempCmd := ['pip', 'uninstall', '-y', package_name];
 
-  CreateArgs(TempArgs, TempKwargs, 'pip', TempExtra);
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -269,6 +275,7 @@ end;
 function TPyPip.Version(var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -279,7 +286,9 @@ begin
 
   if not(Initialized) then exit;
 
-  CreateArgs(TempArgs, TempKwargs, 'pip', '--version');
+  TempCmd := ['pip', '--version'];
+
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -297,6 +306,7 @@ end;
 function TPyPip.Ensurepip(var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -307,7 +317,9 @@ begin
 
   if not(Initialized) then exit;
 
-  CreateArgs(TempArgs, TempKwargs, 'ensurepip', '--default-pip');
+  TempCmd := ['ensurepip', '--default-pip'];
+
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -325,7 +337,7 @@ end;
 function TPyPip.Show(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempExtra : string;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -336,9 +348,9 @@ begin
 
   if not(Initialized) then exit;
 
-  TempExtra := 'show ' + package_name;
+  TempCmd := ['pip', 'show', package_name];
 
-  CreateArgs(TempArgs, TempKwargs, 'pip', TempExtra);
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -356,6 +368,7 @@ end;
 function TPyPip.Check(var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -366,7 +379,9 @@ begin
 
   if not(Initialized) then exit;
 
-  CreateArgs(TempArgs, TempKwargs, 'pip', 'check');
+  TempCmd := ['pip', 'check'];
+
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -384,7 +399,7 @@ end;
 function TPyPip.IndexVersions(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempExtra : string;
+  TempCmd : TStringDynArray;
 begin
   Result     := False;
   returncode := -1;
@@ -395,9 +410,9 @@ begin
 
   if not(Initialized) then exit;
 
-  TempExtra := 'index versions ' + package_name;
+  TempCmd := ['pip', 'index', 'versions', package_name];
 
-  CreateArgs(TempArgs, TempKwargs, 'pip', TempExtra);
+  CreateArgs(TempArgs, TempKwargs, TempCmd);
 
   TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
@@ -411,6 +426,5 @@ begin
    else
     TPyErr.Print;
 end;
-
 
 end.

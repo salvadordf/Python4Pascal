@@ -102,6 +102,24 @@ type
       /// On success, it discards a reference to an item already in the list at
       /// the affected position (unless it was nil).</para>
       /// </summary>
+      class function SetItem(const list: IPyObject; index: Py_ssize_t; const item: string): boolean; overload;
+      /// <summary>
+      /// <para>Set the item at index index in list to item. Return True on
+      /// success. If index is out of bounds, return False and set an
+      /// IndexError exception.</para>
+      /// <para>Note: This function "steals" a reference to item, even on error.
+      /// On success, it discards a reference to an item already in the list at
+      /// the affected position (unless it was nil).</para>
+      /// </summary>
+      class function SetItem(const list: IPyObject; index: Py_ssize_t; const item: C_Long): boolean; overload;
+      /// <summary>
+      /// <para>Set the item at index index in list to item. Return True on
+      /// success. If index is out of bounds, return False and set an
+      /// IndexError exception.</para>
+      /// <para>Note: This function "steals" a reference to item, even on error.
+      /// On success, it discards a reference to an item already in the list at
+      /// the affected position (unless it was nil).</para>
+      /// </summary>
       class function SetItem(const list: IPyObject; const index, item: TVarData): boolean; overload;
       /// <summary>
       /// <para>Insert the item item into list list in front of index index.
@@ -218,7 +236,7 @@ type
 implementation
 
 uses
-  uP4P.PyType, uP4P.PyUnicode;
+  uP4P.PyType, uP4P.PyUnicode, uP4P.PyLong;
 
 class function TPyList.New(len: Py_ssize_t): IPyObject;
 begin
@@ -287,6 +305,24 @@ begin
             TPyObject.IsInitialized(list) and
             TPyObject.IsInitialized(item) and
             (PyList_SetItem(list.PyObject, index, item.UnWrap) = 0);
+end;
+
+class function TPyList.SetItem(const list: IPyObject; index: Py_ssize_t; const item: string): boolean;
+var
+  TempItem: IPyObject;
+begin
+  TempItem := TPyUnicode.FromString(item);
+  Result   := SetItem(list, index, TempItem);
+  TempItem := nil;
+end;
+
+class function TPyList.SetItem(const list: IPyObject; index: Py_ssize_t; const item: C_Long): boolean;
+var
+  TempItem: IPyObject;
+begin
+  TempItem := TPyLong.FromLong(item);
+  Result   := SetItem(list, index, TempItem);
+  TempItem := nil;
 end;
 
 class function TPyList.SetItem(const list: IPyObject; const index, item: TVarData): boolean;

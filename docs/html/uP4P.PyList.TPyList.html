@@ -71,6 +71,14 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#SetItem-IPyObject-Py_ssize_t-string-">SetItem</a></strong>(const list: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; index: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; const item: string): boolean; overload;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#SetItem-IPyObject-Py_ssize_t-C_Long-">SetItem</a></strong>(const list: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; index: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; const item: <a href="uP4P.Types.html#C_Long">C_Long</a>): boolean; overload;</code></td>
+</tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>class function <strong><a href="uP4P.PyList.TPyList.html#SetItem-IPyObject-TVarData-TVarData-">SetItem</a></strong>(const list: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const index, item: TVarData): boolean; overload;</code></td>
 </tr>
 <tr class="list visibility-public">
@@ -270,6 +278,38 @@ body { margin: 0.5em; }
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><span id="SetItem-IPyObject-Py_ssize_t-IPyObject-"></span><code>class function <strong>SetItem</strong>(const list: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; index: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; const item: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>): boolean; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Set the item at index index in list to item. Return True on success. If index is out of bounds, return False and set an IndexError exception.
+
+<p>Note: This function &quot;steals&quot; a reference to item, even on error. On success, it discards a reference to an item already in the list at the affected position (unless it was nil).
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="SetItem-IPyObject-Py_ssize_t-string-"></span><code>class function <strong>SetItem</strong>(const list: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; index: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; const item: string): boolean; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Set the item at index index in list to item. Return True on success. If index is out of bounds, return False and set an IndexError exception.
+
+<p>Note: This function &quot;steals&quot; a reference to item, even on error. On success, it discards a reference to an item already in the list at the affected position (unless it was nil).
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="SetItem-IPyObject-Py_ssize_t-C_Long-"></span><code>class function <strong>SetItem</strong>(const list: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; index: <a href="uP4P.Types.html#Py_ssize_t">Py_ssize_t</a>; const item: <a href="uP4P.Types.html#C_Long">C_Long</a>): boolean; overload;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>

@@ -19468,6 +19468,14 @@
 <param name="Local" value="uP4P.PyList.TPyList.html#SetItem">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="SetItem">
+<param name="Local" value="uP4P.PyList.TPyList.html#SetItem">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="SetItem">
+<param name="Local" value="uP4P.PyList.TPyList.html#SetItem">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Insert">
 <param name="Local" value="uP4P.PyList.TPyList.html#Insert">
 </object>
@@ -53962,6 +53970,14 @@
 <li><object type="text/sitemap">
 <param name="Name" value="Reverse">
 <param name="Local" value="uP4P.PyList.TPyList.html#Reverse">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="SetItem">
+<param name="Local" value="uP4P.PyList.TPyList.html#SetItem">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="SetItem">
+<param name="Local" value="uP4P.PyList.TPyList.html#SetItem">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="SetItem">

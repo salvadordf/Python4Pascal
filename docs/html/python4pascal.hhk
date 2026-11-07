@@ -27112,12 +27112,20 @@
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="SetItem">
-<param name="Local" value="uP4P.PyList.TPyList.html#SetItem-IPyObject-Py_ssize_t-IPyObject-">
+<param name="Local" value="uP4P.PyList.TPyList.html#SetItem-IPyObject-Py_ssize_t-C_Long-">
 </object>
 <ul>
 <li><object type="text/sitemap">
 <param name="Name" value="TPyList - uP4P.PyList Unit">
+<param name="Local" value="uP4P.PyList.TPyList.html#SetItem-IPyObject-Py_ssize_t-C_Long-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyList - uP4P.PyList Unit">
 <param name="Local" value="uP4P.PyList.TPyList.html#SetItem-IPyObject-Py_ssize_t-IPyObject-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyList - uP4P.PyList Unit">
+<param name="Local" value="uP4P.PyList.TPyList.html#SetItem-IPyObject-Py_ssize_t-string-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="TPyList - uP4P.PyList Unit">
@@ -30004,7 +30012,7 @@
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="CreateArgs">
-<param name="Local" value="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-IPyObject-string-string-">
+<param name="Local" value="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-IPyObject-TStringDynArray-">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="Destroy">
