@@ -7,8 +7,8 @@ unit uMainForm;
 interface
 
 uses
-  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, ExtCtrls, StdCtrls, Grids, ImgList, ToolWin, fpjson, 
+  SysUtils, Variants, Classes, Graphics, Controls, Forms, 
+  Dialogs, ComCtrls, ExtCtrls, StdCtrls, Grids, ImgList, ToolWin, fpjson, Math,
   uP4P.Interfaces, uP4P.PyObject, uP4P.Engine, uP4P.Py, uP4P.PyImport,
   uP4P.PyModule, uP4P.PyEval, uP4P.PyRun, uP4P.Constants, uP4P.Pip,
   uP4P.Metadata, uP4P.Types;
@@ -100,7 +100,10 @@ begin
      FPip.Check(returncode, stdout, stderr) then
     AddLogLines(stdout)
    else
-    AddLogLines(stderr);
+    begin
+      AddLogLines(stderr);
+      AddLogLines(stdout);
+    end;
 end;
 
 function TMainForm.CreateWrappers: boolean;
@@ -124,7 +127,7 @@ var
   i, TempLen : integer;
 begin
   TempLen             := FMetadata.Distributions.Count;
-  PackagesSg.RowCount := succ(TempLen);
+  PackagesSg.RowCount := max(2, succ(TempLen));  
 
   for i := 1 to TempLen do
     begin
@@ -170,7 +173,11 @@ begin
       TempSL.Free;
     end
    else
-    AddLogLines(stderr);
+    begin
+      AddLogLine('Return code: ' + inttostr(returncode));
+      AddLogLines(stderr);
+      AddLogLines(stdout);
+    end;
 end;
 
 procedure TMainForm.ParsePackagesList(const aList: string);
@@ -216,7 +223,11 @@ begin
     if FPip.List(plf_json, True, returncode, stdout, stderr) then
       ParsePackagesList(stdout)
      else
-      AddLogLines(stderr);
+      begin
+        AddLogLine('Return code: ' + inttostr(returncode));
+        AddLogLines(stderr);
+        AddLogLines(stdout);
+      end;
   finally
     EnableGUI(True);
   end;
@@ -287,7 +298,11 @@ begin
       if FPip.Install(TempPackage, False, returncode, stdout, stderr) then
         RefreshPackages
        else
-        AddLogLines(stderr);
+        begin
+          AddLogLine('Return code: ' + inttostr(returncode));
+          AddLogLines(stderr);
+          AddLogLines(stdout);
+        end;
     end;
 end;
 
@@ -300,7 +315,11 @@ begin
      FPip.Ensurepip(returncode, stdout, stderr) then
     RefreshPackages
    else
-    AddLogLines(stderr);
+    begin
+      AddLogLine('Return code: ' + inttostr(returncode));
+      AddLogLines(stderr);
+      AddLogLines(stdout);
+    end;
 end;
 
 procedure TMainForm.UninstallPackageBtnClick(Sender: TObject);
@@ -317,7 +336,11 @@ begin
       if FPip.Uninstall(TempPackage, returncode, stdout, stderr) then
         RefreshPackages
        else
-        AddLogLines(stderr);
+        begin
+          AddLogLine('Return code: ' + inttostr(returncode));
+          AddLogLines(stderr);
+          AddLogLines(stdout);
+        end;
     end;
 end;
 
@@ -335,7 +358,11 @@ begin
       if FPip.Install(TempPackage, True, returncode, stdout, stderr) then
         RefreshPackages
        else
-        AddLogLines(stderr);
+        begin
+          AddLogLine('Return code: ' + inttostr(returncode));
+          AddLogLines(stderr);
+          AddLogLines(stdout);
+        end;
     end;
 end;
 

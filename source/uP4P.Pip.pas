@@ -159,7 +159,7 @@ begin
 
   aArgs   := TPyTuple.Pack([TempCmd]);
   aKwargs := TPyDict.New;
-  TPyDict.SetItem(aKwargs, 'check',          TPyBool.NewTrue);
+  TPyDict.SetItem(aKwargs, 'check',          TPyBool.NewFalse);
   TPyDict.SetItem(aKwargs, 'capture_output', TPyBool.NewTrue);
   TPyDict.SetItem(aKwargs, 'text',           TPyBool.NewTrue);
   {$IFDEF MSWINDOWS}

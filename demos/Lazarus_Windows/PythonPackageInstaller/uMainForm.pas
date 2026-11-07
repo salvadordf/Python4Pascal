@@ -8,7 +8,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, ExtCtrls, StdCtrls, Grids, ImgList, ToolWin, fpjson, 
+  Dialogs, ComCtrls, ExtCtrls, StdCtrls, Grids, ImgList, ToolWin, fpjson, Math,
   uP4P.Interfaces, uP4P.PyObject, uP4P.Engine, uP4P.Py, uP4P.PyImport,
   uP4P.PyModule, uP4P.PyEval, uP4P.PyRun, uP4P.Constants, uP4P.Pip,
   uP4P.Metadata, uP4P.Types;
@@ -100,7 +100,10 @@ begin
      FPip.Check(returncode, stdout, stderr) then
     AddLogLines(stdout)
    else
-    AddLogLines(stderr);
+    begin
+      AddLogLines(stderr);
+      AddLogLines(stdout);
+    end;
 end;
 
 function TMainForm.CreateWrappers: boolean;
@@ -124,7 +127,7 @@ var
   i, TempLen : integer;
 begin
   TempLen             := FMetadata.Distributions.Count;
-  PackagesSg.RowCount := succ(TempLen);
+  PackagesSg.RowCount := max(2, succ(TempLen));
 
   for i := 1 to TempLen do
     begin
@@ -170,7 +173,11 @@ begin
       TempSL.Free;
     end
    else
-    AddLogLines(stderr);
+    begin
+      AddLogLine('Return code: ' + inttostr(returncode));
+      AddLogLines(stderr);
+      AddLogLines(stdout);
+    end;
 end;
 
 procedure TMainForm.ParsePackagesList(const aList: string);
@@ -216,15 +223,17 @@ begin
     if FPip.List(plf_json, True, returncode, stdout, stderr) then
       ParsePackagesList(stdout)
      else
-      AddLogLines(stderr);
+      begin
+        AddLogLine('Return code: ' + inttostr(returncode));
+        AddLogLines(stderr);
+        AddLogLines(stdout);
+      end;
   finally
     EnableGUI(True);
   end;
 end;
 
 procedure TMainForm.InitializePython;
-var
-  TempBit, TempDrive, TempLibPath : string;
 begin
   if not(assigned(GlobalP4PEngine)) then
     begin
@@ -236,34 +245,8 @@ begin
     begin
       GlobalP4PEngine.SetCurrentDir := True;
 
-      {$IFDEF TARGET_32BITS}
-      TempBit := 'win32';
-      {$ELSE}
-      TempBit := 'amd64';
-      {$ENDIF}
-
-      TempDrive := 'Q';
-      //TempDrive := 'S';
-
-      // All these library paths were used for testing purposes only.
-      // Set your own library path if you wat to use an embedded Python package.
-
-      // If you call GlobalP4PEngine.Load with an empty path it will try to load
-      // the Python library that is installed in Windows.
-
-      // You can download Python from https://www.python.org/downloads/windows/
-
-      //TempLibPath := TempDrive + ':\python-3.15.2-embed-' + TempBit + '\python315.dll';
-      //TempLibPath := TempDrive + ':\python-3.14.8-embed-' + TempBit + '\python314.dll';
-      //TempLibPath := TempDrive + ':\python-3.13.16-embed-' + TempBit + '\python313.dll';
-      //TempLibPath := TempDrive + ':\python-3.12.10-embed-' + TempBit + '\python312.dll';
-      //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
-      //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
-      //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
-      TempLibPath := '';
-
       // Load and initialize the Python library.
-      if GlobalP4PEngine.Load(TempLibPath) and
+      if GlobalP4PEngine.Load() and
          GlobalP4PEngine.Initialize then
         begin
           LogMem.Lines.Add('Python initialized. ' + GlobalP4PEngine.buildinfo);
@@ -315,7 +298,11 @@ begin
       if FPip.Install(TempPackage, False, returncode, stdout, stderr) then
         RefreshPackages
        else
-        AddLogLines(stderr);
+        begin
+          AddLogLine('Return code: ' + inttostr(returncode));
+          AddLogLines(stderr);
+          AddLogLines(stdout);
+        end;
     end;
 end;
 
@@ -328,7 +315,11 @@ begin
      FPip.Ensurepip(returncode, stdout, stderr) then
     RefreshPackages
    else
-    AddLogLines(stderr);
+    begin
+      AddLogLine('Return code: ' + inttostr(returncode));
+      AddLogLines(stderr);
+      AddLogLines(stdout);
+    end;
 end;
 
 procedure TMainForm.UninstallPackageBtnClick(Sender: TObject);
@@ -345,7 +336,11 @@ begin
       if FPip.Uninstall(TempPackage, returncode, stdout, stderr) then
         RefreshPackages
        else
-        AddLogLines(stderr);
+        begin
+          AddLogLine('Return code: ' + inttostr(returncode));
+          AddLogLines(stderr);
+          AddLogLines(stdout);
+        end;
     end;
 end;
 
@@ -363,7 +358,11 @@ begin
       if FPip.Install(TempPackage, True, returncode, stdout, stderr) then
         RefreshPackages
        else
-        AddLogLines(stderr);
+        begin
+          AddLogLine('Return code: ' + inttostr(returncode));
+          AddLogLines(stderr);
+          AddLogLines(stdout);
+        end;
     end;
 end;
 
