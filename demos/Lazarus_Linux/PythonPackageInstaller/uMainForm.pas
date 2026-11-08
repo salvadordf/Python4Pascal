@@ -53,7 +53,6 @@ type
     procedure InitializePython;
     function  CreateWrappers: boolean;
     procedure ShowPackagesInfo;
-    procedure ShowPathConfigWarning;
     procedure ShowErrorInfo(returncode: integer; const stdout, stderr: string);
     procedure RefreshPackages;
     procedure AddLogLine(const aMessage: string);
@@ -114,7 +113,6 @@ begin
   AddLogLine('Return code: ' + inttostr(returncode));
   AddLogLines(stderr);
   AddLogLines(stdout);
-  ShowPathConfigWarning;
 end;
 
 function TMainForm.CreateWrappers: boolean;
@@ -213,18 +211,6 @@ begin
   finally
     FreeAndNil(TempData);
   end;
-end;
-
-procedure TMainForm.ShowPathConfigWarning;
-begin
-  if FMetadata.HasPIP then
-    AddLogLine('If you' + #39 + 're using an embedded Python distribution ' +
-               'check that the python*._pth file contains ' +
-               'the paths to the package directories, for example, "Lib" and ' +
-               '"Lib\site-packages".')
-   else
-    AddLogLine('If you' + #39 + 're using an embedded Python distribution ' +
-               'check that PIP is installed.');
 end;
 
 procedure TMainForm.RefreshPackages;
