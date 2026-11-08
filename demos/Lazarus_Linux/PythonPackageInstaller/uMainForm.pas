@@ -219,9 +219,12 @@ procedure TMainForm.ShowPathConfigWarning;
 begin
   if FMetadata.HasPIP then
     AddLogLine('If you' + #39 + 're using an embedded Python distribution ' +
-               'check that PIP is installed and the python*._pth file contains ' +
+               'check that the python*._pth file contains ' +
                'the paths to the package directories, for example, "Lib" and ' +
-               '"Lib\site-packages".');
+               '"Lib\site-packages".')
+   else
+    AddLogLine('If you' + #39 + 're using an embedded Python distribution ' +
+               'check that PIP is installed.');
 end;
 
 procedure TMainForm.RefreshPackages;
