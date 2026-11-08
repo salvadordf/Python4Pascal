@@ -14,6 +14,9 @@ uses
   uP4P.Metadata, uP4P.Types;
 
 type
+
+  { TMainForm }
+
   TMainForm = class(TForm)
     LogMem: TMemo;
     Splitter1: TSplitter;
@@ -22,6 +25,7 @@ type
     RefreshBtn: TToolButton;
     PackagesSg: TStringGrid;
     InstallPackageBtn: TToolButton;
+    PackageInfoBtn: TToolButton;
     UninstallPackageBtn: TToolButton;
     UpdatePackageBtn: TToolButton;
     MainPnl: TPanel;
@@ -33,6 +37,7 @@ type
     InstallPIPBtn: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure PackageInfoBtnClick(Sender: TObject);
     procedure RefreshBtnClick(Sender: TObject);
     procedure PackagesSgSelectCell(Sender: TObject; ACol, ARow: LongInt; var CanSelect: Boolean);
     procedure PackagesPnlResize(Sender: TObject);
@@ -47,8 +52,9 @@ type
 
     procedure InitializePython;
     function  CreateWrappers: boolean;
-    procedure EnableGUI(aValue: boolean);
     procedure ShowPackagesInfo;
+    procedure ShowPathConfigWarning;
+    procedure ShowErrorInfo(returncode: integer; const stdout, stderr: string);
     procedure RefreshPackages;
     procedure AddLogLine(const aMessage: string);
     procedure AddLogLines(const aMessage: string);
@@ -100,10 +106,15 @@ begin
      FPip.Check(returncode, stdout, stderr) then
     AddLogLines(stdout)
    else
-    begin
-      AddLogLines(stderr);
-      AddLogLines(stdout);
-    end;
+    ShowErrorInfo(returncode, stdout, stderr);
+end;
+
+procedure TMainForm.ShowErrorInfo(returncode: integer; const stdout, stderr: string);
+begin
+  AddLogLine('Return code: ' + inttostr(returncode));
+  AddLogLines(stderr);
+  AddLogLines(stdout);
+  ShowPathConfigWarning;
 end;
 
 function TMainForm.CreateWrappers: boolean;
@@ -114,12 +125,6 @@ begin
   FMetadata := TPyMetadata.Create;
 
   Result := FPip.Initialized and FMetadata.Initialized;
-end;
-
-procedure TMainForm.EnableGUI(aValue: boolean);
-begin
-  PackagesSg.Enabled := aValue;
-  PackagesTb.Enabled := aValue;
 end;
 
 procedure TMainForm.ShowPackagesInfo;
@@ -142,6 +147,12 @@ begin
   RefreshPackages;
 end;
 
+procedure TMainForm.PackageInfoBtnClick(Sender: TObject);
+begin
+  if (PackagesSg.Selection.Top > 0) then
+    ShowPackageInfo(PackagesSg.cells[0, PackagesSg.Selection.Top]);
+end;
+
 procedure TMainForm.PackagesPnlResize(Sender: TObject);
 begin
   PackagesSg.DefaultColWidth := (PackagesSg.Width - 28) div PackagesSg.ColCount;
@@ -150,9 +161,8 @@ end;
 procedure TMainForm.PackagesSgSelectCell(Sender: TObject; ACol, ARow: LongInt;
   var CanSelect: Boolean);
 begin
-  UpdatePackageBtn.Enabled := (ARow > 0) and (length(PackagesSg.cells[2, ARow]) > 0);
-  if (ARow > 0) then
-    ShowPackageInfo(PackagesSg.cells[0, ARow]);
+  UpdatePackageBtn.Enabled := (ARow > 0) and
+                              (length(PackagesSg.cells[2, ARow]) > 0);
 end;
 
 procedure TMainForm.ShowPackageInfo(const aPackage: string);
@@ -163,9 +173,9 @@ var
 begin
   InfoMem.Lines.Clear;
 
-  if (length(aPackage) > 0) and
-     assigned(FPip) and
-     FPip.Show(aPackage, returncode, stdout, stderr) then
+  if (length(aPackage) = 0) or not(assigned(FPip)) then exit;
+
+  if FPip.Show(aPackage, returncode, stdout, stderr) then
     begin
       TempSL      := TStringList.Create;
       TempSL.Text := stdout;
@@ -173,11 +183,7 @@ begin
       TempSL.Free;
     end
    else
-    begin
-      AddLogLine('Return code: ' + inttostr(returncode));
-      AddLogLines(stderr);
-      AddLogLines(stdout);
-    end;
+    ShowErrorInfo(returncode, stdout, stderr);
 end;
 
 procedure TMainForm.ParsePackagesList(const aList: string);
@@ -209,31 +215,34 @@ begin
   end;
 end;
 
+procedure TMainForm.ShowPathConfigWarning;
+begin
+  if FMetadata.HasPIP then
+    AddLogLine('If you' + #39 + 're using an embedded Python distribution ' +
+               'check that PIP is installed and the python*._pth file contains ' +
+               'the paths to the package directories, for example, "Lib" and ' +
+               '"Lib\site-packages".');
+end;
+
 procedure TMainForm.RefreshPackages;
 var
   returncode: integer;
   stdout, stderr: string;
 begin
-  EnableGUI(False);
-  try
-    FMetadata.RefreshDistributions;
-    ShowPackagesInfo;
-    InstallPIPBtn.Enabled := not(FMetadata.HasPIP);
+  FMetadata.RefreshDistributions;
+  ShowPackagesInfo;
 
-    if FPip.List(plf_json, True, returncode, stdout, stderr) then
-      ParsePackagesList(stdout)
-     else
-      begin
-        AddLogLine('Return code: ' + inttostr(returncode));
-        AddLogLines(stderr);
-        AddLogLines(stdout);
-      end;
-  finally
-    EnableGUI(True);
-  end;
+  InstallPIPBtn.Enabled := not(FMetadata.HasPIP);
+
+  if FPip.List(plf_json, True, returncode, stdout, stderr) then
+    ParsePackagesList(stdout)
+   else
+    ShowErrorInfo(returncode, stdout, stderr);
 end;
 
 procedure TMainForm.InitializePython;
+var
+  TempBit, TempDrive, TempLibPath : string;
 begin
   if not(assigned(GlobalP4PEngine)) then
     begin
@@ -245,8 +254,35 @@ begin
     begin
       GlobalP4PEngine.SetCurrentDir := True;
 
+      {$IFDEF TARGET_32BITS}
+      TempBit := 'win32';
+      {$ELSE}
+      TempBit := 'amd64';
+      {$ENDIF}
+
+      TempDrive := 'Q';
+      //TempDrive := 'S';
+
+      // All these library paths were used for testing purposes only.
+      // Set your own library path if you wat to use an embedded Python package.
+
+      // If you call GlobalP4PEngine.Load with an empty path it will try to load
+      // the Python library that is installed in Windows.
+
+      // You can download Python from https://www.python.org/downloads/windows/
+
+      //TempLibPath := TempDrive + ':\python-3.15.2-embed-' + TempBit + '\python315.dll';
+      //TempLibPath := TempDrive + ':\python-3.14.8-embed-' + TempBit + '\python314.dll';
+      //TempLibPath := TempDrive + ':\python-3.13.16-embed-' + TempBit + '\python313.dll';
+      //TempLibPath := TempDrive + ':\python-3.12.10-embed-' + TempBit + '\python312.dll';
+      //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
+      //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
+      //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
+      //TempLibPath := 'C:\Users\usuario\Desktop\python-3.15.2-embed-amd64\python315.dll';
+      TempLibPath := '';
+
       // Load and initialize the Python library.
-      if GlobalP4PEngine.Load() and
+      if GlobalP4PEngine.Load(TempLibPath) and
          GlobalP4PEngine.Initialize then
         begin
           LogMem.Lines.Add('Python initialized. ' + GlobalP4PEngine.buildinfo);
@@ -298,11 +334,7 @@ begin
       if FPip.Install(TempPackage, False, returncode, stdout, stderr) then
         RefreshPackages
        else
-        begin
-          AddLogLine('Return code: ' + inttostr(returncode));
-          AddLogLines(stderr);
-          AddLogLines(stdout);
-        end;
+        ShowErrorInfo(returncode, stdout, stderr);
     end;
 end;
 
@@ -315,11 +347,7 @@ begin
      FPip.Ensurepip(returncode, stdout, stderr) then
     RefreshPackages
    else
-    begin
-      AddLogLine('Return code: ' + inttostr(returncode));
-      AddLogLines(stderr);
-      AddLogLines(stdout);
-    end;
+    ShowErrorInfo(returncode, stdout, stderr);
 end;
 
 procedure TMainForm.UninstallPackageBtnClick(Sender: TObject);
@@ -336,11 +364,7 @@ begin
       if FPip.Uninstall(TempPackage, returncode, stdout, stderr) then
         RefreshPackages
        else
-        begin
-          AddLogLine('Return code: ' + inttostr(returncode));
-          AddLogLines(stderr);
-          AddLogLines(stdout);
-        end;
+        ShowErrorInfo(returncode, stdout, stderr);
     end;
 end;
 
@@ -358,11 +382,7 @@ begin
       if FPip.Install(TempPackage, True, returncode, stdout, stderr) then
         RefreshPackages
        else
-        begin
-          AddLogLine('Return code: ' + inttostr(returncode));
-          AddLogLines(stderr);
-          AddLogLines(stdout);
-        end;
+        ShowErrorInfo(returncode, stdout, stderr);
     end;
 end;
 
