@@ -8,7 +8,7 @@
       <Unit>
         <Filename Value="PythonPackageInstaller.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,9 +19,9 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="200"/>
-        <CursorPos X="40" Y="224"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="325"/>
+        <CursorPos X="75" Y="348"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -31,8 +31,15 @@
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="465"/>
+        <CursorPos X="20" Y="496"/>
+        <UsageCount Value="10"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="7">
+    <JumpHistory HistoryIndex="12">
       <Position>
         <Filename Value="uMainForm.pas"/>
       </Position>
@@ -63,6 +70,26 @@
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="216" Column="5" TopLine="181"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="224" Column="40" TopLine="200"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="226" Column="40" TopLine="202"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="348" Column="3" TopLine="325"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="241" Column="56" TopLine="222"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="350" Column="79" TopLine="347"/>
       </Position>
     </JumpHistory>
     <RunParams>

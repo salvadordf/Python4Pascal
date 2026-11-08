@@ -38,6 +38,7 @@ type
     CheckBtn: TToolButton;
     InstallPIPBtn: TToolButton;
     PackageInfoBtn: TToolButton;
+    RunInstallScriptBtn: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RefreshBtnClick(Sender: TObject);
@@ -50,6 +51,7 @@ type
     procedure PackageInfoBtnClick(Sender: TObject);
     procedure PackagesSgSelectCell(Sender: TObject; ACol, ARow: LongInt;
       var CanSelect: Boolean);
+    procedure RunInstallScriptBtnClick(Sender: TObject);
   private
     FPip      : TPyPip;
     FMetadata : TPyMetadata;
@@ -235,12 +237,24 @@ begin
   FMetadata.RefreshDistributions;
   ShowPackagesInfo;
 
-  InstallPIPBtn.Enabled := not(FMetadata.HasPIP);
+  InstallPIPBtn.Enabled       := not(FMetadata.HasPIP);
+  RunInstallScriptBtn.Enabled := InstallPIPBtn.Enabled;
 
   if FPip.List(plf_json, True, returncode, stdout, stderr) then
     ParsePackagesList(stdout)
    else
     ShowErrorInfo(returncode, stdout, stderr);
+end;
+
+procedure TMainForm.RunInstallScriptBtnClick(Sender: TObject);
+begin
+  AddLogLine('Downloading and running the installation script.');
+  AddLogLine('The application may close automatically when it finishes.');
+
+  if TPyPip.RunPIPInstallerScript then
+    AddLogLine('Installation script run correctly.')
+   else
+    AddLogLine('There was an error downloading the PIP installation script.');
 end;
 
 procedure TMainForm.InitializePython;

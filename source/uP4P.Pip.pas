@@ -11,8 +11,10 @@ interface
 uses
   {$IFDEF DELPHI16_UP}
     System.Classes, System.SysUtils, System.Variants, System.Types,
+    {$IFDEF DELPHI22_UP}System.Net.HttpClient, System.Net.URLClient, System.NetConsts,{$ENDIF}
   {$ELSE}
     Classes, SysUtils, Variants, Types,
+    {$IFDEF FPC}fphttpclient, opensslsockets,{$ENDIF}
   {$ENDIF}
   uP4P.Interfaces, uP4P.PyObject, uP4P.Subprocess, uP4P.Types;
 
@@ -96,6 +98,16 @@ type
       /// stderr.</para>
       /// </summary>
       function IndexVersions(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
+      {$IFDEF MSWINDOWS}
+      /// <summary>
+      /// <para>Download the get-pip.py script to install PIP.</para>
+      /// </summary>
+      class function DownloadPIPInstallerScript(var aResult: string): boolean;
+      /// <summary>
+      /// <para>Run the get-pip.py script to install PIP.</para>
+      /// </summary>
+      class function RunPIPInstallerScript: boolean;
+      {$ENDIF}
       /// <summary>
       /// Returns true if the class is fully initialized.
       /// </summary>
@@ -109,8 +121,8 @@ type
 implementation
 
 uses
-  uP4P.SubprocessCompletedProcess, uP4P.PyDict, uP4P.PyTuple,
-  {$IFDEF MSWINDOWS}uP4P.PyLong,{$ENDIF} uP4P.PyBool, uP4P.PyErr, uP4P.PyList;
+  uP4P.SubprocessCompletedProcess, uP4P.PyDict, uP4P.PyTuple, uP4P.PyList,
+  {$IFDEF MSWINDOWS}uP4P.PyRun, uP4P.PyLong,{$ENDIF} uP4P.PyBool, uP4P.PyErr;
 
 constructor TPyPip.Create;
 begin
@@ -426,5 +438,65 @@ begin
    else
     TPyErr.Print;
 end;
+
+{$IFDEF MSWINDOWS}
+class function TPyPip.DownloadPIPInstallerScript(var aResult: string): boolean;
+const
+  SCRIPT_URL = 'https://bootstrap.pypa.io/get-pip.py';
+{$IFDEF DELPHI22_UP}
+var
+  TempClient   : THTTPClient;
+  TempResponse : IHTTPResponse;
+{$ENDIF}
+{$IFDEF FPC}
+var
+  TempClient : TFPHTTPClient;
+  TempResult : string;
+{$ENDIF}
+begin
+  Result  := False;
+  aResult := '';
+
+{$IFDEF DELPHI22_UP}
+  TempClient := THTTPClient.Create;
+  TempClient.AcceptCharSet := 'utf-8';
+  try
+    TempResponse := TempClient.Get(SCRIPT_URL);
+
+    if (TempResponse.StatusCode = 200) then
+      begin
+        aResult := TempResponse.ContentAsString(TEncoding.UTF8);
+        Result  := (length(aResult) > 0);
+      end;
+  finally
+    TempClient.Free;
+  end;
+{$ENDIF}
+
+{$IFDEF FPC}
+  TempClient := TFPHTTPClient.Create(nil);
+  try
+    TempResult := TempClient.Get(SCRIPT_URL);
+
+    if (TempClient.ResponseStatusCode = 200) then
+      begin
+        aResult := TempResult;
+        Result  := (length(aResult) > 0);
+      end;
+  finally
+    TempClient.Free;
+  end;
+{$ENDIF}
+end;
+
+class function TPyPip.RunPIPInstallerScript: boolean;
+var
+  TempScript: string;
+begin
+  TempScript := '';
+  Result := DownloadPIPInstallerScript(TempScript) and
+            TPyRun.SimpleString(TempScript);
+end;
+{$ENDIF}
 
 end.

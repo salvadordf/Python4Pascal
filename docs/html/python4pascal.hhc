@@ -8903,6 +8903,14 @@
 <param name="Name" value="IndexVersions">
 <param name="Local" value="uP4P.Pip.TPyPip.html#IndexVersions">
 </object>
+<li><object type="text/sitemap">
+<param name="Name" value="DownloadPIPInstallerScript">
+<param name="Local" value="uP4P.Pip.TPyPip.html#DownloadPIPInstallerScript">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="RunPIPInstallerScript">
+<param name="Local" value="uP4P.Pip.TPyPip.html#RunPIPInstallerScript">
+</object>
 </ul>
 </ul>
 </ul>
@@ -57150,6 +57158,10 @@
 <param name="Local" value="uP4P.Pip.TPyPip.html#Check">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="DownloadPIPInstallerScript">
+<param name="Local" value="uP4P.Pip.TPyPip.html#DownloadPIPInstallerScript">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Ensurepip">
 <param name="Local" value="uP4P.Pip.TPyPip.html#Ensurepip">
 </object>
@@ -57164,6 +57176,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="List">
 <param name="Local" value="uP4P.Pip.TPyPip.html#List">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="RunPIPInstallerScript">
+<param name="Local" value="uP4P.Pip.TPyPip.html#RunPIPInstallerScript">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="Show">

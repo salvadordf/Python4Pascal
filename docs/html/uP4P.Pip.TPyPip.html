@@ -104,6 +104,14 @@ body { margin: 0.5em; }
 <td class="visibility"><span class="badge vis-public">Public</span></td>
 <td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#IndexVersions-string-integer-string-string-">IndexVersions</a></strong>(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;</code></td>
 </tr>
+<tr class="list2 visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.Pip.TPyPip.html#DownloadPIPInstallerScript-string-">DownloadPIPInstallerScript</a></strong>(var aResult: string): boolean;</code></td>
+</tr>
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><code>class function <strong><a href="uP4P.Pip.TPyPip.html#RunPIPInstallerScript">RunPIPInstallerScript</a></strong>: boolean;</code></td>
+</tr>
 </table>
 <span id="PasDoc-Properties"></span><h3 class="summary">Properties</h3>
 <table class="summary wide_list">
@@ -299,6 +307,34 @@ body { margin: 0.5em; }
 <p>Inspect information available from package indexes.
 
 <p>This function runs python in a subprocess, sets the return code in returncode, sets the standard output in stdout and the errors in stderr.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="DownloadPIPInstallerScript-string-"></span><code>class function <strong>DownloadPIPInstallerScript</strong>(var aResult: string): boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Download the get-pip.py script to install PIP.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-public wide_list">
+<tr class="list visibility-public">
+<td class="visibility"><span class="badge vis-public">Public</span></td>
+<td class="itemcode"><span id="RunPIPInstallerScript"></span><code>class function <strong>RunPIPInstallerScript</strong>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+
+
+<p>Run the get-pip.py script to install PIP.
 
 <p></p>
 </td></tr>

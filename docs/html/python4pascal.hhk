@@ -30019,6 +30019,10 @@
 <param name="Local" value="uP4P.Pip.TPyPip.html#Destroy">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="DownloadPIPInstallerScript">
+<param name="Local" value="uP4P.Pip.TPyPip.html#DownloadPIPInstallerScript-string-">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Ensurepip">
 <param name="Local" value="uP4P.Pip.TPyPip.html#Ensurepip-integer-string-string-">
 </object>
@@ -30053,6 +30057,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="List">
 <param name="Local" value="uP4P.Pip.TPyPip.html#List-TPipListFormat-boolean-integer-string-string-">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="RunPIPInstallerScript">
+<param name="Local" value="uP4P.Pip.TPyPip.html#RunPIPInstallerScript">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="Show">
