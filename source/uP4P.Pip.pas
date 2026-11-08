@@ -14,7 +14,7 @@ uses
     {$IFDEF DELPHI22_UP}System.Net.HttpClient, System.Net.URLClient, System.NetConsts,{$ENDIF}
   {$ELSE}
     Classes, SysUtils, Variants, Types,
-    {$IFDEF FPC}fphttpclient, opensslsockets,{$ENDIF}
+    {$IFDEF MSWINDOWS}{$IFDEF FPC}fphttpclient, opensslsockets,{$ENDIF}{$ENDIF}
   {$ENDIF}
   uP4P.Interfaces, uP4P.PyObject, uP4P.Subprocess, uP4P.Types;
 
