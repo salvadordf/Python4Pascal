@@ -93,6 +93,8 @@ function Is32BitProcessRunningIn64BitOS : boolean;
 /// Returns the machine type information from the DLL header.
 /// </summary>
 function GetDLLHeaderMachine(const aDLLFile : string; var aMachine : integer) : boolean;
+
+function GetTempDirectory: string;
 {$ENDIF}
 
 /// <summary>
@@ -449,6 +451,14 @@ begin
   finally
     if (TempStream <> nil) then FreeAndNil(TempStream);
   end;
+end;
+
+function GetTempDirectory: string;
+var
+  TempPath: array[0..MAX_PATH - 1] of Char;
+begin
+  GetTempPath(MAX_PATH, TempPath);
+  Result := IncludeTrailingPathDelimiter(TempPath);
 end;
 {$ENDIF}
 

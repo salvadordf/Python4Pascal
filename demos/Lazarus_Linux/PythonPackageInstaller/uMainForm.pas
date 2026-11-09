@@ -292,7 +292,10 @@ begin
      (FMetadata.Distributions.Search(TempPackage) < 0) then
     begin
       if FPip.Install(TempPackage, False, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;
@@ -305,7 +308,10 @@ var
 begin
   if assigned(FPip) and
      FPip.Ensurepip(returncode, stdout, stderr) then
-    RefreshPackages
+    begin
+      AddLogLines(stdout);
+      RefreshPackages;
+    end
    else
     ShowErrorInfo(returncode, stdout, stderr);
 end;
@@ -322,7 +328,10 @@ begin
   if (length(TempPackage) > 0) then
     begin
       if FPip.Uninstall(TempPackage, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;
@@ -340,7 +349,10 @@ begin
   if (length(TempPackage) > 0) then
     begin
       if FPip.Install(TempPackage, True, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;

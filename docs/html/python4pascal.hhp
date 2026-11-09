@@ -30,6 +30,8 @@ uP4P.CustomPyModule.html
 uP4P.CustomPyModule.TCustomPyModule.html
 uP4P.Engine.html
 uP4P.Engine.TP4PEngine.html
+uP4P.HTTPDownloader.html
+uP4P.HTTPDownloader.THTTPDownloader.html
 uP4P.ImportedPyModule.html
 uP4P.ImportedPyModule.TImportedPyModule.html
 uP4P.Interfaces.html

@@ -58,7 +58,15 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-protected">
 <td class="visibility"><span class="badge vis-protected">Protected</span></td>
-<td class="itemcode"><code>procedure <strong><a href="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-IPyObject-TStringDynArray-">CreateArgs</a></strong>(var aArgs, aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const aCommand: TStringDynArray);</code></td>
+<td class="itemcode"><code>procedure <strong><a href="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-TStringList-">CreateArgs</a></strong>(var aArgs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const aCommand: TStringList); overload;</code></td>
+</tr>
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><code>procedure <strong><a href="uP4P.Pip.TPyPip.html#CreateArgs-IPyObject-string-">CreateArgs</a></strong>(var aArgs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const aCommand: string); overload;</code></td>
+</tr>
+<tr class="list2 visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><code>procedure <strong><a href="uP4P.Pip.TPyPip.html#CreateKwargs-IPyObject-">CreateKwargs</a></strong>(var aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>);</code></td>
 </tr>
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
@@ -106,11 +114,7 @@ body { margin: 0.5em; }
 </tr>
 <tr class="list2 visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.Pip.TPyPip.html#DownloadPIPInstallerScript-string-">DownloadPIPInstallerScript</a></strong>(var aResult: string): boolean;</code></td>
-</tr>
-<tr class="list visibility-public">
-<td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><code>class function <strong><a href="uP4P.Pip.TPyPip.html#RunPIPInstallerScript">RunPIPInstallerScript</a></strong>: boolean;</code></td>
+<td class="itemcode"><code>function <strong><a href="uP4P.Pip.TPyPip.html#RunPIPInstallerScript-integer-string-string-">RunPIPInstallerScript</a></strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
 </tr>
 </table>
 <span id="PasDoc-Properties"></span><h3 class="summary">Properties</h3>
@@ -154,7 +158,23 @@ body { margin: 0.5em; }
 <table class="detail visibility-protected wide_list">
 <tr class="list visibility-protected">
 <td class="visibility"><span class="badge vis-protected">Protected</span></td>
-<td class="itemcode"><span id="CreateArgs-IPyObject-IPyObject-TStringDynArray-"></span><code>procedure <strong>CreateArgs</strong>(var aArgs, aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const aCommand: TStringDynArray);</code></td>
+<td class="itemcode"><span id="CreateArgs-IPyObject-TStringList-"></span><code>procedure <strong>CreateArgs</strong>(var aArgs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const aCommand: TStringList); overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-protected wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><span id="CreateArgs-IPyObject-string-"></span><code>procedure <strong>CreateArgs</strong>(var aArgs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>; const aCommand: string); overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="nodescription">This item has no description.</p></td></tr>
+</table>
+<table class="detail visibility-protected wide_list">
+<tr class="list visibility-protected">
+<td class="visibility"><span class="badge vis-protected">Protected</span></td>
+<td class="itemcode"><span id="CreateKwargs-IPyObject-"></span><code>procedure <strong>CreateKwargs</strong>(var aKwargs: <a href="uP4P.Interfaces.IPyObject.html">IPyObject</a>);</code></td>
 </tr>
 <tr><td colspan="2">
 <p class="nodescription">This item has no description.</p></td></tr>
@@ -314,21 +334,7 @@ body { margin: 0.5em; }
 <table class="detail visibility-public wide_list">
 <tr class="list visibility-public">
 <td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="DownloadPIPInstallerScript-string-"></span><code>class function <strong>DownloadPIPInstallerScript</strong>(var aResult: string): boolean;</code></td>
-</tr>
-<tr><td colspan="2">
-<p>
-
-
-<p>Download the get-pip.py script to install PIP.
-
-<p></p>
-</td></tr>
-</table>
-<table class="detail visibility-public wide_list">
-<tr class="list visibility-public">
-<td class="visibility"><span class="badge vis-public">Public</span></td>
-<td class="itemcode"><span id="RunPIPInstallerScript"></span><code>class function <strong>RunPIPInstallerScript</strong>: boolean;</code></td>
+<td class="itemcode"><span id="RunPIPInstallerScript-integer-string-string-"></span><code>function <strong>RunPIPInstallerScript</strong>(var returncode: integer; var stdout, stderr: string): boolean;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>

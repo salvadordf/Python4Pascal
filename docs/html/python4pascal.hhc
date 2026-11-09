@@ -138,6 +138,14 @@
 <param name="Local" value="uP4P.Constants.html#DEFAULT_COMPILE_FILENAME">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="GET_PIP_SCRIPT_URL">
+<param name="Local" value="uP4P.Constants.html#GET_PIP_SCRIPT_URL">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="GET_PIP_SCRIPT">
+<param name="Local" value="uP4P.Constants.html#GET_PIP_SCRIPT">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="PYTHON_LIB_EXT">
 <param name="Local" value="uP4P.Constants.html#PYTHON_LIB_EXT">
 </object>
@@ -2585,6 +2593,38 @@
 <param name="Name" value="TOnInputMessageEvent">
 <param name="Local" value="uP4P.Engine.html#TOnInputMessageEvent">
 </object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="uP4P.HTTPDownloader">
+<param name="Local" value="uP4P.HTTPDownloader.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Classes">
+<param name="Local" value="uP4P.HTTPDownloader.html#@Classes">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="THTTPDownloader">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Get">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html#Get">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="SaveToFile">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html#SaveToFile">
+</object>
+</ul>
+</ul>
 </ul>
 </ul>
 <li><object type="text/sitemap">
@@ -8766,6 +8806,10 @@
 <param name="Local" value="uP4P.MiscFunctions.html#GetDLLHeaderMachine">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="GetTempDirectory">
+<param name="Local" value="uP4P.MiscFunctions.html#GetTempDirectory">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="PyWCharTStringToString">
 <param name="Local" value="uP4P.MiscFunctions.html#PyWCharTStringToString">
 </object>
@@ -8860,6 +8904,14 @@
 <param name="Local" value="uP4P.Pip.TPyPip.html#CreateArgs">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="CreateArgs">
+<param name="Local" value="uP4P.Pip.TPyPip.html#CreateArgs">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="CreateKwargs">
+<param name="Local" value="uP4P.Pip.TPyPip.html#CreateKwargs">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="Create">
 <param name="Local" value="uP4P.Pip.TPyPip.html#Create">
 </object>
@@ -8902,10 +8954,6 @@
 <li><object type="text/sitemap">
 <param name="Name" value="IndexVersions">
 <param name="Local" value="uP4P.Pip.TPyPip.html#IndexVersions">
-</object>
-<li><object type="text/sitemap">
-<param name="Name" value="DownloadPIPInstallerScript">
-<param name="Local" value="uP4P.Pip.TPyPip.html#DownloadPIPInstallerScript">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="RunPIPInstallerScript">
@@ -42788,6 +42836,26 @@
 </ul>
 </ul>
 <li><object type="text/sitemap">
+<param name="Name" value="THTTPDownloader">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Get">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html#Get">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="SaveToFile">
+<param name="Local" value="uP4P.HTTPDownloader.THTTPDownloader.html#SaveToFile">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="TImportedPyModule">
 <param name="Local" value="uP4P.ImportedPyModule.TImportedPyModule.html">
 </object>
@@ -57158,10 +57226,6 @@
 <param name="Local" value="uP4P.Pip.TPyPip.html#Check">
 </object>
 <li><object type="text/sitemap">
-<param name="Name" value="DownloadPIPInstallerScript">
-<param name="Local" value="uP4P.Pip.TPyPip.html#DownloadPIPInstallerScript">
-</object>
-<li><object type="text/sitemap">
 <param name="Name" value="Ensurepip">
 <param name="Local" value="uP4P.Pip.TPyPip.html#Ensurepip">
 </object>
@@ -57204,6 +57268,14 @@
 <li><object type="text/sitemap">
 <param name="Name" value="CreateArgs">
 <param name="Local" value="uP4P.Pip.TPyPip.html#CreateArgs">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="CreateArgs">
+<param name="Local" value="uP4P.Pip.TPyPip.html#CreateArgs">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="CreateKwargs">
+<param name="Local" value="uP4P.Pip.TPyPip.html#CreateKwargs">
 </object>
 </ul>
 </ul>

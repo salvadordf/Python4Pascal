@@ -254,6 +254,7 @@
         <DCCReference Include="..\source\uP4P.Subprocess.pas"/>
         <DCCReference Include="..\source\uP4P.SubprocessCompletedProcess.pas"/>
         <DCCReference Include="..\source\uP4P.Pip.pas"/>
+        <DCCReference Include="..\source\uP4P.HTTPDownloader.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

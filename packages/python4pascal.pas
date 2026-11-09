@@ -47,7 +47,7 @@ uses
   uP4P.PyType_Spec, uP4P.PyType_Slot, uP4P.PyModuleSlotManager, 
   uP4P.PyHeapTypeSlotManager, uP4P.PyGetSetDef, uP4P.PyMemberDef, 
   uP4P.Metadata, uP4P.PyMarshal, uP4P.SubprocessCompletedProcess, uP4P.Pip, 
-  uP4P.Subprocess, LazarusPackageIntf;
+  uP4P.Subprocess, uP4P.HTTPDownloader, LazarusPackageIntf;
 
 implementation
 

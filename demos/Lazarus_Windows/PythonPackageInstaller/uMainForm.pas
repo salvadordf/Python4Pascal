@@ -338,19 +338,27 @@ begin
      (FMetadata.Distributions.Search(TempPackage) < 0) then
     begin
       if FPip.Install(TempPackage, False, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;
 end;
 
 procedure TMainForm.RunInstallScriptBtnClick(Sender: TObject);
-begin                  
-  AddLogLine('Downloading and running the installation script.');
-  AddLogLine('The application may close automatically when it finishes.');
+var
+  returncode: integer;
+  stdout, stderr: string;
+begin
+  AddLogLine('Downloading and running the installation script...');
 
-  if TPyPip.RunPIPInstallerScript then
-    AddLogLine('Installation script run correctly.')
+  if FPip.RunPIPInstallerScript(returncode, stdout, stderr) then
+    begin
+      AddLogLines(stdout);
+      RefreshPackages;
+    end
    else
     AddLogLine('There was an error downloading the PIP installation script.');
 end;
@@ -362,7 +370,10 @@ var
 begin
   if assigned(FPip) and
      FPip.Ensurepip(returncode, stdout, stderr) then
-    RefreshPackages
+    begin
+      AddLogLines(stdout);
+      RefreshPackages;
+    end
    else
     ShowErrorInfo(returncode, stdout, stderr);
 end;
@@ -379,7 +390,10 @@ begin
   if (length(TempPackage) > 0) then
     begin
       if FPip.Uninstall(TempPackage, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;
@@ -397,7 +411,10 @@ begin
   if (length(TempPackage) > 0) then
     begin
       if FPip.Install(TempPackage, True, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;

@@ -199,7 +199,7 @@ var
   TempName, TempLatest : string;
   i, TempIdx : integer;
 begin
-  TempArray := TJSONObject.ParseJSONValue(aList, False, False) as TJSONArray;
+  TempArray := TJSONObject.ParseJSONValue(aList) as TJSONArray;
 
   if assigned(TempArray) then
     try
@@ -247,12 +247,17 @@ begin
 end;
 
 procedure TMainForm.RunInstallScriptBtnClick(Sender: TObject);
+var
+  returncode: integer;
+  stdout, stderr: string;
 begin
-  AddLogLine('Downloading and running the installation script.');
-  AddLogLine('The application may close automatically when it finishes.');
+  AddLogLine('Downloading and running the installation script...');
 
-  if TPyPip.RunPIPInstallerScript then
-    AddLogLine('Installation script run correctly.')
+  if FPip.RunPIPInstallerScript(returncode, stdout, stderr) then
+    begin
+      AddLogLines(stdout);
+      RefreshPackages;
+    end
    else
     AddLogLine('There was an error downloading the PIP installation script.');
 end;
@@ -349,7 +354,10 @@ begin
      (FMetadata.Distributions.Search(TempPackage) < 0) then
     begin
       if FPip.Install(TempPackage, False, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;
@@ -362,7 +370,10 @@ var
 begin
   if assigned(FPip) and
      FPip.Ensurepip(returncode, stdout, stderr) then
-    RefreshPackages
+    begin
+      AddLogLines(stdout);
+      RefreshPackages;
+    end
    else
     ShowErrorInfo(returncode, stdout, stderr);
 end;
@@ -379,7 +390,10 @@ begin
   if (length(TempPackage) > 0) then
     begin
       if FPip.Uninstall(TempPackage, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;
@@ -397,7 +411,10 @@ begin
   if (length(TempPackage) > 0) then
     begin
       if FPip.Install(TempPackage, True, returncode, stdout, stderr) then
-        RefreshPackages
+        begin
+          AddLogLines(stdout);
+          RefreshPackages;
+        end
        else
         ShowErrorInfo(returncode, stdout, stderr);
     end;

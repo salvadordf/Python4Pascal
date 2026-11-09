@@ -627,6 +627,10 @@
         <Filename Value="..\source\uP4P.Subprocess.pas"/>
         <UnitName Value="uP4P.Subprocess"/>
       </Item>
+      <Item>
+        <Filename Value="..\source\uP4P.HTTPDownloader.pas"/>
+        <UnitName Value="uP4P.HTTPDownloader"/>
+      </Item>
     </Files>
     <RequiredPkgs>
       <Item>

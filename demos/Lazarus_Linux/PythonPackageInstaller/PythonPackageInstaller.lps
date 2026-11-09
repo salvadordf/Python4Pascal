@@ -20,8 +20,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="239"/>
-        <CursorPos Y="244"/>
+        <TopLine Value="323"/>
+        <CursorPos Y="355"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -34,15 +34,15 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="44"/>
-        <CursorPos X="71" Y="162"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="104"/>
+        <CursorPos X="26" Y="122"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Subprocess.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="46"/>
         <CursorPos X="54" Y="59"/>
         <UsageCount Value="10"/>
@@ -50,10 +50,11 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyObject.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2608"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="2606"/>
         <CursorPos X="51" Y="2625"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Loader.pas"/>
@@ -64,30 +65,22 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.Metadata.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="218"/>
         <CursorPos Y="242"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.HTTPDownloader.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="11"/>
+        <CursorPos X="37" Y="24"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="uMainForm.pas"/>
-        <Caret Line="100" Column="43" TopLine="90"/>
-      </Position>
-      <Position>
-        <Filename Value="uMainForm.pas"/>
-        <Caret Line="104" Column="25" TopLine="90"/>
-      </Position>
-      <Position>
-        <Filename Value="uMainForm.pas"/>
-        <Caret Line="180" Column="10" TopLine="148"/>
-      </Position>
-      <Position>
-        <Filename Value="uMainForm.pas"/>
-        <Caret Line="215" Column="17" TopLine="208"/>
-      </Position>
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="15" Column="124" TopLine="6"/>
@@ -191,6 +184,22 @@
       <Position>
         <Filename Value="uMainForm.pas"/>
         <Caret Line="151" Column="55" TopLine="133"/>
+      </Position>
+      <Position>
+        <Filename Value="uMainForm.pas"/>
+        <Caret Line="244" TopLine="240"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.HTTPDownloader.pas"/>
+        <Caret Line="24" Column="37" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.Pip.pas"/>
+        <Caret Line="122" Column="28" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.PyObject.pas"/>
+        <Caret Line="2625" Column="51" TopLine="2606"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -56,6 +56,12 @@ const
 
   MAIN_MODULE_NAME         = '__main__';
   DEFAULT_COMPILE_FILENAME = '<string>';
+                           
+  /// <summary>
+  /// URL of the official PIP installer script.
+  /// </summary>
+  GET_PIP_SCRIPT_URL = 'https://bootstrap.pypa.io/get-pip.py';
+  GET_PIP_SCRIPT     = 'get-pip.py';
 
   {$IFDEF MSWINDOWS}
   PYTHON_LIB_EXT = 'dll';

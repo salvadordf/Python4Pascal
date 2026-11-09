@@ -182,6 +182,7 @@ contains
   uP4P.PyMarshal in '..\source\uP4P.PyMarshal.pas',
   uP4P.Subprocess in '..\source\uP4P.Subprocess.pas',
   uP4P.SubprocessCompletedProcess in '..\source\uP4P.SubprocessCompletedProcess.pas',
-  uP4P.Pip in '..\source\uP4P.Pip.pas';
+  uP4P.Pip in '..\source\uP4P.Pip.pas',
+  uP4P.HTTPDownloader in '..\source\uP4P.HTTPDownloader.pas';
 
 end.

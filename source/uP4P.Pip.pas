@@ -1,7 +1,7 @@
 unit uP4P.Pip;
 
 {$IFDEF FPC}
-  {$MODE Delphi}
+  {$MODE OBJFPC}{$H+}
 {$ENDIF}
 
 {$I p4p.inc}
@@ -10,11 +10,9 @@ interface
 
 uses
   {$IFDEF DELPHI16_UP}
-    System.Classes, System.SysUtils, System.Variants, System.Types,
-    {$IFDEF DELPHI22_UP}System.Net.HttpClient, System.Net.URLClient, System.NetConsts,{$ENDIF}
+    System.Classes, System.SysUtils, System.Variants, System.IOUtils,
   {$ELSE}
-    Classes, SysUtils, Variants, Types,
-    {$IFDEF MSWINDOWS}{$IFDEF FPC}fphttpclient, opensslsockets,{$ENDIF}{$ENDIF}
+    Classes, SysUtils, Variants,
   {$ENDIF}
   uP4P.Interfaces, uP4P.PyObject, uP4P.Subprocess, uP4P.Types;
 
@@ -35,7 +33,8 @@ type
       FExecutable : string;
 
       function  GetInitialized : boolean;
-      procedure CreateArgs(var aArgs: IPyObject; const aCommand: TStringList);
+      procedure CreateArgs(var aArgs: IPyObject; const aCommand: TStringList); overload;
+      procedure CreateArgs(var aArgs: IPyObject; const aCommand: string); overload;
       procedure CreateKwargs(var aKwargs: IPyObject);
 
     public
@@ -101,13 +100,9 @@ type
       function IndexVersions(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
       {$IFDEF MSWINDOWS}
       /// <summary>
-      /// <para>Download the get-pip.py script to install PIP.</para>
-      /// </summary>
-      class function DownloadPIPInstallerScript(var aResult: string): boolean;
-      /// <summary>
       /// <para>Run the get-pip.py script to install PIP.</para>
       /// </summary>
-      class function RunPIPInstallerScript: boolean;
+      function RunPIPInstallerScript(var returncode: integer; var stdout, stderr: string): boolean;
       {$ENDIF}
       /// <summary>
       /// Returns true if the class is fully initialized.
@@ -123,7 +118,8 @@ implementation
 
 uses
   uP4P.SubprocessCompletedProcess, uP4P.PyDict, uP4P.PyTuple, uP4P.PyList,
-  {$IFDEF MSWINDOWS}uP4P.PyRun, uP4P.PyLong,{$ENDIF} uP4P.PyBool, uP4P.PyErr;
+  {$IFDEF MSWINDOWS}uP4P.PyLong, uP4P.MiscFunctions, uP4P.HTTPDownloader, uP4P.Constants,{$ENDIF}
+  uP4P.PyBool, uP4P.PyErr;
 
 constructor TPyPip.Create;
 begin
@@ -166,6 +162,22 @@ begin
 
     for i := 0 to pred(aCommand.Count) do
       TPyList.SetItem(TempCmd, i + 2, aCommand[i]);
+
+    aArgs := TPyTuple.New(1);
+    TPyTuple.SetItem(aArgs, 0, TempCmd);
+  finally
+    TempCmd := nil;
+  end;
+end;
+
+procedure TPyPip.CreateArgs(var aArgs: IPyObject; const aCommand: string);
+var
+  TempCmd : IPyObject;
+begin
+  try
+    TempCmd := TPyList.New(2);
+    TPyList.SetItem(TempCmd, 0, FExecutable);
+    TPyList.SetItem(TempCmd, 1, aCommand);
 
     aArgs := TPyTuple.New(1);
     TPyTuple.SetItem(aArgs, 0, TempCmd);
@@ -536,7 +548,7 @@ begin
   TempArgs   := nil;
   TempKwargs := nil;
 
-  if not(Initialized) then exit;     
+  if not(Initialized) then exit;
 
   TempCmd := TStringList.Create;
   try
@@ -568,62 +580,54 @@ begin
 end;
 
 {$IFDEF MSWINDOWS}
-class function TPyPip.DownloadPIPInstallerScript(var aResult: string): boolean;
-const
-  SCRIPT_URL = 'https://bootstrap.pypa.io/get-pip.py';
-{$IFDEF DELPHI22_UP}
+function TPyPip.RunPIPInstallerScript(var returncode: integer; var stdout, stderr: string): boolean;
 var
-  TempClient   : THTTPClient;
-  TempResponse : IHTTPResponse;
-{$ENDIF}
-{$IFDEF FPC}
-var
-  TempClient : TFPHTTPClient;
-  TempResult : string;
-{$ENDIF}
+  TempArgs, TempKwargs, TempResult : IPyObject;
+  TempPath: string;
 begin
-  Result  := False;
-  aResult := '';
+  Result     := False;
+  returncode := -1;
+  stdout     := '';
+  stderr     := '';
+  TempArgs   := nil;
+  TempKwargs := nil;
 
-{$IFDEF DELPHI22_UP}
-  TempClient := THTTPClient.Create;
-  TempClient.AcceptCharSet := 'utf-8';
+  if not(Initialized) then exit;
+
   try
-    TempResponse := TempClient.Get(SCRIPT_URL);
+    TempPath := GetTempDirectory + GET_PIP_SCRIPT;
 
-    if (TempResponse.StatusCode = 200) then
-      begin
-        aResult := TempResponse.ContentAsString(TEncoding.UTF8);
-        Result  := (length(aResult) > 0);
-      end;
+    if THTTPDownloader.SaveToFile(GET_PIP_SCRIPT_URL, TempPath) then
+      try
+        try
+          CreateArgs(TempArgs, TempPath);
+          CreateKwargs(TempKwargs);
+
+          TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+
+          if TPyObject.IsInitialized(TempResult) then
+            begin
+              returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+              stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+              stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+              Result     := (returncode = 0);
+            end
+           else
+            TPyErr.Print;
+        finally
+          DeleteFile(TempPath);
+        end;
+      except
+        on e : exception do
+          if CustomExceptionHandler('TPyPip.RunPIPInstallerScript', e) then raise;
+      end
+     else
+      stderr := 'There was a problem downloading the script.';
   finally
-    TempClient.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
   end;
-{$ENDIF}
-
-{$IFDEF FPC}
-  TempClient := TFPHTTPClient.Create(nil);
-  try
-    TempResult := TempClient.Get(SCRIPT_URL);
-
-    if (TempClient.ResponseStatusCode = 200) then
-      begin
-        aResult := TempResult;
-        Result  := (length(aResult) > 0);
-      end;
-  finally
-    TempClient.Free;
-  end;
-{$ENDIF}
-end;
-
-class function TPyPip.RunPIPInstallerScript: boolean;
-var
-  TempScript: string;
-begin
-  TempScript := '';
-  Result := DownloadPIPInstallerScript(TempScript) and
-            TPyRun.SimpleString(TempScript);
 end;
 {$ENDIF}
 
