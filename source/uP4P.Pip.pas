@@ -35,7 +35,8 @@ type
       FExecutable : string;
 
       function  GetInitialized : boolean;
-      procedure CreateArgs(var aArgs, aKwargs: IPyObject; const aCommand: TStringDynArray);
+      procedure CreateArgs(var aArgs: IPyObject; const aCommand: TStringList);
+      procedure CreateKwargs(var aKwargs: IPyObject);
 
     public
       constructor Create;
@@ -153,37 +154,67 @@ begin
             FileExists(FExecutable);
 end;
 
-procedure TPyPip.CreateArgs(var aArgs, aKwargs: IPyObject; const aCommand: TStringDynArray);
+procedure TPyPip.CreateArgs(var aArgs: IPyObject; const aCommand: TStringList);
+var
+  TempCmd : IPyObject;
+  i : integer;
+begin
+  try
+    TempCmd := TPyList.New(aCommand.Count + 2);
+    TPyList.SetItem(TempCmd, 0, FExecutable);
+    TPyList.SetItem(TempCmd, 1, '-m');
+
+    for i := 0 to pred(aCommand.Count) do
+      TPyList.SetItem(TempCmd, i + 2, aCommand[i]);
+
+    aArgs := TPyTuple.New(1);
+    TPyTuple.SetItem(aArgs, 0, TempCmd);
+  finally
+    TempCmd := nil;
+  end;
+end;
+
+procedure TPyPip.CreateKwargs(var aKwargs: IPyObject);
 {$IFDEF MSWINDOWS}
 const
   CREATE_NO_WINDOW = $08000000;
 {$ENDIF}
 var
-  TempCmd : IPyObject;
-  i : integer;
-begin
-  TempCmd := TPyList.New(length(aCommand) + 2);
-  TPyList.SetItem(TempCmd, 0, FExecutable);
-  TPyList.SetItem(TempCmd, 1, '-m');
-
-  for i := 0 to pred(length(aCommand)) do
-    TPyList.SetItem(TempCmd, i + 2, aCommand[i]);
-
-  aArgs   := TPyTuple.Pack([TempCmd]);
-  aKwargs := TPyDict.New;
-  TPyDict.SetItem(aKwargs, 'check',          TPyBool.NewFalse);
-  TPyDict.SetItem(aKwargs, 'capture_output', TPyBool.NewTrue);
-  TPyDict.SetItem(aKwargs, 'text',           TPyBool.NewTrue);
+  TempCheck, TempCapture, TempText: IPyObject;
   {$IFDEF MSWINDOWS}
-  // Don't create a console window.
-  TPyDict.SetItem(aKwargs, 'creationflags',  TPyLong.FromLong(CREATE_NO_WINDOW));
+  TempFlags: IPyObject;
   {$ENDIF}
+begin
+  try
+    aKwargs     := TPyDict.New;
+    TempCheck   := TPyBool.NewFalse;
+    TempCapture := TPyBool.NewTrue;
+    TempText    := TPyBool.NewTrue;
+    {$IFDEF MSWINDOWS}
+    TempFlags   := TPyLong.FromLong(CREATE_NO_WINDOW);
+    {$ENDIF}
+
+    TPyDict.SetItem(aKwargs, 'check',          TempCheck);
+    TPyDict.SetItem(aKwargs, 'capture_output', TempCapture);
+    TPyDict.SetItem(aKwargs, 'text',           TempText);
+    {$IFDEF MSWINDOWS}
+    // Don't create a console window.
+    TPyDict.SetItem(aKwargs, 'creationflags',  TempFlags);
+    {$ENDIF}
+  finally
+    TempCheck    := nil;
+    TempCapture  := nil;
+    TempText     := nil;
+    {$IFDEF MSWINDOWS}
+    TempFlags    := nil;
+    {$ENDIF}
+  end;
 end;
 
 function TPyPip.List(format: TPipListFormat; outdated: boolean; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -194,35 +225,55 @@ begin
 
   if not(Initialized) then exit;
 
-  if outdated then
-    TempCmd := ['pip', 'list', '-o']
-   else
-    TempCmd := ['pip', 'list'];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('pip');
+    TempCmd.Add('list');
 
-  case format of
-    plf_freeze : if not(outdated) then TempCmd := TempCmd + ['--format', 'freeze'];
-    plf_json   : TempCmd := TempCmd + ['--format', 'json'];
+    if outdated then
+      TempCmd.Add('-o');
+
+    case format of
+      plf_freeze :
+        if not(outdated) then
+          begin
+            TempCmd.Add('--format');
+            TempCmd.Add('freeze');
+          end;
+
+      plf_json :
+        begin
+          TempCmd.Add('--format');
+          TempCmd.Add('json');
+        end;
+    end;
+
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
+
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
   end;
-
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
-
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
-
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
 end;
 
 function TPyPip.Install(const package_name: string; upgrade: boolean; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -233,30 +284,42 @@ begin
 
   if not(Initialized) or (length(package_name) = 0) then exit;
 
-  if upgrade then
-    TempCmd := ['pip', 'install', '--upgrade', package_name]
-   else
-    TempCmd := ['pip', 'install', package_name];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('pip');
+    TempCmd.Add('install');
 
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
+    if upgrade then
+      TempCmd.Add('--upgrade');
 
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+    TempCmd.Add(package_name);
 
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
+
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
+  end;
 end;
 
 function TPyPip.Uninstall(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -267,27 +330,39 @@ begin
 
   if not(Initialized) or (length(package_name) = 0) then exit;
 
-  TempCmd := ['pip', 'uninstall', '-y', package_name];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('pip');
+    TempCmd.Add('uninstall');
+    TempCmd.Add('-y');
+    TempCmd.Add(package_name);
 
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
 
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
+  end;
 end;
 
 function TPyPip.Version(var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -298,27 +373,37 @@ begin
 
   if not(Initialized) then exit;
 
-  TempCmd := ['pip', '--version'];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('pip');
+    TempCmd.Add('--version');
 
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
 
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
+  end;
 end;
 
 function TPyPip.Ensurepip(var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -327,29 +412,39 @@ begin
   TempArgs   := nil;
   TempKwargs := nil;
 
-  if not(Initialized) then exit;
+  if not(Initialized) then exit;     
 
-  TempCmd := ['ensurepip', '--default-pip'];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('ensurepip');
+    TempCmd.Add('--default-pip');
 
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
 
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
+  end;
 end;
 
 function TPyPip.Show(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -358,29 +453,40 @@ begin
   TempArgs   := nil;
   TempKwargs := nil;
 
-  if not(Initialized) then exit;
+  if not(Initialized) then exit;        
 
-  TempCmd := ['pip', 'show', package_name];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('pip');
+    TempCmd.Add('show');
+    TempCmd.Add(package_name);
 
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
 
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
+  end;
 end;
 
 function TPyPip.Check(var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -389,29 +495,39 @@ begin
   TempArgs   := nil;
   TempKwargs := nil;
 
-  if not(Initialized) then exit;
+  if not(Initialized) then exit;        
 
-  TempCmd := ['pip', 'check'];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('pip');
+    TempCmd.Add('check');
 
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
 
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
+  end;
 end;
 
 function TPyPip.IndexVersions(const package_name: string; var returncode: integer; var stdout, stderr: string): boolean;
 var
   TempArgs, TempKwargs, TempResult : IPyObject;
-  TempCmd : TStringDynArray;
+  TempCmd : TStringList;
 begin
   Result     := False;
   returncode := -1;
@@ -420,23 +536,35 @@ begin
   TempArgs   := nil;
   TempKwargs := nil;
 
-  if not(Initialized) then exit;
+  if not(Initialized) then exit;     
 
-  TempCmd := ['pip', 'index', 'versions', package_name];
+  TempCmd := TStringList.Create;
+  try
+    TempCmd.Add('pip');
+    TempCmd.Add('index');
+    TempCmd.Add('versions');
+    TempCmd.Add(package_name);
 
-  CreateArgs(TempArgs, TempKwargs, TempCmd);
+    CreateArgs(TempArgs, TempCmd);
+    CreateKwargs(TempKwargs);
 
-  TempResult := FSubprocess.Run(TempArgs, TempKwargs);
+    TempResult := FSubprocess.Run(TempArgs, TempKwargs);
 
-  if TPyObject.IsInitialized(TempResult) then
-    begin
-      returncode := TPySubprocessCompletedProcess.returncode(TempResult);
-      stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
-      stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
-      Result     := (returncode = 0);
-    end
-   else
-    TPyErr.Print;
+    if TPyObject.IsInitialized(TempResult) then
+      begin
+        returncode := TPySubprocessCompletedProcess.returncode(TempResult);
+        stdout     := TPySubprocessCompletedProcess.stdout(TempResult);
+        stderr     := TPySubprocessCompletedProcess.stderr(TempResult);
+        Result     := (returncode = 0);
+      end
+     else
+      TPyErr.Print;
+  finally
+    TempCmd.Free;
+    TempArgs   := nil;
+    TempKwargs := nil;
+    TempResult := nil;
+  end;
 end;
 
 {$IFDEF MSWINDOWS}
