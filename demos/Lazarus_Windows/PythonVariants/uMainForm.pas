@@ -98,7 +98,7 @@ end;
 procedure TMainForm.Run2BtnClick(Sender: TObject);
 var
   TempMainModObj : IPyObject;
-  TempClass, TempMainModVar, TempTuple, TempList, TempDate, TempInt, TempFloat, TempBool, TempString : Variant;
+  TempClass, TempMainModVar, TempTuple, TempList, TempDate, TempInt, TempFloat, TempBool, TempString, TempResult : Variant;
 begin                                                
   // First we run the code to declare "MyClass"
   if TPyRun.SimpleString(CodeMem.Text) then
@@ -125,13 +125,15 @@ begin
       TempString := TempClass.string_test();
       LogMem.Lines.Add('MyClass.string_test() = ' + TempString);
       TempTuple := TempClass.tuple_test();
-      LogMem.Lines.Add('MyClass.tuple_test() = ' + TempTuple);
+      LogMem.Lines.Add('MyClass.tuple_test() = ' + string(TempTuple));
       TempList :=  TempClass.list_test();
-      LogMem.Lines.Add('MyClass.list_test() = ' + TempList);
+      LogMem.Lines.Add('MyClass.list_test() = ' + string(TempList));
       TempDate := TempClass.datetime_test();
-      LogMem.Lines.Add('MyClass.datetime_test() = ' + TempDate + ' -> ' + DateTimeToStr(TDateTime(TempDate)));
-      LogMem.Lines.Add('MyClass.square_test(5) = ' + inttostr(TempClass.square_test(5)));
-      LogMem.Lines.Add('MyClass.uppercase_test("test") = ' + TempClass.uppercase_test('test'));
+      LogMem.Lines.Add('MyClass.datetime_test() = ' + string(TempDate) + ' -> ' + DateTimeToStr(TDateTime(TempDate)));
+      TempResult := TempClass.square_test(5);
+      LogMem.Lines.Add('MyClass.square_test(5) = ' + string(TempResult));
+      TempResult := TempClass.uppercase_test('test');
+      LogMem.Lines.Add('MyClass.uppercase_test("test") = ' + string(TempResult));
     end;
 end;
 
