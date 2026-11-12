@@ -309,14 +309,10 @@ begin
 
     varString    :
       begin
-        {$IFDEF FPC}
-        Variant(Dest) := TPyObjectVarData(Source).VPyObject.AsWideString;
+        {$IFDEF DELPHI12_UP}
+        VarDataFromLStr(Dest, TPyObjectVarData(Source).VPyObject.AsAnsiString);
         {$ELSE}
-          {$IFDEF DELPHI12_UP}
-          VarDataFromLStr(Dest, TPyObjectVarData(Source).VPyObject.AsAnsiString);
-          {$ELSE}
-          VarDataFromStr(Dest, TPyObjectVarData(Source).VPyObject.AsAnsiString);
-          {$ENDIF}
+        VarDataFromStr(Dest, TPyObjectVarData(Source).VPyObject.AsAnsiString);
         {$ENDIF}
       end;
 
@@ -455,7 +451,7 @@ Var
   LNamePtr : PAnsiChar;
   LNamedArgStart : Integer;
   I : integer;
-begin
+begin                               
   if (CallDesc^.CallType = CPropertyGet) and (CallDesc^.ArgCount = 1) then
     begin
       SetLength(FNamedParams, 0);
@@ -593,7 +589,7 @@ end;
 function TPyObjectVariantType.DoProcedure(const V: TVarData; const AName: string; const Arguments: TVarDataArray): Boolean;
 var
   TempObjResult : IPyObject;
-begin
+begin                                       
   TempObjResult := CallObject(V, AName, Arguments);
   Result        := TPyObject.IsInitialized(TempObjResult);
 end;
@@ -634,7 +630,10 @@ begin
   TempContainer := TPyObjectVarData(V).VPyObject;
 
   if TempContainer.GetOptionalAttrString(AName, TempAttrib) then
-    Result := PyObjectVarDataCreate(Dest, TempAttrib)
+    begin
+      if not(TempAttrib.IsCallable) then
+        Result := PyObjectVarDataCreate(Dest, TempAttrib);
+    end
    else
     if SameText(AName, 'Length') and (TempAttrib.IsSequence or TempAttrib.IsMapping) then
       Result := PyObjectVarDataCreate(Dest, TPyLong.FromLong(TempAttrib.Length));
