@@ -693,7 +693,6 @@ begin
 
   if TPyObject.IsInitialized(aObject) then
     begin
-      aObject.IncRef;
       TPyObjectVarData(Dest).VType     := VarType;
       TPyObjectVarData(Dest).VPyObject := TPyObject.Create(aObject.PyObject, True, True);
       Result := True;
