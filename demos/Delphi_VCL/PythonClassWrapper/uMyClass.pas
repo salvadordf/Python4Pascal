@@ -242,7 +242,8 @@ begin
     try
       // We pass aNumber as a tuple in the CallObject arguments.
       TempNumber := TPyLong.FromLong(aNumber);
-      TempArgs   := TPyTuple.Pack([TempNumber]);
+      TempArgs   := TPyTuple.New(1);
+      TPyTuple.SetItem(TempArgs, 0, TempNumber);
       TempResult := FSquareTestAttrib.CallObject(TempArgs);
       Result     := TempResult.AsInteger;
     finally
@@ -299,7 +300,8 @@ begin
   if assigned(FUppercaseTestAttrib) then
     try
       TempString := TPyUnicode.FromString(aString);
-      TempArgs   := TPyTuple.Pack([TempString]);
+      TempArgs   := TPyTuple.New(1);
+      TPyTuple.SetItem(TempArgs, 0, TempString);
       TempResult := FUppercaseTestAttrib.CallObject(TempArgs);
       Result     := TempResult.AsString;
     finally
@@ -319,7 +321,9 @@ begin
       // We have to create a tuple with all the function arguments in the right order.
       TempKey    := TPyUnicode.FromString(aKey);
       TempValue  := TPyLong.FromLong(aValue);
-      TempArgs   := TPyTuple.Pack([TempKey, TempValue]);
+      TempArgs   := TPyTuple.New(2);
+      TPyTuple.SetItem(TempArgs, 0, TempKey);
+      TPyTuple.SetItem(TempArgs, 1, TempValue);
       TempResult := FDictTestAttrib.CallObject(TempArgs);
       Result     := TempResult.AsString;
     finally
@@ -342,7 +346,11 @@ begin
       TempB      := TPyLong.FromLong(b);
       TempC      := TPyLong.FromLong(c);
       TempD      := TPyLong.FromLong(d);
-      TempArgs   := TPyTuple.Pack([TempA, TempB, TempC, TempD]);
+      TempArgs   := TPyTuple.New(4);
+      TPyTuple.SetItem(TempArgs, 0, TempA);
+      TPyTuple.SetItem(TempArgs, 1, TempB);
+      TPyTuple.SetItem(TempArgs, 2, TempC);
+      TPyTuple.SetItem(TempArgs, 3, TempD);
       TempResult := FBytesTestAttrib.CallObject(TempArgs);
       Result     := TPyBytes.AsStream(TempResult, aStream);
     end;

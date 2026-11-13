@@ -1,9 +1,15 @@
 unit uCustomThread;
 
+{$I ..\..\..\source\p4p.inc}
+
 interface
 
 uses
+  {$IFDEF DELPHI16_UP}
   System.SysUtils,
+  {$ELSE}
+  SysUtils,
+  {$ENDIF}
   uP4P.Thread, uP4P.PyModule, uTestModule, uTestHeapType;
 
 type

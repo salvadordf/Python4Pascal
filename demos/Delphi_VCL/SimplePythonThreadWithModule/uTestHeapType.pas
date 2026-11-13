@@ -54,7 +54,11 @@ type
 implementation
 
 uses
+  {$IFDEF DELPHI16_UP}
   System.SysUtils,
+  {$ELSE}
+  SysUtils,
+  {$ENDIF}
   uP4P.MiscFunctions, uP4P.Engine, uP4P.PyTuple, uP4P.PyUnicode, uP4P.PyBytes,
   uP4P.PyRun, uP4P.PyBool, uP4P.PyLong;
 

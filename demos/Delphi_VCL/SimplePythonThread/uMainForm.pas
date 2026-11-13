@@ -150,7 +150,11 @@ begin
   TempThread.FreeOnTerminate   := True;
   TempThread.ThreadInit        := TP4PThreadInit(ThreadRunModeRg.ItemIndex);
   TempThread.OnTerminate       := Thread_OnTerminate;
+  {$IFDEF DELPHI14_UP}
   TempThread.Start;
+  {$ELSE}
+  TempThread.Resume;
+  {$ENDIF}
 end;
 
 procedure TMainForm.Thread_OnTerminate(Sender: TObject);

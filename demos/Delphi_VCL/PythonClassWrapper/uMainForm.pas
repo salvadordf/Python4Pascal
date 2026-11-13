@@ -111,7 +111,7 @@ end;
 
 function TMainForm.StreamToString(const aStream: TMemoryStream): string;
 var
-  i, TempLen: int64;
+  i, TempLen: integer;
   TempBytes : TBytes;
 begin
   TempLen := aStream.Size;
