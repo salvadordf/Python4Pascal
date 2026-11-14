@@ -1309,26 +1309,18 @@ end;
 
 class function TPy.RefCnt(const aPyObject: IPyObject): Py_ssize_t;
 begin
-  Result := 0;
-
-  if TPyObject.IsInitialized(aPyObject) then
-    begin
-      if assigned(Py_REFCNT) then
-        Result := Py_REFCNT(aPyObject.PyObject)
-       else
-        Result := aPyObject.PyObject^.ob_refcnt;
-    end;
+  if TPyObject.IsInitialized(aPyObject) and
+     assigned(Py_REFCNT) then
+    Result := Py_REFCNT(aPyObject.PyObject)
+   else
+    Result := 0;
 end;
 
 class procedure TPy.Set_RefCnt(const aPyObject: IPyObject; refcnt_: Py_ssize_t);
 begin
-  if TPyObject.IsInitialized(aPyObject) then
-    begin
-      if assigned(Py_SET_REFCNT) then
-        Py_SET_REFCNT(aPyObject.PyObject, refcnt_)
-       else
-        aPyObject.PyObject^.ob_refcnt := refcnt_;
-    end;
+  if TPyObject.IsInitialized(aPyObject) and
+     assigned(Py_SET_REFCNT) then
+    Py_SET_REFCNT(aPyObject.PyObject, refcnt_);
 end;
 
 class procedure TPy.IncRef(const aPyObject: IPyObject);
