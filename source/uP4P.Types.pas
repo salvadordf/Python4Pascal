@@ -6,7 +6,11 @@ unit uP4P.Types;
 
 {$I p4p.inc}
 
-{$IFNDEF TARGET_64BITS}{$ALIGN ON}{$ENDIF}
+{$IFDEF FPC}
+  {$PACKRECORDS C}
+{$ELSE}
+  {$ALIGN 8}
+{$ENDIF}
 {$MINENUMSIZE 4}
 
 interface
@@ -788,13 +792,32 @@ type
   end;
 
   {* include/object.h  include/cpython/object.h *}
+
   /// <summary>
-  /// Internal PyObject record.
+  /// <para>All object types are extensions of this type. This is a type which
+  /// contains the information Python needs to treat a pointer to an object as
+  /// an object. In a normal "release" build, it contains only the object's
+  /// reference count and a pointer to the corresponding type object.</para>
+  /// <para>The members must not be accessed directly; instead use macros such
+  /// as Py_REFCNT and Py_TYPE.</para>
+  /// <para>In the Stable ABI for Free-Threaded Builds (abi3t), this struct is
+  /// opaque; its size and layout may change between Python versions. In Stable
+  /// ABI for non-free-threaded builds (abi3), the ob_refcnt and ob_type fields
+  /// are available, but using them directly is discouraged.</para>
   /// </summary>
   /// <remarks>
   /// <para><see href="https://docs.python.org/3/c-api/structures.html#c.PyObject">See the article about PyObject.</see></para>
   /// </remarks>
   _object = record
+    {$IFDEF PY_GIL_DISABLED}
+    ob_tid       : NativeUInt;
+    ob_flags     : Word;
+    ob_mutex     : PyMutex;
+    ob_gc_bits   : Byte;
+    ob_ref_local : Cardinal;
+    ob_ref_shared: Py_ssize_t;
+    ob_type      : PPyTypeObject;
+    {$ELSE}
     /// <summary>
     /// <para>The object's reference count, as returned by Py_REFCNT. Do not use
     /// this field directly; instead use functions and macros such as Py_REFCNT,
@@ -808,13 +831,20 @@ type
     /// and Py_SET_TYPE() instead.</para>
     /// </summary>
     ob_type   : PPyTypeObject;
+    {$ENDIF}
   end;
 
   /// <summary>
-  /// All object types are extensions of this type. This is a type which
+  /// <para>All object types are extensions of this type. This is a type which
   /// contains the information Python needs to treat a pointer to an object as
   /// an object. In a normal "release" build, it contains only the object's
-  /// reference count and a pointer to the corresponding type object.
+  /// reference count and a pointer to the corresponding type object.</para>
+  /// <para>The members must not be accessed directly; instead use macros such
+  /// as Py_REFCNT and Py_TYPE.</para>
+  /// <para>In the Stable ABI for Free-Threaded Builds (abi3t), this struct is
+  /// opaque; its size and layout may change between Python versions. In Stable
+  /// ABI for non-free-threaded builds (abi3), the ob_refcnt and ob_type fields
+  /// are available, but using them directly is discouraged.</para>
   /// </summary>
   /// <remarks>
   /// <para><see href="https://docs.python.org/3/c-api/structures.html#c.PyObject">See the article about PyObject.</see></para>

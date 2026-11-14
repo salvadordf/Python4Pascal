@@ -6,9 +6,6 @@ unit uP4P.Constants;
 
 {$I p4p.inc}
 
-{$IFNDEF TARGET_64BITS}{$ALIGN ON}{$ENDIF}
-{$MINENUMSIZE 4}
-
 interface
 
 uses

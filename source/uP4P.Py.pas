@@ -1281,7 +1281,7 @@ end;
 
 class function TPy.Type_(const aPyObject: IPyObject): PPyTypeObject;
 begin
-  if TPyObject.IsInitialized(aPyObject) then
+  if assigned(aPyObject) then
     Result := Type_(aPyObject.PyObject)
    else
     Result := nil;
