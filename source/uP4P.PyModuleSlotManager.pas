@@ -263,7 +263,7 @@ begin
   FExecFunction          := nil;
   FCreateModuleFunction  := nil;
   FMultIntprSupport      := piUnknown;
-  FGILUsed               := True;
+  FGILUsed               := {$IFDEF PY_GIL_DISABLED}False{$ELSE}True{$ENDIF};
   FStateSize             := low(integer);
   FStateTraverse         := nil;
   FStateClear            := nil;

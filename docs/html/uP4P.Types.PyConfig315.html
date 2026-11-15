@@ -833,7 +833,15 @@ privilege SeLockMemoryPrivilege is not held by the user.</pre>
 </tr>
 <tr><td colspan="2">
 <p>
- If the value of cpu_count is not -1 then it will override the return values of os.cpu_count(), os.process_cpu_count(), and multiprocessing.cpu_count(). Configured by the -X cpu_count=n|default command line flag or the PYTHON_CPU_COUNT environment variable. Default: -1. Added in version 3.13. </p>
+
+
+<p>If the value of cpu_count is not -1 then it will override the return values of os.cpu_count(), os.process_cpu_count(), and multiprocessing.cpu_count(). Configured by the -X cpu_count=n|default command line flag or the PYTHON_CPU_COUNT environment variable.
+
+<p>Default: -1.
+
+<p>Added in version 3.13.
+
+<p></p>
 </td></tr>
 </table>
 <table class="detail visibility-public wide_list">
@@ -843,9 +851,7 @@ privilege SeLockMemoryPrivilege is not held by the user.</pre>
 </tr>
 <tr><td colspan="2">
 <p>
-
-
-<p>Added in version 3.15. </p>
+ Controls lazy import behavior. A value of -1 keeps the default behaviour, where only imports marked with the lazy keyword are lazy. A value of 1 makes every import lazy. 0 is rejected. Configured by the -X lazy_imports command line option or the PYTHON_LAZY_IMPORTS environment variable. Default: -1. Added in version 3.15. </p>
 </td></tr>
 </table>
 <table class="detail visibility-public wide_list">

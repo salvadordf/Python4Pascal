@@ -60,6 +60,10 @@ type
       FModuleSearchPaths                 : string;
       FLazyImports                       : PyImport_LazyImportsMode;
       FOnBeforeInitialization            : TOnBeforeInitializationEvent;
+      {$IFDEF PY_GIL_DISABLED}
+      FEnableGIL                         : TPyConfigGIL;
+      FTLBCEnabled                       : boolean;
+      {$ENDIF}
 
       function GetInitialized: boolean;
       function GetLoaded: boolean;
@@ -501,6 +505,34 @@ type
       /// <para>Load the Python library from an extension module.</para>
       /// </summary>
       property InExtensionModule                 : boolean                                      read FInExtensionModule;
+      {$IFDEF PY_GIL_DISABLED}
+      /// <summary>
+      /// <para>enable_gil controls whether the GIL is on at runtime.</para>
+      /// <code>
+      /// _PyConfig_GIL_DISABLE requests it off,
+      /// _PyConfig_GIL_ENABLE requests it on,
+      /// _PyConfig_GIL_DEFAULT leaves the choice to CPython.
+      /// </code>
+      /// <para>In the default mode, the GIL can be re-enabled when an imported
+      /// extension hasn't declared that it supports running without it.</para>
+      /// <para>In practice, enable_gil chooses the interpreter's threading
+      /// mode.</para>
+      /// <para>Added in version 3.13.</para>
+      /// </summary>
+      property EnableGIL                         : TPyConfigGIL                                 read FEnableGIL                         write FEnableGIL;
+      /// <summary>
+      /// <para>tlbc_enabled controls thread-local bytecode: per-thread bytecode
+      /// copies used in free-threaded builds.</para>
+      /// <para>It's enabled by default; disabling it also disables the
+      /// specializing interpreter.</para>
+      /// <para>tlbc_enabled controls a bytecode implementation/optimization
+      /// detail within that mode. Most embedders should leave tlbc_enabled at
+      /// its default unless they have a specific compatibility or debugging
+      /// reason to change it.</para>
+      /// <para>Added in version 3.14.</para>
+      /// </summary>
+      property TLBCEnabled                       : boolean                                      read FTLBCEnabled                       write FTLBCEnabled;
+      {$ENDIF}
       /// <summary>
       /// Event triggered right before the Python initialization. It's used to
       /// change the configuration properties.
@@ -544,6 +576,10 @@ begin
   FModuleSearchPaths      := '';
   FLazyImports            := PyImport_LAZY_NORMAL;
   FInExtensionModule      := False;
+  {$IFDEF PY_GIL_DISABLED}
+  FEnableGIL              := _PyConfig_GIL_DEFAULT;
+  FTLBCEnabled            := True;
+  {$ENDIF}
 
   {$IFDEF ANDROID}
   FIsolated               := True;
@@ -700,16 +736,23 @@ begin
 end;
 
 function TP4PLoader.FindPythonLib(const aPath: string; var aFiles: TStringList): boolean;
+var
+  TempName : string;
 begin
   Result := False;
 
   try
     if (length(aPath) > 0) and DirectoryExists(aPath) then
       begin
-        {$IFDEF FPC}
-        aFiles := FindAllFiles(aPath, 'python*.' + PYTHON_LIB_EXT, False);
+        {$IFDEF PY_GIL_DISABLED}
+        TempName := 'python*t*.';
         {$ELSE}
-        aFiles := CustomFindAllFiles(aPath, 'python*.' + PYTHON_LIB_EXT);
+        TempName := 'python*.';
+        {$ENDIF}
+        {$IFDEF FPC}
+        aFiles := FindAllFiles(aPath, TempName + PYTHON_LIB_EXT, False);
+        {$ELSE}
+        aFiles := CustomFindAllFiles(aPath, TempName + PYTHON_LIB_EXT);
         {$ENDIF}
         Result := assigned(aFiles) and (aFiles.Count > 0);
       end;
@@ -1710,6 +1753,10 @@ begin
         TempConfig.program_name        := FProgramName;
         TempConfig.module_search_paths := FModuleSearchPaths;
         TempConfig.lazy_imports        := FLazyImports;
+        {$IFDEF PY_GIL_DISABLED}
+        TempConfig.enable_gil          := FEnableGIL;
+        TempConfig.tlbc_enabled        := FTLBCEnabled;
+        {$ENDIF}
 
         SetProgramArgs_PEP741(TempConfig);
 
@@ -1771,6 +1818,10 @@ begin
     TempConfig.module_search_paths     := FModuleSearchPaths;
     TempConfig.module_search_paths_set := (length(FModuleSearchPaths) > 0);
     TempConfig.lazy_imports            := FLazyImports;
+    {$IFDEF PY_GIL_DISABLED}
+    TempConfig.enable_gil              := FEnableGIL;
+    TempConfig.tlbc_enabled            := FTLBCEnabled;
+    {$ENDIF}
 
     SetProgramArgs_PEP587(TempConfig);
 

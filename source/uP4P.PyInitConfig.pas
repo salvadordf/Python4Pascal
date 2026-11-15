@@ -48,6 +48,9 @@ type
       function Get_dev_mode: boolean;
       function Get_dump_refs: boolean;
       function Get_dump_refs_file: string;
+      {$IFDEF PY_GIL_DISABLED}
+      function Get_enable_gil: TPyConfigGIL;
+      {$ENDIF}
       function Get_exec_prefix: string;
       function Get_executable: string;
       function Get_faulthandler: boolean;
@@ -91,6 +94,9 @@ type
       function Get_stdio_encoding: string;
       function Get_stdio_errors: string;
       function Get_stdlib_dir: string;
+      {$IFDEF PY_GIL_DISABLED}
+      function Get_tlbc_enabled: boolean;
+      {$ENDIF}
       function Get_tracemalloc: int64;
       function Get_use_environment: boolean;
       function Get_use_frozen_modules: boolean;
@@ -121,6 +127,9 @@ type
       procedure Set_dev_mode(aValue: boolean);
       procedure Set_dump_refs(aValue: boolean);
       procedure Set_dump_refs_file(const aValue: string);
+      {$IFDEF PY_GIL_DISABLED}
+      procedure Set_enable_gil(aValue: TPyConfigGIL);
+      {$ENDIF}
       procedure Set_exec_prefix(const aValue: string);
       procedure Set_executable(const aValue: string);
       procedure Set_faulthandler(aValue: boolean);
@@ -164,6 +173,9 @@ type
       procedure Set_stdio_encoding(const aValue: string);
       procedure Set_stdio_errors(const aValue: string);
       procedure Set_stdlib_dir(const aValue: string);
+      {$IFDEF PY_GIL_DISABLED}
+      procedure Set_tlbc_enabled(aValue: boolean);
+      {$ENDIF}
       procedure Set_tracemalloc(aValue: int64);
       procedure Set_use_environment(aValue: boolean);
       procedure Set_use_frozen_modules(aValue: boolean);
@@ -467,6 +479,22 @@ type
       /// PYTHONDUMPREFSFILE environment variable.</para>
       /// </summary>
       property dump_refs_file             : string                   read Get_dump_refs_file                 write Set_dump_refs_file;
+      {$IFDEF PY_GIL_DISABLED}
+      /// <summary>
+      /// <para>enable_gil controls whether the GIL is on at runtime.</para>
+      /// <code>
+      /// _PyConfig_GIL_DISABLE requests it off,
+      /// _PyConfig_GIL_ENABLE requests it on,
+      /// _PyConfig_GIL_DEFAULT leaves the choice to CPython.
+      /// </code>
+      /// <para>In the default mode, the GIL can be re-enabled when an imported
+      /// extension hasn't declared that it supports running without it.</para>
+      /// <para>In practice, enable_gil chooses the interpreter's threading
+      /// mode.</para>
+      /// <para>Added in version 3.13.</para>
+      /// </summary>
+      property enable_gil                 : TPyConfigGIL             read Get_enable_gil                     write Set_enable_gil;
+      {$ENDIF}
       /// <summary>
       /// <para>The site-specific directory prefix where the platform-dependent
       /// Python files are installed: sys.exec_prefix.</para>
@@ -977,6 +1005,20 @@ type
       /// <para>Added in version 3.11.</para>
       /// </summary>
       property stdlib_dir                 : string                   read Get_stdlib_dir                     write Set_stdlib_dir;
+      {$IFDEF PY_GIL_DISABLED}
+      /// <summary>
+      /// <para>tlbc_enabled controls thread-local bytecode: per-thread bytecode
+      /// copies used in free-threaded builds.</para>
+      /// <para>It's enabled by default; disabling it also disables the
+      /// specializing interpreter.</para>
+      /// <para>tlbc_enabled controls a bytecode implementation/optimization
+      /// detail within that mode. Most embedders should leave tlbc_enabled at
+      /// its default unless they have a specific compatibility or debugging
+      /// reason to change it.</para>
+      /// <para>Added in version 3.14.</para>
+      /// </summary>
+      property tlbc_enabled               : boolean                  read Get_tlbc_enabled                   write Set_tlbc_enabled;
+      {$ENDIF}
       /// <summary>
       /// <para>Enable tracemalloc?</para>
       /// <para>If True, call tracemalloc.start() at startup.</para>
@@ -1601,7 +1643,7 @@ end;
 function TPyInitConfig.Get_dev_mode: boolean;
 var
   TempResult : int64;
-begin             
+begin
   TempResult := 0;
   Result     := GetInt(PYINITCONFIGOPTION_DEV_MODE, TempResult) and
                 (TempResult <> 0);
@@ -1627,6 +1669,19 @@ begin
    else
     Result := '';
 end;
+
+{$IFDEF PY_GIL_DISABLED}
+function TPyInitConfig.Get_enable_gil: TPyConfigGIL;
+var
+  TempResult : int64;
+begin
+  TempResult := 0;
+  if GetInt(PYINITCONFIGOPTION_ENABLE_GIL, TempResult) then
+    Result := TPyConfigGIL(TempResult)
+   else
+    Result := _PyConfig_GIL_DEFAULT;
+end;
+{$ENDIF}
 
 function TPyInitConfig.Get_exec_prefix: string;
 var
@@ -2079,6 +2134,17 @@ begin
     Result := '';
 end;
 
+{$IFDEF PY_GIL_DISABLED}
+function TPyInitConfig.Get_tlbc_enabled: boolean;
+var
+  TempResult : int64;
+begin
+  TempResult := 0;
+  Result     := GetInt(PYINITCONFIGOPTION_TLBC_ENABLED, TempResult) and
+                (TempResult <> 0);
+end;
+{$ENDIF}
+
 function TPyInitConfig.Get_tracemalloc: int64;
 var
   TempResult : int64;
@@ -2280,6 +2346,13 @@ procedure TPyInitConfig.Set_dump_refs_file(const aValue: string);
 begin
   SetStr(PYINITCONFIGOPTION_DUMP_REFS_FILE, aValue);
 end;
+
+{$IFDEF PY_GIL_DISABLED}
+procedure TPyInitConfig.Set_enable_gil(aValue: TPyConfigGIL);
+begin
+  SetInt(PYINITCONFIGOPTION_ENABLE_GIL, integer(aValue));
+end;
+{$ENDIF}
 
 procedure TPyInitConfig.Set_exec_prefix(const aValue: string);
 begin
@@ -2501,6 +2574,13 @@ procedure TPyInitConfig.Set_stdlib_dir(const aValue: string);
 begin
   SetStr(PYINITCONFIGOPTION_STDLIB_DIR, aValue);
 end;
+
+{$IFDEF PY_GIL_DISABLED}
+procedure TPyInitConfig.Set_tlbc_enabled(aValue: boolean);
+begin
+  SetInt(PYINITCONFIGOPTION_TLBC_ENABLED, ord(aValue));
+end;
+{$ENDIF}
 
 procedure TPyInitConfig.Set_tracemalloc(aValue: int64);
 begin

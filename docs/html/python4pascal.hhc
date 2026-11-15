@@ -32953,6 +32953,14 @@
 <param name="Name" value="PyDateTime_CAPI_Time_FromTimeAndFold_func">
 <param name="Local" value="uP4P.Types.html#PyDateTime_CAPI_Time_FromTimeAndFold_func">
 </object>
+<li><object type="text/sitemap">
+<param name="Name" value="_PyConfigGILEnum">
+<param name="Local" value="uP4P.Types.html#_PyConfigGILEnum">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="TPyConfigGIL">
+<param name="Local" value="uP4P.Types.html#TPyConfigGIL">
+</object>
 </ul>
 </ul>
 </ul>

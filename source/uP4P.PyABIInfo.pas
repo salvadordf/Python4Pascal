@@ -83,7 +83,11 @@ end;
 class function TPyABIInfo.DEFAULT_FLAGS: word;
 const
   _PyABIInfo_DEFAULT_FLAG_STABLE   = 0;
+  {$IFDEF PY_GIL_DISABLED}
+  _PyABIInfo_DEFAULT_FLAG_FT       = PyABIInfo_FREETHREADED;
+  {$ELSE}
   _PyABIInfo_DEFAULT_FLAG_FT       = PyABIInfo_GIL;
+  {$ENDIF}
   _PyABIInfo_DEFAULT_FLAG_INTERNAL = 0;
 begin
   Result := _PyABIInfo_DEFAULT_FLAG_STABLE or

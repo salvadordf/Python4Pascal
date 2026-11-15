@@ -23435,6 +23435,10 @@
 <param name="Local" value="uP4P.PyConfig.TPyConfigBuilder.html#New-integer-integer-">
 </object>
 <li><object type="text/sitemap">
+<param name="Name" value="TPyConfigGIL">
+<param name="Local" value="uP4P.Types.html#TPyConfigGIL">
+</object>
+<li><object type="text/sitemap">
 <param name="Name" value="TPyContext">
 <param name="Local" value="uP4P.PyContext.TPyContext.html">
 </object>
@@ -33125,6 +33129,10 @@
 <li><object type="text/sitemap">
 <param name="Name" value="_co_varnames">
 <param name="Local" value="uP4P.Types._PyCoCached.html#_co_varnames">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="_PyConfigGILEnum">
+<param name="Local" value="uP4P.Types.html#_PyConfigGILEnum">
 </object>
 <li><object type="text/sitemap">
 <param name="Name" value="_PyDateTime_BaseDateTime">

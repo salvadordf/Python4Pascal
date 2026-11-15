@@ -244,7 +244,7 @@ begin
   FCreateModuleFunction  := nil;
   FExecFunction          := nil;
   FMultIntprSupport      := piUnknown;
-  FGILUsed               := True;
+  FGILUsed               := {$IFDEF PY_GIL_DISABLED}False{$ELSE}True{$ENDIF};
   FSlotList              := nil;
   FSlots                 := nil;
   FMethodList            := nil;

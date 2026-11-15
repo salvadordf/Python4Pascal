@@ -98,6 +98,9 @@ const
   PYINITCONFIGOPTION_DEV_MODE                   = 'dev_mode';
   PYINITCONFIGOPTION_DUMP_REFS                  = 'dump_refs';
   PYINITCONFIGOPTION_DUMP_REFS_FILE             = 'dump_refs_file';
+  {$IFDEF PY_GIL_DISABLED}
+  PYINITCONFIGOPTION_ENABLE_GIL                 = 'enable_gil';
+  {$ENDIF}
   PYINITCONFIGOPTION_EXEC_PREFIX                = 'exec_prefix';
   PYINITCONFIGOPTION_EXECUTABLE                 = 'executable';
   PYINITCONFIGOPTION_FAULTHANDLER               = 'faulthandler';
@@ -141,6 +144,9 @@ const
   PYINITCONFIGOPTION_STDIO_ENCODING             = 'stdio_encoding';
   PYINITCONFIGOPTION_STDIO_ERRORS               = 'stdio_errors';
   PYINITCONFIGOPTION_STDLIB_DIR                 = 'stdlib_dir';
+  {$IFDEF PY_GIL_DISABLED}
+  PYINITCONFIGOPTION_TLBC_ENABLED               = 'tlbc_enabled';
+  {$ENDIF}
   PYINITCONFIGOPTION_TRACEMALLOC                = 'tracemalloc';
   PYINITCONFIGOPTION_USE_ENVIRONMENT            = 'use_environment';
   PYINITCONFIGOPTION_USE_FROZEN_MODULES         = 'use_frozen_modules';

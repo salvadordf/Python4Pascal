@@ -3,6 +3,9 @@
 
 {$DEFINE DELPHI_VERSION_UNKNOW}
 
+// Enable PY_GIL_DISABLED in order to use the free-threaded mode.
+{.$DEFINE PY_GIL_DISABLED}
+
 // Delphi 5
 {$IFDEF VER130}
   {$UNDEF DELPHI_VERSION_UNKNOW}

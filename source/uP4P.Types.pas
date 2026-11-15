@@ -1314,6 +1314,9 @@ type
     _ht_tpname        : PAnsiChar;
     ht_token          : Pointer;
     _spec_cache       : _specialization_cache;
+    {$IFDEF PY_GIL_DISABLED}
+    unique_id         : Py_ssize_t;
+    {$ENDIF}
   end;
 
   PyRefTracerEvent = (
@@ -2764,14 +2767,48 @@ type
     use_system_logger        : integer;
     {$ENDIF}
     /// <summary>
-    /// If the value of cpu_count is not -1 then it will override the return values of os.cpu_count(), os.process_cpu_count(), and multiprocessing.cpu_count().
-    /// Configured by the -X cpu_count=n|default command line flag or the PYTHON_CPU_COUNT environment variable.
-    /// Default: -1.
-    /// Added in version 3.13.
+    /// <para>If the value of cpu_count is not -1 then it will override the return values of os.cpu_count(), os.process_cpu_count(), and multiprocessing.cpu_count().
+    /// Configured by the -X cpu_count=n|default command line flag or the PYTHON_CPU_COUNT environment variable.</para>
+    /// <para>Default: -1.</para>
+    /// <para>Added in version 3.13.</para>
     /// </summary>
     cpu_count                : integer;
+    {$IFDEF PY_GIL_DISABLED}
     /// <summary>
-    ///
+    /// <para>enable_gil controls whether the GIL is on at runtime.</para>
+    /// <code>
+    /// _PyConfig_GIL_DISABLE requests it off,
+    /// _PyConfig_GIL_ENABLE requests it on,
+    /// _PyConfig_GIL_DEFAULT leaves the choice to CPython.
+    /// </code>
+    /// <para>In the default mode, the GIL can be re-enabled when an imported
+    /// extension hasn't declared that it supports running without it.</para>
+    /// <para>In practice, enable_gil chooses the interpreter's threading
+    /// mode.</para>
+    /// <para>Added in version 3.13.</para>
+    /// </summary>
+    enable_gil               : integer;
+    /// <summary>
+    /// <para>tlbc_enabled controls thread-local bytecode: per-thread bytecode
+    /// copies used in free-threaded builds.</para>
+    /// <para>It's enabled by default; disabling it also disables the
+    /// specializing interpreter.</para>
+    /// <para>tlbc_enabled controls a bytecode implementation/optimization
+    /// detail within that mode. Most embedders should leave tlbc_enabled at
+    /// its default unless they have a specific compatibility or debugging
+    /// reason to change it.</para>
+    /// <para>Added in version 3.14.</para>
+    /// </summary>
+    tlbc_enabled             : integer;
+    {$ENDIF}
+    /// <summary>
+    /// Controls lazy import behavior.
+    /// A value of -1 keeps the default behaviour, where only imports marked
+    /// with the lazy keyword are lazy. A value of 1 makes every import lazy.
+    /// 0 is rejected.
+    /// Configured by the -X lazy_imports command line option or the
+    /// PYTHON_LAZY_IMPORTS environment variable.
+    /// Default: -1.
     /// Added in version 3.15.
     /// </summary>
     lazy_imports             : integer;             //****** 3.15.0
@@ -2979,6 +3016,10 @@ type
     use_system_logger        : integer;
     {$ENDIF}
     cpu_count                : integer;
+    {$IFDEF PY_GIL_DISABLED}
+    enable_gil               : integer;
+    tlbc_enabled             : integer;
+    {$ENDIF}
     pathconfig_warnings      : integer;
     program_name             : PWCharT;
     pythonpath_env           : PWCharT;
@@ -3051,6 +3092,9 @@ type
     safe_path                : integer;
     int_max_str_digits       : integer;
     cpu_count                : integer;
+    {$IFDEF PY_GIL_DISABLED}
+    enable_gil               : integer;
+    {$ENDIF}
     pathconfig_warnings      : integer;
     program_name             : PWCharT;
     pythonpath_env           : PWCharT;
@@ -3549,6 +3593,14 @@ type
     ///
     /// </summary>
     vectorcall             : vectorcallfunc;
+    {$IFDEF PY_GIL_DISABLED}
+    /// <summary>
+    /// Pointer to the lock used when clearing in free-threaded builds.
+    /// Normally this can be derived from wr_object, but in some cases we need
+    /// to lock after wr_object has been set to Py_None.
+    /// </summary>
+    weakrefs_lock          : PPyMutex;
+    {$ENDIF}
   end;
   /// <summary>
   /// PyWeakReference is the base struct for the Python ReferenceType,
@@ -4043,6 +4095,32 @@ type
     DateTime_FromDateAndTimeAndFold : PyDateTime_CAPI_DateTime_FromDateAndTimeAndFold_func;
     Time_FromTimeAndFold            : PyDateTime_CAPI_Time_FromTimeAndFold_func;
   end;
+
+
+  {* include/internal/pycore_initconfig.h *}
+
+  /// <summary>
+  /// Values for PyConfig.enable_gil.
+  /// </summary>
+  _PyConfigGILEnum = (
+    /// <summary>
+    /// <para>In free threaded builds, this means that the GIL is disabled at
+    /// startup, but may be enabled by loading an incompatible extension
+    /// module.</para>
+    /// </summary>
+    _PyConfig_GIL_DEFAULT = -1,
+    /// <summary>
+    /// <para>The GIL has been forced off and will not be affected by module
+    /// loading.</para>
+    /// </summary>
+    _PyConfig_GIL_DISABLE = 0,
+    /// <summary>
+    /// <para>The GIL has been forced on, and will not be affected by module
+    /// loading.</para>
+    /// </summary>
+    _PyConfig_GIL_ENABLE = 1
+  );
+  TPyConfigGIL = type _PyConfigGILEnum;
 
 
 implementation

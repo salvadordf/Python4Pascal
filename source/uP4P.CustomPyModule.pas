@@ -212,7 +212,7 @@ begin
   FSlotManager           := nil;
   FOnAfterInitialization := nil;
   FMultIntprSupport      := miSupported;
-  FGILUsed               := True;
+  FGILUsed               := {$IFDEF PY_GIL_DISABLED}False{$ELSE}True{$ENDIF};
   FIsExtension           := aIsExtension;
   FExecFunction          := {$IFDEF FPC}@{$ENDIF}Exec_Module;
   FCreateModuleFunction  := nil;
