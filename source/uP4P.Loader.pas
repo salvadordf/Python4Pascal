@@ -890,7 +890,7 @@ end;
 function TP4PLoader.GetOSPythonLibPath_Apple: string;
 var
   i : integer;
-  TempVersion, TempLib : string;
+  TempVersion, TempLib, TempPath, TempName : string;
 begin
   Result := '';
 
@@ -898,7 +898,14 @@ begin
     for i := MAX_SUPPORTED_MINOR_VERSION downto MIN_SUPPORTED_MINOR_VERSION do
       begin
         TempVersion := inttostr(SUPPORTED_MAJOR_VERSION) + '.' + inttostr(i);
-        TempLib     := '/Library/Frameworks/Python.framework/Versions/' + TempVersion + '/lib/libpython' + TempVersion + '.' + PYTHON_LIB_EXT;
+        {$IFDEF PY_GIL_DISABLED}
+        TempName := 'libpython' + TempVersion + 't.' + PYTHON_LIB_EXT;
+        TempPath := '/Library/Frameworks/PythonT.framework/Versions/' + TempVersion + '/lib/';
+        {$ELSE}
+        TempName := 'libpython' + TempVersion + '.' + PYTHON_LIB_EXT;
+        TempPath := '/Library/Frameworks/Python.framework/Versions/' + TempVersion + '/lib/';
+        {$ENDIF}
+        TempLib := TempPath + TempName;
 
         if FileExists(TempLib) then
           begin

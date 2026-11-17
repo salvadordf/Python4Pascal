@@ -1,0 +1,219 @@
+object MainForm: TMainForm
+  Left = 0
+  Height = 475
+  Top = 0
+  Width = 920
+  Caption = 'Python free-threaded mode demo'
+  ClientHeight = 475
+  ClientWidth = 920
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Position = poScreenCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object MainPnl: TPanel
+    Left = 5
+    Height = 280
+    Top = 5
+    Width = 910
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 280
+    ClientWidth = 910
+    ParentBackground = False
+    TabOrder = 0
+    object BubbleSortPnl: TPanel
+      Left = 0
+      Height = 280
+      Top = 0
+      Width = 300
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 280
+      ClientWidth = 300
+      ParentBackground = False
+      TabOrder = 0
+      object BubbleSortPb: TPaintBox
+        Left = 0
+        Height = 255
+        Top = 25
+        Width = 300
+        Align = alClient
+        OnPaint = BubbleSortPbPaint
+      end
+      object BubbleSortChk: TCheckBox
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 300
+        Align = alTop
+        Caption = 'Bubble Sort'
+        Checked = True
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        State = cbChecked
+        TabOrder = 0
+      end
+    end
+    object QuickSortPnl: TPanel
+      Left = 610
+      Height = 280
+      Top = 0
+      Width = 300
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 280
+      ClientWidth = 300
+      ParentBackground = False
+      TabOrder = 1
+      object QuickSortPb: TPaintBox
+        Tag = 2
+        Left = 0
+        Height = 255
+        Top = 25
+        Width = 300
+        Align = alClient
+        OnPaint = BubbleSortPbPaint
+      end
+      object QuickSortChk: TCheckBox
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 300
+        Align = alTop
+        Caption = 'Quick Sort'
+        Checked = True
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        State = cbChecked
+        TabOrder = 0
+      end
+    end
+    object SelectionSortPnl: TPanel
+      Left = 300
+      Height = 280
+      Top = 0
+      Width = 310
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 280
+      ClientWidth = 310
+      ParentBackground = False
+      TabOrder = 2
+      object SelectionSortPb: TPaintBox
+        Tag = 1
+        Left = 5
+        Height = 255
+        Top = 25
+        Width = 300
+        Align = alClient
+        OnPaint = BubbleSortPbPaint
+      end
+      object SelectionSortChk: TCheckBox
+        Left = 5
+        Height = 25
+        Top = 0
+        Width = 300
+        Align = alTop
+        Caption = 'Selection Sort'
+        Checked = True
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        State = cbChecked
+        TabOrder = 0
+      end
+    end
+  end
+  object BottomPnl: TPanel
+    Left = 5
+    Height = 185
+    Top = 285
+    Width = 910
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 185
+    ClientWidth = 910
+    ParentBackground = False
+    TabOrder = 1
+    object LogMem: TMemo
+      Left = 0
+      Height = 180
+      Top = 5
+      Width = 704
+      Align = alClient
+      ReadOnly = True
+      ScrollBars = ssVertical
+      TabOrder = 0
+    end
+    object RunPnl: TPanel
+      Left = 704
+      Height = 180
+      Top = 5
+      Width = 206
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 180
+      ClientWidth = 206
+      Enabled = False
+      ParentBackground = False
+      TabOrder = 1
+      object RunBtn: TButton
+        Left = 5
+        Height = 25
+        Top = 0
+        Width = 201
+        Align = alTop
+        Caption = 'Run'
+        TabOrder = 0
+        OnClick = RunBtnClick
+      end
+      object ThreadRunModeRg: TRadioGroup
+        Left = 5
+        Height = 155
+        Top = 25
+        Width = 201
+        Align = alClient
+        AutoFill = True
+        Caption = 'Thread run mode '
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 136
+        ClientWidth = 199
+        ItemIndex = 3
+        Items.Strings = (
+          'Legacy API'
+          'Shared Interpreter'
+          'Subinterpreter with shared GIL'
+          'Subinterpreter with own GIL'
+        )
+        ParentBackground = False
+        TabOrder = 1
+      end
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = Timer1Timer
+    Left = 501
+    Top = 365
+  end
+end
