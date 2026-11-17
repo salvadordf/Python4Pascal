@@ -836,7 +836,7 @@ end;
 function TP4PLoader.GetOSPythonLibPath_Linux: string;
 var
   i : integer;
-  TempVersion, TempLib, TempPath : string;
+  TempVersion, TempLib, TempPath, TempName : string;
 begin
   Result := '';
   {$IFDEF TARGET_32BITS}
@@ -858,7 +858,12 @@ begin
     for i := MAX_SUPPORTED_MINOR_VERSION downto MIN_SUPPORTED_MINOR_VERSION do
       begin
         TempVersion := inttostr(SUPPORTED_MAJOR_VERSION) + '.' + inttostr(i);
-        TempLib     := TempPath + 'libpython' + TempVersion + '.' + PYTHON_LIB_EXT;
+        {$IFDEF PY_GIL_DISABLED}
+        TempName := 'libpython' + TempVersion + 't.' + PYTHON_LIB_EXT;
+        {$ELSE}
+        TempName := 'libpython' + TempVersion + '.' + PYTHON_LIB_EXT;
+        {$ENDIF}
+        TempLib := TempPath + TempName;
 
         if FileExists(TempLib) then
           begin
