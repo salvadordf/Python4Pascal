@@ -94,7 +94,33 @@ var
 
 implementation
 
-// 
+// This demo shows how to use several threads to execute Python code at
+// the same time thanks to the "free-threaded" mode introduced in Python 3.13.
+//
+//     https://docs.python.org/3/howto/free-threading-python.html
+//
+// In order to use the "free-threaded" mode it's necessary to build
+// Python4Pascal with the PY_GIL_DISABLED conditional and enable the option in
+// the official Python installer to download the "free-threaded" binaries.
+//
+// The project options of this demo enables the PY_GIL_DISABLED conditional
+// but you can also enable it in the p4p.inc file.
+//
+// This demo uses the TSortThread class to sort an array using the bubble,
+// selection and quick sort functions.
+//
+// The TSortModule modules declare the "getvalue" and "swap" Python functions
+// to handle the array available in the Delphi code.
+//
+// It's necessary to call GlobalP4PEngine.SaveThreadState before running Python
+// in a different thread.
+//
+// This demo assumes all callbacks and events run in a different thread so the
+// array and the messages are protected by critical sections.
+//
+// The timer is used to refresh the paitboxes with the ordered data at regular
+// intervals.
+
 
 {$R *.dfm}
 
@@ -118,8 +144,6 @@ begin
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
-var
-  TempBit, TempDrive, TempLibPath : string;
 begin
   if not(assigned(GlobalP4PEngine)) then
     begin
@@ -130,28 +154,9 @@ begin
   if not(GlobalP4PEngine.Initialized) then
     begin
       GlobalP4PEngine.SetCurrentDir := True;
+      GlobalP4PEngine.UseDebugLib   := False;
 
-      {$IFDEF TARGET_32BITS}
-      TempBit := 'win32';
-      {$ELSE}
-      TempBit := 'amd64';
-      {$ENDIF}
-
-      TempDrive := 'Q';
-      //TempDrive := 'S';
-
-      //TempLibPath := TempDrive + ':\python-3.15.2-embed-' + TempBit + '\python315.dll';
-      //TempLibPath := TempDrive + ':\python-3.14.8-embed-' + TempBit + '\python314.dll';
-      //TempLibPath := TempDrive + ':\python-3.13.16-embed-' + TempBit + '\python313.dll';
-      //TempLibPath := TempDrive + ':\python-3.12.10-embed-' + TempBit + '\python312.dll';
-      //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
-      //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
-      //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
-      TempLibPath := '';
-
-      GlobalP4PEngine.UseDebugLib := False;
-
-      if GlobalP4PEngine.Load(TempLibPath) and
+      if GlobalP4PEngine.Load and
          GlobalP4PEngine.Initialize then
         begin
           EnableInterface;
@@ -187,7 +192,7 @@ end;
 procedure TMainForm.GlobalP4PEngine_OnOutputMessage(Sender: TObject; const message_: string);
 begin
   if AppendMessage(message_) then
-    TThread.Synchronize(nil, ShowPendingMessages);
+    TThread.ForceQueue(nil, ShowPendingMessages);
 end;
 
 procedure TMainForm.RunBtnClick(Sender: TObject);
@@ -282,7 +287,8 @@ begin
               '        for j in range(n-i-1):' + CRLF +
               '            if ' + BUBBLE_MODNAME + '.getvalue(j) > ' + BUBBLE_MODNAME + '.getvalue(j+1):' + CRLF +
               '                ' + BUBBLE_MODNAME + '.swap(j,j+1)' + CRLF +
-              'bubble_sort(' + inttostr(DATA_LENGTH) + ')';
+              'bubble_sort(' + inttostr(DATA_LENGTH) + ')' + CRLF +
+              'print("bubble_sort finished")';
 
   CreateSortThread(BUBBLE_MODNAME, TempCode, BUBBLE_IDX);
 end;
@@ -292,12 +298,15 @@ var
   TempCode : string;
 begin
   TempCode := 'import ' + SELECT_MODNAME + CRLF +
-              'def selection_sort(high):' + CRLF +
-              '    for i in range(high-1):' + CRLF +
-              '        for j in range(i+1,high):' + CRLF +
-              '            if ' + SELECT_MODNAME + '.getvalue(i) > ' + SELECT_MODNAME + '.getvalue(j):' + CRLF +
-              '                ' + SELECT_MODNAME + '.swap(i,j)' + CRLF +
-              'selection_sort(' + inttostr(pred(DATA_LENGTH)) + ')';
+              'def selection_sort(n):' + CRLF +
+              '    for i in range(n - 1):' + CRLF +
+              '        min_idx = i' + CRLF +
+              '        for j in range(i + 1, n):' + CRLF +
+              '            if ' + SELECT_MODNAME + '.getvalue(j) < ' + SELECT_MODNAME + '.getvalue(min_idx):' + CRLF +
+              '                min_idx = j' + CRLF +
+              '        ' + SELECT_MODNAME + '.swap(i, min_idx)' + CRLF +
+              'selection_sort(' + inttostr(DATA_LENGTH) + ')' + CRLF +
+              'print("selection_sort finished")';
 
   CreateSortThread(SELECT_MODNAME, TempCode, SELECT_IDX);
 end;
@@ -307,26 +316,24 @@ var
   TempCode : string;
 begin
   TempCode := 'import ' + QUICK_MODNAME + CRLF +
-              'def quick_sort(low,high):' + CRLF +
-              '    Lo = low' + CRLF +
-              '    Hi = high-1' + CRLF +
-              '    Mid = ' + QUICK_MODNAME + '.getvalue((Lo+Hi) // 2)' + CRLF +
-              '    while 1:' + CRLF +
-              '        while ' + QUICK_MODNAME + '.getvalue(Lo) < Mid:' + CRLF +
-              '            Lo = Lo + 1' + CRLF +
-              '        while ' + QUICK_MODNAME + '.getvalue(Hi) > Mid:' + CRLF +
-              '            Hi = Hi - 1' + CRLF +
-              '        if Lo <= Hi:' + CRLF +
-              '            ' + QUICK_MODNAME + '.swap(Lo,Hi)' + CRLF +
-              '            Lo = Lo + 1' + CRLF +
-              '            Hi = Hi - 1' + CRLF +
-              '        if Lo > Hi:' + CRLF +
-              '            break' + CRLF +
-              '    if Hi > low:' + CRLF +
-              '        quick_sort(low,Hi+1)' + CRLF +
-              '    if Lo < high-1:' + CRLF +
-              '        quick_sort(Lo,high)' + CRLF +
-              'quick_sort(0,' + inttostr(pred(DATA_LENGTH)) + ')';
+              'def partition(low, high):' + CRLF +
+              '    pivot = ' + QUICK_MODNAME + '.getvalue(high)' + CRLF +
+              '    i = low - 1' + CRLF +
+              '    for j in range(low, high):' + CRLF +
+              '        if ' + QUICK_MODNAME + '.getvalue(j) <= pivot:' + CRLF +
+              '            i += 1' + CRLF +
+              '            ' + QUICK_MODNAME + '.swap(i, j)' + CRLF +
+              CRLF +
+              '    ' + QUICK_MODNAME + '.swap(i + 1, high)' + CRLF +
+              '    return i + 1' + CRLF +
+              CRLF +
+              'def quick_sort(low, high):' + CRLF +
+              '    if low < high:' + CRLF +
+              '        p = partition(low, high)' + CRLF +
+              '        quick_sort(low, p - 1)' + CRLF +
+              '        quick_sort(p + 1, high)' + CRLF +
+              'quick_sort(0,' + inttostr(pred(DATA_LENGTH)) + ')' + CRLF +
+              'print("quick_sort finished")';
 
   CreateSortThread(QUICK_MODNAME,  TempCode,  QUICK_IDX);
 end;
@@ -345,7 +352,7 @@ begin
   TempThread.OnTerminate       := Thread_OnTerminate;
 
   Status[aIdx] := True;
-  AppendMessage('Thread ' + inttostr(aIdx) + ' has started.' + TimeToStr(Now));
+  AppendMessage('Thread ' + inttostr(aIdx) + ' has started. ' + TimeToStr(Now));
 
   {$IFDEF DELPHI14_UP}
   TempThread.Start;
@@ -374,8 +381,8 @@ begin
   TThread.ForceQueue(nil, EnableInterface);
   TThread.ForceQueue(nil, Refresh);
 
-  AppendMessage('Thread ' + inttostr(TempIdx) + ' has finished.' + TimeToStr(Now));
-  TThread.Synchronize(nil, ShowPendingMessages);
+  AppendMessage('Thread ' + inttostr(TempIdx) + ' has finished. ' + TimeToStr(Now));
+  TThread.ForceQueue(nil, ShowPendingMessages);
 end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
