@@ -71,7 +71,11 @@ object MainForm: TMainForm
       '    def square_test(self, number):'
       '        return number**2'
       '    def uppercase_test(self, mystring):'
-      '        return mystring.upper()')
+      '        return mystring.upper()'
+      '    def dict_test(self, key, value):'
+      '        new_dict = dict()'
+      '        new_dict[key] = value'
+      '        return new_dict')
     ParentFont = False
     ScrollBars = ssBoth
     TabOrder = 1

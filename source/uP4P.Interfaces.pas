@@ -3176,6 +3176,7 @@ type
     function Get_run_filename: string;
     function Get_run_module: string;
     function Get_safe_path: boolean;
+    function Get_show_alloc_count: boolean;
     function Get_show_ref_count: boolean;
     function Get_site_import: boolean;
     function Get_skip_source_first_line: boolean;
@@ -3257,6 +3258,7 @@ type
     procedure Set_run_filename(const aValue: string);
     procedure Set_run_module(const aValue: string);
     procedure Set_safe_path(aValue: boolean);
+    procedure Set_show_alloc_count(aValue: boolean);
     procedure Set_show_ref_count(aValue: boolean);
     procedure Set_site_import(aValue: boolean);
     procedure Set_skip_source_first_line(aValue: boolean);
@@ -3986,6 +3988,13 @@ type
     /// <para><see href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONSAFEPATH">See the article about PYTHONSAFEPATH.</see></para>
     /// </remarks>
     property safe_path                 : boolean                  read Get_safe_path                    write Set_safe_path;
+    /// <summary>
+    /// <para>Show allocation counts at exit?</para>
+    /// <para>Set to 1 by -X showalloccount command line option.</para>
+    /// <para>Need a special Python build with COUNT_ALLOCS macro defined.</para>
+    /// <para>Deprecated in Python 3.9.</para>
+    /// </summary>
+    property show_alloc_count          : boolean                  read Get_show_alloc_count             write Set_show_alloc_count;
     /// <summary>
     /// <para>Show total reference count at exit (excluding immortal
     /// objects)?</para>

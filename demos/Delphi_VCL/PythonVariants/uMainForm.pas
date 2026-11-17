@@ -84,6 +84,7 @@ begin
       //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
       //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
       //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
+      //TempLibPath := TempDrive + ':\python-3.8.10-embed-' + TempBit + '\python38.dll';
       TempLibPath := '';
 
       if GlobalP4PEngine.Load(TempLibPath) and
@@ -139,6 +140,7 @@ begin
       LogMem.Lines.Add('MyClass.datetime_test() = ' + TempDate + ' -> ' + DateTimeToStr(TDateTime(TempDate)));
       LogMem.Lines.Add('MyClass.square_test(5) = ' + inttostr(TempClass.square_test(5)));
       LogMem.Lines.Add('MyClass.uppercase_test("test") = ' + TempClass.uppercase_test('test'));
+      LogMem.Lines.Add('MyClass.dict_test("qwerty","12345") = ' + TempClass.dict_test('qwerty','12345'));
     end;
 end;
 

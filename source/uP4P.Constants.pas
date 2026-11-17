@@ -42,7 +42,7 @@ const
 
   SUPPORTED_MAJOR_VERSION     = PY_MAJOR_VERSION;
   MAX_SUPPORTED_MINOR_VERSION = PY_MINOR_VERSION;
-  MIN_SUPPORTED_MINOR_VERSION = 9;
+  MIN_SUPPORTED_MINOR_VERSION = 8;
 
   HOURS_IN_A_DAY        = 24;
   MINUTES_IN_AN_HOUR    = 60;
@@ -1800,6 +1800,110 @@ const
   /// The current format version. See marshal.version.
   /// </summary>
   Py_MARSHAL_VERSION = 6;
+
+
+  {* include/errcode.h *}
+  /// <summary>
+  /// <para>No error.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_OK = 10;
+  /// <summary>
+  /// <para>End Of File.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_EOF = 11;
+  /// <summary>
+  /// <para>Interrupted.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_INTR = 12;
+  /// <summary>
+  /// <para>Bad token.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_TOKEN = 13;
+  /// <summary>
+  /// <para>Syntax error.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_SYNTAX = 14;
+  /// <summary>
+  /// <para>Ran out of memory.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_NOMEM = 15;
+  /// <summary>
+  /// <para>Parsing complete.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_DONE = 16;
+  /// <summary>
+  /// <para>Execution error.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_ERROR = 17;
+  /// <summary>
+  /// <para>Inconsistent mixing of tabs and spaces.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_TABSPACE = 18;
+  /// <summary>
+  /// <para>Node had too many children.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_OVERFLOW = 19;
+  /// <summary>
+  /// <para>Too many indentation levels.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_TOODEEP = 20;
+  /// <summary>
+  /// <para>No matching outer block for dedent.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_DEDENT = 21;
+  /// <summary>
+  /// <para>Error in decoding into Unicode.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_DECODE = 22;
+  /// <summary>
+  /// <para>EOF in triple-quoted string.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_EOFS = 23;
+  /// <summary>
+  /// <para>EOL in single-quoted string.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_EOLS = 24;
+  /// <summary>
+  /// <para>Unexpected characters after a line continuation.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_LINECONT = 25;
+  /// <summary>
+  /// <para>Invalid characters in identifier.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_IDENTIFIER = 26;
+  /// <summary>
+  /// <para>Ill-formed single statement input.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_BADSINGLE = 27;
+  /// <summary>
+  /// <para>Interactive mode stopped tokenization.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_INTERACT_STOP = 28;
+  /// <summary>
+  /// <para>Column offset overflow.</para>
+  /// <para>Error code passed around between file input, tokenizer, parser and interpreter.</para>
+  /// </summary>
+  E_COLUMNOVERFLOW = 29;
+
 
 implementation
 

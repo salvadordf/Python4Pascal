@@ -77,7 +77,7 @@ body { margin: 0.5em; }
 <td class="itemcode"><code><strong><a href="uP4P.Constants.html#MAX_SUPPORTED_MINOR_VERSION">MAX_SUPPORTED_MINOR_VERSION</a></strong> = <a href="uP4P.Constants.html#PY_MINOR_VERSION">PY_MINOR_VERSION</a>;</code></td>
 </tr>
 <tr class="list2 visibility-published">
-<td class="itemcode"><code><strong><a href="uP4P.Constants.html#MIN_SUPPORTED_MINOR_VERSION">MIN_SUPPORTED_MINOR_VERSION</a></strong> = 9;</code></td>
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#MIN_SUPPORTED_MINOR_VERSION">MIN_SUPPORTED_MINOR_VERSION</a></strong> = 8;</code></td>
 </tr>
 <tr class="list visibility-published">
 <td class="itemcode"><code><strong><a href="uP4P.Constants.html#HOURS_IN_A_DAY">HOURS_IN_A_DAY</a></strong>        = 24;</code></td>
@@ -1369,6 +1369,66 @@ body { margin: 0.5em; }
 <tr class="list2 visibility-published">
 <td class="itemcode"><code><strong><a href="uP4P.Constants.html#Py_MARSHAL_VERSION">Py_MARSHAL_VERSION</a></strong> = 6;</code></td>
 </tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_OK">E_OK</a></strong> = 10;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_EOF">E_EOF</a></strong> = 11;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_INTR">E_INTR</a></strong> = 12;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_TOKEN">E_TOKEN</a></strong> = 13;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_SYNTAX">E_SYNTAX</a></strong> = 14;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_NOMEM">E_NOMEM</a></strong> = 15;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_DONE">E_DONE</a></strong> = 16;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_ERROR">E_ERROR</a></strong> = 17;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_TABSPACE">E_TABSPACE</a></strong> = 18;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_OVERFLOW">E_OVERFLOW</a></strong> = 19;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_TOODEEP">E_TOODEEP</a></strong> = 20;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_DEDENT">E_DEDENT</a></strong> = 21;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_DECODE">E_DECODE</a></strong> = 22;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_EOFS">E_EOFS</a></strong> = 23;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_EOLS">E_EOLS</a></strong> = 24;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_LINECONT">E_LINECONT</a></strong> = 25;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_IDENTIFIER">E_IDENTIFIER</a></strong> = 26;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_BADSINGLE">E_BADSINGLE</a></strong> = 27;</code></td>
+</tr>
+<tr class="list visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_INTERACT_STOP">E_INTERACT_STOP</a></strong> = 28;</code></td>
+</tr>
+<tr class="list2 visibility-published">
+<td class="itemcode"><code><strong><a href="uP4P.Constants.html#E_COLUMNOVERFLOW">E_COLUMNOVERFLOW</a></strong> = 29;</code></td>
+</tr>
 </table>
 <h2 class="description">Description</h2>
 <h3 class="detail">Constants</h3>
@@ -1513,7 +1573,7 @@ For release candidates</p>
 </table>
 <table class="detail visibility-published wide_list">
 <tr class="list visibility-published">
-<td class="itemcode"><span id="MIN_SUPPORTED_MINOR_VERSION"></span><code><strong>MIN_SUPPORTED_MINOR_VERSION</strong> = 9;</code></td>
+<td class="itemcode"><span id="MIN_SUPPORTED_MINOR_VERSION"></span><code><strong>MIN_SUPPORTED_MINOR_VERSION</strong> = 8;</code></td>
 </tr>
 <tr><td colspan="1">
 <p class="nodescription">This item has no description.</p></td></tr>
@@ -5830,6 +5890,306 @@ int64($FFFFFFFE) * 1000;</p>
 <tr><td colspan="1">
 <p>
  The current format version. See marshal.version. </p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_OK"></span><code><strong>E_OK</strong> = 10;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>No error.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_EOF"></span><code><strong>E_EOF</strong> = 11;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>End Of File.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_INTR"></span><code><strong>E_INTR</strong> = 12;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Interrupted.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_TOKEN"></span><code><strong>E_TOKEN</strong> = 13;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Bad token.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_SYNTAX"></span><code><strong>E_SYNTAX</strong> = 14;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Syntax error.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_NOMEM"></span><code><strong>E_NOMEM</strong> = 15;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Ran out of memory.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_DONE"></span><code><strong>E_DONE</strong> = 16;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Parsing complete.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_ERROR"></span><code><strong>E_ERROR</strong> = 17;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Execution error.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_TABSPACE"></span><code><strong>E_TABSPACE</strong> = 18;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Inconsistent mixing of tabs and spaces.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_OVERFLOW"></span><code><strong>E_OVERFLOW</strong> = 19;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Node had too many children.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_TOODEEP"></span><code><strong>E_TOODEEP</strong> = 20;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Too many indentation levels.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_DEDENT"></span><code><strong>E_DEDENT</strong> = 21;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>No matching outer block for dedent.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_DECODE"></span><code><strong>E_DECODE</strong> = 22;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Error in decoding into Unicode.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_EOFS"></span><code><strong>E_EOFS</strong> = 23;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>EOF in triple-quoted string.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_EOLS"></span><code><strong>E_EOLS</strong> = 24;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>EOL in single-quoted string.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_LINECONT"></span><code><strong>E_LINECONT</strong> = 25;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Unexpected characters after a line continuation.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_IDENTIFIER"></span><code><strong>E_IDENTIFIER</strong> = 26;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Invalid characters in identifier.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_BADSINGLE"></span><code><strong>E_BADSINGLE</strong> = 27;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Ill-formed single statement input.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_INTERACT_STOP"></span><code><strong>E_INTERACT_STOP</strong> = 28;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Interactive mode stopped tokenization.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail visibility-published wide_list">
+<tr class="list visibility-published">
+<td class="itemcode"><span id="E_COLUMNOVERFLOW"></span><code><strong>E_COLUMNOVERFLOW</strong> = 29;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+
+
+<p>Column offset overflow.
+
+<p>Error code passed around between file input, tokenizer, parser and interpreter.
+
+<p></p>
 </td></tr>
 </table>
 <hr><span class="appinfo"><em>Generated by <a href="https://pasdoc.github.io/">PasDoc 1.0.5.snapshot</a>. </em>
