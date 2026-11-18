@@ -69,7 +69,7 @@ Count=1
 Item_0=..\source
 
 [Files]
-Count=153
+Count=154
 Item_0=..\source\uP4P.Constants.pas
 Item_1=..\source\uP4P.CustomHeapType.pas
 Item_2=..\source\uP4P.CustomPyModule.pas
@@ -223,6 +223,7 @@ Item_149=..\source\uP4P.Subprocess.pas
 Item_150=..\source\uP4P.SubprocessCompletedProcess.pas
 Item_151=..\source\uP4P.Thread.pas
 Item_152=..\source\uP4P.Types.pas
+Item_153=..\source\uP4P.WorkerThread.pas
 
 [AdditionalFiles]
 Count=0

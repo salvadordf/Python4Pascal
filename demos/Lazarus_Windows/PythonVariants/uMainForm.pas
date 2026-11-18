@@ -79,6 +79,8 @@ begin
       //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
       TempLibPath := '';
 
+      GlobalP4PEngine.UseDebugLib := False;
+
       if GlobalP4PEngine.Load(TempLibPath) and
          GlobalP4PEngine.Initialize then
         LogMem.Lines.Add('Python initialized. ' + GlobalP4PEngine.buildinfo)

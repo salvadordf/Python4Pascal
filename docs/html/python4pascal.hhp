@@ -459,6 +459,10 @@ uP4P.Types.PyDateTime_Date.html
 uP4P.Types._PyDateTime_BaseDateTime.html
 uP4P.Types.PyDateTime_DateTime.html
 uP4P.Types.PyDateTime_CAPI.html
+uP4P.WorkerThread.html
+uP4P.WorkerThread.TMsgInfo.html
+uP4P.WorkerThread.TP4PWorkerThreadMsg.html
+uP4P.WorkerThread.TP4PWorkerThread.html
 
 [INFOTYPES]
 

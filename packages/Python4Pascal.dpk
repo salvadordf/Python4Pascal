@@ -183,6 +183,7 @@ contains
   uP4P.Subprocess in '..\source\uP4P.Subprocess.pas',
   uP4P.SubprocessCompletedProcess in '..\source\uP4P.SubprocessCompletedProcess.pas',
   uP4P.Pip in '..\source\uP4P.Pip.pas',
-  uP4P.HTTPDownloader in '..\source\uP4P.HTTPDownloader.pas';
+  uP4P.HTTPDownloader in '..\source\uP4P.HTTPDownloader.pas',
+  uP4P.WorkerThread in '..\source\uP4P.WorkerThread.pas';
 
 end.

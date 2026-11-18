@@ -33753,6 +33753,182 @@
 </object>
 </ul>
 </ul>
+<li><object type="text/sitemap">
+<param name="Name" value="uP4P.WorkerThread">
+<param name="Local" value="uP4P.WorkerThread.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Classes">
+<param name="Local" value="uP4P.WorkerThread.html#@Classes">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TMsgInfo">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Msg">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#Msg">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="StrParam">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#StrParam">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="IntParam">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#IntParam">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TP4PWorkerThreadMsg">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="FValue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#FValue">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Properties">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#@Properties">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Value">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#Value">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#Create">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TP4PWorkerThread">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="FCritSect">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FCritSect">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FEvent">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FEvent">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FWaiting">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FWaiting">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FStop">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FStop">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FMsgQueue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FMsgQueue">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Lock">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Lock">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Unlock">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Unlock">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="CanContinue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#CanContinue">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadAllPendingMessages">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#ReadAllPendingMessages">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ProcessMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#ProcessMessage">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadPendingMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#ReadPendingMessage">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="EnqueueMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#EnqueueMessage">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="StopThread">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#StopThread">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="DestroyQueue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#DestroyQueue">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="doOnExecutePython">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#doOnExecutePython">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="AfterConstruction">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#AfterConstruction">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="EnqueueMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#EnqueueMessage">
+</object>
+</ul>
+</ul>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Constants">
+<param name="Local" value="uP4P.WorkerThread.html#@Constants">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="WORKERTHREADMSG_QUIT">
+<param name="Local" value="uP4P.WorkerThread.html#WORKERTHREADMSG_QUIT">
+</object>
+</ul>
+</ul>
 </ul>
 <li><object type="text/sitemap">
 <param name="Name" value="Class Hierarchy">
@@ -43978,6 +44154,30 @@
 </ul>
 </ul>
 <li><object type="text/sitemap">
+<param name="Name" value="TMsgInfo">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="IntParam">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#IntParam">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Msg">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#Msg">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="StrParam">
+<param name="Local" value="uP4P.WorkerThread.TMsgInfo.html#StrParam">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
 <param name="Name" value="TNamedParamDesc">
 <param name="Local" value="uP4P.Types.TNamedParamDesc.html">
 </object>
@@ -45138,6 +45338,136 @@
 <li><object type="text/sitemap">
 <param name="Name" value="SetThreadInit">
 <param name="Local" value="uP4P.Thread.TP4PThread.html#SetThreadInit">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TP4PWorkerThread">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="FCritSect">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FCritSect">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FEvent">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FEvent">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FMsgQueue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FMsgQueue">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FStop">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FStop">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="FWaiting">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#FWaiting">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Create">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Destroy">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Destroy">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="CanContinue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#CanContinue">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Lock">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Lock">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadPendingMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#ReadPendingMessage">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="AfterConstruction">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#AfterConstruction">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="EnqueueMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#EnqueueMessage">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="DestroyQueue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#DestroyQueue">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="doOnExecutePython">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#doOnExecutePython">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="EnqueueMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#EnqueueMessage">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ProcessMessage">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#ProcessMessage">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="ReadAllPendingMessages">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#ReadAllPendingMessages">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="StopThread">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#StopThread">
+</object>
+<li><object type="text/sitemap">
+<param name="Name" value="Unlock">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThread.html#Unlock">
+</object>
+</ul>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="TP4PWorkerThreadMsg">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Fields">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#@Fields">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="FValue">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#FValue">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Properties">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#@Properties">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Value">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#Value">
+</object>
+</ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Methods">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#@Methods">
+</object>
+<ul>
+<li><object type="text/sitemap">
+<param name="Name" value="Create">
+<param name="Local" value="uP4P.WorkerThread.TP4PWorkerThreadMsg.html#Create">
 </object>
 </ul>
 </ul>

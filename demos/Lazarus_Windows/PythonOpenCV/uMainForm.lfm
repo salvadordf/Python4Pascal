@@ -1,0 +1,103 @@
+object MainForm: TMainForm
+  Left = 0
+  Height = 718
+  Top = 0
+  Width = 825
+  Caption = 'PythonOpenCV'
+  ClientHeight = 718
+  ClientWidth = 825
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Position = poScreenCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnShow = FormShow
+  object Splitter1: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 3
+    Top = 597
+    Width = 825
+    Align = alBottom
+    ResizeAnchor = akBottom
+  end
+  object Image1: TImage
+    Left = 0
+    Height = 396
+    Top = 201
+    Width = 825
+    Align = alClient
+  end
+  object CodeMem: TMemo
+    Left = 0
+    Height = 167
+    Top = 34
+    Width = 825
+    Align = alTop
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Consolas'
+    Lines.Strings = (
+      'import cv2'
+      ''
+      'class CameraTest:        '
+      '    def snapshot(self, filepath):'
+      '        cap = cv2.VideoCapture(0)'
+      '        if (cap is not None) and (cap.isOpened()):'
+      '            cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)'
+      '            cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)'
+      '            ret, frame = cap.read()'
+      '            cv2.imwrite(filepath, frame)'
+      '            cap.release()'
+      '            return True'
+      '        else:'
+      '            return False'
+    )
+    ParentFont = False
+    ScrollBars = ssBoth
+    TabOrder = 0
+  end
+  object LogMem: TMemo
+    Left = 0
+    Height = 118
+    Top = 600
+    Width = 825
+    Align = alBottom
+    ReadOnly = True
+    ScrollBars = ssBoth
+    TabOrder = 1
+  end
+  object ButtonPnl: TPanel
+    Left = 0
+    Height = 34
+    Top = 0
+    Width = 825
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 34
+    ClientWidth = 825
+    Enabled = False
+    ParentBackground = False
+    TabOrder = 2
+    object TestMyClassBtn: TButton
+      Left = 608
+      Height = 24
+      Top = 5
+      Width = 212
+      Align = alRight
+      Caption = 'Capture snapshot'
+      TabOrder = 0
+      OnClick = TestMyClassBtnClick
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    Title = 'Save snapshot as...'
+    DefaultExt = '.bmp'
+    Filter = 'Bitmap images (*.bmp)|*.BMP'
+    Left = 336
+    Top = 248
+  end
+end

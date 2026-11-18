@@ -9,8 +9,7 @@
         <Filename Value="PythonVariants.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="21"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
+        <UsageCount Value="27"/>
       </Unit>
       <Unit>
         <Filename Value="uMainForm.pas"/>
@@ -19,9 +18,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="55"/>
-        <CursorPos X="25" Y="80"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="56"/>
+        <CursorPos X="44" Y="81"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -29,14 +28,20 @@
         <Filename Value="uMainForm.lfm"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="475"/>
-        <CursorPos X="65" Y="497"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="455"/>
+        <CursorPos Y="488"/>
+        <UsageCount Value="13"/>
+        <Bookmarks Count="4">
+          <Item0 X="101" Y="632" Left="1" Top="615" ID="3"/>
+          <Item1 X="3" Y="586" Left="1" Top="582" ID="2"/>
+          <Item2 X="3" Y="456" Left="1" Top="444" ID="1"/>
+          <Item3 X="12" Y="311" Left="1" Top="285" ID="8"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyInitConfig.pas"/>
@@ -47,10 +52,11 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\uP4P.PyObject.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1249"/>
-        <CursorPos X="76" Y="1236"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="2513"/>
+        <CursorPos Y="2545"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\inc\varianth.inc"/>
@@ -82,32 +88,101 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\source\p4p.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="483"/>
-        <CursorPos Y="499"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="2" Y="7"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\fpcupdeluxe\fpcupdeluxe\fpcsrc\packages\rtl-objpas\src\inc\variants.pp"/>
+        <UnitName Value="Variants"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4478"/>
+        <CursorPos X="15" Y="4385"/>
+        <UsageCount Value="13"/>
+        <Bookmarks Count="1">
+          <Item0 X="3" Y="4373" Left="1" Top="4361" ID="9"/>
+        </Bookmarks>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.PyUnicode.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="1888"/>
+        <CursorPos Y="1925"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\source\uP4P.PyType.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="807"/>
+        <CursorPos Y="832"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\fpcupdeluxe\fpcupdeluxe\fpcsrc\rtl\inc\varianth.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="126"/>
+        <CursorPos X="13" Y="143"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\fpcupdeluxe\fpcupdeluxe\fpcsrc\rtl\inc\variant.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="131"/>
+        <CursorPos X="33" Y="145"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\fpcupdeluxe\fpcupdeluxe\fpcsrc\rtl\inc\compproc.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="527"/>
+        <CursorPos X="11" Y="544"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\fpcupdeluxe\fpcupdeluxe\fpcsrc\compiler\ncal.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="621"/>
+        <CursorPos X="124" Y="639"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\fpcupdeluxe\fpcupdeluxe\fpcsrc\compiler\nld.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="47"/>
+        <CursorPos X="23" Y="63"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\fpcupdeluxe\fpcupdeluxe\fpcsrc\compiler\nmem.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="66"/>
+        <CursorPos X="23" Y="82"/>
+        <UsageCount Value="12"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="4">
       <Position>
-        <Filename Value="uMainForm.pas"/>
-        <Caret Line="92" TopLine="80"/>
+        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
+        <Caret Line="81" Column="18" TopLine="56"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
+        <Caret Line="585" Column="21" TopLine="581"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
+        <Caret Line="54" Column="17" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="uMainForm.pas"/>
-        <Caret Line="92" TopLine="80"/>
+        <Caret Line="116" Column="4" TopLine="103"/>
       </Position>
       <Position>
         <Filename Value="uMainForm.pas"/>
-        <Caret Line="94" Column="71" TopLine="79"/>
-      </Position>
-      <Position>
-        <Filename Value="uMainForm.pas"/>
-        <Caret Line="110" Column="96" TopLine="89"/>
-      </Position>
-      <Position>
-        <Filename Value="uMainForm.pas"/>
-        <Caret Line="106" Column="52" TopLine="104"/>
+        <Caret Line="82" Column="44" TopLine="55"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -122,8 +197,16 @@
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="..\..\..\source\uP4P.PyObjectVariantType.pas"/>
-        <Line Value="432"/>
+        <Line Value="428"/>
       </Item>
     </BreakPoints>
+    <Watches>
+      <Item>
+        <Expression Value="ansistring(PAnsiString(@CallDesc^.ArgTypes[CallDesc^.ArgCount]))"/>
+      </Item>
+      <Item>
+        <Expression Value="CallDesc^.ArgCount"/>
+      </Item>
+    </Watches>
   </Debugging>
 </CONFIG>

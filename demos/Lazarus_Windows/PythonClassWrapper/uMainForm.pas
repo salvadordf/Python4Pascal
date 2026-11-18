@@ -184,7 +184,8 @@ begin
       //TempLibPath := TempDrive + ':\python-3.11.9-embed-' + TempBit + '\python311.dll';
       //TempLibPath := TempDrive + ':\python-3.10.11-embed-' + TempBit + '\python310.dll';
       //TempLibPath := TempDrive + ':\python-3.9.13-embed-' + TempBit + '\python39.dll';
-      TempLibPath := '';
+      TempLibPath := '';     
+      GlobalP4PEngine.UseDebugLib := False;
 
       if GlobalP4PEngine.Load(TempLibPath) and
          GlobalP4PEngine.Initialize then

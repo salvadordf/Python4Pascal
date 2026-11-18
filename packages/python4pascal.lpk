@@ -631,6 +631,10 @@
         <Filename Value="..\source\uP4P.HTTPDownloader.pas"/>
         <UnitName Value="uP4P.HTTPDownloader"/>
       </Item>
+      <Item>
+        <Filename Value="..\source\uP4P.WorkerThread.pas"/>
+        <UnitName Value="uP4P.WorkerThread"/>
+      </Item>
     </Files>
     <RequiredPkgs>
       <Item>

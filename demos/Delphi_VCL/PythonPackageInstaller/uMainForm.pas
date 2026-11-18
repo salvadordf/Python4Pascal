@@ -89,6 +89,9 @@ begin
   if assigned(FPip) then
     FreeAndNil(FPip);
 
+  if assigned(FMetadata) then
+    FreeAndnil(FMetadata);
+
   DestroyGlobalP4PEngine;
 end;
 
