@@ -437,6 +437,11 @@ type
       property DevMode                           : boolean                                      read FDevMode                           write FDevMode;
       /// <summary>
       /// <para>Use the debug library if available.</para>
+      /// <para>In Windows, the CPython debug libraries require the debug
+      /// version of the Visual C++ libraries.</para>
+      /// <para>Typically, debug versions of Visual C++ library DLLs have names
+      /// that end in "d". For example, the debug version of vcruntime140.dll
+      /// is named vcruntime140d.dll.</para>
       /// </summary>
       property UseDebugLib                       : boolean                                      read FUseDebugLib                       write FUseDebugLib;
       /// <summary>
@@ -569,7 +574,7 @@ begin
   FPathConfigWarnings     := False;
   FWriteBytecode          := False;
   FDevMode                := False;
-  FUseDebugLib            := {$IFDEF DEBUG}True{$ELSE}False{$ENDIF};
+  FUseDebugLib            := False;
   FHome                   := '';
   FExecutable             := '';
   FProgramName            := '';
@@ -1652,7 +1657,8 @@ end;
 
 function TP4PLoader.Load(const aLibraryPath: string) : boolean;
 var
-  {$IFDEF MSWINDOWS}TempLibPath, TempPackagesPath,{$ENDIF} TempPath : string;
+  {$IFDEF MSWINDOWS}TempLibPath, TempPackagesPath : string;{$ENDIF}
+  TempPythonPath, TempPath : string;
   TempValidPath : boolean;
 begin
   Result            := False;
@@ -1678,6 +1684,16 @@ begin
         FModuleSearchPaths := TempLibPath + PathSep + TempPackagesPath;
     end;
   {$ENDIF}
+
+  TempPythonPath := GetEnvironmentVariable('PYTHONPATH');
+
+  if (length(TempPythonPath) > 0) then
+    begin
+      if (length(FModuleSearchPaths) = 0) then
+        FModuleSearchPaths := TempPythonPath
+       else
+        FModuleSearchPaths := FModuleSearchPaths + PathSep + TempPythonPath;
+    end;
 
   if TempValidPath then
     TempPath := aLibraryPath
