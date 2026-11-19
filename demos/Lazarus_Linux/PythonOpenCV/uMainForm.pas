@@ -40,6 +40,21 @@ implementation
 
 {$R *.lfm}
 
+// This demo shows how to use Delphi wrapper for a Python class that captures an
+// image from a camera using OpenCV.
+//
+// The image is saved in a file and Image1 will show it to the user.
+//
+// This demo also uses a TPyMetadata instance to check if the "opencv-python"
+// package is installed in Python.
+//
+// The "CameraTest" class in the Python script is wrapped by the TCameraTest
+// Delphi class available in the uCameraTest unit.
+//
+// This demo uses the same concepts in the PythonClassWrapper demo to wrap a
+// Python class with a Delphi class. See the PythonClassWrapper demo for more
+// details.
+
 procedure TMainForm.GlobalP4PEngine_OnOutputMessage(Sender: TObject; const message_: string);
 begin
   LogMem.Lines.Add(message_);
